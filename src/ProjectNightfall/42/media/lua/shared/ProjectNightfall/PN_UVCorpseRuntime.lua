@@ -15,7 +15,8 @@ local candidates=setmetatable({},{__mode="k"})
 local candidateQueue={}
 local candidateCursor=1
 local scanQueue,scanIndex={},1
-local tick=0
+local scanSources,sourceByKey,sourceCursor={},{},1
+local pendingStages=setmetatable({},{__mode="k"})
 local corpsePolicySource=nil
 local diagnostics={updates=0,idleUpdates=0,failures=0,totalSquaresScanned=0,totalCandidatesAdded=0,
     totalCorpsesProcessed=0,totalStageChanges=0,lastEmitters=0,lastSquaresScanned=0,
@@ -31,12 +32,16 @@ local function minute()
     local ok,v=pcall(function() return getGameTime():getWorldAgeHours()*60 end)
     return ok and finite(v) and v or nil
 end
+local function enabled()
+    return Config.Enabled~=false and Config.EnableRegionalUVTissue~=false
+end
 local function marked(corpse)
     local data=Entity.getModData(corpse);local state=data and data[Runtime.KEY]
     return type(state)=="table" and state.schemaVersion==Runtime.SCHEMA and state.infected==true
 end
 local function markDeath(zombie)
     if not Authority.canWriteCanonicalState(zombie) then return false,"non-authority" end
+    if not enabled() then return true,{unchanged=true,reason="corpse UV disabled"} end
     local anatomy,err=Anatomy.get(zombie);if not anatomy then return false,err end
     local canonicalTissue,tissueQuantityErr=Anatomy.tissueSnapshot(zombie)
     if not canonicalTissue then return false,tissueQuantityErr end
@@ -65,21 +70,55 @@ local function emitterPosition(emitter)
     return math.floor(x),math.floor(y),math.floor(z),math.min(32,math.ceil(range))
 end
 
-local function rebuildScan(emitters,maximum)
-    scanQueue,scanIndex={},1
-    local seen={}
+-- Reconcile descriptor copies by their stable provider owner/item. Queued
+-- offsets retain this source object, so movement updates their world position
+-- without discarding unvisited work belonging to other emitters.
+local function refreshSources(emitters)
+    local nextKey=scanSources[sourceCursor] and scanSources[sourceCursor].key
+    local previous=sourceByKey
+    for _,source in ipairs(scanSources) do source.active=false end
+    scanSources,sourceByKey={},{}
+    sourceCursor=1
     for _,emitter in ipairs(emitters) do
         local x,y,z,r=emitterPosition(emitter)
         if x then
-            for dx=-r,r do for dy=-r,r do
-                if dx*dx+dy*dy<=r*r then
-                    local key=(x+dx)..":"..(y+dy)..":"..z
-                    if not seen[key] then
-                        seen[key]=true;scanQueue[#scanQueue+1]={x+dx,y+dy,z}
-                        if #scanQueue>=maximum then return end
-                    end
+            local key=emitter.item or emitter.owner or table.concat({x,y,z,r},":")
+            if not sourceByKey[key] then
+                local source=previous[key] or {key=key,offset=0}
+                if source.r~=r then source.offset=0 end
+                source.x,source.y,source.z,source.r,source.active=x,y,z,r,true
+                scanSources[#scanSources+1]=source;sourceByKey[key]=source
+                if key==nextKey then sourceCursor=#scanSources end
+            end
+        end
+    end
+end
+
+local function rebuildScan(maximum)
+    scanQueue,scanIndex={},1
+    local seen,remaining={},{}
+    local unfinished=#scanSources
+    for _,source in ipairs(scanSources) do remaining[source]=(source.r*2+1)^2 end
+    -- The existing queue ceiling also bounds generation work (including
+    -- duplicate/out-of-circle offsets). Cursors survive every bounded chunk.
+    for _=1,maximum do
+        if unfinished==0 then break end
+        if sourceCursor>#scanSources then sourceCursor=1 end
+        local source=scanSources[sourceCursor]
+        sourceCursor=sourceCursor+1
+        if remaining[source]>0 then
+            local width=source.r*2+1
+            local dx=math.floor(source.offset/width)-source.r
+            local dy=source.offset%width-source.r
+            source.offset=(source.offset+1)%(width*width)
+            remaining[source]=remaining[source]-1
+            if remaining[source]==0 then unfinished=unfinished-1 end
+            if dx*dx+dy*dy<=source.r*source.r then
+                local key=(source.x+dx)..":"..(source.y+dy)..":"..source.z
+                if not seen[key] then
+                    seen[key]=true;scanQueue[#scanQueue+1]={source=source,dx=dx,dy=dy}
                 end
-            end end
+            end
         end
     end
 end
@@ -102,8 +141,9 @@ local function discover(cell,budget,now,limit)
         scanIndex=scanIndex+1
         scanned=scanned+1
         local square=nil
-        if cell then
-            local ok,value=pcall(function() return cell:getGridSquare(at[1],at[2],at[3]) end)
+        local source=at.source
+        if cell and source.active and at.dx*at.dx+at.dy*at.dy<=source.r*source.r then
+            local ok,value=pcall(function() return cell:getGridSquare(source.x+at.dx,source.y+at.dy,source.z) end)
             square=ok and value or nil
         end
         for _,corpse in ipairs(Corpse.onSquare(square)) do
@@ -123,10 +163,21 @@ local function corpsePolicy()
     return corpsePolicySource
 end
 
-local function process(emitters,now,budget,cell)
+local function updateStage(corpse,now)
+    local called,ok,result=pcall(RemainsState.update,corpse,Config.UVCorpseDestructionStageThresholds,now)
+    if not called or ok~=true then
+        pendingStages[corpse]=true
+        return false,(called and result or ok) or "corpse remains stage rejected"
+    end
+    pendingStages[corpse]=nil
+    return true,result
+end
+
+local function process(now,budget,cell)
     local processed,stageChanges=0,0
     local visited=0
-    while processed<budget and #candidateQueue>0 and visited<#candidateQueue do
+    local visitLimit=math.min(budget,#candidateQueue)
+    while #candidateQueue>0 and visited<visitLimit do
         if candidateCursor>#candidateQueue then candidateCursor=1 end
         local corpse=candidateQueue[candidateCursor]
         visited=visited+1
@@ -135,25 +186,49 @@ local function process(emitters,now,budget,cell)
             candidates[corpse]=nil;table.remove(candidateQueue,candidateCursor)
             if candidateCursor>#candidateQueue then candidateCursor=1 end
         else
+            -- Advance even on rejection: one bad corpse must not monopolize
+            -- the process budget and starve the rest of the admitted queue.
+            candidateCursor=candidateCursor+1
             local data=Entity.getModData(corpse);local state=data and data[Runtime.KEY]
             local previous=state and tonumber(state.lastProcessMinute) or now
             local elapsed=math.max(0,now-previous)
+            if pendingStages[corpse] then
+                local staged,stageReport=updateStage(corpse,previous)
+                if not staged then return processed,false,stageReport,stageChanges end
+                if stageReport.changed==true then stageChanges=stageChanges+1 end
+            end
             if elapsed>0 then
-                local ok=Scheduler.process(corpse,nearby,elapsed,now,{enabled=true,
+                local called,ok,result=pcall(Scheduler.process,corpse,nearby,elapsed,now,{enabled=true,
                     maximumElapsedMinutes=Config.RegionalUVTissueMaximumElapsedMinutes,
                     policyRevision=Config.RegionalUVTissuePolicyRevision,policy=corpsePolicy()},{cell=cell})
-                if ok and state then
-                    state.lastProcessMinute=now
-                    local staged,stageReport=RemainsState.update(corpse,Config.UVCorpseDestructionStageThresholds,now)
+                if not called or ok~=true then
+                    return processed,false,(called and result or ok) or "corpse UV pipeline rejected",stageChanges
+                end
+                if state then
+                    -- A pending tissue journal can finish an older interval.
+                    -- Do not advance the corpse clock past that actual commit.
+                    local committed=type(result)=="table" and result.lastMinute or now
+                    state.lastProcessMinute=finite(committed) and math.max(previous,math.min(now,committed)) or now
+                    local staged,stageReport=updateStage(corpse,state.lastProcessMinute)
                     if not staged then return processed,false,stageReport,stageChanges end
                     if type(stageReport)=="table" and stageReport.changed==true then stageChanges=stageChanges+1 end
                 end
             end
             processed=processed+1
-            candidateCursor=candidateCursor+1
         end
     end
     return processed,true,nil,stageChanges
+end
+
+local function idle(reason)
+    scanQueue,scanIndex={},1
+    scanSources,sourceByKey,sourceCursor={},{},1
+    candidateQueue={};candidates=setmetatable({},{__mode="k"});candidateCursor=1
+    pendingStages=setmetatable({},{__mode="k"})
+    diagnostics.idleUpdates=diagnostics.idleUpdates+1;diagnostics.lastEmitters=0
+    diagnostics.lastSquaresScanned=0;diagnostics.lastCandidatesAdded=0;diagnostics.lastCandidates=0
+    diagnostics.lastProcessed=0;diagnostics.lastStageChanges=0;diagnostics.lastScanQueued=0;diagnostics.lastScanRemaining=0
+    return true,{processed=0,emitters=0,candidates=0,reason=reason}
 end
 
 function Runtime.getDiagnostics()
@@ -163,27 +238,23 @@ end
 function Runtime.update(context)
     diagnostics.updates=diagnostics.updates+1
     if not Authority.canWriteCanonicalState() then diagnostics.failures=diagnostics.failures+1;return false,"non-authority" end
+    if not enabled() then return idle("corpse UV disabled") end
     local now=minute();if not now then diagnostics.failures=diagnostics.failures+1;return false,"world time unavailable" end
     local artificial=ProjectNightfall and ProjectNightfall.ArtificialUV
     if not artificial or type(artificial.getCurrentEmitters)~="function" then
         diagnostics.failures=diagnostics.failures+1;return false,"emitter provider unavailable"
     end
     local emitters=artificial.getCurrentEmitters(nil)
-    tick=tick+1
-    if #emitters==0 then scanQueue={};scanIndex=1;candidateQueue={};candidates=setmetatable({},{__mode="k"});candidateCursor=1
-        diagnostics.idleUpdates=diagnostics.idleUpdates+1;diagnostics.lastEmitters=0
-        diagnostics.lastSquaresScanned=0;diagnostics.lastCandidatesAdded=0;diagnostics.lastCandidates=0
-        diagnostics.lastProcessed=0;diagnostics.lastStageChanges=0;diagnostics.lastScanQueued=0;diagnostics.lastScanRemaining=0
-        return true,{processed=0,emitters=0,candidates=0} end
+    if #emitters==0 then return idle("no emitters") end
     local squareBudget=math.max(1,math.min(256,tonumber(Config.ArtificialUVCorpseSquareBudgetPerUpdate) or 16))
     local processBudget=math.max(1,math.min(128,tonumber(Config.ArtificialUVCorpseProcessBudgetPerUpdate) or 8))
     local candidateLimit=math.max(16,math.min(2048,tonumber(Config.ArtificialUVCorpseCandidateLimit) or 256))
     local maximumSquares=math.max(64,math.min(16384,tonumber(Config.ArtificialUVCorpseMaximumScanSquares) or 4096))
-    if tick%60==1 or scanIndex>#scanQueue then rebuildScan(emitters,maximumSquares) end
+    refreshSources(emitters)
+    if scanIndex>#scanQueue then rebuildScan(maximumSquares) end
     local cell=context and context.cell or (getCell and getCell() or nil)
     local scanned,added=discover(cell,squareBudget,now,candidateLimit)
-    local processed,processedOK,processError,stageChanges=process(emitters,now,processBudget,cell)
-    if processedOK==false then diagnostics.failures=diagnostics.failures+1;return false,processError end
+    local processed,processedOK,processError,stageChanges=process(now,processBudget,cell)
     local remaining=math.max(0,#scanQueue-scanIndex+1)
     diagnostics.totalSquaresScanned=diagnostics.totalSquaresScanned+scanned
     diagnostics.totalCandidatesAdded=diagnostics.totalCandidatesAdded+added
@@ -193,6 +264,7 @@ function Runtime.update(context)
     diagnostics.lastCandidatesAdded=added;diagnostics.lastCandidates=#candidateQueue
     diagnostics.lastProcessed=processed;diagnostics.lastStageChanges=stageChanges
     diagnostics.lastScanQueued=#scanQueue;diagnostics.lastScanRemaining=remaining
+    if processedOK==false then diagnostics.failures=diagnostics.failures+1;return false,processError end
     return true,{processed=processed,emitters=#emitters,candidates=#candidateQueue,
         scanQueued=#scanQueue,scanRemaining=remaining,squaresScanned=scanned,
         candidatesAdded=added,stageChanges=stageChanges}

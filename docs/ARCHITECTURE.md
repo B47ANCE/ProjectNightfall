@@ -30,6 +30,19 @@ powerWorks owns batteries, stored energy, and consumption calculation. lightWork
 
 All searches must remain local or bounded. Runtime code must use verified adapters and fail safely when optional engine capabilities are unavailable. Vanilla owns ordinary zombie movement and nighttime activation. At nightfall, Nightfall may rise hibernators, commit eligible Feral/Smart Feral conversions, and ask indoor zombies to roam outside; it must not globally replace the base zombie brain.
 
+`PN_UVCorpseRuntime` honors the Nightfall and regional-tissue enable gates before
+death marking or discovery. Its emitter identities and per-emitter relative tile
+cursors are transient authority-local state, retained across bounded scan chunks.
+The existing scan-square ceiling bounds both queued offsets and generation work;
+the existing square/process/candidate budgets still bound each update. Queued
+offsets follow their current source position and skip removed sources. Disabling
+or losing all emitters clears the transient queues; rediscovery starts at the
+current minute without charging unknown exposure. Pipeline failures advance the
+candidate turn, preserve the uncommitted clock, and report failure after updating
+diagnostics. An older tissue-journal completion advances only to its actual commit;
+derived remains-stage failures retry without replaying dose. No state schema or
+custom network protocol is added. Native persistence and transport remain gates.
+
 External mods, including the local research copy at
 `C:\Users\willi\Zomboid\mods\FadedsTheHive`, are clean-room research references
 only. Engine hooks and performance lessons may be verified independently; their

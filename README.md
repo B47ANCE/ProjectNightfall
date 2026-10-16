@@ -2,7 +2,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.27.3`
+- Version: `0.27.4`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -52,4 +52,4 @@ The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods` is a
 
 Public development repository: [B47ANCE/ProjectNightfall](https://github.com/B47ANCE/ProjectNightfall).
 
-The [2026-10-16 audit](docs/AUDIT_2026-10-16.md) records five reproducible corpse-runtime failures, packaging drift, and remaining runtime gates. The original 57 host tests pass offline; the full suite includes the new failing audit regressions. Dedicated multiplayer is NOT TESTED and stable release remains BLOCKED. See [testing](docs/TESTING.md) for current commands. No deployment or Workshop publication occurred during onboarding.
+Version 0.27.4 fixes the five corpse-runtime failures recorded by the [0.27.3 takeover audit](docs/AUDIT_2026-10-16.md): disable gates, fair discovery, and truthful pipeline failure reporting. All 59 host test files now pass offline. See [current validation](docs/VALIDATION_0.27.4.md) and [testing](docs/TESTING.md). The stale packaging input and historical packages remain preserved; no 0.27.4 package was built. Dedicated multiplayer is NOT TESTED and stable release remains BLOCKED. No deployment or Workshop publication occurred.

@@ -11,7 +11,7 @@ Preserve project-specific identity, instructions, source, local settings and run
 ## Identity and source ownership
 
 - Display name: Project Nightfall; Mod ID: `ProjectNightfall`; author: B47ANCE.
-- Canonical version: `0.27.3` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
+- Canonical version: `0.27.4` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
 - Public repository: https://github.com/B47ANCE/ProjectNightfall
 - Existing Workshop item: `3788593239`; item creation and visibility changes need separate authorization.
 - Authoritative runtime source: `src/ProjectNightfall/42/`.
@@ -55,7 +55,7 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 ## Validation and iteration
 
-Read `docs/AUDIT_2026-10-16.md` before choosing the next slice. Before editing, name intended files and invariants. Use a feature/fix branch, targeted staging, a public-push secret audit, and a PR before merging main. Run freshness checks; never auto-stash, reset, clean, pull, or rebase.
+Read `docs/VALIDATION_0.27.4.md` for current behavior and evidence; `docs/AUDIT_2026-10-16.md` preserves the historical 0.27.3 findings. Before editing, name intended files and invariants. Use a feature/fix branch, targeted staging, a public-push secret audit, and a PR before merging main. Run freshness checks; never auto-stash, reset, clean, pull, or rebase.
 
 Run from this project root with a real Python 3 executable (the Windows Store alias may be unusable):
 
@@ -65,7 +65,7 @@ python scripts/run_host_tests.py
 python scripts/audit_project.py
 ```
 
-Host tests require `lupa.lua51` and the five dependency source checkouts in sibling folders (`Project MORTIS`, `lightWorks`, `powerWorks`, `medWorks`, `experienceWorks`). The default runner includes audit regressions and currently fails on known defects. `--legacy-only` runs only the original 57 files; passing that subset is not an all-clear. Legacy debug-surface tests also rely on the documented sibling layout.
+Host tests require `lupa.lua51` and the five dependency source checkouts in sibling folders (`Project MORTIS`, `lightWorks`, `powerWorks`, `medWorks`, `experienceWorks`). The default runner includes the audit regressions and all 59 files pass offline for 0.27.4. `--legacy-only` selects only top-level tests and omits the five former audit failures; use the default complete suite for regression evidence. Legacy debug-surface tests also rely on the documented sibling layout.
 
 Before G8 also run `python scripts/check_versions.py --release`; current stale Contents blocks that check. No packaging script is verified for the present layout. No package/release is authorized by an audit or version update.
 

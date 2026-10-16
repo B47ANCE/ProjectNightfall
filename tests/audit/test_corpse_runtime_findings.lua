@@ -1,5 +1,5 @@
 -- Audit reproducers: assert the intended behavior, not the observed defect.
--- Intentionally separate from the legacy test suite until these findings are fixed.
+-- Kept at the original audit path as live regressions for the 0.27.4 fixes.
 local failures={}
 local function scenario(name,fn)
     local ok,reason=pcall(fn)

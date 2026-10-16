@@ -2,10 +2,11 @@
 
 > Consolidated status: [MASTER_ROADMAP.md](MASTER_ROADMAP.md).
 
-Current priority: the [2026-10-16 audit](AUDIT_2026-10-16.md) reproduces five
-corpse-runtime failures and confirms stale packaging input. Resolve those bounded
-correctness issues before new smoke, condition, or migration features. The
-onboarding changes no gameplay and supplies no new runtime PASS evidence.
+The 0.27.4 corpse-runtime fix resolves the five offline audit failures; all 59 host
+test files pass. See [current validation](VALIDATION_0.27.4.md). Recover packaging
+tooling and obtain clean-launcher SP and dedicated MP evidence before new smoke,
+condition, or migration features. Stale Contents and historical packages remain
+preserved; no new runtime PASS evidence or package is supplied by this fix.
 
 ## Current implementation
 

@@ -1,15 +1,16 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.27.3.
+Canonical version: 0.27.4.
 
-## Immediate next slice — takeover audit 2026-10-16
+## Current slice and next gates — 2026-10-16
 
-Fix corpse-runtime disable gates, fair discovery across reset/cap boundaries,
-and observable pipeline failure reporting. Five new offline reproducers currently
-fail; see [audit and ordered next steps](AUDIT_2026-10-16.md). The recommended
-compatible bug-fix version is 0.27.4; it is not implemented by the onboarding.
-Recover packaging tooling and reconcile stale Contents separately, preserving
-historical outputs. Clean-launcher SP and dedicated MP evidence remain required.
+The 0.27.4 PATCH fixes corpse disable/re-enable gates, fair discovery across chunk
+and cap boundaries, moved-source scans, and observable pipeline failure reporting.
+All 59 host test files pass offline, including the five historical audit cases.
+See [current validation](VALIDATION_0.27.4.md); the [takeover audit](AUDIT_2026-10-16.md)
+remains historical evidence. Next recover packaging tooling and reconcile stale
+Contents separately, preserving historical outputs. Clean-launcher SP and
+dedicated MP evidence remain required.
 
 ## Implemented
 

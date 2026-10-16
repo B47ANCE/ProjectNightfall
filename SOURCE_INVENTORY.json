@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.27.3",
+  "project_version": "0.27.4",
   "canonical_version_file": "VERSION",
   "mod_ids": ["ProjectNightfall"],
   "workshop_ids": ["3788593239"],
@@ -15,7 +15,7 @@
     "use_for_release": false
   },
   "generated_outputs": ["dist", "workshop"],
-  "historical_records": ["SHA256SUMS.txt", "docs/ARTIFICIAL_UV_TILE_STRENGTH_HANDOFF.md", "docs/IN_GAME_TEST_HANDOFF.md"],
+  "historical_records": ["SHA256SUMS.txt", "docs/ARTIFICIAL_UV_TILE_STRENGTH_HANDOFF.md", "docs/IN_GAME_TEST_HANDOFF.md", "docs/AUDIT_2026-10-16.md", "docs/audits/2026-10-16.json", "dist/ProjectNightfall-0.27.3-workshop-ready.zip"],
   "developer_local_only": [".agents", ".codex", "Update-Workshop.ps1", ".steamcmd-last-upload.sha256"],
   "validation": [
     "python scripts/check_versions.py",

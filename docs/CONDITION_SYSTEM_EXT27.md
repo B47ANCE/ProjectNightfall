@@ -108,7 +108,7 @@ evidence.
 
 ## Preconditions to resume
 
-- The current Nightfall 0.27.3 release gates have recorded native PASS evidence.
+- The current Nightfall release gates have recorded native PASS evidence.
 - A specific first-party condition, its acquisition rule, and intended gameplay
   outcome are approved; Faded Afflictions content is not a candidate.
 - medWorks identifies the exact treatment receipt/capability if treatment is

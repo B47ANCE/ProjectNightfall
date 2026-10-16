@@ -1,8 +1,9 @@
 # Project Nightfall testing
 
-## Current offline entry points — 2026-10-16
+## Current offline entry points — 0.27.4, 2026-10-16
 
-See the [takeover audit](AUDIT_2026-10-16.md) for current findings and exact evidence.
+See [0.27.4 validation](VALIDATION_0.27.4.md) for current behavior and evidence;
+the [takeover audit](AUDIT_2026-10-16.md) preserves the original 0.27.3 failures.
 Run from the project root using Python 3 with `lupa.lua51` installed and the five
 dependency source checkouts in the sibling layout described in AGENTS.md:
 
@@ -14,22 +15,26 @@ python scripts/audit_project.py
 python scripts/check_versions.py --release
 ```
 
-Current source versions PASS. The original suite passes 57/57 files in offline
-Lua 5.1. The default complete suite includes five intended-behavior assertions in
-`tests/audit/test_corpse_runtime_findings.lua`; all five currently fail. The complete
-suite is therefore 57/58 files PASS, exit 1. Do not report the legacy subset as
-full regression success. `--only tests/audit/test_corpse_runtime_findings.lua`
-isolates the findings. `--verbose` includes successful tests' diagnostic output.
+Current source versions PASS. The complete suite passes all 59 files in offline
+Lua 5.1, including all five formerly failing intended-behavior assertions in
+`tests/audit/test_corpse_runtime_findings.lua` and the new corpse-runtime regression
+file. `--only tests/audit/test_corpse_runtime_findings.lua tests/test_uv_corpse_runtime_regressions.lua`
+isolates those cases. `--legacy-only` selects 58 top-level files and omits the
+audit path; use the default complete suite for current regression evidence.
+`--verbose` includes successful tests' diagnostic output.
 
-The project audit exits 1 for stale Contents. The release consistency check also
-fails for that drift. These failures are intentional reporting of unresolved
-issues, not permission to rebuild packages. No current packaging/deployment
-entry point is verified. The source-only check does not clear those blockers.
+The project audit still exits 1 for stale Contents and historical 0.27.3 package
+differences from current source. Its protected-file comparison to the original
+onboarding baseline lists six intentional source changes; validation records the
+allowlist and confirms untouched Contents/art. The release consistency check
+fails for stale Contents and the missing 0.27.4 ZIP. These are remaining release
+gates, not host-test failures or permission to rebuild packages. No current
+packaging/deployment entry point is verified.
 
 53 authoritative Lua files compile in Lua 5.1; 29 localization folders have English
 key parity. This proves neither Kahlua compatibility nor translation quality.
-The existing 0.27.3 ZIP matches current source bytes and passes the recorded
-archive checks; no new package was generated.
+The existing 0.27.3 ZIP passed integrity/parity against the historical 0.27.3
+source. It is preserved, is not a 0.27.4 package, and was not relabeled or rebuilt.
 
 SP, hosted, native transport/serialization, clean-launcher compatibility and
 dedicated multiplayer were not exercised. G7 BLOCKED / NOT TESTED; G8 BLOCKED.

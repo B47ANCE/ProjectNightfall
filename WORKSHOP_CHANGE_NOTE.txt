@@ -1,4 +1,17 @@
-[b]Version 0.27.3[/b]
+[b]Version 0.27.4[/b]
+
+[h2]Corpse processing fixes[/h2]
+[list]
+[*]Disabling Nightfall or regional UV now stops corpse discovery, death marking, and tissue processing. Re-enabling begins at current exposure time without charging the disabled interval.
+[*]Corpse discovery preserves progress across bounded scan chunks and rotates across emitters instead of restarting or permanently truncating later work.
+[*]Queued scan positions follow moved emitters and stop using removed sources.
+[*]Rejected or throwing pipeline calls report failure without advancing the corpse clock or counting rejected work as successful. Other admitted corpses keep their processing turn.
+[*]Pending journal recovery retains its actual committed time; failed remains-stage updates can retry without replaying dose.
+[/list]
+
+Offline regression suite passed. Dedicated multiplayer NOT TESTED; stable release remains blocked. No new package or Workshop upload was performed for this source iteration.
+
+[b]Previous 0.27.3 changes[/b]
 
 [h2]Release preparation[/h2]
 • Restricted test kits, guided validation, UV inspection, and exposure-measurement commands to explicit debug sessions.

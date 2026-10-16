@@ -1,6 +1,6 @@
 ProjectNightfall=nil
 local diagnostics=dofile(assert(arg[1]))
-ProjectNightfall.VERSION="0.27.3"
+ProjectNightfall.VERSION="0.27.4"
 local lightworks={VERSION="0.20.0",registerBulb=function() end,UV={getSunlightExposure=function() end,getArtificialExposure=function() end}}
 local powerworks={VERSION="0.9.1",registerLoad=function() end}
 local mortis={VERSION="0.21.1",API_VERSION="1.4.0",getTypeId=function() end,Authority={canWriteCanonicalState=function() end},ZombieHunger={getStarvationHours=function() end,getDrive=function() end}}
@@ -13,7 +13,7 @@ local experienceworks={VERSION="0.5.0",registerDocument=function() end,registerK
     hasKnowledgeDefinition=function() end,hasKnowledge=function() end}
 local ok,missing,versions=diagnostics.inspect(lightworks,powerworks,mortis,medworks,experienceworks)
 assert(ok and #missing==0)
-assert(versions.ProjectNightfall=="0.27.3" and versions.ProjectMORTIS=="0.21.1")
+assert(versions.ProjectNightfall=="0.27.4" and versions.ProjectMORTIS=="0.21.1")
 assert(versions.MortisAPI=="1.4.0" and versions.lightWorks=="0.20.0")
 local reportOk,reportMissing,reported=diagnostics.report(lightworks,powerworks,mortis,medworks,experienceworks)
 assert(reportOk and #reportMissing==0 and reported.medWorks=="0.7.0")
