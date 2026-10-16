@@ -2,11 +2,11 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.28.0`
+- Version: `0.29.0`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
-- Required Mod IDs: `lightWorks`, `ProjectMORTIS`, `B47ANCEDPower`, `medWorks`, `B47ANCEDKnowledgeAndWisdom`
+- Required Mod IDs: `lightWorks`, `ProjectMORTIS`, `B47ANCEDPower`, `B47ANCEDHealthCare`, `B47ANCEDKnowledgeAndWisdom`
 
 ## Ownership
 
@@ -27,7 +27,7 @@ Nightfall defines and controls Transforming, Feral, and Smart Feral zombies. It 
 - Feral solar reserve, rare tactical sprinting, and daytime shelter behavior.
 - Feral creation requires seven continuous days of starvation after hunger stores are fully depleted; feeding resets the timer.
 - Hunger contributes to starting and sustaining chase decisions through the Project M.O.R.T.I.S. hunger-drive API.
-- medWorks detached-part provenance is classified at sever time; three selected same-source parts can be assembled through a validated timed action, while ambiguous mixtures are rejected before consumption.
+- Health Care detached-part provenance is classified at sever time; three selected same-source parts can be assembled through a validated timed action, while ambiguous mixtures are rejected before consumption.
 - Smart Feral promotion, stalking, flanking, hiding, ambushing, evasion, and grudge targeting.
 - Smart Feral-led personal hordes with local recruitment, deterministic intelligent-horde merging, population-scaled follower caps, and spaced formation movement.
 - Real-coordinate Smart Feral call-and-response screeches and expiring shared investigation intent, with a bounded and overload-safe delayed-response queue.
@@ -52,6 +52,6 @@ The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods/Proje
 
 Public development repository: [B47ANCE/ProjectNightfall](https://github.com/B47ANCE/ProjectNightfall).
 
-Development version 0.28.0 adopts the current Power and Knowledge dependency IDs/APIs, bounds crowded-square corpse discovery, rotates saturated corpse admission and enables intelligent regular effigy destruction. Packaging tools now resume interrupted installation and validate commit/builder provenance. See [current validation](docs/VALIDATION_0.28.0.md).
+Development version 0.29.0 adds a read-only remains-condition row and tooltip when vanilla selects a Nightfall-marked corpse with a valid synchronized remains stage. The UI handles controller probing and pooled menus without scanning the world or changing corpse state. Health Care's current Mod ID is B47ANCEDHealthCare; its verified Lua/item namespace remains medWorks.
 
-All 61 Lua host test files and 18 Python tests pass offline against the recorded current checkouts. Whole-family startup remains blocked by upstream dependency declarations/imports; run `python scripts/dependency_contracts.py`. Existing 0.27.4 Contents and packages are historical and preserved. No 0.28.0 package, deployment or Workshop publication was requested. Dedicated multiplayer is NOT TESTED; stable release remains BLOCKED.
+All 62 Lua tests and 19 Python tests pass offline against the recorded current checkouts. Direct and transitive dependency source contracts pass. Native UI, corpse synchronization, SP and dedicated MP remain NOT TESTED. Existing 0.27.4 Contents/packages are historical; no current package, deployment or upload was requested. See [current audit and validation](docs/VALIDATION_0.29.0.md) and [roadmap](docs/MASTER_ROADMAP.md).

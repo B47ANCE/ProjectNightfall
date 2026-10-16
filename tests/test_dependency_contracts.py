@@ -20,3 +20,18 @@ class DependencyContractTests(unittest.TestCase):
             self.assertEqual(inspect(root, root)["transitive"], "PASS")
             (source / "mod.info").write_text("id=wrong\n")
             self.assertEqual(inspect(root, root)["direct"], "FAIL")
+
+    def test_nightfall_runtime_requirements_cannot_drift_from_inventory(self):
+        with tempfile.TemporaryDirectory(prefix="nightfall-own-contract-") as temporary:
+            root = Path(temporary)
+            inventory = {"dependency_sources": [{"folder": "HealthCare", "mod_id": "B47ANCEDHealthCare"}],
+                         "required_mod_ids": ["B47ANCEDHealthCare"]}
+            (root / "SOURCE_INVENTORY.json").write_text(json.dumps(inventory))
+            dependency = root / "HealthCare/src/B47ANCEDHealthCare/42"
+            dependency.mkdir(parents=True)
+            (dependency / "mod.info").write_text("id=B47ANCEDHealthCare\n")
+            own = root / "src/ProjectNightfall/42/mod.info";own.parent.mkdir(parents=True)
+            own.write_text("id=ProjectNightfall\nrequire=medWorks\n")
+            self.assertEqual(inspect(root, root)["direct"], "FAIL")
+            own.write_text("id=ProjectNightfall\nrequire=B47ANCEDHealthCare\n")
+            self.assertEqual(inspect(root, root)["direct"], "PASS")

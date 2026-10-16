@@ -1,6 +1,6 @@
 # Project Nightfall testing
 
-Current source is 0.28.0. Run `python scripts/check_versions.py`, `python scripts/run_host_tests.py`, `python -m unittest discover -s tests -p "test_*.py"`, then `python scripts/dependency_contracts.py`. See [current validation](VALIDATION_0.28.0.md) for evidence and expected blockers. The current runner uses current sibling contracts; older commands/fixtures below belong to 0.27.4. Current source is not packaged, and whole-family startup/SP/dedicated remain unverified.
+Current source is 0.29.0. Run `python scripts/check_versions.py`, `python scripts/run_host_tests.py`, `python -m unittest discover -s tests -p "test_*.py"` and `python scripts/dependency_contracts.py`. Current results are 62/62 Lua and 19/19 Python PASS with source dependency contracts PASS. See [validation](VALIDATION_0.29.0.md). Native UI/SP/dedicated remain unverified; current source is not packaged. The historical sections below are not current proof.
 
 ## Historical offline entry points — 0.27.4, 2026-10-16
 

@@ -1,5 +1,5 @@
-[b]Version 0.28.0 - development source, 2026-10-16[/b]
+[b]Version 0.29.0 - development source, 2026-10-16[/b]
 
-Reconciles Nightfall with current Power and Knowledge dependency APIs. Adds bounded corpse collection discovery, fair admission under saturation, and intelligent regular effigy destruction. Package tooling can resume interrupted installs and validates source/builder provenance.
+Adds read-only remains-condition information for the vanilla-selected Nightfall corpse, using the existing synchronized stage. Includes localization keys, malformed-state guards and controller/pooling regressions. Uses the current Health Care Mod ID while preserving its public Lua/item contract.
 
-Offline tests: 61 Lua files and 18 Python tests PASS. Upstream family dependency migration remains incomplete. Dedicated multiplayer NOT TESTED; G7 and stable-release G8 BLOCKED. No current package or Workshop upload was produced by this source-fix iteration.
+Offline: 62 Lua files and 19 Python tests PASS; direct/transitive dependency source contracts PASS. Actual UI, SP and dedicated multiplayer NOT TESTED. G7 and stable G8 BLOCKED. Current source is not packaged or published; historical artifacts remain preserved.

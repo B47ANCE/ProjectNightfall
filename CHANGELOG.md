@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.29.0 - remains inspection and current dependency audit, 2026-10-16
+
+- Target development MINOR: add read-only client remains-condition presentation; preserve canonical gameplay, loot and saved schemas. Update the required medical Mod ID/source layout to B47ANCEDHealthCare while preserving its verified medWorks Lua/item contracts.
+- Dependency source contracts PASS; 62 Lua and 19 Python tests PASS offline. The own-requirements gate now rejects inventory/runtime drift. See docs/VALIDATION_0.29.0.md. Existing packages are preserved; no new package, deployment or upload. Actual native UI/SP/dedicated remain NOT TESTED; G7/G8 BLOCKED.
+
 ## 0.28.0 - current-family integration and audit fixes, 2026-10-16
 
 - Development MINOR: use current Power/Knowledge dependency IDs and APIs, including battery/debug/preset contracts. Nightfall API, save and sandbox schemas stay unchanged; dependency installations migrate as a set.

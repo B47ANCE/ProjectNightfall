@@ -1,6 +1,6 @@
 ⚠ DEVELOPMENT BUILD — NOT YET PLAYABLE ⚠
 
-[b]Mod Version:[/b] 0.28.0
+[b]Mod Version:[/b] 0.29.0
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
@@ -99,7 +99,7 @@ Alpha Ferals
 
 Effigies
 
-- medWorks body parts retain source provenance and can build source-specific effigies.
+- B47ANCEDHealthCare body parts retain source provenance and can build source-specific effigies.
 
 - Effigies preserve detached-part nutrition and drive transactional feeding, attraction, avoidance, destruction, and persistent Smart Feral hunts without omniscient tracking.
 
@@ -154,14 +154,14 @@ Required Mods
 
 - Project M.O.R.T.I.S.
 
-- medWorks
+- B47ANCEDHealthCare
 
 - B47ANCEDKnowledgeAndWisdom (technical Mod ID: B47ANCEDKnowledgeAndWisdom)
 
 Project M.O.R.T.I.S. supplies the reusable infected API and supporting systems. It does not add Nightfall’s zombies.
 lightWorks supplies serviceable lights, colored bulbs, and UV emission semantics.
 B47ANCEDPower supplies batteries, stored energy, and power-consumption calculations.
-medWorks supplies authoritative detached-part provenance used by effigies.
+B47ANCEDHealthCare supplies authoritative detached-part provenance used by effigies.
 B47ANCEDKnowledgeAndWisdom supplies physical research and prerequisite knowledge progression.
 Compatibility and Testing
 Project Nightfall uses vanilla zombie instances and is designed to preserve compatibility with ordinary zombie spawning and population settings.

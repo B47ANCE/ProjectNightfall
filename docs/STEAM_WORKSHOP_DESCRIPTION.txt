@@ -1,6 +1,6 @@
 ⚠ DEVELOPMENT BUILD — NOT YET PLAYABLE ⚠
 
-[b]Mod Version:[/b] 0.28.0
+[b]Mod Version:[/b] 0.29.0
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
@@ -97,7 +97,7 @@ Alpha Ferals
 
 Effigies
 
-- medWorks body parts retain source provenance and can build source-specific effigies.
+- B47ANCEDHealthCare body parts retain source provenance and can build source-specific effigies.
 
 - Effigies drive attraction, avoidance, feeding, destruction, and persistent Smart Feral hunts without omniscient player tracking.
 

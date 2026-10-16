@@ -11,12 +11,12 @@ Preserve project-specific identity, instructions, source, local settings and run
 ## Identity and source ownership
 
 - Display name: Project Nightfall; Mod ID: `ProjectNightfall`; author: B47ANCE.
-- Canonical version: `0.28.0` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
+- Canonical version: `0.29.0` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
 - Public repository: https://github.com/B47ANCE/ProjectNightfall
 - Existing Workshop item: `3788593239`; item creation and visibility changes need separate authorization.
 - Authoritative runtime source: `src/ProjectNightfall/42/`.
 - `src/ProjectNightfall/info.txt`, `src/ProjectNightfall/thumbnail.png`, and `art/` are source/support assets.
-- `Contents/mods/ProjectNightfall/` is the retained historical 0.27.4 generated mirror. Current 0.28.0 source is not packaged. Source remains authoritative. Rebuild it only through the explicitly requested packaging command, never by independently editing mirrored code.
+- `Contents/mods/ProjectNightfall/` is the retained historical 0.27.4 generated mirror. Current 0.29.0 source is not packaged. Source remains authoritative. Rebuild it only through the explicitly requested packaging command, never by independently editing mirrored code.
 - `dist/`, staging backups, ZIPs, and `SHA256SUMS.txt` are generated/historical evidence, not implementation sources. Preserve them.
 - `SOURCE_INVENTORY.json` records these classifications. Current packaging is `python scripts/package_project.py build`; historical deployment/uploader tools remain unverified. The superseded 67-file Contents copy is retained under `dist/staging-backups/contents-51c590fbd9d0`; preserve it.
 
@@ -45,7 +45,7 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 - Lua-only runtime. Vanilla engine APIs exposed to Lua are permitted; custom Java/JAR/bridge/native dependencies are prohibited.
 - Clients submit intent; canonical authority validates, mutates, persists, and synchronizes shared gameplay. Never fall back to client ownership when an adapter is unavailable.
-- Nightfall owns infected policy; M.O.R.T.I.S. owns generic entity/anatomy/authority services; lightWorks owns UV/emitter facts; B47ANCEDPower owns energy; medWorks owns detached-part provenance; B47ANCEDKnowledgeAndWisdom owns research/knowledge infrastructure.
+- Nightfall owns infected policy; M.O.R.T.I.S. owns generic entity/anatomy/authority services; lightWorks owns UV/emitter facts; B47ANCEDPower owns energy; Health Care (public Lua namespace medWorks) owns detached-part provenance; B47ANCEDKnowledgeAndWisdom owns research/knowledge infrastructure.
 - Use the regional tissue pipeline and its bounded lifecycle scheduler. Never restore retired direct-health UV damage or a second zombie exposure queue from backups.
 - Preserve clothing, loot, canonical tissue, transaction/replay protection, save schemas, hibernation/rise, and source-specific natural/artificial UV rules.
 - Meaningful shared gameplay configuration belongs in server-authoritative sandbox options with stable identifiers, localization, bounds, and existing-save behavior. Technical safety bounds remain internal with rationale.
@@ -55,9 +55,9 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 ## Validation and iteration
 
-Read `docs/VALIDATION_0.28.0.md` for current implementation/evidence. `docs/PACKAGING_0.27.4.md`, the 0.27.4 runtime validation and earlier audits remain historical. Before editing, name intended files/invariants. Use feature branches, freshness checks, targeted staging, a public-push secret audit and a PR before merging main. Never auto-stash, reset, clean, pull or rebase.
+Read `docs/VALIDATION_0.29.0.md` for current audit/implementation/evidence. Earlier 0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
 
-Run from this root with real Python 3.12+ and lupa.lua51:
+Run with real Python 3.12+ and lupa.lua51:
 
 ```text
 python scripts/check_versions.py
@@ -67,8 +67,10 @@ python scripts/dependency_contracts.py
 python scripts/audit_project.py
 ```
 
-The runner now uses current sibling roots/Mod IDs declared in SOURCE_INVENTORY.dependency_sources. No legacy production aliases or historical fixtures are injected. All 61 Lua and 18 Python tests passed offline for the recorded current source snapshots. Tests isolate native boundaries and do not prove complete family startup. `dependency_contracts.py` independently checks metadata and transitive old imports: an upstream migration blocker must remain BLOCKED even when Nightfall tests pass. Source snapshots can change independently; record versions/hashes with each test run. The 0.27.4 fixture lock/helper is historical and is not the current entry point.
+Current evidence: 62 Lua files and 19 Python tests pass offline; direct/transitive source dependency contracts pass for the recorded snapshots. SOURCE_INVENTORY declares actual source folders and Mod IDs. B47ANCEDHealthCare intentionally retains the medWorks Lua/global/item namespace; do not rename public APIs based on folder branding. The gate also compares Nightfall mod.info requirements with selected inventory contracts. Whole-family native startup/transport is not proved by tests.
 
-Contents and old ZIPs retain 0.27.4 bytes. They are not current source mirrors or valid 0.28.0 release inputs. Packaging/release checks intentionally fail until new packaging is explicitly requested. `package_project.py plan` is read-only; `build` is manual and never implicit in a source fix, audit or version bump. Disposable package tests are permitted. Builds retain superseded mirrors and a durable local transaction under .local/packaging-pending; retries install only missing identical outputs, never overwrite immutable artifacts. No implicit artifact cleanup.
+The first remains presentation increment is a production client context-menu row using vanilla's selected corpse and replicated stage. It performs no world scan, transmission, anatomy work or gameplay action. Existing Enabled controls availability; no extra micro-setting. Stage-only labels avoid presenting stale between-stage quantities as live measurements. All translation folders have key parity; non-English entries currently use explicit English fallback. Native smoke, anatomy attachments and visual corpse replacement stay gated until safe adapters/runtime evidence exist.
+
+Contents and old ZIPs retain 0.27.4 bytes. They are not current source mirrors or valid 0.29.0 release inputs. Packaging/release checks intentionally fail until new packaging is explicitly requested. `package_project.py plan` is read-only; `build` is manual and never implicit in a source fix, audit or version bump. Disposable package tests are permitted. Builds retain superseded mirrors and a durable local transaction under .local/packaging-pending; retries install only missing identical outputs, never overwrite immutable artifacts. No implicit artifact cleanup.
 
 [VERIFIED] source and [TESTED] offline evidence are separate from actual PZ/SP/dedicated results. Steam build 25485521 supplied the observed native collection call forms; exact game SemVer and dedicated execution remain unverified. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. No deployment, game/server launch or Workshop upload is authorized by this fix request. Preserve custom art, local settings and all historical artifacts.

@@ -1,10 +1,19 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.28.0.
+Canonical version: 0.29.0.
 
 ## Current slice and next gates - 2026-10-16
 
-Current 0.28.0 reconciles Nightfall's Power/Knowledge contracts and fixes audit findings 2-6 with offline regressions. All 61 Lua and 18 Python tests pass for the recorded dependency snapshots. See [current validation](VALIDATION_0.28.0.md). Whole-family startup remains blocked by upstream migration; SP/dedicated are NOT TESTED. Current source is not packaged. The [0.27.4 package evidence](PACKAGING_0.27.4.md) remains historical, with its Contents/ZIP bytes preserved.
+0.29.0 reconciles the Health Care Mod ID and adds the first client remains-presentation increment. All 62 Lua and 19 Python tests pass offline for the [recorded current dependencies](audits/0.29.0.dependencies.json); direct/transitive source contracts pass. See [current audit/validation](VALIDATION_0.29.0.md). Current source is not packaged; 0.27.4 outputs stay historical. No game/server launch, deploy or upload.
+
+| Roadmap slice | Implementation/evidence | Next gate |
+| --- | --- | --- |
+| Current dependency contracts | Source PASS, current public APIs retained | Whole-family native startup |
+| Remains-condition inspection | Read-only selected-corpse menu, localization keys, controller/pooling regressions PASS offline | SP/controller/late-join validation |
+| Native smoke and anatomical presentation | BLOCKED: safe instance cleanup, corpse render path and attachment exposure unverified | Verified adapter plus runtime probes |
+| Loot-preserving visual remains | BLOCKED: native skeleton/fire conversions discard content | Safe first-party provider, replication and recovery proof |
+| Live balance/audio | NOT TESTED; final audio not supplied | Human runtime evidence/assets |
+| Unloaded migration and EXT-27 | Deferred at existing capability/release/treatment gates | No invented APIs, conditions or Remnants integration |
 
 ## Implemented
 
@@ -19,11 +28,11 @@ Current 0.28.0 reconciles Nightfall's Power/Knowledge contracts and fixes audit 
 - Bounded corpse UV processing, tissue restoration, postmortem loss, smoke model,
   and loot-preserving remains-state semantics.
 - Presets, sandbox ownership, dependency diagnostics, performance metrics, test
-  kits, guided/ecosystem tests, and experienceWorks research slice.
+  kits, guided/ecosystem tests, and Knowledge & Wisdom research slice.
 
 ## Still to add
 
-- Native smoke particles, anatomical UV presentation, visible remains stages,
+- Native smoke particles, anatomical UV presentation, physical visible remains stages,
   replication presentation, and final balance.
 - Additional credible territorial-pressure sources and, only with verified APIs,
   unloaded-region migration progression.

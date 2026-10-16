@@ -9,7 +9,7 @@ development package and current Contents, with all historical data preserved.
 Obtain clean-launcher SP and dedicated MP evidence before new smoke, condition,
 or migration features. Packaging supplies no new runtime PASS evidence.
 
-Current development is 0.28.0: dependency reconciliation and audit findings 2-6 are implemented with offline regressions. Complete remaining upstream family migration, explicitly package the next test build, then obtain clean-launcher SP and dedicated evidence. See [validation](VALIDATION_0.28.0.md).
+Current development is 0.29.0. The current family source-contract audit passes after Health Care Mod ID reconciliation. The first read-only remains-condition UI increment is implemented with offline regressions; native smoke/physical remains visuals remain gated. See [current validation](VALIDATION_0.29.0.md). Obtain native UI/SP/dedicated evidence, then explicitly package a test build when requested.
 
 ## Current implementation
 

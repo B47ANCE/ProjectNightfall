@@ -2,7 +2,7 @@ local surfaces={
     {"../B47ANCEDKnowledgeAndWisdom/src/B47ANCEDKnowledgeAndWisdom/42/media/lua/client/B47ANCEDKnowledgeAndWisdom/TestHarness.lua","B47ANCEDKnowledgeAndWisdomTestStart"},
     {"../B47ANCEDKnowledgeAndWisdom/src/B47ANCEDKnowledgeAndWisdom/42/media/lua/shared/B47ANCEDKnowledgeAndWisdom/TestFixtures.lua",nil},
     {"../Project MORTIS/src/ProjectMORTIS/42/media/lua/client/Mortis/TestHarness.lua","mortisTestStart"},
-    {"../medWorks/src/medWorks/42/media/lua/client/medWorks/TestHarness.lua","medWorksTestStart"},
+    {"../B47ANCEDHealthCare/src/B47ANCEDHealthCare/42/media/lua/client/medWorks/TestHarness.lua","medWorksTestStart"},
     {"../B47ANCEDPower/src/B47ANCEDPower/42/media/lua/client/B47ANCEDPower/TestHarness.lua","B47ANCEDPowerTestStart"},
     {"../B47ANCEDSpectrum/src/lightWorks/42/media/lua/client/lightWorks/lightWorks_TestHarness.lua","LWTestKit"},
     {"../B47ANCEDSpectrum/src/lightWorks/42/media/lua/client/lightWorks/lightWorks_StageHarness.lua","lightWorksTestStart"},

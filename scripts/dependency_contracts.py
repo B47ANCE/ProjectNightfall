@@ -10,6 +10,13 @@ def inspect(root: Path, dependency_root: Path) -> dict:
     inventory = json.loads((root / "SOURCE_INVENTORY.json").read_text())
     selected = {entry["mod_id"] for entry in inventory["dependency_sources"]}
     direct, transitive, snapshots = [], [], []
+    declared = inventory.get("required_mod_ids")
+    if declared is not None:
+        metadata = root / "src/ProjectNightfall/42/mod.info"
+        values = (dict(line.split("=", 1) for line in metadata.read_text(encoding="utf-8-sig").splitlines() if "=" in line)
+                  if metadata.is_file() else {})
+        if values.get("id") != "ProjectNightfall" or values.get("require", "").split(",") != declared or set(declared) != selected:
+            direct.append({"mod_id": "ProjectNightfall", "error": "runtime requirements differ from selected inventory contracts"})
     for entry in inventory["dependency_sources"]:
         source = dependency_root / entry["folder"] / "src" / entry["mod_id"] / "42"
         metadata = source / "mod.info"
