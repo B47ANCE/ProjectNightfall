@@ -1,0 +1,52 @@
+PROJECT NIGHTFALL — STEAM WORKSHOP INFO
+
+Title:
+Project Nightfall
+
+Tagline:
+When Night Falls, They Rise
+
+Description:
+Project Nightfall is a UV-driven infected overhaul. Sunlight transforms exposed zombies into Nightfall-owned Ferals, while darkness releases them. Smart Ferals use stored solar energy for tactical stalking, flanking, hiding, ambushing, and evasion.
+
+Nightfall defines its Transforming, Feral, and Smart Feral zombies through the public Project M.O.R.T.I.S. API. lightWorks supplies serviceable lights and violet UV bulbs. Neither dependency supplies Nightfall's zombies or their behavior.
+
+Features:
+- Natural UV damage to 50% health, true fake-dead sunlight hibernation, and staggered full-health nighttime rise.
+- Optional No Ferals preset: zombies still hibernate and rise, but return as regular zombies.
+- Regular-zombie UV slowing and shelter seeking.
+- Feral solar reserve and rare reserve-funded tactical sprinting.
+- Seven continuous days of starvation after hunger-store depletion are required for Feral creation; feeding resets the timer.
+- Smart Feral stalking, flanking, hiding, ambush, evasion, and grudge targeting.
+- Smart Feral personal/intelligent hordes, call-and-response communication, and shared investigation intent.
+- Alpha calls, rivalry, persistent hierarchy, underground territories, distributed dens, and physical seasonal migration.
+- Artificial-UV Alpha-den displacement without automatic territory or hierarchy loss.
+- Tree canopy reduces natural UV using bounded local scans.
+- Bald and clean-shaven Feral appearances.
+- Artificial UV through handheld, attached, and weapon-mounted lightWorks lights.
+- Deeper-interior shelter crowd flow through Project M.O.R.T.I.S.
+- Packaged Project Nightfall sandbox settings.
+
+Requirements:
+- Project Zomboid Build 42.20.3 or later
+- lightWorks
+- Project M.O.R.T.I.S. (technical Mod ID: ProjectMORTIS)
+- powerWorks
+- medWorks
+- experienceWorks
+
+Known limitations:
+- Balance and multiplayer behavior remain under active testing.
+- Some deeper Smart Feral combat bonuses await a verified Build 42 hook.
+
+Author:
+B47ANCE
+
+Version:
+0.27.3
+
+Internal Mod ID:
+ProjectNightfall
+
+Versioning:
+MAJOR.MINOR.PATCH; game compatibility is declared separately.

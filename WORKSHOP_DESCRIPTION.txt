@@ -1,0 +1,188 @@
+⚠ DEVELOPMENT BUILD — NOT YET PLAYABLE ⚠
+
+[b]Mod Version:[/b] 0.27.3
+
+This mod is currently under active development and is NOT in a playable or release-ready state.
+
+This Workshop page is currently public for development and collaboration purposes only. The mod may contain unfinished systems, missing content, placeholder assets, bugs, broken features, or other issues that make it unsuitable for normal gameplay.
+
+At this stage, the mod is only intended for people who would like to help with:
+
+- Artwork and visual assets
+
+- Item, texture, sprite, and other game assets
+
+- Testing experimental or unfinished features
+
+- Bug hunting and debugging
+
+- Compatibility and multiplayer testing
+
+- Providing technical feedback during development
+
+Please do not subscribe expecting a finished gameplay experience.
+
+Features may be incomplete, changed substantially, temporarily disabled, or removed entirely as development continues. Updates may also break existing saves or require a fresh save without warning.
+
+If you're interested in helping with development, testing, artwork, or assets, your involvement is welcome and appreciated.
+
+A proper release announcement will be made when the mod reaches a playable state.
+
+[ibb.co]
+Project Nightfall
+Project Nightfall is a UV-driven zombie overhaul that transforms daylight into a new survival threat. Sunlight forces zombies into hibernation—but darkness restores them, releases the Ferals, and gives Smart Ferals room to hunt.
+Current Features
+
+- Sunlight damages zombies to a configurable health floor, then forces them into true fake-dead hibernation.
+
+- Hibernating zombies rise after nightfall and rapidly recover their health.
+
+- Artificial UV passes through regional clothing protection, causes persistent localized tissue loss and wounds, and remains lethal.
+
+- Overlapping UV lights create dangerous UV hotbeds.
+
+- Regular zombies are slowed by direct sunlight and artificial UV.
+
+- Trees provide configurable protection from natural UV.
+
+- Hibernators can be disturbed only at very close range and return to hibernation after disengaging.
+
+- Standard and high-output pure-blue UV bulbs work through lightWorks.
+
+- Artificial UV sources contribute independent damage, allowing overlapping lights to cook zombies faster.
+
+- Handheld, attached, weapon-mounted, and supported placed lamps can emit UV.
+
+- Marked infected corpses continue degrading under artificial UV through bounded emitter-local processing, with persistent remains stages while loot and cause of death stay intact.
+
+Ferals
+Zombies must remain fully starved for seven continuous days before they become eligible to rise as Ferals. Feeding resets that starvation timer.
+
+- Ferals seek shelter during dangerous daylight.
+
+- Stored solar energy powers short, uncommon tactical sprints.
+
+- A full reserve provides up to five in-game minutes of sprinting.
+
+- Feral transformations include persistent bald, clean-shaven appearances.
+
+- Weapon-mounted, handheld, and attached UV lights can be used against them.
+
+Smart Ferals
+Eligible Ferals can become intelligent predators capable of more deliberate behavior.
+
+- Stalking, flanking, hiding, ambushing, and tactical evasion.
+
+- Persistent grudges against players who attack them.
+
+- Local recruitment of regular Ferals into personal hordes.
+
+- Cooperation between Smart Ferals to form intelligent hordes.
+
+- Population-scaled follower limits and spaced formation movement.
+
+- Call-and-response screeches when Smart Ferals establish cooperation.
+
+- Shared investigation information without omniscient player tracking.
+
+- Smart Feral cognition can be set to zero to disable Smart Feral promotion.
+
+Alpha Ferals
+
+- Rare Alpha Ferals build persistent command hierarchies of Smart Feral-led hordes.
+
+- Alpha ecology includes calls, rivalry, desertion, Death Cry power vacuums, underground territories, and distributed Smart Feral dens.
+
+- Active artificial UV can compromise an underground Alpha den and physically force the Alpha into the closest safe shelter without deleting its territory or hierarchy.
+
+- Territorial losses accumulate migration pressure. Spring and summer favor migration, fall resists it, winter forbids normal migration, and rivalry always takes priority.
+
+Effigies
+
+- medWorks body parts retain source provenance and can build source-specific effigies.
+
+- Effigies preserve detached-part nutrition and drive transactional feeding, attraction, avoidance, destruction, and persistent Smart Feral hunts without omniscient tracking.
+
+No Ferals Mode
+The included Project: Nightfall — No Ferals preset retains UV damage, optional sunlight knockdown, hibernation, and nighttime rising without creating Ferals or Smart Ferals.
+Zombies rise again as regular zombies.
+Sandbox Customization
+Project Nightfall includes extensive controls for:
+
+- UV damage and health limits
+
+- Sunlight knockdown and hibernation
+
+- Nighttime recovery and rise timing
+
+- Feral transformations
+
+- Smart Feral eligibility
+
+- Sprint reserves and behavior
+
+- Canopy UV protection
+
+- Horde recruitment and capacity
+
+- Smart Feral communication
+
+- Artificial UV strength
+
+- Zombie awareness and shelter behavior
+
+The packaged Project: Nightfall preset configures the recommended experience and gives Nightfall control over zombie movement. Vanilla random sprinters, fake-dead spawning, and rally groups are disabled to prevent conflicting behavior.
+
+Upcoming Features
+
+- Live balancing of sunlight, artificial UV, Feral reserve use, shelter choice, and very-high-population behavior
+
+- Refined flanking, ambush, shelter selection, crowd flow, and persistent investigations
+
+- Final dedicated Smart Feral screech audio replacing the current positional prototype
+
+- Safe target-specific Smart Feral vengeance bonuses if a verified native combat hook becomes available
+
+- Additional evidence-backed Alpha migration pressure, discovered destinations, and temporary daylight shelters
+
+- Hosted and dedicated-server authority, persistence, late-join, group, and UV validation
+Required Mods
+
+- powerWorks
+
+- lightWorks
+
+- Project M.O.R.T.I.S.
+
+- medWorks
+
+- experienceWorks (technical Mod ID: experienceWorks)
+
+Project M.O.R.T.I.S. supplies the reusable infected API and supporting systems. It does not add Nightfall’s zombies.
+lightWorks supplies serviceable lights, colored bulbs, and UV emission semantics.
+powerWorks supplies batteries, stored energy, and power-consumption calculations.
+medWorks supplies authoritative detached-part provenance used by effigies.
+experienceWorks supplies physical research and prerequisite knowledge progression.
+Compatibility and Testing
+Project Nightfall uses vanilla zombie instances and is designed to preserve compatibility with ordinary zombie spawning and population settings.
+Single-player development and testing are ongoing. Multiplayer compatibility is not currently claimed.
+
+Credits
+
+B47ANCE
+Project Director
+Lead Designer
+Creative Director
+Gameplay and Systems Designer
+Producer
+Art Director
+
+OpenAI Codex
+Lead Developer
+Software Architect
+Systems Engineer
+API Researcher
+Technical Designer
+Compatibility Engineer
+QA Automation Developer
+Technical Writer and Documentation Maintainer

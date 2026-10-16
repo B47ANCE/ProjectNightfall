@@ -1,0 +1,170 @@
+VERSION = 1,
+option ProjectNightfall.UVFeralUtilizationMin { type = double, min = 0.01, max = 1, default = 0.35, page = ProjectNightfall, translation = ProjectNightfall_UVFeralUtilizationMin, }
+option ProjectNightfall.UVFeralUtilizationMax { type = double, min = 0.01, max = 1, default = 0.55, page = ProjectNightfall, translation = ProjectNightfall_UVFeralUtilizationMax, }
+option ProjectNightfall.UVFeralHealingMin { type = double, min = 0, max = 20, default = 0.3, page = ProjectNightfall, translation = ProjectNightfall_UVFeralHealingMin, }
+option ProjectNightfall.UVFeralHealingMax { type = double, min = 0, max = 20, default = 0.6, page = ProjectNightfall, translation = ProjectNightfall_UVFeralHealingMax, }
+option ProjectNightfall.UVSmartFeralUtilizationMin { type = double, min = 0.01, max = 1, default = 0.55, page = ProjectNightfall, translation = ProjectNightfall_UVSmartFeralUtilizationMin, }
+option ProjectNightfall.UVSmartFeralUtilizationMax { type = double, min = 0.01, max = 1, default = 0.8, page = ProjectNightfall, translation = ProjectNightfall_UVSmartFeralUtilizationMax, }
+option ProjectNightfall.UVSmartFeralHealingMin { type = double, min = 0, max = 20, default = 0.65, page = ProjectNightfall, translation = ProjectNightfall_UVSmartFeralHealingMin, }
+option ProjectNightfall.UVSmartFeralHealingMax { type = double, min = 0, max = 20, default = 1.1, page = ProjectNightfall, translation = ProjectNightfall_UVSmartFeralHealingMax, }
+option ProjectNightfall.UVAlphaFeralUtilizationMin { type = double, min = 0.01, max = 1, default = 0.8, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaFeralUtilizationMin, }
+option ProjectNightfall.UVAlphaFeralUtilizationMax { type = double, min = 0.01, max = 1, default = 1, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaFeralUtilizationMax, }
+option ProjectNightfall.UVAlphaFeralHealingMin { type = double, min = 0, max = 20, default = 1.2, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaFeralHealingMin, }
+option ProjectNightfall.UVAlphaFeralHealingMax { type = double, min = 0, max = 20, default = 2, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaFeralHealingMax, }
+option ProjectNightfall.UVSmartHealingTransferEfficiency { type = double, min = 0, max = 1, default = 0.85, page = ProjectNightfall, translation = ProjectNightfall_UVSmartHealingTransferEfficiency, }
+option ProjectNightfall.UVSmartHealingTransferPerGameMinute { type = double, min = 0, max = 100, default = 2, page = ProjectNightfall, translation = ProjectNightfall_UVSmartHealingTransferPerGameMinute, }
+option ProjectNightfall.UVAlphaTransferEfficiency { type = double, min = 0, max = 1, default = 0.95, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaTransferEfficiency, }
+option ProjectNightfall.UVAlphaTransferPerGameMinute { type = double, min = 0, max = 100, default = 4, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaTransferPerGameMinute, }
+option ProjectNightfall.UVAlphaProtectedTransmissionMaximum { type = double, min = 0, max = 1, default = 0.25, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaProtectedTransmissionMaximum, }
+option ProjectNightfall.UVAlphaRedistributionMinimumGap { type = double, min = 0, max = 1, default = 0.2, page = ProjectNightfall, translation = ProjectNightfall_UVAlphaRedistributionMinimumGap, }
+
+option ProjectNightfall.Enabled { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_Enabled, }
+option ProjectNightfall.EnableDiagnosticLogging { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableDiagnosticLogging, }
+option ProjectNightfall.EnableFerals { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableFerals, }
+option ProjectNightfall.RequireStarvationForFerals { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_RequireStarvationForFerals, }
+option ProjectNightfall.FeralRequiredStarvationDays { type = double, min = 0.0, max = 365.0, default = 7.0, page = ProjectNightfall, translation = ProjectNightfall_FeralRequiredStarvationDays, }
+option ProjectNightfall.EnableSunKnockdown { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableSunKnockdown, }
+option ProjectNightfall.EnableAutomaticSmartFeralPromotion { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableAutomaticSmartFeralPromotion, }
+option ProjectNightfall.EnableAlphaFerals { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableAlphaFerals, }
+option ProjectNightfall.AlphaReplacementChance { type = double, min = 0.0, max = 0.10, default = 0.001, page = ProjectNightfall, translation = ProjectNightfall_AlphaReplacementChance, }
+option ProjectNightfall.AlphaMutualRecognitionRadius { type = double, min = 1.0, max = 100.0, default = 20.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMutualRecognitionRadius, }
+option ProjectNightfall.AlphaCallSemanticRadius { type = double, min = 1.0, max = 300.0, default = 100.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaCallSemanticRadius, }
+option ProjectNightfall.AlphaCallSmartResponseLimit { type = integer, min = 0, max = 128, default = 32, page = ProjectNightfall, translation = ProjectNightfall_AlphaCallSmartResponseLimit, }
+option ProjectNightfall.EnableAlphaHordeCalls { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableAlphaHordeCalls, }
+option ProjectNightfall.AlphaHordeCallCooldownTicks { type = integer, min = 60, max = 14400, default = 1800, page = ProjectNightfall, translation = ProjectNightfall_AlphaHordeCallCooldownTicks, }
+option ProjectNightfall.AlphaHordeCallSemanticRadius { type = double, min = 1.0, max = 300.0, default = 120.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaHordeCallSemanticRadius, }
+option ProjectNightfall.AlphaHordeCallResponseLimit { type = integer, min = 1, max = 128, default = 32, page = ProjectNightfall, translation = ProjectNightfall_AlphaHordeCallResponseLimit, }
+option ProjectNightfall.AlphaReportedPreyLifetimeHours { type = double, min = 0.05, max = 24.0, default = 0.5, page = ProjectNightfall, translation = ProjectNightfall_AlphaReportedPreyLifetimeHours, }
+option ProjectNightfall.EnableProbableBaseMemory { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableProbableBaseMemory, }
+option ProjectNightfall.ProbableBaseMergeRadius { type = double, min = 1.0, max = 50.0, default = 8.0, page = ProjectNightfall, translation = ProjectNightfall_ProbableBaseMergeRadius, }
+option ProjectNightfall.ProbableBaseEvidenceThreshold { type = double, min = 1.0, max = 100.0, default = 3.0, page = ProjectNightfall, translation = ProjectNightfall_ProbableBaseEvidenceThreshold, }
+option ProjectNightfall.ProbableBasePlayerSightingWeight { type = double, min = 0.0, max = 20.0, default = 1.0, page = ProjectNightfall, translation = ProjectNightfall_ProbableBasePlayerSightingWeight, }
+option ProjectNightfall.ProbableBaseMaximumRecords { type = integer, min = 1, max = 256, default = 32, page = ProjectNightfall, translation = ProjectNightfall_ProbableBaseMaximumRecords, }
+option ProjectNightfall.ProbableBaseMaximumAgeDays { type = double, min = 1.0, max = 365.0, default = 30.0, page = ProjectNightfall, translation = ProjectNightfall_ProbableBaseMaximumAgeDays, }
+option ProjectNightfall.EnableSmartFeralDesertion { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableSmartFeralDesertion, }
+option ProjectNightfall.SmartFeralDesertionScoreThreshold { type = double, min = 0.0, max = 1.0, default = 0.78, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralDesertionScoreThreshold, }
+option ProjectNightfall.SmartFeralDesertionMaximumChance { type = double, min = 0.0, max = 1.0, default = 0.20, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralDesertionMaximumChance, }
+option ProjectNightfall.SmartFeralDesertionFollowerRadius { type = double, min = 1.0, max = 50.0, default = 6.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralDesertionFollowerRadius, }
+option ProjectNightfall.EnableAlphaTerritories { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableAlphaTerritories, }
+option ProjectNightfall.AlphaTerritoryMinimumSmartFerals { type = integer, min = 3, max = 32, default = 3, page = ProjectNightfall, translation = ProjectNightfall_AlphaTerritoryMinimumSmartFerals, }
+option ProjectNightfall.AlphaTerritoryRadius { type = double, min = 16.0, max = 300.0, default = 60.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaTerritoryRadius, }
+option ProjectNightfall.AlphaDenSearchRadius { type = integer, min = 4, max = 64, default = 24, page = ProjectNightfall, translation = ProjectNightfall_AlphaDenSearchRadius, }
+option ProjectNightfall.DenValidationIntervalTicks { type = integer, min = 60, max = 7200, default = 300, page = ProjectNightfall, translation = ProjectNightfall_DenValidationIntervalTicks, }
+option ProjectNightfall.DenUnsafeNaturalUVThreshold { type = double, min = 0.0, max = 1.0, default = 0.01, page = ProjectNightfall, translation = ProjectNightfall_DenUnsafeNaturalUVThreshold, }
+option ProjectNightfall.AlphaDenArtificialUVUnsafeThreshold { type = double, min = 0.01, max = 10.0, default = 0.10, page = ProjectNightfall, translation = ProjectNightfall_AlphaDenArtificialUVUnsafeThreshold, }
+option ProjectNightfall.EnableAlphaMigration { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableAlphaMigration, }
+option ProjectNightfall.AlphaMigrationPressureMaximum { type = double, min = 10.0, max = 1000.0, default = 100.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationPressureMaximum, }
+option ProjectNightfall.AlphaMigrationSpringPressureThreshold { type = double, min = 0.0, max = 1000.0, default = 55.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationSpringPressureThreshold, }
+option ProjectNightfall.AlphaMigrationSummerPressureThreshold { type = double, min = 0.0, max = 1000.0, default = 60.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationSummerPressureThreshold, }
+option ProjectNightfall.AlphaMigrationFallPressureThreshold { type = double, min = 0.0, max = 1000.0, default = 90.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationFallPressureThreshold, }
+option ProjectNightfall.AlphaMigrationSmartLossPressure { type = double, min = 0.0, max = 1000.0, default = 20.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationSmartLossPressure, }
+option ProjectNightfall.AlphaMigrationSmartDenLossPressure { type = double, min = 0.0, max = 1000.0, default = 5.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationSmartDenLossPressure, }
+option ProjectNightfall.AlphaMigrationDenUVPressure { type = double, min = 0.0, max = 1000.0, default = 35.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationDenUVPressure, }
+option ProjectNightfall.AlphaMigrationTraumaPressurePerDamage { type = double, min = 0.0, max = 10.0, default = 0.25, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationTraumaPressurePerDamage, }
+option ProjectNightfall.AlphaMigrationTraumaPressurePerHitMaximum { type = double, min = 0.0, max = 100.0, default = 5.0, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationTraumaPressurePerHitMaximum, }
+option ProjectNightfall.EnableAlphaMigrationTemporaryShelters { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableAlphaMigrationTemporaryShelters, }
+option ProjectNightfall.AlphaMigrationSmartShelterBudgetPerUpdate { type = integer, min = 1, max = 64, default = 4, page = ProjectNightfall, translation = ProjectNightfall_AlphaMigrationSmartShelterBudgetPerUpdate, }
+option ProjectNightfall.EnableDenLightSuppression { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableDenLightSuppression, }
+option ProjectNightfall.DenLightDefenseRadius { type = double, min = 1.0, max = 64.0, default = 20.0, page = ProjectNightfall, translation = ProjectNightfall_DenLightDefenseRadius, }
+option ProjectNightfall.DenLightDefenseIntervalTicks { type = integer, min = 60, max = 7200, default = 300, page = ProjectNightfall, translation = ProjectNightfall_DenLightDefenseIntervalTicks, }
+option ProjectNightfall.DenLightDefenseVisiblePriority { type = double, min = 0.0, max = 20.0, default = 1.0, page = ProjectNightfall, translation = ProjectNightfall_DenLightDefenseVisiblePriority, }
+option ProjectNightfall.DenLightDefenseUVPriority { type = double, min = 0.0, max = 20.0, default = 4.0, page = ProjectNightfall, translation = ProjectNightfall_DenLightDefenseUVPriority, }
+option ProjectNightfall.EnableIndependentSuicidalUVAttacks { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableIndependentSuicidalUVAttacks, }
+option ProjectNightfall.IndependentSuicidalUVAttackChance { type = double, min = 0.0, max = 0.25, default = 0.005, page = ProjectNightfall, translation = ProjectNightfall_IndependentSuicidalUVAttackChance, }
+option ProjectNightfall.IndependentSuicidalUVDecisionCooldownTicks { type = integer, min = 60, max = 14400, default = 1800, page = ProjectNightfall, translation = ProjectNightfall_IndependentSuicidalUVDecisionCooldownTicks, }
+option ProjectNightfall.EnableUVWeightAI { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableUVWeightAI, }
+option ProjectNightfall.EnableObserveFromShelter { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableObserveFromShelter, }
+option ProjectNightfall.EnableInterestSignals { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableInterestSignals, }
+option ProjectNightfall.EnableTargetBleedingModifier { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableTargetBleedingModifier, }
+option ProjectNightfall.EnableCanopyAttenuation { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableCanopyAttenuation, }
+option ProjectNightfall.EnableSmartFeralHordes { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableSmartFeralHordes, }
+option ProjectNightfall.SmartFeralBaseFollowerCap { type = integer, min = 0, max = 100, default = 8, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralBaseFollowerCap, }
+option ProjectNightfall.SmartFeralCapacityPerSmartBonus { type = double, min = 0.0, max = 1.0, default = 0.10, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralCapacityPerSmartBonus, }
+option ProjectNightfall.SmartFeralRecruitmentRadius { type = double, min = 1.0, max = 50.0, default = 10.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralRecruitmentRadius, }
+option ProjectNightfall.SmartFeralMergeRadius { type = double, min = 1.0, max = 50.0, default = 12.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralMergeRadius, }
+option ProjectNightfall.SmartFeralFollowerDistance { type = double, min = 1.0, max = 12.0, default = 3.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralFollowerDistance, }
+option ProjectNightfall.SmartFeralGroupUpdateTicks { type = integer, min = 30, max = 3600, default = 180, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralGroupUpdateTicks, }
+option ProjectNightfall.SmartFeralFollowerRepathTicks { type = integer, min = 15, max = 1200, default = 90, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralFollowerRepathTicks, }
+option ProjectNightfall.SmartFeralFollowerPathBudgetPerUpdate { type = integer, min = 1, max = 256, default = 16, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralFollowerPathBudgetPerUpdate, }
+option ProjectNightfall.SmartFeralMaxCandidatesPerLeader { type = integer, min = 8, max = 256, default = 64, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralMaxCandidatesPerLeader, }
+option ProjectNightfall.SmartFeralLeaderBudgetPerUpdate { type = integer, min = 1, max = 128, default = 16, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralLeaderBudgetPerUpdate, }
+option ProjectNightfall.EnableSmartFeralCommunication { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableSmartFeralCommunication, }
+option ProjectNightfall.EnableNightIndoorExit { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_EnableNightIndoorExit, }
+option ProjectNightfall.SmartFeralScreechCooldownTicks { type = integer, min = 60, max = 7200, default = 1800, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralScreechCooldownTicks, }
+option ProjectNightfall.SmartFeralScreechResponseDelayTicks { type = integer, min = 1, max = 600, default = 45, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralScreechResponseDelayTicks, }
+option ProjectNightfall.SmartFeralResponseBudgetPerTick { type = integer, min = 1, max = 128, default = 8, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralResponseBudgetPerTick, }
+option ProjectNightfall.SmartFeralMaxPendingResponses { type = integer, min = 1, max = 4096, default = 256, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralMaxPendingResponses, }
+option ProjectNightfall.SmartFeralSharedIntentLifetimeTicks { type = integer, min = 30, max = 7200, default = 600, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralSharedIntentLifetimeTicks, }
+option ProjectNightfall.InitialDiscoveryBudgetPerTick { type = integer, min = 1, max = 256, default = 32, page = ProjectNightfall, translation = ProjectNightfall_InitialDiscoveryBudgetPerTick, }
+option ProjectNightfall.RelevantZombieBudgetPerTick { type = integer, min = 1, max = 256, default = 32, page = ProjectNightfall, translation = ProjectNightfall_RelevantZombieBudgetPerTick, }
+option ProjectNightfall.NightRiseBudgetPerTick { type = integer, min = 1, max = 128, default = 8, page = ProjectNightfall, translation = ProjectNightfall_NightRiseBudgetPerTick, }
+option ProjectNightfall.ArtificialUVZombieBudgetPerUpdate { type = integer, min = 1, max = 256, default = 32, page = ProjectNightfall, translation = ProjectNightfall_ArtificialUVZombieBudgetPerUpdate, }
+option ProjectNightfall.ArtificialUVTissueLossPerDose { type = double, min = 0.0, max = 0.01, default = 0.0005, page = ProjectNightfall, translation = ProjectNightfall_ArtificialUVTissueLossPerDose, }
+option ProjectNightfall.ArtificialUVCorpseSquareBudgetPerUpdate { type = integer, min = 1, max = 256, default = 16, page = ProjectNightfall, translation = ProjectNightfall_ArtificialUVCorpseSquareBudgetPerUpdate, }
+option ProjectNightfall.ArtificialUVCorpseProcessBudgetPerUpdate { type = integer, min = 1, max = 128, default = 8, page = ProjectNightfall, translation = ProjectNightfall_ArtificialUVCorpseProcessBudgetPerUpdate, }
+option ProjectNightfall.ArtificialUVCorpseCandidateLimit { type = integer, min = 16, max = 2048, default = 256, page = ProjectNightfall, translation = ProjectNightfall_ArtificialUVCorpseCandidateLimit, }
+option ProjectNightfall.ArtificialUVCorpseMaximumScanSquares { type = integer, min = 64, max = 16384, default = 4096, page = ProjectNightfall, translation = ProjectNightfall_ArtificialUVCorpseMaximumScanSquares, }
+option ProjectNightfall.NightIndoorExitSearchRadius { type = integer, min = 1, max = 50, default = 12, page = ProjectNightfall, translation = ProjectNightfall_NightIndoorExitSearchRadius, }
+option ProjectNightfall.NightIndoorExitRetryTicks { type = integer, min = 30, max = 3600, default = 300, page = ProjectNightfall, translation = ProjectNightfall_NightIndoorExitRetryTicks, }
+
+option ProjectNightfall.FeralizationThreshold { type = double, min = 10.0, max = 500.0, default = 100.0, page = ProjectNightfall, translation = ProjectNightfall_FeralizationThreshold, }
+option ProjectNightfall.NaturalUVHealthFloor { type = double, min = 0.01, max = 1.0, default = 0.50, page = ProjectNightfall, translation = ProjectNightfall_NaturalUVHealthFloor, }
+option ProjectNightfall.RiseConfirmMinutes { type = double, min = 0.0, max = 60.0, default = 5.0, page = ProjectNightfall, translation = ProjectNightfall_RiseConfirmMinutes, }
+option ProjectNightfall.RiseSpreadMinutes { type = double, min = 0.0, max = 60.0, default = 10.0, page = ProjectNightfall, translation = ProjectNightfall_RiseSpreadMinutes, }
+option ProjectNightfall.SmartFeralRawCognitionMax { type = integer, min = 0, max = 3, default = 1, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralRawCognitionMax, }
+option ProjectNightfall.FeralReserveChargeScale { type = double, min = 0.0, max = 5.0, default = 1.0, page = ProjectNightfall, translation = ProjectNightfall_FeralReserveChargeScale, }
+option ProjectNightfall.FeralSprintMinimumReserve { type = double, min = 0.0, max = 100.0, default = 10.0, page = ProjectNightfall, translation = ProjectNightfall_FeralSprintMinimumReserve, }
+option ProjectNightfall.FeralSprintUVPerGameMinute { type = double, min = 0.0, max = 100.0, default = 18.0, page = ProjectNightfall, translation = ProjectNightfall_FeralSprintUVPerGameMinute, }
+option ProjectNightfall.RegularFeralAmbushSprintChance { type = double, min = 0.0, max = 1.0, default = 0.12, page = ProjectNightfall, translation = ProjectNightfall_RegularFeralAmbushSprintChance, }
+option ProjectNightfall.ShelterHoldMinMinutes { type = double, min = 0.0, max = 240.0, default = 10.0, page = ProjectNightfall, translation = ProjectNightfall_ShelterHoldMinMinutes, }
+option ProjectNightfall.ShelterHoldMaxMinutes { type = double, min = 0.0, max = 480.0, default = 60.0, page = ProjectNightfall, translation = ProjectNightfall_ShelterHoldMaxMinutes, }
+option ProjectNightfall.SmartFeralHideMinHorde { type = integer, min = 1, max = 100, default = 8, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralHideMinHorde, }
+option ProjectNightfall.SmartFeralHideMinHours { type = double, min = 0.1, max = 24.0, default = 2.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralHideMinHours, }
+option ProjectNightfall.SmartFeralHideMaxHours { type = double, min = 0.1, max = 48.0, default = 8.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralHideMaxHours, }
+option ProjectNightfall.NightRiseHealth { type = double, min = 0.01, max = 1.0, default = 1.0, page = ProjectNightfall, translation = ProjectNightfall_NightRiseHealth, }
+option ProjectNightfall.RiseAtOrAboveNightStrength { type = double, min = 0.0, max = 1.0, default = 0.60, page = ProjectNightfall, translation = ProjectNightfall_RiseAtOrAboveNightStrength, }
+option ProjectNightfall.RecoveryPointsPerMinute { type = double, min = -10.0, max = 0.0, default = -0.25, page = ProjectNightfall, translation = ProjectNightfall_RecoveryPointsPerMinute, }
+option ProjectNightfall.SmartFeralStalkAcquireRadius { type = double, min = 1.0, max = 100.0, default = 30.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralStalkAcquireRadius, }
+option ProjectNightfall.SmartFeralStalkGiveUpRadius { type = double, min = 1.0, max = 200.0, default = 55.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralStalkGiveUpRadius, }
+option ProjectNightfall.SmartFeralFlankDistanceMin { type = double, min = 1.0, max = 50.0, default = 5.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralFlankDistanceMin, }
+option ProjectNightfall.SmartFeralFlankDistanceMax { type = double, min = 1.0, max = 50.0, default = 10.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralFlankDistanceMax, }
+option ProjectNightfall.SmartFeralAmbushDistance { type = double, min = 1.0, max = 30.0, default = 5.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralAmbushDistance, }
+option ProjectNightfall.SmartFeralHideSearchRadius { type = double, min = 1.0, max = 100.0, default = 20.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralHideSearchRadius, }
+option ProjectNightfall.SmartFeralHideMinHordeFloor { type = integer, min = 1, max = 100, default = 3, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralHideMinHordeFloor, }
+option ProjectNightfall.SmartFeralHideDensityThreshold { type = double, min = 0.0, max = 1.0, default = 0.08, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralHideDensityThreshold, }
+option ProjectNightfall.SmartFeralSunSearchRadius { type = double, min = 1.0, max = 100.0, default = 14.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralSunSearchRadius, }
+option ProjectNightfall.SmartFeralMinimumSunGain { type = double, min = 0.0, max = 1.0, default = 0.08, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralMinimumSunGain, }
+option ProjectNightfall.SmartFeralEvasionThreatRadius { type = double, min = 1.0, max = 100.0, default = 12.0, page = ProjectNightfall, translation = ProjectNightfall_SmartFeralEvasionThreatRadius, }
+option ProjectNightfall.FeralWornGearDamageMin { type = double, min = 0.0, max = 1.0, default = 0.20, page = ProjectNightfall, translation = ProjectNightfall_FeralWornGearDamageMin, }
+option ProjectNightfall.FeralWornGearDamageMax { type = double, min = 0.0, max = 1.0, default = 0.40, page = ProjectNightfall, translation = ProjectNightfall_FeralWornGearDamageMax, }
+option ProjectNightfall.ShelterSearchRadius { type = double, min = 1.0, max = 50.0, default = 12.0, page = ProjectNightfall, translation = ProjectNightfall_ShelterSearchRadius, }
+option ProjectNightfall.ShelterHoldBurdenThreshold { type = double, min = 0.0, max = 1.0, default = 0.10, page = ProjectNightfall, translation = ProjectNightfall_ShelterHoldBurdenThreshold, }
+option ProjectNightfall.UVSlowMinimumExposure { type = double, min = 0.0, max = 1.0, default = 0.10, page = ProjectNightfall, translation = ProjectNightfall_UVSlowMinimumExposure, }
+option ProjectNightfall.ProximityMaxDistance { type = double, min = 1.0, max = 100.0, default = 20.0, page = ProjectNightfall, translation = ProjectNightfall_ProximityMaxDistance, }
+option ProjectNightfall.HungerChaseStartThreshold { type = double, min = 0.0, max = 1.0, default = 0.25, page = ProjectNightfall, translation = ProjectNightfall_HungerChaseStartThreshold, }
+option ProjectNightfall.HungerChaseKeepThreshold { type = double, min = 0.0, max = 1.0, default = 0.65, page = ProjectNightfall, translation = ProjectNightfall_HungerChaseKeepThreshold, }
+option ProjectNightfall.HungerChaseStartBonus { type = double, min = 0.0, max = 100.0, default = 20.0, page = ProjectNightfall, translation = ProjectNightfall_HungerChaseStartBonus, }
+option ProjectNightfall.HungerChaseKeepBonus { type = double, min = 0.0, max = 100.0, default = 35.0, page = ProjectNightfall, translation = ProjectNightfall_HungerChaseKeepBonus, }
+option ProjectNightfall.RequireEffigyKnowledge { type = boolean, default = true, page = ProjectNightfall, translation = ProjectNightfall_RequireEffigyKnowledge, }
+option ProjectNightfall.EffigyInfluenceRadius { type = double, min = 1.0, max = 100.0, default = 24.0, page = ProjectNightfall, translation = ProjectNightfall_EffigyInfluenceRadius, }
+option ProjectNightfall.EffigyAvoidWeight { type = double, min = 0.0, max = 300.0, default = 130.0, page = ProjectNightfall, translation = ProjectNightfall_EffigyAvoidWeight, }
+option ProjectNightfall.EffigyDestroyWeight { type = double, min = 0.0, max = 300.0, default = 145.0, page = ProjectNightfall, translation = ProjectNightfall_EffigyDestroyWeight, }
+option ProjectNightfall.EffigyHumanEatHungerThreshold { type = double, min = 0.0, max = 1.0, default = 0.25, page = ProjectNightfall, translation = ProjectNightfall_EffigyHumanEatHungerThreshold, }
+option ProjectNightfall.EffigyCaloriesPerFullFeed { type = double, min = 100.0, max = 10000.0, default = 2000.0, page = ProjectNightfall, translation = ProjectNightfall_EffigyCaloriesPerFullFeed, }
+option ProjectNightfall.EffigyRegularSearchHours { type = double, min = 0.0, max = 24.0, default = 1.0, page = ProjectNightfall, translation = ProjectNightfall_EffigyRegularSearchHours, }
+option ProjectNightfall.EffigyFeralSearchHours { type = double, min = 0.0, max = 168.0, default = 24.0, page = ProjectNightfall, translation = ProjectNightfall_EffigyFeralSearchHours, }
+option ProjectNightfall.EffigySmartFeralSearchHours { type = double, min = 0.0, max = 336.0, default = 72.0, page = ProjectNightfall, translation = ProjectNightfall_EffigySmartFeralSearchHours, }
+option ProjectNightfall.EffigySearchRadius { type = double, min = 1.0, max = 200.0, default = 40.0, page = ProjectNightfall, translation = ProjectNightfall_EffigySearchRadius, }
+option ProjectNightfall.EffigyRepathTicks { type = integer, min = 30, max = 3600, default = 180, page = ProjectNightfall, translation = ProjectNightfall_EffigyRepathTicks, }
+option ProjectNightfall.ObservationSearchRadius { type = double, min = 1.0, max = 50.0, default = 8.0, page = ProjectNightfall, translation = ProjectNightfall_ObservationSearchRadius, }
+option ProjectNightfall.InterestSignalRadius { type = double, min = 1.0, max = 50.0, default = 10.0, page = ProjectNightfall, translation = ProjectNightfall_InterestSignalRadius, }
+option ProjectNightfall.CanopyScanRadius { type = integer, min = 0, max = 12, default = 4, page = ProjectNightfall, translation = ProjectNightfall_CanopyScanRadius, }
+option ProjectNightfall.CanopyMaxAttenuation { type = double, min = 0.0, max = 1.0, default = 0.80, page = ProjectNightfall, translation = ProjectNightfall_CanopyMaxAttenuation, }
+option ProjectNightfall.CanopyScoreForMaxAttenuation { type = double, min = 0.1, max = 100.0, default = 28.0, page = ProjectNightfall, translation = ProjectNightfall_CanopyScoreForMaxAttenuation, }
+option ProjectNightfall.TargetBleedingRegularSensitivity { type = double, min = 0.0, max = 10.0, default = 1.0, page = ProjectNightfall, translation = ProjectNightfall_TargetBleedingRegularSensitivity, }
+option ProjectNightfall.TargetBleedingFeralSensitivity { type = double, min = 0.0, max = 10.0, default = 2.0, page = ProjectNightfall, translation = ProjectNightfall_TargetBleedingFeralSensitivity, }
+option ProjectNightfall.HibernationCloseWakeChance { type = double, min = 0.0, max = 1.0, default = 0.03, page = ProjectNightfall, translation = ProjectNightfall_HibernationCloseWakeChance, }
+option ProjectNightfall.HibernationWakeDistanceMin { type = double, min = 0.5, max = 20.0, default = 2.0, page = ProjectNightfall, translation = ProjectNightfall_HibernationWakeDistanceMin, }
+option ProjectNightfall.HibernationWakeDistanceMax { type = double, min = 0.5, max = 20.0, default = 3.0, page = ProjectNightfall, translation = ProjectNightfall_HibernationWakeDistanceMax, }
+option ProjectNightfall.HibernationGiveUpDistanceMin { type = double, min = 1.0, max = 50.0, default = 5.0, page = ProjectNightfall, translation = ProjectNightfall_HibernationGiveUpDistanceMin, }
+option ProjectNightfall.HibernationGiveUpDistanceMax { type = double, min = 1.0, max = 50.0, default = 7.0, page = ProjectNightfall, translation = ProjectNightfall_HibernationGiveUpDistanceMax, }

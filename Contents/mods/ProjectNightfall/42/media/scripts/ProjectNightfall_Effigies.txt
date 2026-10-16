@@ -1,0 +1,11 @@
+module ProjectNightfall
+{
+    item Effigy
+    {
+        DisplayCategory = Furniture,
+        Type = Normal,
+        DisplayName = Macabre Effigy,
+        Icon = Bandage,
+        Weight = 8.0,
+    }
+}

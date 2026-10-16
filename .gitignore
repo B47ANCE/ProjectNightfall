@@ -1,0 +1,27 @@
+# Local/runtime artifacts
+*.log
+console*.txt
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+__pycache__/
+
+# Shared skills/configuration are installed locally, never copied into Git.
+.agents/
+.codex/
+.local/
+.env
+.env.*
+!.env.example
+local.settings.json
+*.private.json
+
+# Generated packages, local upload state and historical staging stay on disk.
+dist/
+workshop/
+*.zip
+.steamcmd-last-upload.sha256
+Update-Workshop.ps1
+*.blend1
+server-console*.txt

@@ -1,0 +1,30 @@
+[b]Version 0.27.3[/b]
+
+[h2]Release preparation[/h2]
+• Restricted test kits, guided validation, UV inspection, and exposure-measurement commands to explicit debug sessions.
+• Aligned release tests and packages with the authoritative source and added checks against stale or incomplete packages.
+• Added complete Build 42 JSON localization fallback coverage across all 29 supported language folders.
+• Localized UV bulb names and effigy construction labels without changing Nightfall gameplay behavior.
+
+[h2]Dependency Identity[/h2]
+[list]
+[*]Updated the required experienceWorks Mod ID and every Nightfall research, effigy-knowledge, diagnostic, and test-kit integration to the corrected canonical spelling.
+[*]Kept Nightfall gameplay ownership and existing saved Nightfall state unchanged.
+[/list]
+
+[b]Previous 0.27.0 changes[/b]
+
+[h2]Added[/h2]
+[list]
+[*]Constructed effigies now preserve the canonical Project M.O.R.T.I.S. material and nutrition records from their detached body parts.
+[*]Zombie feeding transactionally depletes preserved effigy material before removing the effigy.
+[*]Effigy hunger restoration now scales from canonical edible calories, with a configurable calories-per-full-feed sandbox setting.
+[*]Legacy effigies without material records remain compatible through the previous fixed-value fallback.
+[/list]
+
+[h2]Roadmap[/h2]
+[list]
+[*]Validate corpse-part construction, effigy persistence, feeding, and hunger replication in game and multiplayer.
+[*]Complete in-game balance, presentation, high-population, hosted, and dedicated-server validation.
+[*]Add native smoke and visible remains-stage presentation only through verified engine adapters.
+[/list]

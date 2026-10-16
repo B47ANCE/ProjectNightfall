@@ -1,0 +1,38 @@
+module ProjectNightfall
+{
+    item Research_NF_UV_003
+    {
+        DisplayCategory = Literature,
+        ItemType = base:literature,
+        Weight = 0.2,
+        Icon = Book7,
+        NumberOfPages = 12,
+        StaticModel = BookBrown,
+        WorldStaticModel = BookBrown_Ground,
+    }
+    item Research_NF_SOLAR_019
+    {
+        DisplayCategory = Literature,
+        ItemType = base:literature,
+        Weight = 0.2,
+        Icon = Book7,
+        NumberOfPages = 18,
+        StaticModel = BookBrown,
+        WorldStaticModel = BookBrown_Ground,
+    }
+    item Research_NF_UV_011 { DisplayCategory = Literature, ItemType = base:literature, Weight = 0.2, Icon = Book7, NumberOfPages = 16, StaticModel = BookBrown, WorldStaticModel = BookBrown_Ground, }
+    item Research_NF_ANAT_014 { DisplayCategory = Literature, ItemType = base:literature, Weight = 0.2, Icon = Book7, NumberOfPages = 22, StaticModel = BookBrown, WorldStaticModel = BookBrown_Ground, }
+    item Research_NF_BEHAV_007 { DisplayCategory = Literature, ItemType = base:literature, Weight = 0.2, Icon = Book7, NumberOfPages = 20, StaticModel = BookBrown, WorldStaticModel = BookBrown_Ground, }
+    item Research_NF_INCIDENT_052 { DisplayCategory = Literature, ItemType = base:literature, Weight = 0.2, Icon = Book7, NumberOfPages = 14, StaticModel = BookBrown, WorldStaticModel = BookBrown_Ground, }
+    item Research_NF_BEHAV_044 { DisplayCategory = Literature, ItemType = base:literature, Weight = 0.2, Icon = Book7, NumberOfPages = 26, StaticModel = BookBrown, WorldStaticModel = BookBrown_Ground, }
+    item Research_NF_FIELD_026
+    {
+        DisplayCategory = Literature,
+        ItemType = base:literature,
+        Weight = 0.2,
+        Icon = Book7,
+        NumberOfPages = 24,
+        StaticModel = BookBrown,
+        WorldStaticModel = BookBrown_Ground,
+    }
+}

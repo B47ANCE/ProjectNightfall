@@ -1,0 +1,10 @@
+name=Project Nightfall
+id=ProjectNightfall
+author=B47ANCE
+require=lightWorks,ProjectMORTIS,powerWorks,medWorks,experienceWorks
+description=UV-driven infected overhaul with lethal artificial UV, sunlight hibernation, optional Feral and Smart Feral outcomes, intelligent hordes, body-part effigies, and a No Ferals preset. Nightfall zombies use Project M.O.R.T.I.S., medWorks anatomy products, and lightWorks lighting semantics.
+poster=thumbnail.png
+icon=icon.png
+tags=Build 42;Gameplay;Zombies;Horror
+versionMin=42.20.3
+modversion=0.27.1

@@ -1,0 +1,35 @@
+module ProjectNightfall
+{
+    imports
+    {
+        Base
+    }
+
+    item LightBulbUV
+    {
+        DisplayCategory = Electronics,
+        ItemType = base:normal,
+        Weight = 0.1,
+        DisplayName = UV Light Bulb,
+        Icon = LightBulb,
+        ColorRed = 0,
+        ColorGreen = 0,
+        ColorBlue = 255,
+        ConditionMax = 100,
+        WorldStaticModel = LightBulb,
+    }
+
+    item LightBulbUVHighOutput
+    {
+        DisplayCategory = Electronics,
+        ItemType = base:normal,
+        Weight = 0.1,
+        DisplayName = High-Output UV Light Bulb,
+        Icon = LightBulb,
+        ColorRed = 0,
+        ColorGreen = 0,
+        ColorBlue = 255,
+        ConditionMax = 100,
+        WorldStaticModel = LightBulb,
+    }
+}
