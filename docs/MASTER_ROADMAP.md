@@ -8,9 +8,10 @@ The 0.27.4 PATCH fixes corpse disable/re-enable gates, fair discovery across chu
 and cap boundaries, moved-source scans, and observable pipeline failure reporting.
 All 59 host test files pass offline, including the five historical audit cases.
 See [current validation](VALIDATION_0.27.4.md); the [takeover audit](AUDIT_2026-10-16.md)
-remains historical evidence. Next recover packaging tooling and reconcile stale
-Contents separately, preserving historical outputs. Clean-launcher SP and
-dedicated MP evidence remain required.
+remains historical evidence. The [packaging follow-up](PACKAGING_0.27.4.md) now
+provides a reproducible verified ZIP and current Contents mirror, preserving the
+old tree and all historical outputs. Next collect clean-launcher SP and dedicated
+MP evidence; packaging does not clear those gates.
 
 ## Implemented
 

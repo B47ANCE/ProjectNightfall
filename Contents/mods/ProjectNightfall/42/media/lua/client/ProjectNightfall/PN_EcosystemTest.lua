@@ -1,3 +1,6 @@
+-- Development-only cross-mod test coordinator.
+if type(isDebugEnabled)=="function" and isDebugEnabled()~=true then return {} end
+
 ProjectNightfall=ProjectNightfall or {}
 ProjectNightfall.EcosystemTest=ProjectNightfall.EcosystemTest or {}
 local Test=ProjectNightfall.EcosystemTest

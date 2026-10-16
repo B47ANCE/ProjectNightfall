@@ -16,9 +16,9 @@ Preserve project-specific identity, instructions, source, local settings and run
 - Existing Workshop item: `3788593239`; item creation and visibility changes need separate authorization.
 - Authoritative runtime source: `src/ProjectNightfall/42/`.
 - `src/ProjectNightfall/info.txt`, `src/ProjectNightfall/thumbnail.png`, and `art/` are source/support assets.
-- `Contents/mods/ProjectNightfall/42/` is a preserved **stale 0.27.1 packaging copy**. It is not interchangeable with src. Do not edit, relabel, overwrite, or package it implicitly.
+- `Contents/mods/ProjectNightfall/` is the generated exact mirror of `src/ProjectNightfall/`, including the 42 runtime and parent support files. Source remains authoritative. Rebuild it only through the explicitly requested packaging command, never by independently editing mirrored code.
 - `dist/`, staging backups, ZIPs, and `SHA256SUMS.txt` are generated/historical evidence, not implementation sources. Preserve them.
-- `SOURCE_INVENTORY.json` records these classifications. Packaging/deployment tools referenced by old handoffs are missing; do not execute guessed replacements.
+- `SOURCE_INVENTORY.json` records these classifications. Current packaging is `python scripts/package_project.py build`; historical deployment/uploader tools remain unverified. The superseded 67-file Contents copy is retained under `dist/staging-backups/contents-51c590fbd9d0`; preserve it.
 
 ## Team skills and local setup
 
@@ -55,18 +55,21 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 ## Validation and iteration
 
-Read `docs/VALIDATION_0.27.4.md` for current behavior and evidence; `docs/AUDIT_2026-10-16.md` preserves the historical 0.27.3 findings. Before editing, name intended files and invariants. Use a feature/fix branch, targeted staging, a public-push secret audit, and a PR before merging main. Run freshness checks; never auto-stash, reset, clean, pull, or rebase.
+Read `docs/PACKAGING_0.27.4.md` for current package evidence and `docs/VALIDATION_0.27.4.md` for the preceding corpse-runtime fix. The takeover audit and earlier validation records remain historical. Before editing, name intended files and invariants. Use a feature/fix branch, targeted staging, a public-push secret audit, and a PR before merging main. Run freshness checks; never auto-stash, reset, clean, pull, or rebase.
 
-Run from this project root with a real Python 3 executable (the Windows Store alias may be unusable):
+Run from this project root with a real Python 3.12+ executable (the Windows Store alias may be unusable; packaging checks Windows junctions):
 
 ```text
 python scripts/check_versions.py
-python scripts/run_host_tests.py
-python scripts/audit_project.py
+python scripts/prepare_test_dependencies.py
+python scripts/run_host_tests.py --dependencies .local/validation-dependencies
+python -m unittest discover -s tests -p test_packaging.py -v
+python scripts/package_project.py verify
+python scripts/audit_project.py --dependencies .local/validation-dependencies
 ```
 
-Host tests require `lupa.lua51` and the five dependency source checkouts in sibling folders (`Project MORTIS`, `lightWorks`, `powerWorks`, `medWorks`, `experienceWorks`). The default runner includes the audit regressions and all 59 files pass offline for 0.27.4. `--legacy-only` selects only top-level tests and omits the five former audit failures; use the default complete suite for regression evidence. Legacy debug-surface tests also rely on the documented sibling layout.
+Host tests require `lupa.lua51` and the five matching dependency sources. For 0.27.4 use the explicitly pinned fixtures in `tests/dependencies_0.27.4.json`: the preparation helper verifies retained archive hashes/identity/CRC and copies them only into ignored `.local` fixtures. All 59 files pass against that historical set. The default runner still targets sibling source checkouts and currently fails after powerWorks/experienceWorks identity migrations; never present fixture results as current-family compatibility. `--dependencies` also resolves declared relative debug-test paths. `--legacy-only` omits the audit path; use the default complete discovery with the explicit fixture root for full regression evidence. Do not distribute/deploy the fixtures or modify dependencies as part of packaging.
 
-Before G8 also run `python scripts/check_versions.py --release`; current stale Contents blocks that check. No packaging script is verified for the present layout. No package/release is authorized by an audit or version update.
+Before G8 also run `python scripts/check_versions.py --release`. Current package consistency passes, but this never clears G7 or stable G8. `python scripts/package_project.py plan` is read-only; `build` is an explicit manual packaging operation, not a deployment/upload command. It preserves superseded mirrors, refuses unexpected mirror files and existing-artifact collisions, and verifies its outputs. Never invoke build implicitly during an ordinary audit/version edit. Repeated builds must preserve identical ZIP/provenance bytes.
 
 Distinguish [VERIFIED] source, [TESTED] offline, [INFERRED], [UNKNOWN], and [RUNTIME GATE]. The 2026-09 handoffs and their test totals are historical, not current runtime proof. Current game build/API exposure, native Kahlua, SP, hosted, and dedicated behavior remain unverified by this audit. Gameplay G7 is BLOCKED / NOT TESTED and stable-release G8 is BLOCKED. Only current global policy governs an explicitly requested Workshop MP test upload; an upload is never MP PASS.

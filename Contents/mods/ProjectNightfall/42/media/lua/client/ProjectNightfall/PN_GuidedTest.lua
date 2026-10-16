@@ -1,3 +1,6 @@
+-- Development-only guided validation harness.
+if type(isDebugEnabled)=="function" and isDebugEnabled()~=true then return {} end
+
 ProjectNightfall = ProjectNightfall or {}
 ProjectNightfall.GuidedTest = ProjectNightfall.GuidedTest or {}
 
@@ -36,7 +39,7 @@ end
 local function reportLines(s)
     local counts={PASS=0,FAIL=0,SKIP=0,PENDING=0}
     local output={"theWorks in-game test results","Mod: Project Nightfall","Mod ID: ProjectNightfall",
-        "Mod version: "..tostring(ProjectNightfall.VERSION or "0.27.1"),"Started: "..tostring(s.startedAt or "unavailable"),
+        "Mod version: "..tostring(ProjectNightfall.VERSION or "0.27.4"),"Started: "..tostring(s.startedAt or "unavailable"),
         "Dependencies enabled for this stage: experienceWorks, ProjectMORTIS, medWorks, powerWorks, lightWorks","","FEATURE RESULTS"}
     for index,step in ipairs(steps) do
         local result=s.results[step.id] or {status="PENDING",note=""}; counts[result.status]=(counts[result.status] or 0)+1

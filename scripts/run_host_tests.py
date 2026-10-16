@@ -82,6 +82,19 @@ def main() -> int:
             messages = []
             lua.globals().print = lambda *values: messages.append(" ".join(map(str, values)))
             lua.globals().package.path = search_path + ";" + lua.globals().package.path
+            # The debug-surface test uses explicit ../family/... paths. Resolve
+            # only those declared dependency folders through --dependencies too;
+            # never alias a renamed production namespace or substitute a mock.
+            lua.globals()._testDependencyRoot = dependencies.as_posix()
+            lua.globals()._testDependencyFolders = lua.table_from({name: True for name in DEPENDENCIES})
+            lua.execute('''local originalLoadfile=loadfile
+                loadfile=function(path)
+                    if type(path)=="string" and path:sub(1,3)=="../" then
+                        local folder=path:match("^%.%./([^/]+)/")
+                        if _testDependencyFolders[folder] then path=_testDependencyRoot.."/"..path:sub(4) end
+                    end
+                    return originalLoadfile(path)
+                end''')
             args = ARGUMENTS.get(test.stem.removeprefix("test_"), [])
             lua.globals().arg = lua.table_from([str(ROOT / path).replace("\\", "/") for path in args])
             # Existing debug tests need debug mode; the release-gate test

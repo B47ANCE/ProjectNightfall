@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-16",
+  "version": "0.27.4",
+  "environment": "offline Python and Lua 5.1; no PZ or dedicated runtime evidence",
+  "source_files": 150,
+  "packaging_copy_files": 150,
+  "source_tree_sha256": "933c4ddd08d1f6f602daad8a26a114523937d85fa3892dccbd49212d109a5122",
+  "packaging_copy_tree_sha256": "933c4ddd08d1f6f602daad8a26a114523937d85fa3892dccbd49212d109a5122",
+  "copy_missing": [],
+  "copy_extra": [],
+  "copy_changed": [],
+  "case_collisions": [],
+  "requires": {
+    "family_module_errors": [
+      {
+        "path": "src/ProjectNightfall/42/media/lua/shared/ProjectNightfall/PN_FlashlightBulbs.lua",
+        "missing": "powerWorks/Definitions"
+      },
+      {
+        "path": "src/ProjectNightfall/42/media/lua/shared/ProjectNightfall/PN_ResearchArchive.lua",
+        "missing": "experienceWorks/API"
+      }
+    ],
+    "vanilla_modules_not_resolved_by_this_check": [
+      "OptionScreens/SandboxOptions",
+      "Sandbox/Apocalypse",
+      "TimedActions/ISBaseTimedAction"
+    ],
+    "scope": "source and sibling family modules only; exact filename case, not native exposure or load-order proof"
+  },
+  "non_lua_runtime_dependencies": [],
+  "localization": {
+    "language_folders": [
+      "AR",
+      "CA",
+      "CH",
+      "CN",
+      "CS",
+      "DA",
+      "DE",
+      "EN",
+      "ES",
+      "ES_CL",
+      "ES_MX",
+      "FI",
+      "FR",
+      "HU",
+      "ID",
+      "IT",
+      "JP",
+      "KO",
+      "NL",
+      "NO",
+      "PL",
+      "PT",
+      "PTBR",
+      "RO",
+      "RU",
+      "STREW",
+      "TH",
+      "TR",
+      "UA"
+    ],
+    "key_parity_errors": [],
+    "non_english_values_equal_to_english": 5992,
+    "scope": "structural/fallback parity, not translation quality"
+  },
+  "syntax": {
+    "environment": "Lua 5.1 via lupa",
+    "files": 53,
+    "errors": []
+  },
+  "current_directory_archives": [
+    {
+      "path": "dist/ProjectNightfall-0.27.3-workshop-ready.zip",
+      "sha256": "1481c1565b85bc357e557f7fec1799cb69a101ca5a7e0eb6081b53b5a28df765",
+      "errors": [],
+      "classification": "historical",
+      "members": 154,
+      "payload_files": 150,
+      "source_differences": [
+        "media/lua/client/ProjectNightfall/PN_GuidedTest.lua",
+        "media/lua/client/ProjectNightfall/PN_TestKit.lua",
+        "media/lua/shared/ProjectNightfall/PN_Config.lua",
+        "media/lua/shared/ProjectNightfall/PN_UVCorpseRuntime.lua",
+        "mod.info"
+      ]
+    },
+    {
+      "path": "dist/ProjectNightfall-0.27.4-workshop-ready.zip",
+      "sha256": "a5d10a92d46634e6c89e57eaaf0eab24dbd2f1d0f5f5549d1413768faa74f6d1",
+      "errors": [],
+      "classification": "current-or-unclassified",
+      "members": 154,
+      "payload_files": 150,
+      "source_differences": []
+    }
+  ],
+  "protected_baseline": ".git/nightfall-packaging-protected-before.json",
+  "protected_files": 5627,
+  "protected_files_changed": [],
+  "package_validation": {
+    "version": "0.27.4",
+    "archive": "dist/ProjectNightfall-0.27.4-workshop-ready.zip",
+    "sha256": "a5d10a92d46634e6c89e57eaaf0eab24dbd2f1d0f5f5549d1413768faa74f6d1",
+    "members": 154,
+    "payload_parity": "PASS",
+    "integrity": "PASS",
+    "version_and_identity": "PASS",
+    "contents_parity": "PASS",
+    "provenance": "PASS",
+    "source_files": 152,
+    "G7": "BLOCKED / NOT TESTED",
+    "G8": "BLOCKED"
+  },
+  "index_audit": {
+    "indexed_files": 324,
+    "denied_paths": [],
+    "potential_secret_paths": [],
+    "scope": "Git index, heuristic patterns and path checks; not a comprehensive secret detector"
+  }
+}

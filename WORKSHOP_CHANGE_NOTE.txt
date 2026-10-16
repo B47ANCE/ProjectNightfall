@@ -9,7 +9,7 @@
 [*]Pending journal recovery retains its actual committed time; failed remains-stage updates can retry without replaying dose.
 [/list]
 
-Offline regression suite passed. Dedicated multiplayer NOT TESTED; stable release remains blocked. No new package or Workshop upload was performed for this source iteration.
+Offline regression suite passed. Development package integrity, exact source parity, and reproducibility were validated offline. Dedicated multiplayer NOT TESTED; stable release remains blocked. No deployment or Workshop upload was performed.
 
 [b]Previous 0.27.3 changes[/b]
 

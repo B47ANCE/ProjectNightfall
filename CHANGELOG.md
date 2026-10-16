@@ -7,7 +7,9 @@
 - Surface rejected/throwing pipeline calls, retain successful-work diagnostics, and advance the candidate cursor so failures cannot monopolize the processing turn.
 - Retain actual journal commit time and retry derived remains stages without replaying dose. Corpse/tissue/remains schemas and gameplay balance are unchanged.
 - All 59 Nightfall host test files pass offline in Lua 5.1, including the five former audit failures and new disable/movement/budget/recovery regressions. Current version mirrors pass. See `docs/VALIDATION_0.27.4.md`.
-- Existing Contents, artwork and generated packages remain preserved; no 0.27.4 package, deployment, Workshop upload, SP test or dedicated MP test. G7 BLOCKED / NOT TESTED; G8 BLOCKED.
+- Restored a reproducible packaging workflow and refreshed Contents from source with a verified retained backup of the old mirror. The 0.27.4 development ZIP has exact source/support/wrapper parity, checksum and per-member provenance; ten packaging safety/integrity tests pass. See `docs/PACKAGING_0.27.4.md`.
+- Runtime source, artwork and all earlier generated artifacts are unchanged by the packaging follow-up. No deployment, Workshop upload, SP test or dedicated MP test. G7 BLOCKED / NOT TESTED; G8 BLOCKED.
+- Concurrent dependency identity migrations removed the default source lookup. The 59 Lua tests were rerun successfully using SHA-256-pinned matching first-party archives in ignored fixtures; this is not compatibility validation for the renamed current family. No runtime dependency migration is included in 0.27.4.
 
 ## 0.27.3 — repository onboarding, 2026-10-16
 

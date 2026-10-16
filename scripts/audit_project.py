@@ -52,8 +52,11 @@ def staged_audit() -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--dependencies", type=Path, default=ROOT.parent,
+                        help="Dependency source root; may be explicitly pinned historical fixtures")
     args = parser.parse_args()
     left, right = tree(SOURCE), tree(COPY)
+    inventory = json.loads((ROOT / "SOURCE_INVENTORY.json").read_text())
     report = {"date": date.today().isoformat(), "version": (ROOT / "VERSION").read_text().strip(),
               "environment": "offline Python and Lua 5.1; no PZ or dedicated runtime evidence",
               "source_files": len(left), "packaging_copy_files": len(right),
@@ -72,10 +75,12 @@ def main() -> int:
     report["case_collisions"] = collisions
     module_index = set()
     roots = [SOURCE / "media/lua"]
+    dependency_root = args.dependencies.resolve()
+    report["dependency_scope"] = "default sibling checkouts" if dependency_root == ROOT.parent.resolve() else "explicit alternate dependency root; verify its provenance separately"
     for folder, mod_id in (("Project MORTIS", "ProjectMORTIS"), ("lightWorks", "lightWorks"),
                            ("powerWorks", "powerWorks"), ("medWorks", "medWorks"),
                            ("experienceWorks", "experienceWorks")):
-        roots.append(ROOT.parent / folder / "src" / mod_id / "42/media/lua")
+        roots.append(dependency_root / folder / "src" / mod_id / "42/media/lua")
     for root in roots:
         for side in ("shared", "client", "server"):
             base = root / side
@@ -133,6 +138,9 @@ def main() -> int:
     archive_reports = []
     for path in sorted((ROOT / "dist").glob("*.zip")):
         item = {"path": path.relative_to(ROOT).as_posix(), "sha256": digest(path.read_bytes()), "errors": []}
+        item["classification"] = ("historical" if item["path"] in inventory.get("historical_records", [])
+                                  else "current" if path.name == f"ProjectNightfall-{report['version']}-workshop-ready.zip"
+                                  else "unclassified")
         try:
             with zipfile.ZipFile(path) as archive:
                 names = archive.namelist()
@@ -164,12 +172,22 @@ def main() -> int:
             item["errors"].append(type(error).__name__)
         archive_reports.append(item)
     report["current_directory_archives"] = archive_reports
-    protected = ROOT / ".git/nightfall-source-before.json"
+    # Protection is tied to an explicitly captured operation baseline. The old
+    # onboarding baseline is historical after authorized runtime/mirror changes.
+    protected = ROOT / ".git/nightfall-packaging-protected-before.json"
+    if not protected.is_file():
+        protected = ROOT / ".git/nightfall-source-before.json"
     if protected.is_file():
         before = json.loads(protected.read_text())
-        report["protected_source_art_files"] = len(before)
-        report["protected_source_art_changed"] = [name for name, hash_value in before.items()
-                                                if not (ROOT / name).is_file() or digest((ROOT / name).read_bytes()) != hash_value]
+        report["protected_baseline"] = protected.relative_to(ROOT).as_posix()
+        report["protected_files"] = len(before)
+        report["protected_files_changed"] = [name for name, hash_value in before.items()
+                                             if not (ROOT / name).is_file() or digest((ROOT / name).read_bytes()) != hash_value]
+    from package_project import verify
+    try:
+        report["package_validation"] = verify(ROOT)
+    except (OSError, ValueError) as error:
+        report["package_validation"] = {"error": str(error)}
     report["index_audit"] = staged_audit()
     if args.output:
         output = args.output if args.output.is_absolute() else ROOT / args.output
@@ -179,8 +197,8 @@ def main() -> int:
     # A stale copy is an audit finding and release blocker, not an all-clear.
     failed = bool(report["copy_missing"] or report["copy_changed"] or report["copy_extra"] or collisions or
                   localization_errors or require_errors or report["non_lua_runtime_dependencies"] or report["syntax"].get("errors") or
-                  any(item["errors"] or item.get("source_differences") for item in archive_reports) or
-                  report.get("protected_source_art_changed") or report["index_audit"]["denied_paths"] or
+                  any(item["errors"] or item["classification"] == "unclassified" or (item["classification"] != "historical" and item.get("source_differences")) for item in archive_reports) or
+                  report.get("protected_files_changed") or report["package_validation"].get("error") or report["index_audit"]["denied_paths"] or
                   report["index_audit"]["potential_secret_paths"])
     return int(failed)
 

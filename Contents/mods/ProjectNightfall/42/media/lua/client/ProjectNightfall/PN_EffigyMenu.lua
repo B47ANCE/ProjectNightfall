@@ -2,6 +2,14 @@ require "ProjectNightfall/PN_BuildEffigyAction"
 
 ISInventoryMenuElements=ISInventoryMenuElements or {}
 
+local function tr(key,fallback)
+    local get=rawget(_G,"getText")
+    if type(get)~="function" then return fallback end
+    local ok,value=pcall(get,key)
+    if ok and type(value)=="string" and value~="" and value~=key then return value end
+    return fallback
+end
+
 function ISInventoryMenuElements.ProjectNightfallEffigies()
     local self=ISMenuElement.new()
     self.invMenu=ISContextManager.getInstance().getInventoryMenu()
@@ -30,8 +38,8 @@ function ISInventoryMenuElements.ProjectNightfallEffigies()
         local inspected,composition=pcall(api.snapshotComposition,selected)
         if not inspected or not composition or composition.partCount<3 then return end
         local checked,valid,reason=pcall(api.validateConstruction,self.invMenu.player,selected)
-        if not checked then reason="Effigy validation unavailable"; valid=nil end
-        local option=context:addOption("Build Macabre Effigy",self,self.queue,selected)
+        if not checked then reason=tr("ContextMenu_ProjectNightfall_EffigyValidationUnavailable","Effigy validation unavailable"); valid=nil end
+        local option=context:addOption(tr("ContextMenu_ProjectNightfall_BuildMacabreEffigy","Build Macabre Effigy"),self,self.queue,selected)
         if not option then return end
         option.ProjectNightfallEffigyOption=true
         if not valid then
@@ -39,7 +47,7 @@ function ISInventoryMenuElements.ProjectNightfallEffigies()
             if ISInventoryPaneContextMenu and ISInventoryPaneContextMenu.addToolTip then
                 local made,tooltip=pcall(ISInventoryPaneContextMenu.addToolTip)
                 if made and tooltip then
-                    tooltip.description=tostring(reason or "Effigy construction unavailable")
+                    tooltip.description=tostring(reason or tr("ContextMenu_ProjectNightfall_EffigyConstructionUnavailable","Effigy construction unavailable"))
                     option.toolTip=tooltip
                 end
             end

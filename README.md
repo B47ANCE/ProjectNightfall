@@ -48,8 +48,8 @@ Nightfall defines and controls Transforming, Feral, and Smart Feral zombies. It 
 - [Roadmap](docs/ROADMAP.md)
 - [Vanilla horde/pathing audit](docs/VANILLA_HORDE_INTEGRATION.md)
 
-The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods` is a preserved **stale 0.27.1 packaging copy**, not interchangeable with source. Root `VERSION` is canonical; see [version policy](docs/VERSION_POLICY.md) and [source inventory](SOURCE_INVENTORY.json).
+The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods/ProjectNightfall` is a generated mirror, including parent support files; edit source and rebuild through the packaging workflow. Root `VERSION` is canonical; see [version policy](docs/VERSION_POLICY.md) and [source inventory](SOURCE_INVENTORY.json).
 
 Public development repository: [B47ANCE/ProjectNightfall](https://github.com/B47ANCE/ProjectNightfall).
 
-Version 0.27.4 fixes the five corpse-runtime failures recorded by the [0.27.3 takeover audit](docs/AUDIT_2026-10-16.md): disable gates, fair discovery, and truthful pipeline failure reporting. All 59 host test files now pass offline. See [current validation](docs/VALIDATION_0.27.4.md) and [testing](docs/TESTING.md). The stale packaging input and historical packages remain preserved; no 0.27.4 package was built. Dedicated multiplayer is NOT TESTED and stable release remains BLOCKED. No deployment or Workshop publication occurred.
+Version 0.27.4 fixes the five corpse-runtime failures recorded by the [0.27.3 takeover audit](docs/AUDIT_2026-10-16.md): disable gates, fair discovery, and truthful pipeline failure reporting. All 59 Lua host test files pass against hash-pinned matching historical dependencies, and all 10 packaging tests pass. The [reproducible packaging workflow](docs/PACKAGING_0.27.4.md) refreshes Contents, preserves the old mirror, and verifies the 154-file package and provenance. See [testing](docs/TESTING.md). Compatibility with the renamed current dependency family is not established; dedicated multiplayer is NOT TESTED and stable release remains BLOCKED. No deployment or Workshop publication occurred.

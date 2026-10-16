@@ -3,10 +3,11 @@
 > Consolidated status: [MASTER_ROADMAP.md](MASTER_ROADMAP.md).
 
 The 0.27.4 corpse-runtime fix resolves the five offline audit failures; all 59 host
-test files pass. See [current validation](VALIDATION_0.27.4.md). Recover packaging
-tooling and obtain clean-launcher SP and dedicated MP evidence before new smoke,
-condition, or migration features. Stale Contents and historical packages remain
-preserved; no new runtime PASS evidence or package is supplied by this fix.
+test files pass. See [runtime-fix validation](VALIDATION_0.27.4.md). The
+[packaging follow-up](PACKAGING_0.27.4.md) now supplies a reproducible verified
+development package and current Contents, with all historical data preserved.
+Obtain clean-launcher SP and dedicated MP evidence before new smoke, condition,
+or migration features. Packaging supplies no new runtime PASS evidence.
 
 ## Current implementation
 
