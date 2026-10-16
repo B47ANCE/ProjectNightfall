@@ -2,11 +2,11 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.27.4`
+- Version: `0.28.0`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
-- Required Mod IDs: `lightWorks`, `ProjectMORTIS`, `powerWorks`, `medWorks`, `experienceWorks`
+- Required Mod IDs: `lightWorks`, `ProjectMORTIS`, `B47ANCEDPower`, `medWorks`, `B47ANCEDKnowledgeAndWisdom`
 
 ## Ownership
 
@@ -39,7 +39,7 @@ Nightfall defines and controls Transforming, Feral, and Smart Feral zombies. It 
 - M.O.R.T.I.S.-powered deeper-interior crowd flow for shelter entry.
 - Packaged `Project Nightfall` sandbox settings page.
 - Selectable `Project: Nightfall` and `Project: Nightfall — No Ferals` presets based on Apocalypse.
-- Rare classified Project files registered through experienceWorks, with genuine redactions, prerequisites, persistent knowledge unlocks, and restricted scientific/military loot pools.
+- Rare classified Project files registered through B47ANCED Knowledge & Wisdom, with genuine redactions, prerequisites, persistent knowledge unlocks, and restricted scientific/military loot pools.
 
 ## Documentation
 
@@ -48,8 +48,10 @@ Nightfall defines and controls Transforming, Feral, and Smart Feral zombies. It 
 - [Roadmap](docs/ROADMAP.md)
 - [Vanilla horde/pathing audit](docs/VANILLA_HORDE_INTEGRATION.md)
 
-The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods/ProjectNightfall` is a generated mirror, including parent support files; edit source and rebuild through the packaging workflow. Root `VERSION` is canonical; see [version policy](docs/VERSION_POLICY.md) and [source inventory](SOURCE_INVENTORY.json).
+The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods/ProjectNightfall` retains the historical 0.27.4 generated mirror, including parent support files. Edit source; rebuild only when packaging is explicitly requested. Root `VERSION` is canonical; see [version policy](docs/VERSION_POLICY.md) and [source inventory](SOURCE_INVENTORY.json).
 
 Public development repository: [B47ANCE/ProjectNightfall](https://github.com/B47ANCE/ProjectNightfall).
 
-Version 0.27.4 fixes the five corpse-runtime failures recorded by the [0.27.3 takeover audit](docs/AUDIT_2026-10-16.md): disable gates, fair discovery, and truthful pipeline failure reporting. All 59 Lua host test files pass against hash-pinned matching historical dependencies, and all 10 packaging tests pass. The [reproducible packaging workflow](docs/PACKAGING_0.27.4.md) refreshes Contents, preserves the old mirror, and verifies the 154-file package and provenance. See [testing](docs/TESTING.md). Compatibility with the renamed current dependency family is not established; dedicated multiplayer is NOT TESTED and stable release remains BLOCKED. No deployment or Workshop publication occurred.
+Development version 0.28.0 adopts the current Power and Knowledge dependency IDs/APIs, bounds crowded-square corpse discovery, rotates saturated corpse admission and enables intelligent regular effigy destruction. Packaging tools now resume interrupted installation and validate commit/builder provenance. See [current validation](docs/VALIDATION_0.28.0.md).
+
+All 61 Lua host test files and 18 Python tests pass offline against the recorded current checkouts. Whole-family startup remains blocked by upstream dependency declarations/imports; run `python scripts/dependency_contracts.py`. Existing 0.27.4 Contents and packages are historical and preserved. No 0.28.0 package, deployment or Workshop publication was requested. Dedicated multiplayer is NOT TESTED; stable release remains BLOCKED.

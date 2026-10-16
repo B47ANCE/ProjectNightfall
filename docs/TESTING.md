@@ -1,6 +1,8 @@
 # Project Nightfall testing
 
-## Current offline entry points — 0.27.4, 2026-10-16
+Current source is 0.28.0. Run `python scripts/check_versions.py`, `python scripts/run_host_tests.py`, `python -m unittest discover -s tests -p "test_*.py"`, then `python scripts/dependency_contracts.py`. See [current validation](VALIDATION_0.28.0.md) for evidence and expected blockers. The current runner uses current sibling contracts; older commands/fixtures below belong to 0.27.4. Current source is not packaged, and whole-family startup/SP/dedicated remain unverified.
+
+## Historical offline entry points — 0.27.4, 2026-10-16
 
 See [packaging validation](PACKAGING_0.27.4.md) for current artifacts and
 [0.27.4 runtime-fix validation](VALIDATION_0.27.4.md) for behavior/evidence;

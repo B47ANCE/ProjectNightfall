@@ -1,43 +1,5 @@
-[b]Version 0.27.4[/b]
+[b]Version 0.28.0 - development source, 2026-10-16[/b]
 
-[h2]Corpse processing fixes[/h2]
-[list]
-[*]Disabling Nightfall or regional UV now stops corpse discovery, death marking, and tissue processing. Re-enabling begins at current exposure time without charging the disabled interval.
-[*]Corpse discovery preserves progress across bounded scan chunks and rotates across emitters instead of restarting or permanently truncating later work.
-[*]Queued scan positions follow moved emitters and stop using removed sources.
-[*]Rejected or throwing pipeline calls report failure without advancing the corpse clock or counting rejected work as successful. Other admitted corpses keep their processing turn.
-[*]Pending journal recovery retains its actual committed time; failed remains-stage updates can retry without replaying dose.
-[/list]
+Reconciles Nightfall with current Power and Knowledge dependency APIs. Adds bounded corpse collection discovery, fair admission under saturation, and intelligent regular effigy destruction. Package tooling can resume interrupted installs and validates source/builder provenance.
 
-Offline regression suite passed. Development package integrity, exact source parity, and reproducibility were validated offline. Dedicated multiplayer NOT TESTED; stable release remains blocked. No deployment or Workshop upload was performed.
-
-[b]Previous 0.27.3 changes[/b]
-
-[h2]Release preparation[/h2]
-• Restricted test kits, guided validation, UV inspection, and exposure-measurement commands to explicit debug sessions.
-• Aligned release tests and packages with the authoritative source and added checks against stale or incomplete packages.
-• Added complete Build 42 JSON localization fallback coverage across all 29 supported language folders.
-• Localized UV bulb names and effigy construction labels without changing Nightfall gameplay behavior.
-
-[h2]Dependency Identity[/h2]
-[list]
-[*]Updated the required experienceWorks Mod ID and every Nightfall research, effigy-knowledge, diagnostic, and test-kit integration to the corrected canonical spelling.
-[*]Kept Nightfall gameplay ownership and existing saved Nightfall state unchanged.
-[/list]
-
-[b]Previous 0.27.0 changes[/b]
-
-[h2]Added[/h2]
-[list]
-[*]Constructed effigies now preserve the canonical Project M.O.R.T.I.S. material and nutrition records from their detached body parts.
-[*]Zombie feeding transactionally depletes preserved effigy material before removing the effigy.
-[*]Effigy hunger restoration now scales from canonical edible calories, with a configurable calories-per-full-feed sandbox setting.
-[*]Legacy effigies without material records remain compatible through the previous fixed-value fallback.
-[/list]
-
-[h2]Roadmap[/h2]
-[list]
-[*]Validate corpse-part construction, effigy persistence, feeding, and hunger replication in game and multiplayer.
-[*]Complete in-game balance, presentation, high-population, hosted, and dedicated-server validation.
-[*]Add native smoke and visible remains-stage presentation only through verified engine adapters.
-[/list]
+Offline tests: 61 Lua files and 18 Python tests PASS. Upstream family dependency migration remains incomplete. Dedicated multiplayer NOT TESTED; G7 and stable-release G8 BLOCKED. No current package or Workshop upload was produced by this source-fix iteration.

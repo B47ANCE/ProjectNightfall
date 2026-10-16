@@ -7,6 +7,7 @@ Sibling dependency checkouts are read from --dependencies (default: parent).
 from __future__ import annotations
 
 import argparse
+import json
 import os
 from pathlib import Path
 
@@ -42,9 +43,8 @@ ARGUMENTS = {
     "uv_metabolism": [MODULE / "PN_UVMetabolism.lua"],
     "uv_migration_contract": [SHARED],
 }
-DEPENDENCIES = {"Project MORTIS": "ProjectMORTIS", "lightWorks": "lightWorks",
-                "powerWorks": "powerWorks", "medWorks": "medWorks",
-                "experienceWorks": "experienceWorks"}
+DEPENDENCIES = {entry["folder"]: entry["mod_id"] for entry in
+                json.loads((ROOT / "SOURCE_INVENTORY.json").read_text())["dependency_sources"]}
 
 
 def main() -> int:

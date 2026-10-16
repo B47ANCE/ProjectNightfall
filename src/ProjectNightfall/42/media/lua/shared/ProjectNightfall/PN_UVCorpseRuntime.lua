@@ -3,7 +3,7 @@
 local Authority=require "Mortis/Runtime/Authority"
 local Anatomy=require "Mortis/Runtime/AnatomyRuntime"
 local Entity=require "Mortis/Runtime/Adapters/EntityAdapter"
-local Corpse=require "Mortis/Runtime/Adapters/CorpseAdapter"
+local Discovery=require "ProjectNightfall/PN_CorpseDiscovery"
 local Tissue=require "ProjectNightfall/PN_UVTissueState"
 local Scheduler=require "ProjectNightfall/PN_UVTissueScheduler"
 local RemainsState=require "ProjectNightfall/PN_UVRemainsState"
@@ -18,10 +18,14 @@ local scanQueue,scanIndex={},1
 local scanSources,sourceByKey,sourceCursor={},{},1
 local pendingStages=setmetatable({},{__mode="k"})
 local corpsePolicySource=nil
+local admissionPressure=false
+-- Eight collection slots per square-budget unit is an internal work bound.
+-- The existing server square budget scales both grid lookups and object reads.
+local OBJECTS_PER_SQUARE=8
 local diagnostics={updates=0,idleUpdates=0,failures=0,totalSquaresScanned=0,totalCandidatesAdded=0,
     totalCorpsesProcessed=0,totalStageChanges=0,lastEmitters=0,lastSquaresScanned=0,
     lastCandidatesAdded=0,lastCandidates=0,lastProcessed=0,lastStageChanges=0,
-    lastScanQueued=0,lastScanRemaining=0}
+    lastScanQueued=0,lastScanRemaining=0,lastObjectsInspected=0,totalObjectsInspected=0}
 
 local function finite(v) return type(v)=="number" and v==v and math.abs(v)<math.huge end
 local function call(o,m)
@@ -125,7 +129,7 @@ end
 
 local function addCandidate(corpse,limit,now)
     if candidates[corpse] then return false end
-    if #candidateQueue>=limit then return false end
+    if #candidateQueue>=limit then admissionPressure=true;return false,"full" end
     local data=Entity.getModData(corpse);local state=data and data[Runtime.KEY]
     -- Exposure before this bounded discovery is unknowable. Re-entering range
     -- after darkness also starts now rather than charging the entire absence.
@@ -135,9 +139,9 @@ local function addCandidate(corpse,limit,now)
 end
 
 local function discover(cell,budget,now,limit)
-    local scanned,added=0,0
+    local scanned,added,inspected=0,0,0
     for _=1,budget do
-        local at=scanQueue[scanIndex];if not at then return scanned,added end
+        local at=scanQueue[scanIndex];if not at then return scanned,added,inspected end
         scanIndex=scanIndex+1
         scanned=scanned+1
         local square=nil
@@ -146,13 +150,17 @@ local function discover(cell,budget,now,limit)
             local ok,value=pcall(function() return cell:getGridSquare(source.x+at.dx,source.y+at.dy,source.z) end)
             square=ok and value or nil
         end
-        for _,corpse in ipairs(Corpse.onSquare(square)) do
+        local _,reads=Discovery.visit(square,OBJECTS_PER_SQUARE,function(corpse)
             if marked(corpse) then
-                if addCandidate(corpse,limit,now) then added=added+1 end
+                local accepted,reason=addCandidate(corpse,limit,now)
+                if accepted then added=added+1 end
+                if reason=="full" then return false end
             end
-        end
+            return true
+        end)
+        inspected=inspected+reads
     end
-    return scanned,added
+    return scanned,added,inspected
 end
 
 local function corpsePolicy()
@@ -179,7 +187,8 @@ local function process(now,budget,cell)
     local visitLimit=math.min(budget,#candidateQueue)
     while #candidateQueue>0 and visited<visitLimit do
         if candidateCursor>#candidateQueue then candidateCursor=1 end
-        local corpse=candidateQueue[candidateCursor]
+        local index=candidateCursor
+        local corpse=candidateQueue[index]
         visited=visited+1
         local nearby=ProjectNightfall.ArtificialUV.getCurrentEmitters(corpse)
         if not marked(corpse) or #nearby==0 then
@@ -212,6 +221,12 @@ local function process(now,budget,cell)
                     local staged,stageReport=updateStage(corpse,state.lastProcessMinute)
                     if not staged then return processed,false,stageReport,stageChanges end
                     if type(stageReport)=="table" and stageReport.changed==true then stageChanges=stageChanges+1 end
+                    -- Under saturation, retire only after a committed interval.
+                    -- Failed/pending journals or pending synchronization retain their turn.
+                    -- Rediscovery starts a new observation interval (no absence backfill).
+                    if admissionPressure and state.lastProcessMinute>=now and not stageReport.syncPending then
+                        candidates[corpse]=nil;table.remove(candidateQueue,index);candidateCursor=index
+                    end
                 end
             end
             processed=processed+1
@@ -225,9 +240,10 @@ local function idle(reason)
     scanSources,sourceByKey,sourceCursor={},{},1
     candidateQueue={};candidates=setmetatable({},{__mode="k"});candidateCursor=1
     pendingStages=setmetatable({},{__mode="k"})
+    Discovery.clear();admissionPressure=false
     diagnostics.idleUpdates=diagnostics.idleUpdates+1;diagnostics.lastEmitters=0
     diagnostics.lastSquaresScanned=0;diagnostics.lastCandidatesAdded=0;diagnostics.lastCandidates=0
-    diagnostics.lastProcessed=0;diagnostics.lastStageChanges=0;diagnostics.lastScanQueued=0;diagnostics.lastScanRemaining=0
+    diagnostics.lastObjectsInspected=0;diagnostics.lastProcessed=0;diagnostics.lastStageChanges=0;diagnostics.lastScanQueued=0;diagnostics.lastScanRemaining=0
     return true,{processed=0,emitters=0,candidates=0,reason=reason}
 end
 
@@ -253,9 +269,12 @@ function Runtime.update(context)
     refreshSources(emitters)
     if scanIndex>#scanQueue then rebuildScan(maximumSquares) end
     local cell=context and context.cell or (getCell and getCell() or nil)
-    local scanned,added=discover(cell,squareBudget,now,candidateLimit)
+    admissionPressure=false
+    local scanned,added,inspected=discover(cell,squareBudget,now,candidateLimit)
     local processed,processedOK,processError,stageChanges=process(now,processBudget,cell)
     local remaining=math.max(0,#scanQueue-scanIndex+1)
+    diagnostics.lastObjectsInspected=inspected
+    diagnostics.totalObjectsInspected=diagnostics.totalObjectsInspected+inspected
     diagnostics.totalSquaresScanned=diagnostics.totalSquaresScanned+scanned
     diagnostics.totalCandidatesAdded=diagnostics.totalCandidatesAdded+added
     diagnostics.totalCorpsesProcessed=diagnostics.totalCorpsesProcessed+processed

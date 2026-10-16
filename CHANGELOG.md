@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.28.0 - current-family integration and audit fixes, 2026-10-16
+
+- Development MINOR: use current Power/Knowledge dependency IDs and APIs, including battery/debug/preset contracts. Nightfall API, save and sandbox schemas stay unchanged; dependency installations migrate as a set.
+- Bound native corpse collection reads and pause discovery at waiting admissions. Retire successfully committed candidates under saturation so later corpses receive dose.
+- Enable intelligent regular effigy destruction; only successful smart destruction propagates hunts/grudges.
+- Prepare recoverable package transactions, resume missing outputs without overwrites, and verify builder/commit/evidence provenance.
+- All 61 Lua and 18 Python offline tests pass. Whole-family startup remains blocked by remaining upstream migrations. See docs/VALIDATION_0.28.0.md.
+- Preserve 0.27.4 Contents, artwork and all artifacts. No new package, deployment, upload or game/server launch. SP/dedicated NOT TESTED; G7/G8 BLOCKED.
+
 ## 0.27.4 — corpse-runtime fixes, 2026-10-16
 
 - Honor both Nightfall and regional-tissue disable gates for corpse discovery, death marking, and processing. Re-enable by discovering at the current minute, with no disabled-time exposure backfill.

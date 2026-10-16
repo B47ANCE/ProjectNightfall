@@ -29,7 +29,7 @@ def main() -> int:
     if inventory["project_version"] != version:
         errors.append("SOURCE_INVENTORY.json version differs from VERSION")
     mirror = inventory.get("packaging_mirror")
-    if mirror and mirror.get("version") != version:
+    if mirror and mirror.get("use_for_release", True) and mirror.get("version") != version:
         errors.append("Declared current packaging mirror version differs from VERSION")
     source = "src/ProjectNightfall/42/"
     mirrors = [

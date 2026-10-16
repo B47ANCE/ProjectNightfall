@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.27.4",
+  "project_version": "0.28.0",
   "canonical_version_file": "VERSION",
   "mod_ids": [
     "ProjectNightfall"
@@ -20,9 +20,9 @@
   "required_mod_ids": [
     "lightWorks",
     "ProjectMORTIS",
-    "powerWorks",
+    "B47ANCEDPower",
     "medWorks",
-    "experienceWorks"
+    "B47ANCEDKnowledgeAndWisdom"
   ],
   "generated_outputs": [
     "Contents/mods/ProjectNightfall",
@@ -37,7 +37,10 @@
     "docs/audits/2026-10-16.json",
     "dist/ProjectNightfall-0.27.3-workshop-ready.zip",
     "docs/VALIDATION_0.27.4.md",
-    "docs/audits/0.27.4.json"
+    "docs/audits/0.27.4.json",
+    "dist/ProjectNightfall-0.27.4-workshop-ready.zip",
+    "docs/PACKAGING_0.27.4.md",
+    "docs/packaging/0.27.4.manifest.json"
   ],
   "developer_local_only": [
     ".agents",
@@ -48,14 +51,13 @@
   ],
   "validation": [
     "python scripts/check_versions.py",
-    "python scripts/check_versions.py --release",
-    "python scripts/package_project.py verify",
-    "python -m unittest discover -s tests -p test_packaging.py -v",
-    "python scripts/run_host_tests.py --dependencies .local/validation-dependencies",
-    "python scripts/audit_project.py --dependencies .local/validation-dependencies"
+    "python scripts/run_host_tests.py",
+    "python -m unittest discover -s tests -p \"test_*.py\"",
+    "python scripts/dependency_contracts.py",
+    "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "Reproducible local development package; verify with python scripts/package_project.py verify. Packaging is not stable-release or MP approval.",
+  "packaging_status": "Current source 0.28.0 is not packaged; 0.27.4 Contents and artifacts are historical and preserved.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",
@@ -64,8 +66,8 @@
   "packaging_mirror": {
     "path": "Contents/mods/ProjectNightfall",
     "version": "0.27.4",
-    "classification": "generated exact mirror of src/ProjectNightfall; source remains authoritative",
-    "use_for_release": true,
+    "classification": "historical generated 0.27.4 mirror; preserved until explicitly requested packaging of current source",
+    "use_for_release": false,
     "retained_previous_copy": {
       "path": "dist/staging-backups/contents-51c590fbd9d0",
       "files": 67,
@@ -73,10 +75,30 @@
     }
   },
   "validation_dependencies": {
-    "lock": "tests/dependencies_0.27.4.json",
-    "scope": "matching historical source snapshots for offline validation; not current renamed-family compatibility",
-    "prepare": "python scripts/prepare_test_dependencies.py",
-    "root": ".local/validation-dependencies",
-    "current_family_status": "NOT VALIDATED: the former powerWorks and experienceWorks source identities have migrated"
-  }
+    "root": "current sibling source checkouts",
+    "scope": "Nightfall uses current public namespaces; transitive upstream migration blockers are reported separately",
+    "historical_lock": "tests/dependencies_0.27.4.json"
+  },
+  "dependency_sources": [
+    {
+      "folder": "B47ANCEDSpectrum",
+      "mod_id": "lightWorks"
+    },
+    {
+      "folder": "Project MORTIS",
+      "mod_id": "ProjectMORTIS"
+    },
+    {
+      "folder": "B47ANCEDPower",
+      "mod_id": "B47ANCEDPower"
+    },
+    {
+      "folder": "medWorks",
+      "mod_id": "medWorks"
+    },
+    {
+      "folder": "B47ANCEDKnowledgeAndWisdom",
+      "mod_id": "B47ANCEDKnowledgeAndWisdom"
+    }
+  ]
 }

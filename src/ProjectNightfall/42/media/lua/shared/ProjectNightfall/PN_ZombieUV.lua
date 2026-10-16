@@ -1170,25 +1170,29 @@ local function applyWeightAction(z,s,map,globalDLS)
         if map.effigyDistance<=1.5 then
             local claimed,claimedEntry=safe("claim effigy",Effigies.claim,map.effigy.id,z,"destroy")
             if claimed then
-                safe("complete effigy destruction",Effigies.completeClaim,map.effigy.id,"destroyed")
-                stats.effigyDestroys=stats.effigyDestroys+1
-                local reaction=map.effigyReaction or {}
-                s.effigyHuntId=map.effigy.id
-                s.effigyHuntUntilHours=(worldAgeHours() or 0)+(tonumber(reaction.searchHours) or 0)
-                s.effigyHuntOriginX=map.effigy.x; s.effigyHuntOriginY=map.effigy.y; s.effigyHuntOriginZ=map.effigy.z
-                s.effigyHuntEnraged=reaction.enraged==true
-                FeralGroups.shareEffigyHunt(z,{
-                    effigyId=map.effigy.id,x=map.effigy.x,y=map.effigy.y,z=map.effigy.z,
-                    huntUntilHours=s.effigyHuntUntilHours,enraged=s.effigyHuntEnraged,
-                    ownerPlayerKey=claimedEntry and claimedEntry.ownerPlayerKey or nil,
-                },tick)
-                if claimedEntry and claimedEntry.ownerPlayerKey then
-                    s.grudgeKey=claimedEntry.ownerPlayerKey
-                    s.grudgeTarget=FeralAI.findPlayerByKey(s.grudgeKey)
-                    if s.grudgeTarget then s.smartTarget=s.grudgeTarget; s.smartMode="STALK" end
-                    persistGrudge(z,s)
+                local completed=safe("complete effigy destruction",Effigies.completeClaim,map.effigy.id,"destroyed")
+                if completed then
+                    stats.effigyDestroys=stats.effigyDestroys+1
+                    local reaction=map.effigyReaction or {}
+                    if reaction.action=="destroy_search" then
+                        s.effigyHuntId=map.effigy.id
+                        s.effigyHuntUntilHours=(worldAgeHours() or 0)+(tonumber(reaction.searchHours) or 0)
+                        s.effigyHuntOriginX=map.effigy.x; s.effigyHuntOriginY=map.effigy.y; s.effigyHuntOriginZ=map.effigy.z
+                        s.effigyHuntEnraged=reaction.enraged==true
+                        FeralGroups.shareEffigyHunt(z,{
+                            effigyId=map.effigy.id,x=map.effigy.x,y=map.effigy.y,z=map.effigy.z,
+                            huntUntilHours=s.effigyHuntUntilHours,enraged=s.effigyHuntEnraged,
+                            ownerPlayerKey=claimedEntry and claimedEntry.ownerPlayerKey or nil,
+                        },tick)
+                        if claimedEntry and claimedEntry.ownerPlayerKey then
+                            s.grudgeKey=claimedEntry.ownerPlayerKey
+                            s.grudgeTarget=FeralAI.findPlayerByKey(s.grudgeKey)
+                            if s.grudgeTarget then s.smartTarget=s.grudgeTarget; s.smartMode="STALK" end
+                            persistGrudge(z,s)
+                        end
+                        stats.effigyHunts=stats.effigyHunts+1
+                    end
                 end
-                stats.effigyHunts=stats.effigyHunts+1
             end
         elseif tick-(s.lastEffigyPathTick or -999999)>=(Config.EffigyRepathTicks or 180) then
             safe("path to effigy",function() z:pathToLocationF(map.effigy.x+0.5,map.effigy.y+0.5,map.effigy.z) end)
@@ -1855,7 +1859,7 @@ end
 local function runGameStart()
     log("OnGameStart fired; UV Weight AI + Feralization diagnostics active")
     safe("dependency diagnostics",ProjectNightfall.DependencyDiagnostics.report,
-        rawget(_G,"lightWorks"),rawget(_G,"powerWorks"),rawget(_G,"Mortis"),rawget(_G,"medWorks"),rawget(_G,"experienceWorks"))
+        rawget(_G,"lightWorks"),rawget(_G,"B47ANCEDPower"),rawget(_G,"Mortis"),rawget(_G,"medWorks"),rawget(_G,"B47ANCEDKnowledgeAndWisdom"))
     initialScanIndex=0
     initialScanComplete=false
     if MortisIntegration.canWriteCanonicalState() then

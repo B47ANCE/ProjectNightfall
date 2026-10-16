@@ -7,7 +7,7 @@ local function body()
 end
 local function fixture()
     local f={now=10,emitters={emitter(0)},bodies={body()},calls={},stageCalls=0,reads=0,
-        authority=true,positions={}}
+        authority=true,positions={},square={}}
     f.config={Enabled=true,EnableRegionalUVTissue=true,
         ArtificialUVCorpseSquareBudgetPerUpdate=16,ArtificialUVCorpseProcessBudgetPerUpdate=1,
         ArtificialUVCorpseCandidateLimit=16,ArtificialUVCorpseMaximumScanSquares=64,
@@ -26,7 +26,7 @@ local function fixture()
         if f.stageFailure then return false,"stage rejected" end
         return true,{changed=false}
     end}
-    package.loaded["Mortis/Runtime/Adapters/CorpseAdapter"]={onSquare=function(square)
+    package.loaded["Mortis/Runtime/Adapters/CorpseAdapter"]={isCorpse=function() return true end,onSquare=function(square)
         return square and f.bodies or {}
     end}
     package.loaded["ProjectNightfall/PN_UVTissueScheduler"]={process=function(target,_,elapsed,finish)
@@ -39,12 +39,14 @@ local function fixture()
         return f.emitters
     end}}
     package.loaded["ProjectNightfall/PN_Config"]=true
+    package.loaded["ProjectNightfall/PN_CorpseDiscovery"]=nil
     package.loaded["ProjectNightfall/PN_UVCorpseRuntime"]=nil
     f.runtime=require "ProjectNightfall/PN_UVCorpseRuntime"
     f.cell={getGridSquare=function(_,x,y,z)
         f.positions[#f.positions+1]={x=x,y=y,z=z}
-        return {}
+        return f.square
     end}
+    f.square.getStaticMovingObjects=function() return f.bodies end
     function f:update() return self.runtime.update({cell=self.cell}) end
     return f
 end
@@ -127,7 +129,7 @@ do
     f.bodies={}
     for index=1,50 do f.bodies[index]=body() end
     f.config.ArtificialUVCorpseProcessBudgetPerUpdate=2
-    for tick=1,20 do
+    for tick=1,200 do
         f.now=10+tick
         local before=#f.calls
         assert(f:update())
@@ -208,3 +210,27 @@ do
     assert(#f.positions==0 and #f.calls==0 and f.reads==0,"clients must not discover, mark, or apply corpse dose")
 end
 print("Nightfall corpse disable/re-enable, moving emitters, budgets and retry regressions passed")
+
+-- Saturation must eventually serve every corpse, including later ones.
+do
+    local f=fixture();f.bodies={}
+    for i=1,50 do f.bodies[i]=body() end
+    f.config.ArtificialUVCorpseProcessBudgetPerUpdate=2
+    for tick=1,1000 do
+        f.now=10+tick;assert(f:update())
+        assert(f.runtime.getDiagnostics().lastCandidates<=16)
+    end
+    local seen={};for _,call in ipairs(f.calls) do seen[call.target]=true end
+    for i,corpse in ipairs(f.bodies) do assert(seen[corpse],"saturated queue starved corpse "..i) end
+end
+-- Bound native collection reads, not just admitted bodies or grid squares.
+do
+    local f=fixture();f.bodies={};local reads=0
+    for i=1,10000 do f.bodies[i]=body() end
+    f.config.ArtificialUVCorpseSquareBudgetPerUpdate=1
+    local entity=package.loaded["Mortis/Runtime/Adapters/EntityAdapter"]
+    entity.getModData=function(e) reads=reads+1;return e.data end
+    assert(f:update())
+    assert(reads<=64,"crowded-square discovery performed unbounded corpse reads")
+    assert(f.runtime.getDiagnostics().lastObjectsInspected<=8)
+end

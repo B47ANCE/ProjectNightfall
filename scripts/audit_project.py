@@ -77,10 +77,8 @@ def main() -> int:
     roots = [SOURCE / "media/lua"]
     dependency_root = args.dependencies.resolve()
     report["dependency_scope"] = "default sibling checkouts" if dependency_root == ROOT.parent.resolve() else "explicit alternate dependency root; verify its provenance separately"
-    for folder, mod_id in (("Project MORTIS", "ProjectMORTIS"), ("lightWorks", "lightWorks"),
-                           ("powerWorks", "powerWorks"), ("medWorks", "medWorks"),
-                           ("experienceWorks", "experienceWorks")):
-        roots.append(dependency_root / folder / "src" / mod_id / "42/media/lua")
+    for dependency in inventory["dependency_sources"]:
+        roots.append(dependency_root / dependency["folder"] / "src" / dependency["mod_id"] / "42/media/lua")
     for root in roots:
         for side in ("shared", "client", "server"):
             base = root / side
@@ -96,7 +94,7 @@ def main() -> int:
             if name.lower() in folded_modules:
                 require_errors.append({"path": path.relative_to(ROOT).as_posix(), "require": name,
                                        "actual": folded_modules[name.lower()]})
-            elif name.split("/")[0] in {"ProjectNightfall", "Mortis", "lightWorks", "powerWorks", "medWorks", "experienceWorks"}:
+            elif name.split("/")[0] in {"ProjectNightfall", "Mortis", "lightWorks", "powerWorks", "medWorks", "experienceWorks", "B47ANCEDPower", "B47ANCEDKnowledgeAndWisdom"}:
                 require_errors.append({"path": path.relative_to(ROOT).as_posix(), "missing": name})
             else:
                 vanilla_unchecked.add(name)
@@ -188,6 +186,8 @@ def main() -> int:
         report["package_validation"] = verify(ROOT)
     except (OSError, ValueError) as error:
         report["package_validation"] = {"error": str(error)}
+    from dependency_contracts import inspect
+    report["dependency_contracts"] = inspect(ROOT, dependency_root)
     report["index_audit"] = staged_audit()
     if args.output:
         output = args.output if args.output.is_absolute() else ROOT / args.output
@@ -195,7 +195,7 @@ def main() -> int:
         output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
     # A stale copy is an audit finding and release blocker, not an all-clear.
-    failed = bool(report["copy_missing"] or report["copy_changed"] or report["copy_extra"] or collisions or
+    failed = bool(report["dependency_contracts"]["direct_errors"] or report["dependency_contracts"]["transitive_errors"] or report["copy_missing"] or report["copy_changed"] or report["copy_extra"] or collisions or
                   localization_errors or require_errors or report["non_lua_runtime_dependencies"] or report["syntax"].get("errors") or
                   any(item["errors"] or item["classification"] == "unclassified" or (item["classification"] != "historical" and item.get("source_differences")) for item in archive_reports) or
                   report.get("protected_files_changed") or report["package_validation"].get("error") or report["index_audit"]["denied_paths"] or

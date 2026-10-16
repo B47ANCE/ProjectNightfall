@@ -113,3 +113,10 @@ local label,level=TargetStimulus.getBleedingSeverity(bleeding)
 assert(label=="None" and level==0)
 
 print("Project Nightfall nil-safe local AI boundary checks passed")
+
+ProjectNightfall.Effigies.findNearbyReaction=function()
+    return {id="regular-effigy"},{actor="intelligentRegular",action="destroy"},1
+end
+local destruction=assert(UVAI.buildWeightMap(zombie,{},0,0,1,0))
+assert(destruction.actual.DESTROY_EFFIGY>0 and destruction.action=="DESTROY_EFFIGY",
+    "intelligent regular destroy reaction must enter the destruction action")

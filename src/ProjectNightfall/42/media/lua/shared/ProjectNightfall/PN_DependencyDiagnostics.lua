@@ -23,8 +23,8 @@ function Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienc
     need(method(lightworks,"registerBulb"), "lightWorks.registerBulb")
     need(method(lightworks,"UV","getSunlightExposure"), "lightWorks.UV.getSunlightExposure")
     need(method(lightworks,"UV","getArtificialExposure"), "lightWorks.UV.getArtificialExposure")
-    need(type(powerworks)=="table", "powerWorks")
-    need(method(powerworks,"registerLoad"), "powerWorks.registerLoad")
+    need(type(powerworks)=="table", "B47ANCEDPower")
+    need(method(powerworks,"registerLoad"), "B47ANCEDPower.registerLoad")
     need(type(mortis)=="table", "Project M.O.R.T.I.S.")
     need(method(mortis,"getTypeId"), "M.O.R.T.I.S. getTypeId")
     need(method(mortis,"Authority","canWriteCanonicalState"), "M.O.R.T.I.S. authority API")
@@ -46,18 +46,18 @@ function Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienc
     need(type(medworks)=="table", "medWorks")
     need(method(medworks,"getDetachedPartProvenance"), "medWorks detached-part API")
     need(method(medworks,"performProcedure"), "medWorks procedure API")
-    need(type(experienceworks)=="table", "experienceWorks")
-    need(method(experienceworks,"registerDocument"), "experienceWorks.registerDocument")
-    need(method(experienceworks,"registerKnowledge"), "experienceWorks.registerKnowledge")
-    need(method(experienceworks,"hasKnowledgeDefinition"), "experienceWorks.hasKnowledgeDefinition")
-    need(method(experienceworks,"hasKnowledge"), "experienceWorks.hasKnowledge")
+    need(type(experienceworks)=="table", "B47ANCEDKnowledgeAndWisdom")
+    need(method(experienceworks,"registerDocument"), "B47ANCEDKnowledgeAndWisdom.registerDocument")
+    need(method(experienceworks,"registerKnowledge"), "B47ANCEDKnowledgeAndWisdom.registerKnowledge")
+    need(method(experienceworks,"hasKnowledgeDefinition"), "B47ANCEDKnowledgeAndWisdom.hasKnowledgeDefinition")
+    need(method(experienceworks,"hasKnowledge"), "B47ANCEDKnowledgeAndWisdom.hasKnowledge")
     return #missing == 0, missing, {
         ProjectNightfall=version(ProjectNightfall),
-        experienceWorks=version(experienceworks),
+        B47ANCEDKnowledgeAndWisdom=version(experienceworks),
         ProjectMORTIS=version(mortis),
         MortisAPI=version(mortis,"API_VERSION"),
         medWorks=version(medworks),
-        powerWorks=version(powerworks),
+        B47ANCEDPower=version(powerworks),
         lightWorks=version(lightworks),
     }
 end
@@ -65,9 +65,9 @@ end
 function Diagnostics.report(lightworks, powerworks, mortis, medworks, experienceworks)
     local ok, missing, versions = Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienceworks)
     if ok then
-        print(string.format("[ProjectNightfall][Dependencies] required family APIs verified: ProjectNightfall=%s experienceWorks=%s ProjectMORTIS=%s MORTIS_API=%s medWorks=%s powerWorks=%s lightWorks=%s",
-            versions.ProjectNightfall,versions.experienceWorks,versions.ProjectMORTIS,
-            versions.MortisAPI,versions.medWorks,versions.powerWorks,versions.lightWorks))
+        print(string.format("[ProjectNightfall][Dependencies] required family APIs verified: ProjectNightfall=%s B47ANCEDKnowledgeAndWisdom=%s ProjectMORTIS=%s MORTIS_API=%s medWorks=%s B47ANCEDPower=%s lightWorks=%s",
+            versions.ProjectNightfall,versions.B47ANCEDKnowledgeAndWisdom,versions.ProjectMORTIS,
+            versions.MortisAPI,versions.medWorks,versions.B47ANCEDPower,versions.lightWorks))
     else
         print("[ProjectNightfall][Dependencies] ERROR incomplete required installation: " .. table.concat(missing, ", "))
     end

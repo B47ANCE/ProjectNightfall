@@ -1,17 +1,10 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.27.4.
+Canonical version: 0.28.0.
 
-## Current slice and next gates — 2026-10-16
+## Current slice and next gates - 2026-10-16
 
-The 0.27.4 PATCH fixes corpse disable/re-enable gates, fair discovery across chunk
-and cap boundaries, moved-source scans, and observable pipeline failure reporting.
-All 59 host test files pass offline, including the five historical audit cases.
-See [current validation](VALIDATION_0.27.4.md); the [takeover audit](AUDIT_2026-10-16.md)
-remains historical evidence. The [packaging follow-up](PACKAGING_0.27.4.md) now
-provides a reproducible verified ZIP and current Contents mirror, preserving the
-old tree and all historical outputs. Next collect clean-launcher SP and dedicated
-MP evidence; packaging does not clear those gates.
+Current 0.28.0 reconciles Nightfall's Power/Knowledge contracts and fixes audit findings 2-6 with offline regressions. All 61 Lua and 18 Python tests pass for the recorded dependency snapshots. See [current validation](VALIDATION_0.28.0.md). Whole-family startup remains blocked by upstream migration; SP/dedicated are NOT TESTED. Current source is not packaged. The [0.27.4 package evidence](PACKAGING_0.27.4.md) remains historical, with its Contents/ZIP bytes preserved.
 
 ## Implemented
 

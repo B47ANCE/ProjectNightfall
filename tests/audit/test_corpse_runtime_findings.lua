@@ -17,8 +17,8 @@ local function fixture(emitters,budget,maximum)
     package.loaded["ProjectNightfall/PN_UVTissueState"]={}
     package.loaded["ProjectNightfall/PN_UVRemainsState"]={update=function() return true,{} end}
     local corpse={data={PN_UVCorpse={schemaVersion=1,infected=true}}}
-    local square={}
-    package.loaded["Mortis/Runtime/Adapters/CorpseAdapter"]={onSquare=function(s)
+    local square={getStaticMovingObjects=function() return {corpse} end}
+    package.loaded["Mortis/Runtime/Adapters/CorpseAdapter"]={isCorpse=function() return true end,onSquare=function(s)
         return s==square and {corpse} or {}
     end}
     local calls=0
@@ -35,6 +35,7 @@ local function fixture(emitters,budget,maximum)
         UVCorpseDestructionStageThresholds={.1,.35,.65,.9}}
     ProjectNightfall={Config={POC=config},ArtificialUV={getCurrentEmitters=function() return emitters end}}
     package.loaded["ProjectNightfall/PN_Config"]=true
+    package.loaded["ProjectNightfall/PN_CorpseDiscovery"]=nil
     package.loaded["ProjectNightfall/PN_UVCorpseRuntime"]=nil
     local runtime=require "ProjectNightfall/PN_UVCorpseRuntime"
     return {runtime=runtime,config=config,square=square,

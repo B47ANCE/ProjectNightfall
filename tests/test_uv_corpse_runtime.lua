@@ -12,8 +12,8 @@ package.loaded["Mortis/Runtime/AnatomyRuntime"]={get=function() return {speciesI
     tissueSnapshot=function() return tissueAvailable and {capacity=100,remaining=100,regions={}} or nil,"regional tissue unavailable" end,
     flush=function() return flushAvailable,flushAvailable and nil or "persistence unavailable" end}
 package.loaded["ProjectNightfall/PN_UVTissueState"]={snapshot=function() return {schemaVersion=2,regions={}} end}
-local square={}
-package.loaded["Mortis/Runtime/Adapters/CorpseAdapter"]={onSquare=function(got)
+local square={getStaticMovingObjects=function() return {corpse} end}
+package.loaded["Mortis/Runtime/Adapters/CorpseAdapter"]={isCorpse=function() return true end,onSquare=function(got)
     return got==square and {corpse} or {}
 end}
 local schedulerCalls={}

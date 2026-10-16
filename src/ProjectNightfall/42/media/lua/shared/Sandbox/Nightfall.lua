@@ -232,7 +232,7 @@ preset.MORTISSystems = {
     FoodValueMultiplier = 1.0,
 }
 
-preset.powerWorks = {
+preset.B47ANCEDPower = {
     BatteryCapacityMultiplier = 1.0,
     GlobalConsumptionMultiplier = 1.0,
     UVConsumptionMultiplier = 1.0,
