@@ -1,9 +1,47 @@
 # Project Nightfall testing
 
-See [current in-game test handoff](IN_GAME_TEST_HANDOFF.md) for the frozen six-mod
-test set, latest preflight evidence, and compact gameplay priorities.
+## Current offline entry points — 2026-10-16
 
-## Automated preflight
+See the [takeover audit](AUDIT_2026-10-16.md) for current findings and exact evidence.
+Run from the project root using Python 3 with `lupa.lua51` installed and the five
+dependency source checkouts in the sibling layout described in AGENTS.md:
+
+```text
+python scripts/check_versions.py
+python scripts/run_host_tests.py
+python scripts/run_host_tests.py --legacy-only
+python scripts/audit_project.py
+python scripts/check_versions.py --release
+```
+
+Current source versions PASS. The original suite passes 57/57 files in offline
+Lua 5.1. The default complete suite includes five intended-behavior assertions in
+`tests/audit/test_corpse_runtime_findings.lua`; all five currently fail. The complete
+suite is therefore 57/58 files PASS, exit 1. Do not report the legacy subset as
+full regression success. `--only tests/audit/test_corpse_runtime_findings.lua`
+isolates the findings. `--verbose` includes successful tests' diagnostic output.
+
+The project audit exits 1 for stale Contents. The release consistency check also
+fails for that drift. These failures are intentional reporting of unresolved
+issues, not permission to rebuild packages. No current packaging/deployment
+entry point is verified. The source-only check does not clear those blockers.
+
+53 authoritative Lua files compile in Lua 5.1; 29 localization folders have English
+key parity. This proves neither Kahlua compatibility nor translation quality.
+The existing 0.27.3 ZIP matches current source bytes and passes the recorded
+archive checks; no new package was generated.
+
+SP, hosted, native transport/serialization, clean-launcher compatibility and
+dedicated multiplayer were not exercised. G7 BLOCKED / NOT TESTED; G8 BLOCKED.
+The [in-game handoff](IN_GAME_TEST_HANDOFF.md) remains useful as a historical
+checklist, but its missing tools and old test totals are not current evidence.
+
+## Historical preflight and regression coverage
+
+The shared `tools/Verify-NightfallRelease.ps1`, `tools/Run-HostTests.ps1` and
+`tools/Analyze-NightfallConsole.ps1` paths referenced below were unavailable in
+the takeover layout. Preserve these earlier instructions as historical evidence;
+use the current offline commands above until the shared workflow is recovered.
 
 Den-defense tests inject explicit path rejection, native path exceptions, and
 failed objective cleanup. A cancellation waiting for cleanup must never attack;

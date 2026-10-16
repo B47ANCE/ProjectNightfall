@@ -2,6 +2,15 @@
 
 Canonical version: 0.27.3.
 
+## Immediate next slice — takeover audit 2026-10-16
+
+Fix corpse-runtime disable gates, fair discovery across reset/cap boundaries,
+and observable pipeline failure reporting. Five new offline reproducers currently
+fail; see [audit and ordered next steps](AUDIT_2026-10-16.md). The recommended
+compatible bug-fix version is 0.27.4; it is not implemented by the onboarding.
+Recover packaging tooling and reconcile stale Contents separately, preserving
+historical outputs. Clean-launcher SP and dedicated MP evidence remain required.
+
 ## Implemented
 
 - Sunlight hibernation, starvation-gated Feral conversion, Smart/Alpha policies,

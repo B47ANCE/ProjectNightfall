@@ -2,6 +2,11 @@
 
 > Consolidated status: [MASTER_ROADMAP.md](MASTER_ROADMAP.md).
 
+Current priority: the [2026-10-16 audit](AUDIT_2026-10-16.md) reproduces five
+corpse-runtime failures and confirms stale packaging input. Resolve those bounded
+correctness issues before new smoke, condition, or migration features. The
+onboarding changes no gameplay and supplies no new runtime PASS evidence.
+
 ## Current implementation
 
 Project Nightfall owns sunlight hibernation, starvation-gated Feral conversion,

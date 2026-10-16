@@ -5,7 +5,8 @@ and first-slice contract audited on 2026-09-05.
 
 ## Decision
 
-Do not add the condition runtime to the current 0.27.1 source yet. The approved
+At the historical audit, the source was 0.27.1; the current source is tracked by
+root VERSION and the master roadmap. Do not add the condition runtime yet. The approved
 coding handoff schedules EXT-27 only after the existing Nightfall release gates,
 while the project roadmap still requires native calibration, preset validation,
 high-population stress, hibernation/traversal checks, UV presentation checks, and

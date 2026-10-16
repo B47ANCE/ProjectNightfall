@@ -1,5 +1,10 @@
 # Nightfall release-candidate test handoff
 
+> Historical 2026-09-24 snapshot. The [2026-10-16 audit](AUDIT_2026-10-16.md)
+> supersedes setup/tooling and current validation status. Referenced shared tools
+> and staging paths are not verified in the present layout. No historical test
+> count, installation observation, or package claim is current runtime evidence.
+
 Source audit updated 2026-09-24. Phase: release preflight and preparation for
 in-game validation, followed by fixes driven by test findings. This is not 1.0
 certification. Source versions below supersede the stale September 1 table;

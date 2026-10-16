@@ -48,4 +48,8 @@ Nightfall defines and controls Transforming, Feral, and Smart Feral zombies. It 
 - [Roadmap](docs/ROADMAP.md)
 - [Vanilla horde/pathing audit](docs/VANILLA_HORDE_INTEGRATION.md)
 
-The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods` is a preserved packaging copy. Versions use `MAJOR.MINOR.PATCH`.
+The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods` is a preserved **stale 0.27.1 packaging copy**, not interchangeable with source. Root `VERSION` is canonical; see [version policy](docs/VERSION_POLICY.md) and [source inventory](SOURCE_INVENTORY.json).
+
+Public development repository: [B47ANCE/ProjectNightfall](https://github.com/B47ANCE/ProjectNightfall).
+
+The [2026-10-16 audit](docs/AUDIT_2026-10-16.md) records five reproducible corpse-runtime failures, packaging drift, and remaining runtime gates. The original 57 host tests pass offline; the full suite includes the new failing audit regressions. Dedicated multiplayer is NOT TESTED and stable release remains BLOCKED. See [testing](docs/TESTING.md) for current commands. No deployment or Workshop publication occurred during onboarding.
