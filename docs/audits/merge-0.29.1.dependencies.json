@@ -1,0 +1,45 @@
+{
+  "scope": "Combined 0.29.1 merge validation, clean public commit-pinned fixtures; offline only",
+  "dependencies": [
+    {
+      "folder": "B47ANCEDSpectrum",
+      "url": "https://github.com/B47ANCE/B47ANCEDSpectrum.git",
+      "mod_id": "lightWorks",
+      "commit": "a2a018393c417c5e29dfda6153266c65b0e5da41",
+      "version": "0.28.0",
+      "git_source_tree": "b691f42a9c9ee84e0310b446a8e93fc281c38f93"
+    },
+    {
+      "folder": "Project MORTIS",
+      "url": "https://github.com/B47ANCE/ProjectMORTIS.git",
+      "mod_id": "ProjectMORTIS",
+      "commit": "f0358fef2ec4519cbfb26bad641699488c7f8ec9",
+      "version": "0.25.0-dev.4",
+      "git_source_tree": "cdf88b660670c8d6c367db18ec387daf7f641d54"
+    },
+    {
+      "folder": "B47ANCEDPower",
+      "url": "https://github.com/B47ANCE/B47ANCEDPower.git",
+      "mod_id": "B47ANCEDPower",
+      "commit": "40ff9ebfe247d56d7dd2e308e7b7eabfb61a7ce0",
+      "version": "0.17.0-dev.1",
+      "git_source_tree": "30b97864ab3467b9468a71e6c35ed44bc717f8d4"
+    },
+    {
+      "folder": "B47ANCEDHealthCare",
+      "url": "https://github.com/B47ANCE/B47ANCEDHealthCare.git",
+      "mod_id": "B47ANCEDHealthCare",
+      "commit": "0c7fd8defe24d859db69d585c7a3f0b5f9649c76",
+      "version": "0.10.0",
+      "git_source_tree": "7de19e080ad238d2dd6522be156cc460678e7087"
+    },
+    {
+      "folder": "B47ANCEDKnowledgeAndWisdom",
+      "url": "https://github.com/B47ANCE/B47ANCEDKnowledgeAndWisdom.git",
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "commit": "ca5b724c63d49ab224f96b2daea3e17ad7498e44",
+      "version": "0.15.0",
+      "git_source_tree": "f360d58a11bc7477deb8267d9fa2bf63d375764c"
+    }
+  ]
+}

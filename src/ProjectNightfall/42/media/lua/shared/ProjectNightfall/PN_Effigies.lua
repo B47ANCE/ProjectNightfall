@@ -12,6 +12,8 @@ local DATA_KEY="ProjectNightfallEffigy"
 local BUCKET_SIZE=16
 local MAX_PARTS=16
 local entries,buckets={},{}
+local foodLeases,foodCommits={},{}
+local FOOD_PROVIDER="ProjectNightfall.effigies"
 local sequence=0
 local constructing=setmetatable({},{__mode="k"})
 local eventErrorReported=false
@@ -52,8 +54,8 @@ local function position(object)
     if not object then return nil end
     local ok,x,y,z=pcall(function() return object:getX(),object:getY(),object:getZ() end)
     if not ok then return nil end
-    x,y,z=finite(x),finite(y),finite(z) or 0
-    if not x or not y then return nil end
+    x,y,z=finite(x),finite(y),finite(z)
+    if not x or not y or not z then return nil end
     return x,y,z
 end
 
@@ -61,19 +63,19 @@ local function bucketKey(x,y,z)
     return table.concat({math.floor(x/BUCKET_SIZE),math.floor(y/BUCKET_SIZE),math.floor(z)},":")
 end
 
-local function persist(entry)
+local function persist(entry,silent)
     local object=entry.object
     if not object or not object.getModData then return false,"object has no modData" end
     local ok,data=pcall(function() return object:getModData() end)
     if not ok or type(data)~="table" then return false,"object modData unavailable" end
     data[DATA_KEY]={
         schemaVersion=1,id=entry.id,x=entry.x,y=entry.y,z=entry.z,
-        composition=entry.composition,status=entry.status,claim=entry.claim,
+        composition=Util.deepCopy(entry.composition),status=entry.status,claim=Util.deepCopy(entry.claim),revision=entry.revision or 0,
         ownerStableId=entry.ownerStableId,ownerPlayerKey=entry.ownerPlayerKey,
         createdWorldAgeHours=entry.createdWorldAgeHours,
     }
-    if object.transmitModData then pcall(function() object:transmitModData() end) end
-    return true
+    if not silent and object.transmitModData then pcall(function() object:transmitModData() end) end
+    return true,nil,data[DATA_KEY]
 end
 
 local function index(entry)
@@ -179,11 +181,9 @@ local function transactionToken(entry,index,regionIndex)
     return string.format("PN.EffigyFeed:%s:%d:%d",id,index,regionIndex)
 end
 
-function Effigies.consumeMaterial(entry)
-    if type(entry)~="table" or entry.status~="claimed" or not entry.claim
-        or entry.claim.action~="consume" then return nil,"effigy is not claimed for consumption" end
+local function planConsumption(entry)
     local before,err=Effigies.nutritionSnapshot(entry.composition);if not before then return nil,err end
-    if before.canonicalParts==0 then return {legacy=true,foodValue=.50,nutrition=before} end
+    if before.canonicalParts==0 then return {legacy=true,foodValue=.50,nutrition=before},Util.deepCopy(entry.composition) end
     if before.edible<=0 then return nil,"effigy has no edible material" end
     local nextComposition=Util.deepCopy(entry.composition)
     for partIndex,part in ipairs(nextComposition.parts) do
@@ -202,11 +202,21 @@ function Effigies.consumeMaterial(entry)
             end
         end
     end
-    local prior=entry.composition;entry.composition=nextComposition
-    local saved,saveErr=persist(entry)
-    if not saved then entry.composition=prior;return nil,saveErr end
     local value=before.calories>0 and before.calories/caloriesPerFullFeed() or before.edible/100
-    return {legacy=false,foodValue=math.max(.01,math.min(1,value)),nutrition=before}
+    return {legacy=false,foodValue=math.max(.01,math.min(1,value)),nutrition=before},nextComposition
+end
+
+function Effigies.consumeMaterial(entry)
+    if not canWrite(entry and entry.object) then return nil,"non-authority" end
+    if type(entry)~="table" or entry.status~="claimed" or not entry.claim
+        or entry.claim.action~="consume" or foodLeases[entry.id] then return nil,"effigy is not claimed for consumption" end
+    local result,nextComposition=planConsumption(entry)
+    if not result then return nil,nextComposition end
+    local prior,revision=entry.composition,entry.revision or 0
+    entry.composition=nextComposition;entry.revision=revision+1
+    local saved,saveErr=persist(entry)
+    if not saved then entry.composition=prior;entry.revision=revision;return nil,saveErr end
+    return result
 end
 
 -- Shared read-only checks used by menus, queued actions and canonical execution.
@@ -318,15 +328,19 @@ function Effigies.registerPlaced(object,composition,metadata)
     if not x then return nil,"effigy has no world position" end
     local existingData=safeCall(object,"getModData")
     local existing=type(existingData)=="table" and existingData[DATA_KEY] or nil
-    local id=existing and existing.id or metadata.id
+    if type(existing)=="table" then return Effigies.restorePlaced(object) end
+    local id=metadata.id
     if not id then
         sequence=sequence+1
         id=string.format("PN-E-%d-%d-%d-%d-%d",math.floor(x),math.floor(y),math.floor(z),math.floor(ageHours()*60),sequence)
     end
     if type(id)~="string" or id=="" or #id>256 then return nil,"invalid effigy id" end
-    if entries[id] then return entries[id] end
+    if entries[id] then
+        if entries[id].object~=object then return nil,"effigy id belongs to another object" end
+        return entries[id]
+    end
     local entry={id=id,object=object,x=x,y=y,z=z,composition=composition,
-        status="active",claim=nil,ownerStableId=metadata.ownerStableId,
+        status="active",claim=nil,revision=0,ownerStableId=metadata.ownerStableId,
         ownerPlayerKey=metadata.ownerPlayerKey,
         createdWorldAgeHours=ageHours()}
     index(entry)
@@ -344,10 +358,15 @@ function Effigies.restorePlaced(object)
     local composition,compositionError=validateComposition(stored.composition,3)
     if not composition then return nil,compositionError end
     if stored.status~="active" and stored.status~="claimed" then return nil,"effigy is not active" end
-    if entries[stored.id] then return entries[stored.id] end
+    if entries[stored.id] then
+        if entries[stored.id].object~=object then return nil,"effigy id belongs to another object" end
+        return entries[stored.id]
+    end
     local x,y,z=position(object)
     if not x then return nil,"effigy has no world position" end
-    local entry={id=stored.id,object=object,x=x,y=y,z=z,composition=composition,
+    local revision=stored.revision==nil and 0 or finite(stored.revision)
+    if not revision or revision<0 or revision~=math.floor(revision) then return nil,"invalid effigy revision" end
+    local entry={id=stored.id,object=object,x=x,y=y,z=z,composition=composition,revision=revision,
         status=stored.status or "active",claim=stored.claim,
         ownerStableId=stored.ownerStableId,ownerPlayerKey=stored.ownerPlayerKey,
         createdWorldAgeHours=stored.createdWorldAgeHours}
@@ -365,7 +384,7 @@ function Effigies.nearby(zombie,radius)
     for bx=bx1,bx2 do for by=by1,by2 do
         local bucket=buckets[table.concat({bx,by,math.floor(z)},":")]
         if bucket then for id,entry in pairs(bucket) do
-            if not seen[id] and entry.status=="active" then
+            if not seen[id] and entry.status=="active" and not foodLeases[id] then
                 seen[id]=true
                 local dx,dy=entry.x-x,entry.y-y
                 local distanceSq=dx*dx+dy*dy
@@ -381,22 +400,26 @@ function Effigies.claim(id,zombie,action)
     if not canWrite(zombie) then return false,"non-authority" end
     if type(action)~="string" or action=="" or #action>64 then return false,"invalid-action" end
     local entry=entries[id]
-    if not entry or entry.status~="active" then return false,"not-active" end
+    if not entry or entry.status~="active" or foodLeases[id] then return false,"not-active" end
+    local revision=entry.revision or 0
     entry.status="claimed"
+    entry.revision=revision+1
     entry.claim={action=action,claimantStableId=Mortis.getStableId(zombie),worldAgeHours=ageHours()}
     local persisted,reason=persist(entry)
-    if not persisted then entry.status="active"; entry.claim=nil; return false,reason end
+    if not persisted then entry.status="active"; entry.claim=nil;entry.revision=revision; return false,reason end
     return true,entry
 end
 
 function Effigies.completeClaim(id,outcome)
     local entry=entries[id]
-    if not entry or entry.status~="claimed" then return false,"not-claimed" end
+    if not canWrite(entry and entry.object) then return false,"non-authority" end
+    if not entry or entry.status~="claimed" or foodLeases[id] then return false,"not-claimed" end
     if outcome~="consumed" and outcome~="destroyed" then return false,"invalid-outcome" end
-    local previousStatus,previousClaim=entry.status,entry.claim
+    local previousStatus,previousClaim,revision=entry.status,entry.claim,entry.revision or 0
     entry.status=outcome
+    entry.revision=revision+1
     local persisted,reason=persist(entry)
-    if not persisted then entry.status=previousStatus; entry.claim=previousClaim; return false,reason end
+    if not persisted then entry.status=previousStatus; entry.claim=previousClaim;entry.revision=revision; return false,reason end
     local object=entry.object
     if object then
         if object.removeFromWorld then pcall(function() object:removeFromWorld() end) end
@@ -449,9 +472,116 @@ function Effigies.reactionFor(zombie,sourceSignature,config)
     return {actor=actor,action="ignore",reason="unknown-source"}
 end
 
-if Mortis.FoodSources and not Mortis.FoodSources.has("ProjectNightfall.effigies") then
+-- The lease is process-local and synchronous. Only committed ZombieFed may
+-- remove the native object; commit itself must remain completely reversible.
+local function eligibleFood(zombie,candidate,entry)
+    if not canWrite(zombie) or not canWrite(entry and entry.object) then return false end
+    if type(candidate)~="table" or not entry or entries[entry.id]~=entry
+        or candidate.source~=entry.object or candidate.sourceId~=entry.id
+        or entry.status~="active" or safeCall(entry.object,"getSquare")==nil then return false end
+    local x,y,z=position(zombie)
+    local ox,oy,oz=position(entry.object)
+    if not x or not ox or math.floor(z)~=math.floor(oz)
+        or ox~=entry.x or oy~=entry.y or oz~=entry.z
+        or (x-ox)^2+(y-oy)^2>1.25^2 then return false end
+    return Effigies.reactionFor(zombie,entry.composition.signature).action=="consume"
+end
+
+local function reserveFood(zombie,candidate,context)
+    local entry=type(candidate)=="table" and entries[candidate.sourceId] or nil
+    if type(context)~="table" or context.effigyTransaction or not eligibleFood(zombie,candidate,entry)
+        or foodLeases[entry.id] or not Mortis.Events or type(Mortis.Events.on)~="function" then
+        return {reserved=false}
+    end
+    local data=safeCall(entry.object,"getModData")
+    local stored=type(data)=="table" and data[DATA_KEY] or nil
+    if type(stored)~="table" or stored.id~=entry.id or stored.status~="active"
+        or (stored.revision or 0)~=entry.revision then return {reserved=false} end
+    local tx={entry=entry,actor=zombie,object=entry.object,revision=entry.revision,
+        composition=entry.composition,claim=entry.claim,status=entry.status,beforeStored=stored}
+    context.effigyTransaction=tx
+    foodLeases[entry.id]=tx
+    local result,planned=planConsumption(entry)
+    if not result then return {reserved=false,reason=planned} end
+    tx.result,tx.planned=result,planned
+    return {reserved=true,foodValue=result.foodValue,nutrition=result.nutrition}
+end
+
+local function commitFood(zombie,candidate,context)
+    local tx=context and context.effigyTransaction
+    local entry=tx and tx.entry
+    if not tx or tx.actor~=zombie or tx.wrote or not tx.planned
+        or foodLeases[entry.id]~=tx or not eligibleFood(zombie,candidate,entry)
+        or entry.revision~=tx.revision or entry.composition~=tx.composition then return false end
+    local data=safeCall(tx.object,"getModData")
+    if type(data)~="table" or data[DATA_KEY]~=tx.beforeStored
+        or tx.beforeStored.status~="active" or (tx.beforeStored.revision or 0)~=tx.revision then return false end
+    local claim={action="consume",claimantStableId=Mortis.getStableId(zombie),worldAgeHours=ageHours()}
+    tx.wrote=true
+    entry.composition=tx.planned
+    entry.status="consumed"
+    entry.claim=claim
+    entry.revision=tx.revision+1
+    local saved,_,stored=persist(entry,true)
+    tx.afterStored=stored
+    if not saved then return false end
+    foodCommits[entry.id]=tx
+    return true
+end
+
+local function rollbackFood(zombie,candidate,context)
+    local tx=context and context.effigyTransaction
+    if not tx then return true end
+    if tx.rolledBack then return true end
+    local entry=tx.entry
+    if tx.actor~=zombie or type(candidate)~="table" or candidate.sourceId~=entry.id
+        or candidate.source~=tx.object or foodLeases[entry.id]~=tx then return false end
+    if tx.wrote then
+        -- Never overwrite a newer source state or a different native wrapper.
+        if not canWrite(tx.object) or entries[entry.id]~=entry or entry.object~=tx.object
+            or entry.revision~=tx.revision+1 or entry.composition~=tx.planned then return false end
+        local data=safeCall(tx.object,"getModData")
+        if type(data)~="table" or (data[DATA_KEY]~=tx.beforeStored and (tx.afterStored==nil or data[DATA_KEY]~=tx.afterStored)) then return false end
+        data[DATA_KEY]=tx.beforeStored
+        if data[DATA_KEY]~=tx.beforeStored then return false end
+        entry.composition,entry.status,entry.claim,entry.revision=tx.composition,tx.status,tx.claim,tx.revision
+    end
+    if foodCommits[entry.id]==tx then foodCommits[entry.id]=nil end
+    foodLeases[entry.id]=nil
+    tx.rolledBack=true
+    return true
+end
+
+local cleanupErrorReported=false
+local function finishFood(zombie,_,__,metadata)
+    if type(metadata)~="table" or metadata.providerId~=FOOD_PROVIDER then return end
+    local tx=foodCommits[metadata.sourceId]
+    if not tx or tx.actor~=zombie or tx.object~=metadata.source then return end
+    local entry=tx.entry
+    if not canWrite(tx.object) or entries[entry.id]~=entry or entry.object~=tx.object
+        or entry.status~="consumed" or entry.revision~=tx.revision+1 then return end
+    foodCommits[entry.id],foodLeases[entry.id]=nil,nil
+    -- A consumed tombstone survives a native cleanup failure and cannot feed again.
+    local object=tx.object
+    local ok=true
+    for _,method in ipairs({"transmitModData","removeFromWorld","removeFromSquare"}) do
+        local worked=pcall(function()
+            if type(object[method])~="function" then error("missing "..method) end
+            object[method](object)
+        end)
+        if not worked then ok=false end
+    end
+    unindex(entry)
+    if not ok and not cleanupErrorReported then
+        cleanupErrorReported=true
+        pcall(print,"[ProjectNightfall][Effigies] feed committed; native effigy cleanup requires inspection")
+    end
+end
+if Mortis.Events and type(Mortis.Events.on)=="function" then Mortis.Events:on("ZombieFed",finishFood) end
+
+if Mortis.FoodSources and not Mortis.FoodSources.has(FOOD_PROVIDER) then
     Mortis.registerFoodSourceProvider({
-        id="ProjectNightfall.effigies",priority=40,sourceClass="ProjectNightfall.effigy",
+        id=FOOD_PROVIDER,priority=40,sourceClass="ProjectNightfall.effigy",transactionVersion=1,
         findNearby=function(zombie,radius)
             local entry,reaction=Effigies.findNearbyReaction(zombie,radius)
             if not entry or (reaction.action~="consume" and reaction.action~="attract") then return nil end
@@ -462,20 +592,7 @@ if Mortis.FoodSources and not Mortis.FoodSources.has("ProjectNightfall.effigies"
                 sourceClass="ProjectNightfall.effigy",consumeDistance=1.25,foodValue=foodValue,
                 reaction=reaction,signature=entry.composition.signature}
         end,
-        consume=function(zombie,candidate)
-            local reaction=Effigies.reactionFor(zombie,candidate.signature)
-            if reaction.action~="consume" then return {consumed=false} end
-            local claimed=Effigies.claim(candidate.sourceId,zombie,"consume")
-            if not claimed then return {consumed=false} end
-            local entry=entries[candidate.sourceId]
-            local material,materialError=Effigies.consumeMaterial(entry)
-            if not material then
-                entry.status="active";entry.claim=nil;persist(entry)
-                return {consumed=false,reason=materialError}
-            end
-            local completed=Effigies.completeClaim(candidate.sourceId,"consumed")
-            return {consumed=completed==true,foodValue=material.foodValue,nutrition=material.nutrition}
-        end,
+        reserve=reserveFood,commit=commitFood,rollback=rollbackFood,
     })
 end
 

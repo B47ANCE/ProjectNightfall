@@ -3,3 +3,5 @@
 Completes source audit tooling, historical mirror protection, pinned public dependency fixtures and Linux/Windows offline CI. Adds localization placeholder validation and an explicit English fallback policy. Gameplay and save/network schemas are unchanged from 0.29.0.
 
 Offline: 62 Lua files and 25 Python tests PASS; direct/transitive source contracts PASS for pinned commits. Native UI, SP and dedicated multiplayer NOT TESTED. G7 and stable G8 BLOCKED. Current source is not packaged or published; historical artifacts remain preserved.
+
+Combined source candidate also includes reversible MORTIS effigy feeding, exclusive revision-bound reservations and post-success cleanup. Native SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. No package or upload.

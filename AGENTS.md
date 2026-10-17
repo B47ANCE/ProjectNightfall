@@ -55,7 +55,7 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 ## Validation and iteration
 
-Read `docs/VALIDATION_0.29.1.md` for current audit/implementation/evidence. Earlier 0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
+Read `docs/VALIDATION_0.29.1.md` for current audit/implementation/evidence. Earlier 0.29.1-dev.1/0.29.0/0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
 
 Run with real Python 3.12+ and lupa.lua51:
 
@@ -67,7 +67,7 @@ python scripts/dependency_contracts.py
 python scripts/audit_project.py
 ```
 
-Current evidence: 62 Lua files and 25 Python tests pass offline; direct/transitive source dependency contracts pass for the recorded snapshots. SOURCE_INVENTORY declares actual source folders and Mod IDs. B47ANCEDHealthCare intentionally retains the medWorks Lua/global/item namespace; do not rename public APIs based on folder branding. The gate also compares Nightfall mod.info requirements with selected inventory contracts. Whole-family native startup/transport is not proved by tests.
+Current evidence: 63 Lua files and 25 Python tests pass offline; direct/transitive source dependency contracts pass for the recorded snapshots. SOURCE_INVENTORY declares actual source folders and Mod IDs. B47ANCEDHealthCare intentionally retains the medWorks Lua/global/item namespace; do not rename public APIs based on folder branding. The gate also compares Nightfall mod.info requirements with selected inventory contracts. Whole-family native startup/transport is not proved by tests.
 
 The first remains presentation increment is a production client context-menu row using vanilla's selected corpse and replicated stage. It performs no world scan, transmission, anatomy work or gameplay action. Existing Enabled controls availability; no extra micro-setting. Stage-only labels avoid presenting stale between-stage quantities as live measurements. All translation folders have key parity; non-English entries currently use explicit English fallback. Native smoke, anatomy attachments and visual corpse replacement stay gated until safe adapters/runtime evidence exist.
 

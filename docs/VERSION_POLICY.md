@@ -21,3 +21,5 @@ The 0.28.0 development MINOR reconciles the explicitly requested current depende
 0.29.0 is a development MINOR for the localized read-only remains-inspection presentation increment and current Health Care Mod ID reconciliation. Nightfall schemas, network ownership and gameplay values remain unchanged. Existing 0.27.4 outputs stay historical.
 
 0.29.1 is a development PATCH for audit phase separation, reproducible dependency fixtures, CI and localization validation. Gameplay, schemas, authority and public runtime contracts remain unchanged. Historical Contents is protected by its recorded Git tree and index/worktree checks; it is never promoted to a current release input.
+
+The merge candidate retains canonical 0.29.1, the existing development PATCH from audit PR #3, while including the compatible 0.29.1-dev.1 effigy adapter from PR #2. Original prerelease validation and dependency reports remain historical, not current combined proof. Provider/source IDs, balance, configuration and existing schema-1 records remain compatible. No stable release or tag is implied.

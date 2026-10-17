@@ -1,6 +1,6 @@
 # Nightfall 0.29.1 runtime acceptance handoff
 
-Status: NOT TESTED. No launch, deployment, Workshop distribution or remote modification has been performed. This document makes the remaining tests concrete; it supplies no runtime PASS. Use disposable worlds and backups. The concurrently edited effigy branch is a separate iteration and must be reconciled and retested before a combined build.
+Status: NOT TESTED. No launch, deployment, Workshop distribution or remote modification has been performed. This document makes the remaining tests concrete; it supplies no runtime PASS. Use disposable worlds and backups. The effigy adapter is now reconciled with the audit/CI tooling in the combined 0.29.1 candidate; its native tests remain separate required gates.
 
 ## Prerequisites and evidence
 
@@ -39,3 +39,7 @@ A candidate probe must be separately designed and reviewed for an isolated test 
 - EXT-27 condition: deferred until release and explicit canonical treatment approval. Optional history consumer: deferred until its owning schema exists. Project Remnants remains excluded.
 
 G7 remains BLOCKED / NOT TESTED until dedicated acceptance passes for the exact candidate. Stable G8 remains BLOCKED even when offline CI is green. Any future explicitly authorized Workshop MP test upload is distribution evidence only and requires its own offline gates and labeling.
+
+## Integrated effigy transaction acceptance
+
+Follow EFFIGIES.md on disposable sources with the frozen MORTIS dependency. Verify one successful food quote changes native/component hunger and consumes tissue once; the consumed tombstone precedes post-success world removal. Two actors/competing destruction cannot share a lease. Through a verified test surface, ignored hunger writes and partial source failures must restore tissue/claim/hunger and emit no success event; uncertain foreign revisions retain quarantine. Cleanup failure leaves an inert source. Observe replication, streaming, late join/rejoin and save/restart on both clients. Unsupported fault injection is BLOCKED, not a simulated native PASS. Synchronous compensation is not cross-resource crash atomicity.

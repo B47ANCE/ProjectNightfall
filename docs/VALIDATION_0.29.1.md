@@ -1,3 +1,28 @@
+# Nightfall combined merge candidate - 0.29.1
+
+Canonical 0.29.1 combines audit PR #3 (74b09638d1bdc0edeb8fc0c708d669ed274e2393) with effigy PR #2 (9a681a1f62df87a7eccf946b9796cee92ff8a798). This is the existing compatible development PATCH, not a stable release. The source transaction behavior is unchanged from its reviewed branch; only current metadata/docs are reconciled with the audit/CI tooling. Original reports below and VALIDATION_0.29.1-dev.1.md retain their historical scope.
+
+Current validation uses clean public commit-pinned fixtures from tests/dependencies.lock.json, including the integrated MORTIS main commit. Run prepare_ci_dependencies.py, check_versions.py, run_host_tests.py --dependencies .local/ci-dependencies, unittest discovery, dependency_contracts.py --dependencies .local/ci-dependencies, audit_project.py --dependencies .local/ci-dependencies and fixture --check. Combined results: 63/63 Lua tests and 25/25 Python tests PASS, all current versions and direct/transitive contracts PASS, source audit PASS with 55 Lua syntax files, historical mirror protection, requires/case, Lua-only, locale keys/placeholders and public-index review. The fixture immutability check passes. Exact-head Linux/Windows checks must pass before merge.
+
+The selected MORTIS dependency f0358fef2ec4519cbfb26bad641699488c7f8ec9 is contained in merged main a3238a31f909cec63aeb12c7b7666562c94e34fe; its tested tree matches that main tree. Other inputs remain pinned to the previous audit commits; no live/dirty sibling checkout supplies test code. [Combined fixture record](audits/merge-0.29.1.dependencies.json) records full commits and source-tree IDs. The original provider record used a different/dirty Spectrum snapshot and remains historical.
+
+| Command | Combined result |
+| --- | --- |
+| `python scripts/prepare_ci_dependencies.py` | PASS, five exact public commits |
+| `python scripts/check_versions.py` | PASS, canonical 0.29.1 |
+| `python scripts/run_host_tests.py --dependencies .local/ci-dependencies` | 63/63 PASS |
+| `python -m unittest discover -s tests -p "test_*.py"` | 25/25 PASS, disposable fixtures |
+| `python scripts/dependency_contracts.py --dependencies .local/ci-dependencies` | Direct/transitive PASS |
+| `python scripts/audit_project.py --dependencies .local/ci-dependencies --output .local/source-audit.json` | Source PASS; release consistency BLOCKED on historical Contents/no current package |
+| `python scripts/prepare_ci_dependencies.py --check` | PASS, exact clean fixtures preserved |
+| `git diff --cached --check` | PASS; public index review passes with no denied/credential-pattern paths |
+
+Native ownership, synchronization, material/hunger durability, streaming/rejoin/restart, UI/rendering, fluency and final assets retain their existing open gates. No native fixture ran. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. No production package/deploy/upload or game/server launch.
+
+---
+
+## Historical audit-tooling slice before effigy reconciliation (original report)
+
 # Nightfall 0.29.1 audit completion - 2026-10-16
 
 ## Scope and outcome

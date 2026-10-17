@@ -6,6 +6,7 @@ local Mortis={
     DetachedParts={read=function(item) return {schemaVersion=1,regionId=item.region,speciesId="Mortis.Humanoid",sourceStableId=item.source,sourceTypeId=item.typeId,classifications={
         ["ProjectNightfall.sourceSignature"]={signature=item.signature or signature}
     },subtree=item.subtree} end},
+    Events=require("Mortis/Core/EventBus").new(),
     DetachedMaterialModel=DetachedMaterialModel,
     ZombieHunger={isHungry=function(zombie) return zombie.hungry==true end},
     Authority={canWriteCanonicalState=function() return true end},
@@ -138,23 +139,29 @@ for index,part in ipairs(builtComposition.parts) do
         sourceStableId=part.sourceStableId,sourceTypeId=part.sourceTypeId,signature="regular",materialRecord=part.materialRecord}
 end
 local edibleObject={x=30,y=30,z=0,getX=function(s)return s.x end,getY=function(s)return s.y end,getZ=function(s)return s.z end,
-    getModData=function()return edibleData end,removeFromWorld=function()end,removeFromSquare=function()end}
+    getSquare=function(self)return self end,getModData=function()return edibleData end,removeFromWorld=function()end,removeFromSquare=function()end}
 assert(api.registerPlaced(edibleObject,foodComposition,{id="effigy-food"}))
 local eater={x=30,y=30,z=0,typeId="Feral",getX=function(s)return s.x end,getY=function(s)return s.y end,getZ=function(s)return s.z end}
 local candidate=assert(Mortis.foodProvider.findNearby(eater,5))
 assert(math.abs(candidate.foodValue-.3)<.000001,"effigy food value must derive from canonical calories")
-local result=Mortis.foodProvider.consume(eater,candidate)
-assert(result.consumed and math.abs(result.foodValue-.3)<.000001)
+local tx={}
+local result=Mortis.foodProvider.reserve(eater,candidate,tx)
+assert(result.reserved and math.abs(result.foodValue-.3)<.000001)
+assert(Mortis.foodProvider.commit(eater,candidate,tx))
+Mortis.Events:emit("ZombieFed",eater,.8,.5,{providerId=Mortis.foodProvider.id,sourceId=candidate.sourceId,source=candidate.source})
 assert(result.nutrition.calories==600 and #api.nearby(eater,5)==0)
 local legacyData={}
 local legacyComposition={schemaVersion=1,signature="regular",partCount=3,parts={}}
 for index=1,3 do legacyComposition.parts[index]={schemaVersion=1,regionId="leftArm",speciesId="Mortis.Humanoid",
     sourceStableId="legacy-"..index,signature="regular"} end
 local legacyObject={x=40,y=40,z=0,getX=function(s)return s.x end,getY=function(s)return s.y end,getZ=function(s)return s.z end,
-    getModData=function()return legacyData end,removeFromWorld=function()end,removeFromSquare=function()end}
+    getSquare=function(self)return self end,getModData=function()return legacyData end,removeFromWorld=function()end,removeFromSquare=function()end}
 assert(api.registerPlaced(legacyObject,legacyComposition,{id="effigy-legacy"}))
 eater.x,eater.y=40,40
 local legacyCandidate=assert(Mortis.foodProvider.findNearby(eater,5))
-assert(legacyCandidate.foodValue==.5 and Mortis.foodProvider.consume(eater,legacyCandidate).consumed,
+local legacyTx={}
+assert(legacyCandidate.foodValue==.5 and Mortis.foodProvider.reserve(eater,legacyCandidate,legacyTx).reserved,
     "material-less legacy effigies retain their migration fallback")
+assert(Mortis.foodProvider.commit(eater,legacyCandidate,legacyTx))
+Mortis.Events:emit("ZombieFed",eater,.8,.3,{providerId=Mortis.foodProvider.id,sourceId=legacyCandidate.sourceId,source=legacyCandidate.source})
 print("Project Nightfall effigy composition/reaction checks passed")

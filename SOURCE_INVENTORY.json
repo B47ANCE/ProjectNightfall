@@ -44,7 +44,9 @@
     "docs/VALIDATION_0.28.0.md",
     "docs/audits/0.28.0.dependencies.json",
     "docs/VALIDATION_0.29.0.md",
-    "docs/audits/0.29.0.dependencies.json"
+    "docs/audits/0.29.0.dependencies.json",
+    "docs/VALIDATION_0.29.1-dev.1.md",
+    "docs/audits/0.29.1-dev.1.dependencies.json"
   ],
   "developer_local_only": [
     ".agents",
