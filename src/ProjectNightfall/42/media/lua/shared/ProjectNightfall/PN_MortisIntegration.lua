@@ -109,6 +109,9 @@ function Integration.isNightfallType(typeId)
 end
 
 function Integration.applyIdentityToState(zombie, state)
+    if Integration.canWriteCanonicalState(zombie) and Integration.assignmentPending(zombie) then
+        return nil,"assignment recovery pending"
+    end
     local typeId = Integration.getTypeId(zombie)
     if typeId == Integration.TYPE_ALPHA_FERAL then
         state.phase = "FERAL"
@@ -130,10 +133,88 @@ function Integration.applyIdentityToState(zombie, state)
     return typeId
 end
 
+-- Server-owned recovery metadata is independent of the assignment being cleared.
+-- It survives consumer reloads; native disk/transport durability remains a human gate.
+local RECOVERY_KEY="ProjectNightfallAssignmentRecovery"
+local function recoveryData(zombie)
+    local ok,data=safeCall(zombie and zombie.getModData,zombie)
+    if not ok or type(data)~="table" then return nil,"assignment recovery storage unavailable" end
+    return data
+end
+local function journal(data)
+    local value=data[RECOVERY_KEY]
+    if value==nil then return nil end
+    if type(value)~="table" or getmetatable(value)~=nil or value.version~=1
+        or not Integration.isNightfallType(value.target)
+        or (value.prior~=false and (type(value.prior)~="string" or #value.prior==0 or #value.prior>160))
+        or (value.status~="rollback" and value.status~="uncertain" and value.status~="committed") then
+        return nil,"invalid assignment recovery journal"
+    end
+    for key in pairs(value) do
+        if key~="version" and key~="target" and key~="prior" and key~="status" then
+            return nil,"invalid assignment recovery journal"
+        end
+    end
+    return value
+end
+local function clearCanonical(zombie)
+    if not Mortis.clearAssignment then return false,"M.O.R.T.I.S. clear API unavailable" end
+    local overrides=Mortis.LocomotionOverrides
+    if not overrides or type(overrides.release)~="function" or type(overrides.releaseCeiling)~="function" then
+        return false,"M.O.R.T.I.S. ownership cleanup API unavailable"
+    end
+    -- Never call Overrides.clear(): it would steal other consumers' requests.
+    for _,owner in ipairs({"ProjectNightfall.UVSlow","ProjectNightfall.FeralSprint","ProjectNightfall.BaseSpeed"}) do
+        local called,ok,reason=safeCall(overrides.release,zombie,owner)
+        if not called or ok~=true then return false,reason or "Nightfall owner release failed" end
+    end
+    local called,ok,reason=safeCall(overrides.releaseCeiling,zombie,"ProjectNightfall.TissueInjury")
+    if not called or ok~=true then return false,reason or "Nightfall ceiling release failed" end
+    called,ok,reason=safeCall(Mortis.clearAssignment,zombie)
+    if not called or ok~=true or Mortis.getTypeId(zombie)~=nil then
+        return false,reason or "canonical clear readback failed"
+    end
+    return true
+end
+function Integration.assignmentPending(zombie)
+    local data,err=recoveryData(zombie);if not data then return true,err end
+    local pending;pending,err=journal(data)
+    return pending~=nil or err~=nil,err
+end
+function Integration.recoverAssignment(zombie)
+    if not zombie or not Integration.canWriteCanonicalState(zombie) then return false,"non-authority" end
+    local data,err=recoveryData(zombie);if not data then return false,err end
+    local pending;pending,err=journal(data);if err then return false,err end
+    if not pending then return true,nil,false end
+    if pending.status=="uncertain" then return false,"assignment biology outcome uncertain; recovery pending" end
+    local current=Mortis.getTypeId(zombie)
+    local prior=pending.prior~=false and pending.prior or nil
+    local restored=prior
+    if pending.status=="committed" then
+        if current~=pending.target then return false,"committed assignment identity changed; recovery pending" end
+        restored=pending.target
+    elseif current~=prior then
+        if current~=pending.target then return false,"assignment identity changed; recovery pending" end
+        local called,ok,reason
+        if prior then called,ok,reason=safeCall(Mortis.assign,zombie,prior)
+        else called,ok,reason=safeCall(clearCanonical,zombie) end
+        if not called or not ok or Mortis.getTypeId(zombie)~=prior then
+            return false,"assignment recovery pending: "..tostring(reason or "identity readback failed")
+        end
+    end
+    data[RECOVERY_KEY]=nil
+    if data[RECOVERY_KEY]~=nil then return false,"assignment journal cleanup failed" end
+    return true,"assignment recovered",true,restored or false
+end
+
 function Integration.assign(zombie, typeId)
     if not zombie or not Integration.isNightfallType(typeId) then
         return false, "invalid Nightfall MORTIS assignment"
     end
+    if not Integration.canWriteCanonicalState(zombie) then return false,"non-authority" end
+    local data,storageReason=recoveryData(zombie);if not data then return false,storageReason end
+    local existing,journalError=journal(data)
+    if journalError or existing then return false,journalError or "assignment recovery pending" end
     local multipliers={
         [Integration.TYPE_TRANSFORMING]=finite(Config.TransformingNutritionMultiplier) or DEFAULT_NUTRITION_MULTIPLIERS[Integration.TYPE_TRANSFORMING],
         [Integration.TYPE_FERAL]=finite(Config.FeralNutritionMultiplier) or DEFAULT_NUTRITION_MULTIPLIERS[Integration.TYPE_FERAL],
@@ -146,23 +227,36 @@ function Integration.assign(zombie, typeId)
         end
         local multiplier=finite(multipliers[typeId]);if not multiplier or multiplier<0 then return false,"invalid Nightfall nutrition profile" end
         local receipt,reason=Mortis.Anatomy.applyNutritionProfile(zombie,"ProjectNightfall:"..typeId,multiplier,{transmit=true})
-        return receipt~=nil,reason
+        return type(receipt)=="table",reason
     end
     local prior=Mortis.getTypeId(zombie)
-    if prior == typeId then return applyBiology() end
-    local assigned, reason = Mortis.assign(zombie, typeId)
-    if assigned==nil then return false,reason end
-    local biological,biologyReason=applyBiology()
+    local pending={version=1,prior=prior or false,target=typeId,status="rollback"}
+    data[RECOVERY_KEY]=pending
+    if data[RECOVERY_KEY]~=pending then return false,"assignment journal checkpoint failed" end
+    local called,assigned,reason=true,zombie,nil
+    if prior~=typeId then called,assigned,reason=safeCall(Mortis.assign,zombie,typeId) end
+    local biological,biologyReason=false,reason
+    if called and assigned and Mortis.getTypeId(zombie)==typeId then
+        -- A crash/exception during biology cannot be assumed to have rolled back.
+        pending.status="uncertain"
+        local biologyCalled
+        biologyCalled,biological,biologyReason=safeCall(applyBiology)
+        if not biologyCalled then return false,"assignment biology outcome uncertain; recovery pending" end
+        pending.status=biological and "committed" or "rollback"
+    end
+    local recovered,recoveryReason=Integration.recoverAssignment(zombie)
+    if not recovered then return false,tostring(biologyReason or reason or "assignment failed").."; "..tostring(recoveryReason) end
     if biological then return true end
-    if prior then pcall(Mortis.assign,zombie,prior)
-    elseif Mortis.clearAssignment then pcall(Mortis.clearAssignment,zombie) end
-    return false,biologyReason
+    return false,biologyReason or reason or "assignment failed"
 end
 
 function Integration.clear(zombie)
-    if not zombie then return false, "missing zombie" end
-    if not Mortis.clearAssignment then return false, "M.O.R.T.I.S. clear API unavailable" end
-    return Mortis.clearAssignment(zombie)
+    if not zombie then return false,"missing zombie" end
+    if not Integration.canWriteCanonicalState(zombie) then return false,"non-authority" end
+    local data,err=recoveryData(zombie);if not data then return false,err end
+    local pending;pending,err=journal(data)
+    if err or pending then return false,err or "assignment recovery pending" end
+    return clearCanonical(zombie)
 end
 
 -- Commit M.O.R.T.I.S. identity before Nightfall releases a hibernating zombie.

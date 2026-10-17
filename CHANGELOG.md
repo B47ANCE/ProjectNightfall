@@ -7,6 +7,15 @@
 - Preserve the user-supplied spiked-post concept and define the three matching asset groups. No meshes, sprites or renderer generated.
 - 64 Lua files and 25 Python tests PASS offline; no native/SP/dedicated validation. G7/stable G8 BLOCKED; no package, deploy or upload. See docs/VALIDATION_0.31.0-dev.1.md.
 
+## 0.30.1-dev.1 - MORTIS recovery fixes, 2026-10-17
+
+- Release only Nightfall-owned movement requests/ceiling before canonical clear; disable commits NORMAL only after verified cleanup, with other owners preserved.
+- Defer hibernation when UV-slow release refuses and retain its flag across lifecycle serialization.
+- Check assignment compensation and readback; retain a versioned server recovery journal across consumer reload, gate further lifecycle work, and preserve uncertain/future/conflicting records for explicit review.
+- Separate source API presence from capability readiness; require MORTIS API 1.6 / food transaction v1 and report Knowledge 0.16.0's intentional MP-storage block without bypass.
+- Pin current merged MORTIS and Knowledge inputs, add real-module and production-fragment failure regressions, and update human acceptance cases. Compatible PATCH; balance/settings and existing schemas unchanged, additive recovery record version 1.
+- Offline evidence only. Runtime tests remain human-operated; G7/stable G8 BLOCKED. No package/deploy/launch/upload.
+
 ## 0.30.0 - SPXTRM dependency transition, 2026-10-16
 
 - Documentation planning follow-up, 2026-10-17: record the user-approved reusable effigy container, separate source categories, prohibition on meat/body-part mixing, and three planned visual states. No runtime/art/version change or new gameplay validation.

@@ -6,7 +6,7 @@ Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
-- Required Mod IDs: `lightWorks`, `ProjectMORTIS`, `B47ANCEDPower`, `B47ANCEDHealthCare`, `B47ANCEDKnowledgeAndWisdom`
+- Required Mod IDs: `B47ANCEDSPXTRM`, `ProjectMORTIS`, `B47ANCEDPower`, `B47ANCEDHealthCare`, `B47ANCEDKnowledgeAndWisdom`
 
 ## Ownership
 
@@ -65,3 +65,12 @@ Retained 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces
 Planned effigy increment: a reusable restricted container with separate ordinary-meat and provenance-based body-part categories, and empty/meat-loaded/body-part-loaded visuals. This behavior and its assets are not implemented; see [the agreed container plan](docs/EFFIGY_CONTAINER_PLAN.md).
 
 Development MINOR prerelease 0.31.0-dev.1 starts the effigy container foundation. The read-only policy classifies ordinary Meat food and validated human/regular/Feral/Smart-Feral parts, rejects mixing and nested bags, validates whole batches, and derives EMPTY/MEAT_LOADED/BODY_PART_LOADED. It does not move items or enable a world container. The [native admission audit](docs/EFFIGY_CONTAINER_API_AUDIT.md) identifies a queued-transfer authority gap; live admission/feeding and rendering remain blocked. The supplied spiked-post concept is preserved under art/references. See [current validation](docs/VALIDATION_0.31.0-dev.1.md).
+
+Development PATCH 0.30.1-dev.1 fixes the four audited MORTIS integration findings:
+verified own-owner cleanup before phase commit, retryable UV release before
+hibernation, checked assignment compensation with a retained recovery journal,
+and separate capability-readiness diagnostics. See [recovery contracts and human
+cases](docs/MORTIS_RECOVERY.md) and [recovery validation](docs/VALIDATION_0.30.1-dev.1.md).
+The reviewed [feature overview](docs/MOD_OVERVIEW.json) describes source capability
+and blocked work. All runtime tests remain human-operated; Knowledge MP storage
+is intentionally blocked. G7/stable G8 remain BLOCKED. No package/deploy/upload.

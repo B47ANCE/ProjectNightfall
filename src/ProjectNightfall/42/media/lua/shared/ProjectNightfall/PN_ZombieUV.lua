@@ -272,6 +272,42 @@ local function setSprint(z,s,enabled,reason)
     return false
 end
 
+local recoveryMessages=setmetatable({},{__mode="k"})
+local function recoveryLog(z,kind,reason)
+    local messages=recoveryMessages[z] or {};recoveryMessages[z]=messages
+    local text=tostring(reason):sub(1,256)
+    if messages[kind]~=text then
+        messages[kind]=text
+        log("MORTIS "..kind.." deferred: "..text)
+    end
+end
+
+local function releaseUVSlow(z,s)
+    if not s.uvSlowed then return true end
+    local released,reason=MortisIntegration.setUVSlowed(z,false)
+    if released~=true then
+        recoveryLog(z,"UV slow release",reason)
+        return false
+    end
+    s.uvSlowed=false
+    return true
+end
+
+local function disableFerals(z,s)
+    local cleared,reason=MortisIntegration.clear(z)
+    if cleared~=true then
+        recoveryLog(z,"disabled-feral cleanup",reason)
+        return false
+    end
+    s.phase="NORMAL"
+    s.smartFeral=false
+    s.alphaFeral=false
+    s.sprintActive=false
+    s.sprintReason=nil
+    s.uvSlowed=false
+    return true
+end
+
 local function updateUVSlow(z,s,exposedDLS)
     local artificial=(tonumber(s.artificialUVUntilTick) or -999999)>=tick
     local natural=(tonumber(exposedDLS) or 0)>=(tonumber(Config.UVSlowMinimumExposure) or 0.10)
@@ -583,9 +619,9 @@ function ZombieUV.promoteToSmartFeral(z,source)
         return false
     end
 
-    s.smartFeral=true
     local assigned,assignReason=MortisIntegration.assign(z,MortisIntegration.TYPE_SMART_FERAL)
-    if not assigned then log("MORTIS Smart Feral assignment deferred: "..tostring(assignReason)) end
+    if not assigned then recoveryLog(z,"Smart Feral assignment",assignReason);return false end
+    s.smartFeral=true
     applyLockedTransformationVisual(z,s,"SMART_FERAL")
     local destroyed,dropped,preserved=0,0,0
     if not s.smartGearProcessed then
@@ -704,26 +740,24 @@ local function maintainLockedTransformationVisual(z,s)
 end
 
 local function beginFeralization(z,s,dls)
+    if s.phase~="NORMAL" then return false end
+    -- Release while still standing; a refused owner stays tracked for retry.
+    if not releaseUVSlow(z,s) then return false end
     if not MortisIntegration.captureWalkingBeforeHold(z,s) then return false end
-    if s.phase~="NORMAL" then return end
     local eligible=Config.EnableFerals~=false
     local starvationHours=0
     if eligible and Config.RequireStarvationForFerals~=false then
         eligible,starvationHours=MortisIntegration.hasStarvedFor(z,Config.FeralRequiredStarvationDays or 7)
     end
+    if eligible then
+        local assigned,assignReason=MortisIntegration.assign(z,MortisIntegration.TYPE_TRANSFORMING)
+        if not assigned then recoveryLog(z,"transforming assignment",assignReason);return false end
+    end
     s.phase="TRANSFORMING"
     hibernating[z]=true
     s.feralEligibleAtKnockdown=eligible==true
     s.starvationHoursAtKnockdown=tonumber(starvationHours) or 0
-    if eligible then
-        stats.feralizations=stats.feralizations+1
-        local assigned,assignReason=MortisIntegration.assign(z,MortisIntegration.TYPE_TRANSFORMING)
-        if not assigned then log("MORTIS transforming assignment deferred: "..tostring(assignReason)) end
-    end
-    if s.uvSlowed then
-        MortisIntegration.setUVSlowed(z,false)
-        s.uvSlowed=false
-    end
+    if eligible then stats.feralizations=stats.feralizations+1 end
     if eligible then
         processFeralGearTransition(z,s)
         applyLockedTransformationVisual(z,s,"FERAL")
@@ -798,10 +832,10 @@ end
 local function enterRegularFeralDayDormancy(z,s,dls)
     if s.phase~="FERAL" then return false end
     if not MortisIntegration.captureWalkingBeforeHold(z,s) then return false end
+    local assigned,assignReason=MortisIntegration.assign(z,MortisIntegration.TYPE_TRANSFORMING)
+    if not assigned then recoveryLog(z,"dormant Feral assignment",assignReason);return false end
     s.phase="TRANSFORMING"
     hibernating[z]=true
-    local assigned,assignReason=MortisIntegration.assign(z,MortisIntegration.TYPE_TRANSFORMING)
-    if not assigned then log("MORTIS dormant Feral assignment deferred: "..tostring(assignReason)) end
     s.dayDormant=true
     s.playDeadAtTick=tick+(Config.TransformPlayDeadDelayTicks or 30)
     s.playDeadEngaged=false
@@ -1493,10 +1527,26 @@ end
 local function updateZombie(z)
     if not z then return end
     if not MortisIntegration.canWriteCanonicalState(z) then return end
+    local ready,recoveryReason,recovered,restoredType=MortisIntegration.recoverAssignment(z)
+    if not ready then
+        if Config.Diagnostic then recoveryLog(z,"assignment recovery",recoveryReason) end
+        return
+    end
     if FeralGroups and type(FeralGroups.observe)=="function" then
         safe("observe Feral group spatial index",FeralGroups.observe,z)
     end
     local s=getState(z)
+    if recovered then
+        -- Do not retain a phase inferred from an assignment that was compensated.
+        s.phase="NORMAL";s.smartFeral=false;s.alphaFeral=false
+        if restoredType==false then s.uvSlowed=false;s.sprintActive=false;s.sprintReason=nil end
+        MortisIntegration.applyIdentityToState(z,s)
+        if s.phase=="TRANSFORMING" then hibernating[z]=true else hibernating[z]=nil end
+    end
+    if s.phase=="FERAL" and Config.EnableFerals==false then
+        disableFerals(z,s)
+        return
+    end
     -- Finish the durable healing transaction before exposure or sprint can
     -- replace its consumption receipt. A failed recovery must defer this
     -- entity's biological work, not spend or heal it a second time.
@@ -1603,13 +1653,6 @@ local function updateZombie(z)
         end
         maintainTransformingState(z,s,globalDLS)
     elseif s.phase=="FERAL" then
-        if Config.EnableFerals==false then
-            MortisIntegration.clear(z)
-            s.phase="NORMAL"
-            s.smartFeral=false
-            setSprint(z,s,false,"ferals-disabled")
-            return
-        end
         local feralRate=SolarUV.getPointRatePerMinute(exposedDLS)
         local regionalReady=regionalSunHibernationReady(z)
         if Config.EnableSunKnockdown~=false and regionalReady

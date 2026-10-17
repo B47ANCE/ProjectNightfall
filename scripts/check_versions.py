@@ -28,6 +28,9 @@ def main() -> int:
     inventory = json.loads((ROOT / "SOURCE_INVENTORY.json").read_text())
     if inventory["project_version"] != version:
         errors.append("SOURCE_INVENTORY.json version differs from VERSION")
+    overview = json.loads((ROOT / "docs/MOD_OVERVIEW.json").read_text(encoding="utf-8"))
+    if overview.get("version") != version:
+        errors.append("docs/MOD_OVERVIEW.json version differs from VERSION")
     mirror = inventory.get("packaging_mirror")
     if mirror and mirror.get("use_for_release", True) and mirror.get("version") != version:
         errors.append("Declared current packaging mirror version differs from VERSION")

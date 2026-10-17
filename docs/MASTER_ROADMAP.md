@@ -4,12 +4,22 @@ Canonical version: 0.31.0-dev.1
 
 ## Current slice and next gates - 2026-10-17
 
+0.30.1-dev.1 resolves the four bounded Nightfall/MORTIS source findings. See
+[MORTIS recovery](MORTIS_RECOVERY.md) and [current validation](VALIDATION_0.30.1-dev.1.md).
+Ownership/UV cleanup commits only after success; assignment compensation is
+checked and pending/uncertain state blocks further work. API-presence diagnostics
+now expose guarded MP readiness separately. Human runtime acceptance is next;
+no native gate is closed by these regressions.
+
+## Historical 0.29.1 source slice
+
 Historical 0.29.1 integrates reversible effigy feeding and is a development PATCH completing audit phase separation, pinned public dependency fixtures, Linux/Windows offline CI and localization validation. All 63 Lua and 25 Python tests pass offline for the locked commits. See [current validation](VALIDATION_0.29.1.md), [CI](CI.md) and [runtime acceptance](RUNTIME_ACCEPTANCE_0.29.1.md). Current source is not packaged; 0.27.4 outputs remain historical. G7/G8 remain blocked.
 
 | Roadmap slice | Implementation/evidence | Next gate |
 | --- | --- | --- |
 | Source audit / CI | Source/release separation, history protection and pinned Linux/Windows workflow | Exact pushed commit CI evidence |
 | Localization | EN authored; 28 locales English fallback; keys/placeholders checked | Fluent review / native layout |
+| MORTIS integration recovery | Four source findings corrected; actual-module and lifecycle-fragment regressions | Human own/foreign-owner, busy cleanup, compensation and observer/save/restart cases in MORTIS_RECOVERY.md |
 | Current dependency contracts | Source PASS, current public APIs retained | Whole-family native startup |
 | Reusable effigy container / art | Foundation: read-only category/batch validation and three derived visual states; user concept retained | [Native admission blocker](EFFIGY_CONTAINER_API_AUDIT.md); live container/feeding, migration and all three assets pending |
 | Effigy feeding | Reserve/commit/rollback, actual MORTIS host integration | Native persistence, contention, removal transport and restart |

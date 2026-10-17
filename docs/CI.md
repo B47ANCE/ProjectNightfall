@@ -24,3 +24,9 @@ Default audit success means current source checks passed. `audit_project.py --re
 Current source has no package. Release consistency remains BLOCKED, as do gameplay G7 and stable G8 pending dedicated evidence. The index scan is heuristic and not an exhaustive secret detector. Green offline CI is not native Kahlua, SP, Linux dedicated or multiplayer proof. Branch protection must be configured separately when authorized; this workflow alone does not enforce merging policy.
 
 GitHub's [Python distribution manifest](https://github.com/actions/python-versions/blob/main/versions-manifest.json) has no Windows 3.12.14 artifact; the initial Windows setup failed before testing. The matrix uses the verified available Windows 3.12.10 distribution while Linux/local evidence uses 3.12.14. Both use CPython 3.12 x64 Lupa wheels. The first run also exposed and corrected YAML quoting for pip's colon-bearing argument. Failed runs remain visible in GitHub history.
+
+The 0.30.1-dev.1 recovery slice advances only the MORTIS and Knowledge fixture
+pins to merged 6af5d141a2342179233db9131e749ee7b819383e and
+6ba66c0d8f246d438f2e2f3c974fee9f77fdb426. The Knowledge MP guard remains enabled.
+New real-module recovery regressions use these exact inputs; fragments are labelled
+as fragment evidence. Other dependency pins remain unchanged.

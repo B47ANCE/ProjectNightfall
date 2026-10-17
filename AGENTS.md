@@ -78,3 +78,10 @@ Contents and old ZIPs retain 0.27.4 bytes. They are not current source mirrors o
 Retained 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](docs/VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
 
 Current 0.31.0-dev.1 adds only the read-only effigy container policy foundation. Preserve the stopped native binding: queued native transfers do not repeat dynamic category admission at commit in the inspected source. See docs/EFFIGY_CONTAINER_API_AUDIT.md and current validation. No container placement, transfer/feeding replacement, migration or renderer is enabled. Category/visual query results are not authority or leases.
+
+Current recovery slice 0.30.1-dev.1: read docs/MORTIS_RECOVERY.md and
+VALIDATION_0.30.1-dev.1.md. Preserve the version-1 assignment recovery journal;
+unknown/future/uncertain or foreign-identity records are blockers, never reset
+candidates. Never globally clear MORTIS owners. Diagnostics separate surface
+presence from capability readiness. All tests requiring an open game/server are
+human-operated. No launch, deployment, packaging or publication is authorized.

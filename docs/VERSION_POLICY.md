@@ -27,3 +27,13 @@ The merge candidate retains canonical 0.29.1, the existing development PATCH fro
 0.30.0 is a pre-1.0 MINOR compatibility transition for the required SPXTRM activation ID. Existing Nightfall schemas, balance, lightWorks API imports and infected UV ownership are unchanged. Matching mod lists on all peers are required. No stable-release approval is implied.
 
 0.31.0-dev.1 is a development MINOR prerelease starting the reusable effigy container foundation. Read-only admission/classification and derived visual states are added; native transfer binding is blocked by a confirmed queued-transfer validation gap. Existing schema-1 effigies, authority, feeding, recipes and balance remain unchanged. No live container or renderer is enabled.
+
+0.30.1-dev.1 is a compatible development PATCH for the four MORTIS integration
+findings. Balance, sandbox IDs and existing state/network schemas are unchanged.
+The additive ProjectNightfallAssignmentRecovery record has its own version 1;
+uvSlowed is an optional boolean in existing lifecycle schema 1. Pending/unknown
+recovery records require review before downgrade; native save durability remains
+unverified. The reviewed docs/MOD_OVERVIEW.json version is also a current mirror.
+Its source digest follows the shared hub's raw-byte algorithm, including retained
+Contents: differing checkout line endings/layout safely require review, not a
+runtime PASS. Do not relabel historical validation or generated artifacts.
