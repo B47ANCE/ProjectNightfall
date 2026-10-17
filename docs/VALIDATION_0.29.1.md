@@ -48,7 +48,7 @@ No meaningful gameplay configuration, authority boundary or persistence schema c
 
 New regressions exercise source/release separation without hiding source failures, archive integrity/classification, historical committed/staged/unstaged/ignored mutation, translation substitutions, lock validation and non-repair of dirty/wrong-origin fixtures. The retained 62 Lua files cover existing production behavior; no mock output is relabeled native evidence.
 
-CI status is recorded on the pull request for the exact pushed SHA. A workflow definition alone is not a green run, branch protection or release approval.
+The first CI attempt was rejected for YAML quoting of the pip colon-bearing argument; this was corrected. Windows setup then showed that GitHub has no 3.12.14 Windows distribution. The matrix now pins Linux 3.12.14 and Windows 3.12.10 (verified against the official distribution manifest). These were CI setup failures, not runtime evidence. CI status is recorded on the pull request for the exact pushed SHA. A workflow definition alone is not a green run, branch protection or release approval.
 
 ## Runtime and release gates
 
