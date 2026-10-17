@@ -1,0 +1,35 @@
+{
+  "scope": "Offline test fixtures; public first-party source, not installed mods or runtime proof",
+  "dependencies": [
+    {
+      "folder": "B47ANCEDSpectrum",
+      "url": "https://github.com/B47ANCE/B47ANCEDSpectrum.git",
+      "mod_id": "lightWorks",
+      "commit": "a2a018393c417c5e29dfda6153266c65b0e5da41"
+    },
+    {
+      "folder": "Project MORTIS",
+      "url": "https://github.com/B47ANCE/ProjectMORTIS.git",
+      "mod_id": "ProjectMORTIS",
+      "commit": "2f9b03a376aaecc751e6c10ffcf399916f444400"
+    },
+    {
+      "folder": "B47ANCEDPower",
+      "url": "https://github.com/B47ANCE/B47ANCEDPower.git",
+      "mod_id": "B47ANCEDPower",
+      "commit": "40ff9ebfe247d56d7dd2e308e7b7eabfb61a7ce0"
+    },
+    {
+      "folder": "B47ANCEDHealthCare",
+      "url": "https://github.com/B47ANCE/B47ANCEDHealthCare.git",
+      "mod_id": "B47ANCEDHealthCare",
+      "commit": "0c7fd8defe24d859db69d585c7a3f0b5f9649c76"
+    },
+    {
+      "folder": "B47ANCEDKnowledgeAndWisdom",
+      "url": "https://github.com/B47ANCE/B47ANCEDKnowledgeAndWisdom.git",
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "commit": "ca5b724c63d49ab224f96b2daea3e17ad7498e44"
+    }
+  ]
+}

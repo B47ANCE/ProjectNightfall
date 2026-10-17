@@ -1,5 +1,5 @@
-[b]Version 0.29.0 - development source, 2026-10-16[/b]
+[b]Version 0.29.1 - development source, 2026-10-16[/b]
 
-Adds read-only remains-condition information for the vanilla-selected Nightfall corpse, using the existing synchronized stage. Includes localization keys, malformed-state guards and controller/pooling regressions. Uses the current Health Care Mod ID while preserving its public Lua/item contract.
+Completes source audit tooling, historical mirror protection, pinned public dependency fixtures and Linux/Windows offline CI. Adds localization placeholder validation and an explicit English fallback policy. Gameplay and save/network schemas are unchanged from 0.29.0.
 
-Offline: 62 Lua files and 19 Python tests PASS; direct/transitive dependency source contracts PASS. Actual UI, SP and dedicated multiplayer NOT TESTED. G7 and stable G8 BLOCKED. Current source is not packaged or published; historical artifacts remain preserved.
+Offline: 62 Lua files and 25 Python tests PASS; direct/transitive source contracts PASS for pinned commits. Native UI, SP and dedicated multiplayer NOT TESTED. G7 and stable G8 BLOCKED. Current source is not packaged or published; historical artifacts remain preserved.

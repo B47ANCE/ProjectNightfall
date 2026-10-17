@@ -19,3 +19,5 @@ Every intentional runtime version iteration needs a changelog, honest evidence, 
 The 0.28.0 development MINOR reconciles the explicitly requested current dependency family integration. Nightfall APIs, persisted schemas and sandbox identifiers stay compatible; the required dependency installation set changes to current public IDs. Users must migrate the family together. The existing generated 0.27.4 tree and immutable archives are historical, excluded from current source mirrors and blocked for current release use. No 0.28.0 package is authorized by this fix request.
 
 0.29.0 is a development MINOR for the localized read-only remains-inspection presentation increment and current Health Care Mod ID reconciliation. Nightfall schemas, network ownership and gameplay values remain unchanged. Existing 0.27.4 outputs stay historical.
+
+0.29.1 is a development PATCH for audit phase separation, reproducible dependency fixtures, CI and localization validation. Gameplay, schemas, authority and public runtime contracts remain unchanged. Historical Contents is protected by its recorded Git tree and index/worktree checks; it is never promoted to a current release input.

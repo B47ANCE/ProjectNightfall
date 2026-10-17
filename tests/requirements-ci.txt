@@ -1,0 +1,5 @@
+# CPython 3.12 x64 wheels from https://pypi.org/pypi/lupa/2.6/json
+# Linux and Windows only; source distributions/build hooks are not allowed.
+lupa==2.6 \
+    --hash=sha256:cf3bda96d3fc41237e964a69c23647d50d4e28421111360274d4799832c560e9 \
+    --hash=sha256:c735a1ce8ee60edb0fe71d665f1e6b7c55c6021f1d340eb8c865952c602cd36f
