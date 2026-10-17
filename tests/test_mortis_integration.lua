@@ -14,6 +14,7 @@ local Mortis = {
     LocomotionOverrides = {
         acquire=function(_,owner,definition) return true,owner,definition end,
         release=function(_,owner) return true,owner end,
+        releaseCeiling=function(_,owner) return true,owner end,
     },
     CrowdFlow = {
         pathDeeperInterior=function(_,options) return true,nil,options.entrySquare end,
@@ -138,7 +139,7 @@ assert(Mortis.detachedClassifier and Mortis.detachedClassifier.id=="ProjectNight
 assert(Mortis.detachedClassifier.classify({}, {sourceTypeId=Integration.TYPE_SMART_FERAL}).signature=="smartFeral")
 assert(Mortis.detachedClassifier.classify({}, {sourceTypeId=nil}).signature=="regular")
 
-local zombie = {}
+local zombie = {data={},getModData=function(self)return self.data end}
 local ok, reason = Integration.assign(zombie, Integration.TYPE_FERAL)
 assert(ok, tostring(reason))
 assert(Mortis.getTypeId(zombie) == "ProjectNightfall.Feral")

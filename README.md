@@ -2,11 +2,11 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.30.0`
+- Version: `0.30.1-dev.1`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
-- Required Mod IDs: `lightWorks`, `ProjectMORTIS`, `B47ANCEDPower`, `B47ANCEDHealthCare`, `B47ANCEDKnowledgeAndWisdom`
+- Required Mod IDs: `B47ANCEDSPXTRM`, `ProjectMORTIS`, `B47ANCEDPower`, `B47ANCEDHealthCare`, `B47ANCEDKnowledgeAndWisdom`
 
 ## Ownership
 
@@ -61,3 +61,12 @@ See [offline CI and exact commands](docs/CI.md), [localization support policy](d
 The integrated 0.29.1 candidate also includes the effigy transaction fix originally developed as 0.29.1-dev.1: exclusive reservations, reversible tissue/claim snapshots, verified source revisions and world removal only after successful ZombieFed. Consumed tombstones cannot feed twice or be re-registered. Reaction rules and nutrition values are unchanged; native persistence/replication remain untested. See [effigy contract](docs/EFFIGIES.md).
 
 Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](docs/VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
+
+Development PATCH 0.30.1-dev.1 fixes the four audited MORTIS integration findings:
+verified own-owner cleanup before phase commit, retryable UV release before
+hibernation, checked assignment compensation with a retained recovery journal,
+and separate capability-readiness diagnostics. See [recovery contracts and human
+cases](docs/MORTIS_RECOVERY.md) and [current validation](docs/VALIDATION_0.30.1-dev.1.md).
+The reviewed [feature overview](docs/MOD_OVERVIEW.json) describes source capability
+and blocked work. All runtime tests remain human-operated; Knowledge MP storage
+is intentionally blocked. G7/stable G8 remain BLOCKED. No package/deploy/upload.

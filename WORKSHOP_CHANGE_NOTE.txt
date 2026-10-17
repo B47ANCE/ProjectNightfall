@@ -1,3 +1,7 @@
+[b]Version 0.30.1-dev.1[/b]
+Development source - dedicated multiplayer NOT TESTED
+Fix MORTIS ownership cleanup, deferred UV release, verified assignment compensation and capability diagnostics. Runtime tests remain human-operated; G7/stable G8 BLOCKED. No package or upload.
+
 [b]Version 0.30.0[/b]
 MP testing build - dedicated multiplayer NOT TESTED
 Switch required activation ID to B47ANCEDSPXTRM; preserve Workshop 3788593239, lightWorks API/save contracts and all infected UV policy. Both effigy and audit work are retained from main. No upload.

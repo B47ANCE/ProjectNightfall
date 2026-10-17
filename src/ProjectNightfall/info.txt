@@ -43,7 +43,7 @@ Author:
 B47ANCE
 
 Version:
-0.30.0
+0.30.1-dev.1
 
 Internal Mod ID:
 ProjectNightfall

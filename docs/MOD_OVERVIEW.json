@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "id": "night",
+  "name": "Nightfall",
+  "version": "0.30.1-dev.1",
+  "reviewed": true,
+  "features": [
+    {
+      "status": "Source",
+      "text": "Server-authoritative UV infected policy using MORTIS services: starvation-gated Feral/Smart/Alpha lifecycles, hibernation/rise, bounded regional tissue work and intelligent groups/ecology."
+    },
+    {
+      "status": "Source",
+      "text": "Transactional effigy food provider with reserve/commit/rollback and post-success world cleanup; native persistence and transport remain unverified."
+    },
+    {
+      "status": "Source",
+      "text": "Own-owner cleanup before identity/phase commit, retryable UV release, checked assignment compensation and a retained server recovery journal. Unknown outcomes remain blocked for review."
+    },
+    {
+      "status": "Source",
+      "text": "Dependency diagnostics separate API surface from source capability readiness. MORTIS API 1.6/food transaction v1 required; Knowledge 0.16.0 affected MP storage remains blocked."
+    },
+    {
+      "status": "Source",
+      "text": "Read-only localized selected-corpse remains-condition UI; sandbox/presets, research content and bounded diagnostics. SPXTRM retains the lightWorks Lua namespace."
+    },
+    {
+      "status": "Planned",
+      "text": "Native smoke/anatomical presentation and loot-preserving visible remains after safe adapters, plus human balance/audio validation."
+    },
+    {
+      "status": "Blocked",
+      "text": "Human SP/dedicated lifecycle, owner/restoration, observer/late join and save/restart acceptance. Native packaging/release gates remain separate; no runtime proof from CI."
+    }
+  ],
+  "limits": "Lua-only runtime. Source/offline evidence only; all runtime tests requiring an open game are human-operated. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. Recovery journal is not crash-atomic native storage; uncertain/future/foreign-identity records refuse. No Project Remnants integration. Shared overview digest includes historical Contents and raw bytes; another checkout layout/line ending requires review.",
+  "evidence": [
+    "README.md",
+    "docs/MASTER_ROADMAP.md",
+    "docs/MORTIS_RECOVERY.md",
+    "docs/VALIDATION_0.30.1-dev.1.md",
+    "docs/VERSION_POLICY.md",
+    "docs/CI.md",
+    "tests/dependencies.lock.json"
+  ],
+  "relations": [],
+  "source_digest": "83ca8e47661605867b1bcad22fb83e6983612496d1359e1f3589b26a61f14117"
+}
