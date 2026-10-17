@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.29.1 - audit completion tooling, 2026-10-16
+
+- Development PATCH: separate source audit success from strict release consistency; protect historical Contents by pinned Git tree and worktree/index evidence. Apply operation snapshots explicitly, preserving prior evidence. Source defects and corrupt/unclassified archives still fail.
+- Add commit-pinned public dependency fixtures and least-privilege Linux/Windows offline CI with pinned actions/interpreter wheels. Preserve the historical archive helper and concurrent effigy work.
+- Validate locale file/key inventories, nonempty values and substitution placeholders. Declare English fallback accurately; fluent translation remains unreviewed.
+- 62 Lua files and 25 Python regressions PASS offline. Current package is absent; native/SP/dedicated NOT TESTED. G7 and stable G8 BLOCKED. See docs/VALIDATION_0.29.1.md and runtime acceptance handoff. No deploy, upload or stable tag.
+
 ## 0.29.0 - remains inspection and current dependency audit, 2026-10-16
 
 - Target development MINOR: add read-only client remains-condition presentation; preserve canonical gameplay, loot and saved schemas. Update the required medical Mod ID/source layout to B47ANCEDHealthCare while preserving its verified medWorks Lua/item contracts.

@@ -1,13 +1,15 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.29.0.
+Canonical version: 0.29.1.
 
 ## Current slice and next gates - 2026-10-16
 
-0.29.0 reconciles the Health Care Mod ID and adds the first client remains-presentation increment. All 62 Lua and 19 Python tests pass offline for the [recorded current dependencies](audits/0.29.0.dependencies.json); direct/transitive source contracts pass. See [current audit/validation](VALIDATION_0.29.0.md). Current source is not packaged; 0.27.4 outputs stay historical. No game/server launch, deploy or upload.
+0.29.1 is a development PATCH completing audit phase separation, pinned public dependency fixtures, Linux/Windows offline CI and localization validation. All 62 Lua and 25 Python tests pass offline for the locked commits. See [current validation](VALIDATION_0.29.1.md), [CI](CI.md) and [runtime acceptance](RUNTIME_ACCEPTANCE_0.29.1.md). Current source is not packaged; 0.27.4 outputs remain historical. G7/G8 remain blocked.
 
 | Roadmap slice | Implementation/evidence | Next gate |
 | --- | --- | --- |
+| Source audit / CI | Source/release separation, history protection and pinned Linux/Windows workflow | Exact pushed commit CI evidence |
+| Localization | EN authored; 28 locales English fallback; keys/placeholders checked | Fluent review / native layout |
 | Current dependency contracts | Source PASS, current public APIs retained | Whole-family native startup |
 | Remains-condition inspection | Read-only selected-corpse menu, localization keys, controller/pooling regressions PASS offline | SP/controller/late-join validation |
 | Native smoke and anatomical presentation | BLOCKED: safe instance cleanup, corpse render path and attachment exposure unverified | Verified adapter plus runtime probes |
