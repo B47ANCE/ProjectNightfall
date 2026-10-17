@@ -2,6 +2,8 @@
 
 ## 0.30.0 - SPXTRM dependency transition, 2026-10-16
 
+- Documentation planning follow-up, 2026-10-17: record the user-approved reusable effigy container, separate source categories, prohibition on meat/body-part mixing, and three planned visual states. No runtime/art/version change or new gameplay validation.
+
 - MINOR before 1.0: required activation Mod ID changes from lightWorks to B47ANCEDSPXTRM. Update server/client mod lists together; existing Lua imports, saved fields, optical geometry and infected policy stay unchanged.
 - Preserve current main audit/CI and reversible MORTIS effigy fixes. Pin the matching public SPXTRM source for offline CI. Source checks do not prove native loader or multiplayer behavior. G7/stable G8 BLOCKED.
 

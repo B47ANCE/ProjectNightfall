@@ -11,6 +11,7 @@ Canonical version: 0.30.0.
 | Source audit / CI | Source/release separation, history protection and pinned Linux/Windows workflow | Exact pushed commit CI evidence |
 | Localization | EN authored; 28 locales English fallback; keys/placeholders checked | Fluent review / native layout |
 | Current dependency contracts | Source PASS, current public APIs retained | Whole-family native startup |
+| Reusable effigy container / art | Planned: category separation, no meat/part mixing; empty/meat-loaded/body-part-loaded assets | [Container plan](EFFIGY_CONTAINER_PLAN.md): authority, gameplay inputs, rendering and migration gates |
 | Effigy feeding | Reserve/commit/rollback, actual MORTIS host integration | Native persistence, contention, removal transport and restart |
 | Remains-condition inspection | Read-only selected-corpse menu, localization keys, controller/pooling regressions PASS offline | SP/controller/late-join validation |
 | Native smoke and anatomical presentation | BLOCKED: safe instance cleanup, corpse render path and attachment exposure unverified | Verified adapter plus runtime probes |

@@ -1,5 +1,9 @@
 # Nightfall Effigies
 
+## Planned reusable container - decision 2026-10-17
+
+The approved next design uses a real restricted container: keep ordinary meat separate from body parts and keep human, regular-zombie, Feral and Smart-Feral source categories separate. Plan three visual states: EMPTY, MEAT_LOADED and BODY_PART_LOADED. This is not current runtime behavior. See [container/asset plan](EFFIGY_CONTAINER_PLAN.md) for ownership, transactions, unresolved gameplay inputs, migration and rendering gates. The implementation descriptions below retain the existing combined-item/consumed-object contract until a versioned replacement is verified.
+
 Effigies are a Project Nightfall system being built from detached body parts
 created by medWorks. Nightfall reads the neutral Project M.O.R.T.I.S. provenance
 stored on each part. It does not infer anatomy or source type from an item name.

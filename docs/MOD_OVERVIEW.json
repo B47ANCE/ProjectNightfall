@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "id": "night",
+  "name": "Project Nightfall",
+  "version": "0.30.0",
+  "reviewed": true,
+  "source_digest": "c9050bff09bc7830d95ef3ee853701151361538f911b57c9a583dae0014914be",
+  "features": [
+    {
+      "status": "Source",
+      "text": "UV-sensitive infected types, sun damage, hibernation, shelter/evasion and Feral reserve/sprinting."
+    },
+    {
+      "status": "Source",
+      "text": "Smart stalking/ambush, screech response, personal hordes and persistent Alpha leadership/territory."
+    },
+    {
+      "status": "Source",
+      "text": "Seasonal movement, shelters/dens, lighting defense and bounded crowd behavior."
+    },
+    {
+      "status": "Source",
+      "text": "Provenance-checked body-part effigies and feeding; research files and configurable presets."
+    },
+    {
+      "status": "Planned",
+      "text": "Reusable restricted effigy container; separate ordinary meat and human/regular/Feral/Smart-Feral part categories; EMPTY, MEAT_LOADED and BODY_PART_LOADED visual states. No mixed contents."
+    },
+    {
+      "status": "Blocked",
+      "text": "Restricted world-container server admission, transfer/feed/destruction concurrency, save migration and native visual-state transport require verified Lua-only integration and runtime evidence."
+    }
+  ],
+  "limits": "Source/design review only, baseline 0.30.0. Existing combined-item effigies remain implemented; reusable container and three effigy assets are planned, not shipped. Native SP/dedicated NOT TESTED; G7 and stable G8 BLOCKED.",
+  "evidence": [
+    "README.md",
+    "VERSION",
+    "src/ProjectNightfall/42/mod.info",
+    "docs/EFFIGIES.md",
+    "docs/EFFIGY_CONTAINER_PLAN.md",
+    "art/README.md",
+    "docs/VALIDATION_0.30.0.md"
+  ],
+  "relations": []
+}

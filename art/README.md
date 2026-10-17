@@ -29,3 +29,7 @@ multiplies that tint; a blue glass texture alone must not accidentally color the
 metal base or obscure variant markings. Preserve emitted RGB and UV power behavior
 in their existing owners. Standard/high-output differentiation remains a separate
 inventory-art task, not permission to alter intensity, cone or physical fit.
+
+## Planned effigy assets - 2026-10-17
+
+The [approved container plan](../docs/EFFIGY_CONTAINER_PLAN.md) requires three initial visual states: EMPTY, MEAT_LOADED and BODY_PART_LOADED. Author one shared frame with separate contents groups, matching origin/scale/footprint, materials and UVs. The four provenance-based body-part categories share one body-part-loaded appearance initially; no mixed-content variant is allowed. Partial/full, broken and per-limb variants are deferred. No effigy models have been created or validated by this plan. The final runtime export format awaits a verified Lua-only world-object rendering path; Blender-authored states may need directional isometric sprite exports rather than arbitrary FBX swapping.
