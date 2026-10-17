@@ -93,3 +93,7 @@ Installed-source evidence fingerprint: media/lua/server/Items/AcceptItemFunction
 Installed-source evidence fingerprint: media/lua/server/Traps/STrapGlobalObject.lua SHA-256 `8658508304ea8bdefe2567f0a3886c6d6cdd712dde5dfca95d5d11c55ed20789`.
 
 Implementation checkpoint 0.31.0-dev.1: classification, container inspection, whole-batch admission previews and the three visual identifiers are implemented with offline regressions. This does not satisfy the server transfer gate; see [native API audit](EFFIGY_CONTAINER_API_AUDIT.md). The user supplied a spiked-post concept retained in [the asset brief](../art/effigy/ASSET_BRIEF.json). Existing gameplay/save paths remain unchanged.
+
+## 0.31.0-dev.2 implementation checkpoint
+
+The dynamic native admission blocker is resolved in source by permanently denying native insertion and using the synchronous server loader for a separate EffigyFrame prototype. Whole-batch validation, actual-item moves, revision checks, rollback/quarantine and localized load intents are implemented. Native unloading remains available. Capacity is a server sandbox option (1-40, default 20). See [implementation, limits and human gates](EFFIGY_CONTAINER_IMPLEMENTATION.md). Older foundation findings above are historical. Construction/loot distribution, reusable feeding, attribution, migration and three production models/rendering remain pending. Native/SP/dedicated validation is NOT TESTED; no package/deploy/upload.

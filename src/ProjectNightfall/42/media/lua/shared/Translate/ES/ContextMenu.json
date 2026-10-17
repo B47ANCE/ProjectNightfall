@@ -12,5 +12,18 @@
   "ContextMenu_ProjectNightfall_Remains_CRITICAL": "Severe breakdown",
   "ContextMenu_ProjectNightfall_Remains_CRITICAL_Description": "Most UV-affected tissue has broken down.",
   "ContextMenu_ProjectNightfall_Remains_RESIDUAL": "Residual tissue",
-  "ContextMenu_ProjectNightfall_Remains_RESIDUAL_Description": "Only residual tissue remains."
+  "ContextMenu_ProjectNightfall_Remains_RESIDUAL_Description": "Only residual tissue remains.",
+  "ContextMenu_ProjectNightfall_LoadEffigy": "Load effigy",
+  "ContextMenu_ProjectNightfall_EffigyRefresh": "Refresh contents",
+  "ContextMenu_ProjectNightfall_EffigyNoMatchingItems": "No matching items in your main inventory",
+  "ContextMenu_ProjectNightfall_EffigyState_EMPTY": "Empty",
+  "ContextMenu_ProjectNightfall_EffigyState_MEAT_LOADED": "Meat loaded",
+  "ContextMenu_ProjectNightfall_EffigyState_BODY_PART_LOADED": "Body parts loaded",
+  "ContextMenu_ProjectNightfall_EffigyDeclined": "Load declined; check contents and try again",
+  "ContextMenu_ProjectNightfall_EffigyLoadItem": "%1 (%2)",
+  "ContextMenu_ProjectNightfall_EffigyCategory_meat": "Ordinary meat",
+  "ContextMenu_ProjectNightfall_EffigyCategory_human": "Human",
+  "ContextMenu_ProjectNightfall_EffigyCategory_regular": "Regular zombie",
+  "ContextMenu_ProjectNightfall_EffigyCategory_feral": "Feral",
+  "ContextMenu_ProjectNightfall_EffigyCategory_smartFeral": "Smart Feral"
 }

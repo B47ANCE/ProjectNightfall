@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.31.0-dev.2 - server-owned effigy frame loading, 2026-10-17
+
+- Merge current main MORTIS recovery fixes and the current pinned dependency contracts, retaining all prior validation as historical.
+- Resolve the dynamic-admission race through permanently closed native insertion and synchronous server Lua loading of actual items; validate whole batches, ownership, reach, safehouses, equipment, capacity, category and replay revision. Preserve native unloading, original item identity/provenance and legacy effigies. No custom Java or private queue access.
+- Add an undistributed EffigyFrame container prototype, localized source-aware load menu and server sandbox capacity (1-40, default 20). Derive only the three agreed visual states. No recipe/loot replacement, reusable feeding, migration or production renderer/model is enabled.
+- Restore failed batches before publication; quarantine uncertain rollback or committed transport failure without recreating items. Add server, client-intent and race regressions. Dedicated/native durability remains NOT TESTED; G7/stable G8 BLOCKED. See docs/VALIDATION_0.31.0-dev.2.md.
+
 ## 0.31.0-dev.1 - effigy container policy foundation, 2026-10-17
 
 - Development MINOR prerelease: read-only classification/admission for separate ordinary meat, human, regular-zombie, Feral and Smart-Feral categories. Validate whole insertion batches and derive only EMPTY, MEAT_LOADED and BODY_PART_LOADED from physical contents. Reject mixing, bags, duplicate/sparse/malformed input, unsupported provenance and invalid material; depleted parts stay category-locked until physically removed.

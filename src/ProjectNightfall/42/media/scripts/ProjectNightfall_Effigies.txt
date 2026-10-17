@@ -1,5 +1,21 @@
 module ProjectNightfall
 {
+    /* Prototype frame. No recipe/loot replaces existing Effigy items. Capacity
+       is interpreted by the server sandbox; guards are installed by the native
+       item factory, including when loading an instance before network exposure. */
+    item EffigyFrame
+    {
+        DisplayCategory = Furniture,
+        ItemType = base:container,
+        DisplayName = Effigy Frame,
+        Icon = Bandage,
+        Weight = 8.0,
+        Capacity = 20,
+        WeightReduction = 0,
+        OnlyAcceptCategory = ProjectNightfall_ServerLoadOnly,
+        AcceptItemFunction = PN_EffigyRejectNativeInsertion,
+    }
+
     item Effigy
     {
         DisplayCategory = Furniture,

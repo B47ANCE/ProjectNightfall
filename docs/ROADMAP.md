@@ -104,3 +104,7 @@ Feral, remains, smoke, persistence, or networking semantics.
 Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
 
 Reusable effigy container: read-only policy foundation now exists; actual server transfer binding is [blocked on the native admission contract](EFFIGY_CONTAINER_API_AUDIT.md), and all three visual assets remain pending.
+
+## 0.31.0-dev.2 implementation checkpoint
+
+The dynamic native admission blocker is resolved in source by permanently denying native insertion and using the synchronous server loader for a separate EffigyFrame prototype. Whole-batch validation, actual-item moves, revision checks, rollback/quarantine and localized load intents are implemented. Native unloading remains available. Capacity is a server sandbox option (1-40, default 20). See [implementation, limits and human gates](EFFIGY_CONTAINER_IMPLEMENTATION.md). Older foundation findings above are historical. Construction/loot distribution, reusable feeding, attribution, migration and three production models/rendering remain pending. Native/SP/dedicated validation is NOT TESTED; no package/deploy/upload.

@@ -1,6 +1,6 @@
--- Read-only foundation. No native transfer binding, world object, persistence,
--- renderer or food source is enabled: queued native transfers do not revalidate
--- category at commit in the inspected build. A successful preview is NOT a lease.
+-- Read-only policy. Its proposal is NOT a lease or authorization. The separate
+-- server loader validates under a synchronous mutation boundary; native insertion
+-- stays permanently closed. This module never moves items or owns a food source.
 local Detached=require "Mortis/API/DetachedParts"
 local Material=require "Mortis/Runtime/DetachedMaterialModel"
 local Policy={}

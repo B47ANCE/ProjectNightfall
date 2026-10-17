@@ -37,3 +37,5 @@ unverified. The reviewed docs/MOD_OVERVIEW.json version is also a current mirror
 Its source digest follows the shared hub's raw-byte algorithm, including retained
 Contents: differing checkout line endings/layout safely require review, not a
 runtime PASS. Do not relabel historical validation or generated artifacts.
+
+0.31.0-dev.2 continues the development MINOR feature begun in dev.1, now including main's compatible MORTIS recovery patch. It adds a separate EffigyFrame item/protocol and schema-1 load-revision record without changing legacy Effigy/save/food contracts. Native insertion is permanently closed; no stable release is implied. New sandbox capacity defaults to 20 on existing saves and never truncates stored items when lowered. Unknown/newer or quarantined frame records refuse loading; no downgrade/migration reconstruction is provided.

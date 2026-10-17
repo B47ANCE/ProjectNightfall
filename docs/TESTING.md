@@ -204,3 +204,7 @@ and in-game release gates.
 Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.31.0-dev.1.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
 
 Container foundation target: `python scripts/run_host_tests.py --dependencies .local/ci-dependencies --only tests/test_effigy_container_policy.lua`. This exercises the actual MORTIS provenance/material modules with native item/container boundaries mocked; it does not exercise a live world container or engine transactions.
+
+## 0.31.0-dev.2 implementation checkpoint
+
+The dynamic native admission blocker is resolved in source by permanently denying native insertion and using the synchronous server loader for a separate EffigyFrame prototype. Whole-batch validation, actual-item moves, revision checks, rollback/quarantine and localized load intents are implemented. Native unloading remains available. Capacity is a server sandbox option (1-40, default 20). See [implementation, limits and human gates](EFFIGY_CONTAINER_IMPLEMENTATION.md). Older foundation findings above are historical. Construction/loot distribution, reusable feeding, attribution, migration and three production models/rendering remain pending. Native/SP/dedicated validation is NOT TESTED; no package/deploy/upload.

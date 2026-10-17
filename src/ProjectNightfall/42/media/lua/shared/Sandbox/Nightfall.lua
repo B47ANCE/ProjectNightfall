@@ -167,6 +167,7 @@ preset.ProjectNightfall = {
     HungerChaseStartBonus = 20.0,
     HungerChaseKeepBonus = 35.0,
     EffigyInfluenceRadius = 24.0,
+    EffigyContainerCapacity = 20,
     RequireEffigyKnowledge = true,
     EffigyAvoidWeight = 130.0,
     EffigyDestroyWeight = 145.0,
