@@ -2,7 +2,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.29.1-dev.1`
+- Version: `0.29.1`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -52,8 +52,10 @@ The authoritative mod source is `src/ProjectNightfall/42/`. `Contents/mods/Proje
 
 Public development repository: [B47ANCE/ProjectNightfall](https://github.com/B47ANCE/ProjectNightfall).
 
-The prior 0.29.0 increment adds a read-only remains-condition row and tooltip when vanilla selects a Nightfall-marked corpse with a valid synchronized remains stage. The UI handles controller probing and pooled menus without scanning the world or changing corpse state. Health Care's current Mod ID is B47ANCEDHealthCare; its verified Lua/item namespace remains medWorks.
+The remains-condition UI introduced in 0.29.0 adds a read-only remains-condition row and tooltip when vanilla selects a Nightfall-marked corpse with a valid synchronized remains stage. The UI handles controller probing and pooled menus without scanning the world or changing corpse state. Health Care's current Mod ID is B47ANCEDHealthCare; its verified Lua/item namespace remains medWorks.
 
-All 63 Lua tests and 19 Python tests pass offline against the recorded current checkouts. Direct and transitive dependency source contracts pass. Native UI, corpse synchronization, SP and dedicated MP remain NOT TESTED. Existing 0.27.4 Contents/packages are historical; no current package, deployment or upload was requested. See [current audit and validation](docs/VALIDATION_0.29.1-dev.1.md) and [roadmap](docs/MASTER_ROADMAP.md).
+Development PATCH 0.29.1 completes source audit/CI tooling and validates pinned public dependency commits. All 63 Lua tests and 25 Python tests pass offline. Direct and transitive dependency source contracts pass. Native UI, corpse synchronization, SP and dedicated MP remain NOT TESTED. Existing 0.27.4 Contents/packages are historical; no current package, deployment or upload was requested. See [current audit and validation](docs/VALIDATION_0.29.1.md) and [roadmap](docs/MASTER_ROADMAP.md).
 
-Development 0.29.1-dev.1 migrates effigies to MORTIS API 1.6 reserve/commit/rollback. Source leases exclude competing claims; failure restores tissue, claims and hunger. Native removal runs only after confirmed ZombieFed. Consumed tombstones cannot be re-registered. Revision is an optional compatible schema-1 field; no balance or sandbox changes. Native durability/replication remain unverified. See [effigy contract](docs/EFFIGIES.md).
+See [offline CI and exact commands](docs/CI.md), [localization support policy](docs/LOCALIZATION_POLICY.md), and the [runtime acceptance handoff](docs/RUNTIME_ACCEPTANCE_0.29.1.md). Source audit success does not grant release consistency or runtime approval.
+
+The integrated 0.29.1 candidate also includes the effigy transaction fix originally developed as 0.29.1-dev.1: exclusive reservations, reversible tissue/claim snapshots, verified source revisions and world removal only after successful ZombieFed. Consumed tombstones cannot feed twice or be re-registered. Reaction rules and nutrition values are unchanged; native persistence/replication remain untested. See [effigy contract](docs/EFFIGIES.md).

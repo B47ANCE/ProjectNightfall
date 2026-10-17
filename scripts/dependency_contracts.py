@@ -41,6 +41,9 @@ def inspect(root: Path, dependency_root: Path) -> dict:
             "source_versions": snapshots, "scope": "source contracts only; no game/runtime evidence"}
 
 if __name__ == "__main__":
-    report = inspect(ROOT, ROOT.parent)
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dependencies", type=Path, default=ROOT.parent)
+    report = inspect(ROOT, parser.parse_args().dependencies.resolve())
     print(json.dumps(report, indent=2))
     raise SystemExit(int(bool(report["direct_errors"] or report["transitive_errors"])))

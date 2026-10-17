@@ -1,0 +1,77 @@
+{
+  "direct": "PASS",
+  "direct_errors": [],
+  "transitive": "PASS",
+  "transitive_errors": [],
+  "source_versions": [
+    {
+      "mod_id": "lightWorks",
+      "version": "0.28.0",
+      "source_tree_sha256": "c03cc40d798d4f7875ba623407e57db67d8146cc87d8cb0ab1f18165c6a45607"
+    },
+    {
+      "mod_id": "ProjectMORTIS",
+      "version": "0.25.0-dev.3",
+      "source_tree_sha256": "8e0161a039f08b85e941fdb2ad91debe1357a3869a88a30da2744e106a5fe96e"
+    },
+    {
+      "mod_id": "B47ANCEDPower",
+      "version": "0.17.0-dev.1",
+      "source_tree_sha256": "464d9699f54e51fa692b0043f2afce7a2e576a9a06b469843d8e452b067f1043"
+    },
+    {
+      "mod_id": "B47ANCEDHealthCare",
+      "version": "0.10.0",
+      "source_tree_sha256": "9b99cf162a26b01c8db6bd74f31d8ed8158b50503e8a5d2b414a5476a3345b8e"
+    },
+    {
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "version": "0.15.0",
+      "source_tree_sha256": "4b4ab32f084082cb2df28c28202797f55519d4cd8dd064f89812520e920e8b11"
+    }
+  ],
+  "scope": "source contracts only; no game/runtime evidence",
+  "locked_public_commits": [
+    {
+      "folder": "B47ANCEDSpectrum",
+      "url": "https://github.com/B47ANCE/B47ANCEDSpectrum.git",
+      "mod_id": "lightWorks",
+      "commit": "a2a018393c417c5e29dfda6153266c65b0e5da41",
+      "version": "0.28.0",
+      "git_source_tree": "b691f42a9c9ee84e0310b446a8e93fc281c38f93"
+    },
+    {
+      "folder": "Project MORTIS",
+      "url": "https://github.com/B47ANCE/ProjectMORTIS.git",
+      "mod_id": "ProjectMORTIS",
+      "commit": "2f9b03a376aaecc751e6c10ffcf399916f444400",
+      "version": "0.25.0-dev.3",
+      "git_source_tree": "5fa6aa634ec45a397a32a073207ba64e23d6e13e"
+    },
+    {
+      "folder": "B47ANCEDPower",
+      "url": "https://github.com/B47ANCE/B47ANCEDPower.git",
+      "mod_id": "B47ANCEDPower",
+      "commit": "40ff9ebfe247d56d7dd2e308e7b7eabfb61a7ce0",
+      "version": "0.17.0-dev.1",
+      "git_source_tree": "30b97864ab3467b9468a71e6c35ed44bc717f8d4"
+    },
+    {
+      "folder": "B47ANCEDHealthCare",
+      "url": "https://github.com/B47ANCE/B47ANCEDHealthCare.git",
+      "mod_id": "B47ANCEDHealthCare",
+      "commit": "0c7fd8defe24d859db69d585c7a3f0b5f9649c76",
+      "version": "0.10.0",
+      "git_source_tree": "7de19e080ad238d2dd6522be156cc460678e7087"
+    },
+    {
+      "folder": "B47ANCEDKnowledgeAndWisdom",
+      "url": "https://github.com/B47ANCE/B47ANCEDKnowledgeAndWisdom.git",
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "commit": "ca5b724c63d49ab224f96b2daea3e17ad7498e44",
+      "version": "0.15.0",
+      "git_source_tree": "f360d58a11bc7477deb8267d9fa2bf63d375764c"
+    }
+  ],
+  "environment": "Windows Python 3.12.14, lupa 2.6 Lua 5.1; offline, no PZ runtime"
+}

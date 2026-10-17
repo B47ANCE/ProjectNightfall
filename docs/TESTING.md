@@ -1,6 +1,8 @@
 # Project Nightfall testing
 
-Current source is 0.29.1-dev.1. Run `python scripts/check_versions.py`, `python scripts/run_host_tests.py`, `python -m unittest discover -s tests -p "test_*.py"` and `python scripts/dependency_contracts.py`. Current results are 63/63 Lua and 19/19 Python PASS with source dependency contracts PASS. See [validation](VALIDATION_0.29.1-dev.1.md). Native UI/SP/dedicated remain unverified; current source is not packaged. The historical sections below are not current proof.
+Current source is 0.29.1. Run `python scripts/check_versions.py`, `python scripts/run_host_tests.py`, `python -m unittest discover -s tests -p "test_*.py"` and `python scripts/dependency_contracts.py`. Current results are 63/63 Lua and 25/25 Python PASS with source dependency contracts PASS. See [validation](VALIDATION_0.29.1.md). Native UI/SP/dedicated remain unverified; current source is not packaged. The historical sections below are not current proof.
+
+Current reproducible commands use `prepare_ci_dependencies.py` and `--dependencies .local/ci-dependencies`; see [CI](CI.md). The historical archive helper below remains unchanged. See the [current runtime handoff](RUNTIME_ACCEPTANCE_0.29.1.md) for blocked native/SP/dedicated cases.
 
 ## Historical offline entry points — 0.27.4, 2026-10-16
 

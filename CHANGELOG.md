@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.29.1 - audit completion tooling, 2026-10-16
+
+- Integrate the independently developed 0.29.1-dev.1 MORTIS effigy reserve/commit/rollback adapter. Preserve exclusive claims, revision checks, tissue/claim compensation, post-success native cleanup and consumed tombstones. Retain 0.29.1 as the existing canonical development PATCH; no stable tag or runtime certification.
+
+- Development PATCH: separate source audit success from strict release consistency; protect historical Contents by pinned Git tree and worktree/index evidence. Apply operation snapshots explicitly, preserving prior evidence. Source defects and corrupt/unclassified archives still fail.
+- Add commit-pinned public dependency fixtures and least-privilege Linux/Windows offline CI with pinned actions/interpreter wheels. Preserve the historical archive helper and concurrent effigy work.
+- Validate locale file/key inventories, nonempty values and substitution placeholders. Declare English fallback accurately; fluent translation remains unreviewed.
+- 62 Lua files and 25 Python regressions PASS offline. Current package is absent; native/SP/dedicated NOT TESTED. G7 and stable G8 BLOCKED. See docs/VALIDATION_0.29.1.md and runtime acceptance handoff. No deploy, upload or stable tag.
+
 ## 0.29.1-dev.1 - 2026-10-16
 
 - Fix effigy consumption under MORTIS API 1.6 using exclusive reversible reservations, staged tissue loss and compensation. Remove native objects only after confirmed ZombieFed; retain inert consumed tombstones on cleanup failure.

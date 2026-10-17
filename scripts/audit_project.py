@@ -12,7 +12,10 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
+import stat
 import zipfile
+import zlib
+from audit_policy import failure_reasons, historical_mirror, localization_value_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "src/ProjectNightfall/42"
@@ -52,6 +55,8 @@ def staged_audit() -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--release", action="store_true", help="Also require current Contents and validated package; never grants G7/G8")
+    parser.add_argument("--protected-baseline", type=Path, help="Explicit operation baseline; all recorded files must remain byte-identical")
     parser.add_argument("--dependencies", type=Path, default=ROOT.parent,
                         help="Dependency source root; may be explicitly pinned historical fixtures")
     args = parser.parse_args()
@@ -107,18 +112,20 @@ def main() -> int:
     english = {path.name: json.loads(path.read_text(encoding="utf-8-sig")) for path in (translations / "EN").glob("*.json")}
     equal_english = 0
     for language in languages:
+        if {path.name for path in (translations / language).glob("*.json")} != set(english):
+            localization_errors.append(f"{language}: translation file inventory differs from English")
         for name, expected in english.items():
             path = translations / language / name
             try:
                 values = json.loads(path.read_text(encoding="utf-8-sig"))
-                if set(values) != set(expected):
-                    localization_errors.append(f"{language}/{name}: English key parity differs")
+                localization_errors.extend(f"{language}/{name}: {error}" for error in localization_value_errors(expected, values))
                 if language != "EN":
                     equal_english += sum(values.get(key) == value for key, value in expected.items())
             except (OSError, ValueError) as error:
                 localization_errors.append(f"{language}/{name}: {type(error).__name__}")
     report["localization"] = {"language_folders": languages, "key_parity_errors": localization_errors,
                               "non_english_values_equal_to_english": equal_english,
+                              "authored_language": "EN", "other_languages": "English fallback; fluent review NOT TESTED",
                               "scope": "structural/fallback parity, not translation quality"}
     try:
         from lupa.lua51 import LuaRuntime
@@ -149,6 +156,8 @@ def main() -> int:
                     item["errors"].append("case collisions")
                 if any(".." in PurePosixPath(name).parts or PurePosixPath(name).is_absolute() or "\\" in name or ":" in name for name in names):
                     item["errors"].append("unsafe member path")
+                if any(stat.S_IFMT(entry.external_attr >> 16) not in (0, stat.S_IFREG, stat.S_IFDIR) or entry.flag_bits & 1 for entry in archive.infolist()):
+                    item["errors"].append("linked, special or encrypted member")
                 if sum(info.file_size for info in archive.infolist()) > 100_000_000:
                     item["errors"].append("uncompressed-size safety limit; data checks skipped")
                 else:
@@ -166,22 +175,31 @@ def main() -> int:
                         unexpected = [name for name in names if PurePosixPath(name).suffix.lower() in {".java", ".class", ".jar", ".dll", ".exe", ".log"}]
                         if unexpected:
                             item["errors"].append("unexpected runtime/binary/log members")
-        except (OSError, zipfile.BadZipFile) as error:
+        except (OSError, zipfile.BadZipFile, RuntimeError, EOFError, zlib.error) as error:
             item["errors"].append(type(error).__name__)
         archive_reports.append(item)
     report["current_directory_archives"] = archive_reports
-    # Protection is tied to an explicitly captured operation baseline. The old
-    # onboarding baseline is historical after authorized runtime/mirror changes.
-    protected = ROOT / ".git/nightfall-packaging-protected-before.json"
-    if not protected.is_file():
-        protected = ROOT / ".git/nightfall-source-before.json"
-    if protected.is_file():
+    report["historical_mirror"] = historical_mirror(ROOT, inventory)
+    # An operation snapshot is not a permanent source freeze. Only an explicitly
+    # selected baseline applies; old snapshots remain historical evidence.
+    protected = args.protected_baseline
+    report["protected_baseline"] = "NOT REQUESTED; historical mirror independently pinned"
+    if protected is not None:
+        if not protected.is_absolute():
+            protected = ROOT / protected
         before = json.loads(protected.read_text())
-        report["protected_baseline"] = protected.relative_to(ROOT).as_posix()
+        if any(PurePosixPath(name).is_absolute() or ".." in PurePosixPath(name).parts or "\\" in name or ":" in name for name in before):
+            raise ValueError("Unsafe operation baseline path")
+        report["protected_baseline"] = "explicit operation baseline"
         report["protected_files"] = len(before)
         report["protected_files_changed"] = [name for name, hash_value in before.items()
                                              if not (ROOT / name).is_file() or digest((ROOT / name).read_bytes()) != hash_value]
-    from package_project import verify
+    from package_project import inputs, verify
+    try:
+        version, files, _ = inputs(ROOT)
+        report["package_inputs"] = {"status": "PASS", "version": version, "files": len(files), "scope": "source inputs only; no package built"}
+    except (OSError, ValueError) as error:
+        report["package_inputs"] = {"error": str(error)}
     try:
         report["package_validation"] = verify(ROOT)
     except (OSError, ValueError) as error:
@@ -189,18 +207,19 @@ def main() -> int:
     from dependency_contracts import inspect
     report["dependency_contracts"] = inspect(ROOT, dependency_root)
     report["index_audit"] = staged_audit()
+    report["scope"] = "release consistency" if args.release else "source audit with separate release blockers"
+    report["source_failures"] = failure_reasons(report)
+    report["release_consistency_failures"] = failure_reasons(report, release=True)
+    report["source_status"] = "FAIL" if report["source_failures"] else "PASS"
+    report["release_consistency_status"] = "BLOCKED" if report["release_consistency_failures"] else "PASS (offline only)"
+    report["G7"] = "BLOCKED / NOT TESTED"
+    report["G8"] = "BLOCKED; no dedicated runtime evidence"
     if args.output:
         output = args.output if args.output.is_absolute() else ROOT / args.output
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
-    # A stale copy is an audit finding and release blocker, not an all-clear.
-    failed = bool(report["dependency_contracts"]["direct_errors"] or report["dependency_contracts"]["transitive_errors"] or report["copy_missing"] or report["copy_changed"] or report["copy_extra"] or collisions or
-                  localization_errors or require_errors or report["non_lua_runtime_dependencies"] or report["syntax"].get("errors") or
-                  any(item["errors"] or item["classification"] == "unclassified" or (item["classification"] != "historical" and item.get("source_differences")) for item in archive_reports) or
-                  report.get("protected_files_changed") or report["package_validation"].get("error") or report["index_audit"]["denied_paths"] or
-                  report["index_audit"]["potential_secret_paths"])
-    return int(failed)
+    return int(bool(report["release_consistency_failures"] if args.release else report["source_failures"]))
 
 
 if __name__ == "__main__":

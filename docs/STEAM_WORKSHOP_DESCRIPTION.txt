@@ -1,6 +1,6 @@
 ⚠ DEVELOPMENT BUILD — NOT YET PLAYABLE ⚠
 
-[b]Mod Version:[/b] 0.29.1-dev.1
+[b]Mod Version:[/b] 0.29.1
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
