@@ -26,3 +26,5 @@ git diff --cached --check
 ```
 
 Source/runtime distinction: new Mod ID native startup, old save activation, Native UI/inventory/lighting, joins/restarts and actual dedicated authority/transport remain NOT TESTED. Existing native smoke/remains gates remain unchanged. Current Knowledge source's upstream dedicated-storage blocker is not overridden by these SP host tests. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. Historical 0.29.1 and dev.1 reports retain exact observed versions. No packaging, deployment, game/server launch or Workshop upload.
+
+Final review pins SPXTRM 4dfd911353d1f4631feffbd3c6bfe592c52fbdea, whose native UVC validity path performs no optical scan. The prior clean 06c3072 fixture is retained unchanged under ignored .local/ci-dependency-history; no deletion or reset. Nightfall optical imports/policy are unchanged.
