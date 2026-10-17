@@ -1,6 +1,6 @@
 # Project Nightfall testing
 
-Current source is 0.29.1. Run `python scripts/check_versions.py`, `python scripts/run_host_tests.py`, `python -m unittest discover -s tests -p "test_*.py"` and `python scripts/dependency_contracts.py`. Current results are 63/63 Lua and 25/25 Python PASS with source dependency contracts PASS. See [validation](VALIDATION_0.29.1.md). Native UI/SP/dedicated remain unverified; current source is not packaged. The historical sections below are not current proof.
+Current source is 0.30.0. Run the existing version, host, Python, dependency and source-audit commands. Latest 63 Lua and 25 Python files PASS offline; see [current validation](VALIDATION_0.30.0.md). Native/SP/dedicated remain NOT TESTED. Use the B47ANCEDSPXTRM activation ID on every peer; old lightWorks imports/save keys remain compatible. Current source is not packaged.
 
 Current reproducible commands use `prepare_ci_dependencies.py` and `--dependencies .local/ci-dependencies`; see [CI](CI.md). The historical archive helper below remains unchanged. See the [current runtime handoff](RUNTIME_ACCEPTANCE_0.29.1.md) for blocked native/SP/dedicated cases.
 
@@ -200,3 +200,5 @@ playing, run:
 Counters and host tests do not prove native animation, rendering, pathfinding,
 audio, multiplayer replication, or long-session balance. Those remain visual
 and in-game release gates.
+
+Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.

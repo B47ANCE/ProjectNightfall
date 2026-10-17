@@ -9,7 +9,7 @@ development package and current Contents, with all historical data preserved.
 Obtain clean-launcher SP and dedicated MP evidence before new smoke, condition,
 or migration features. Packaging supplies no new runtime PASS evidence.
 
-Current development is 0.29.1. The current family source-contract audit passes after Health Care Mod ID reconciliation. The reversible MORTIS effigy adapter and first read-only remains-condition UI increment are implemented with offline regressions; native smoke/physical remains visuals remain gated. See [current validation](VALIDATION_0.29.1.md). Obtain native UI/SP/dedicated evidence, then explicitly package a test build when requested.
+Current development is 0.30.0; the required activation identity is B47ANCEDSPXTRM. The current family source-contract audit passes after Health Care Mod ID reconciliation. The reversible MORTIS effigy adapter and first read-only remains-condition UI increment are implemented with offline regressions; native smoke/physical remains visuals remain gated. See [current validation](VALIDATION_0.29.1.md). Obtain native UI/SP/dedicated evidence, then explicitly package a test build when requested.
 
 The source/CI audit tooling is complete for this snapshot; [runtime acceptance](RUNTIME_ACCEPTANCE_0.29.1.md), fluent translation review, final audio and verified renderer/migration capabilities remain explicit gates.
 
@@ -100,3 +100,5 @@ text, recipes, assets, or implementation structure is incorporated.
 
 These additions cannot delay the current release gates or alter existing UV,
 Feral, remains, smoke, persistence, or networking semantics.
+
+Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.

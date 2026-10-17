@@ -1,3 +1,7 @@
+[b]Version 0.30.0[/b]
+MP testing build - dedicated multiplayer NOT TESTED
+Switch required activation ID to B47ANCEDSPXTRM; preserve Workshop 3788593239, lightWorks API/save contracts and all infected UV policy. Both effigy and audit work are retained from main. No upload.
+
 [b]Version 0.29.1 - development source, 2026-10-16[/b]
 
 Completes source audit tooling, historical mirror protection, pinned public dependency fixtures and Linux/Windows offline CI. Adds localization placeholder validation and an explicit English fallback policy. Gameplay and save/network schemas are unchanged from 0.29.0.

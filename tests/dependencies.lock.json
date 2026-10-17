@@ -2,10 +2,10 @@
   "scope": "Offline test fixtures; public first-party source, not installed mods or runtime proof",
   "dependencies": [
     {
-      "folder": "B47ANCEDSpectrum",
-      "url": "https://github.com/B47ANCE/B47ANCEDSpectrum.git",
-      "mod_id": "lightWorks",
-      "commit": "a2a018393c417c5e29dfda6153266c65b0e5da41"
+      "folder": "B47ANCEDSPXTRM",
+      "url": "https://github.com/B47ANCE/B47ANCEDSPXTRM.git",
+      "mod_id": "B47ANCEDSPXTRM",
+      "commit": "4dfd911353d1f4631feffbd3c6bfe592c52fbdea"
     },
     {
       "folder": "Project MORTIS",

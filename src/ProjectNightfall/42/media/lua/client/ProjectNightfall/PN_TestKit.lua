@@ -5,7 +5,7 @@ ProjectNightfall = ProjectNightfall or {}
 ProjectNightfall.TestKit = ProjectNightfall.TestKit or {}
 
 local TestKit = ProjectNightfall.TestKit
-local KIT_VERSION = "0.29.1"
+local KIT_VERSION = "0.30.0"
 local MARKER = "ProjectNightfall.TestKitVersion"
 local TEST_STARVATION_HOURS = 1.0
 
