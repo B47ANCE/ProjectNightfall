@@ -33,3 +33,7 @@ inventory-art task, not permission to alter intensity, cone or physical fit.
 ## Planned effigy assets - 2026-10-17
 
 The [approved container plan](../docs/EFFIGY_CONTAINER_PLAN.md) requires three initial visual states: EMPTY, MEAT_LOADED and BODY_PART_LOADED. Author one shared frame with separate contents groups, matching origin/scale/footprint, materials and UVs. The four provenance-based body-part categories share one body-part-loaded appearance initially; no mixed-content variant is allowed. Partial/full, broken and per-limb variants are deferred. No effigy models have been created or validated by this plan. The final runtime export format awaits a verified Lua-only world-object rendering path; Blender-authored states may need directional isometric sprite exports rather than arbitrary FBX swapping.
+
+## Effigy concept and implementation foundation - 2026-10-17
+
+The user supplied [this effigy concept](references/effigy-user-concept.png): an upright spiked wooden post with rope lashings and a braced foot. Exact supplied PNG bytes are preserved, SHA-256 `03cb7944ba3c7c03280ec0d9410a114cb3cf155a8d6f3fa34559b2b462e2d377`; this is a user-provided reference, not independently established provenance or native-game evidence. The [asset brief](effigy/ASSET_BRIEF.json) assigns the same frame to EMPTY, MEAT_LOADED and BODY_PART_LOADED, with separate contents groups. Skull/limb examples do not create extra states. The policy now derives those three identifiers, but no effigy mesh, texture, sprite export or renderer has been created/enabled.

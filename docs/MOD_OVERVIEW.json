@@ -2,9 +2,9 @@
   "schema": 1,
   "id": "night",
   "name": "Project Nightfall",
-  "version": "0.30.0",
+  "version": "0.31.0-dev.1",
   "reviewed": true,
-  "source_digest": "c9050bff09bc7830d95ef3ee853701151361538f911b57c9a583dae0014914be",
+  "source_digest": "48d77228cd5660d5d23b339daf8ff5011d877b73be4be0fd9810f45eb85c8aca",
   "features": [
     {
       "status": "Source",
@@ -23,15 +23,19 @@
       "text": "Provenance-checked body-part effigies and feeding; research files and configurable presets."
     },
     {
+      "status": "Foundation",
+      "text": "Read-only effigy container policy classifies five source categories, rejects incompatible batches/bags/invalid provenance and derives the three visual identifiers from physical contents. No transfers or world renderer enabled."
+    },
+    {
       "status": "Planned",
-      "text": "Reusable restricted effigy container; separate ordinary meat and human/regular/Feral/Smart-Feral part categories; EMPTY, MEAT_LOADED and BODY_PART_LOADED visual states. No mixed contents."
+      "text": "Reusable world container, native transfer/feed/save integration and EMPTY/MEAT_LOADED/BODY_PART_LOADED assets remain planned; preserve source separation and no meat/part mixing."
     },
     {
       "status": "Blocked",
-      "text": "Restricted world-container server admission, transfer/feed/destruction concurrency, save migration and native visual-state transport require verified Lua-only integration and runtime evidence."
+      "text": "Native queued transfers validate category before enqueue but not at inspected commit; live binding stops until a safe Lua-only server transfer/lease boundary and rendering/save contracts are verified."
     }
   ],
-  "limits": "Source/design review only, baseline 0.30.0. Existing combined-item effigies remain implemented; reusable container and three effigy assets are planned, not shipped. Native SP/dedicated NOT TESTED; G7 and stable G8 BLOCKED.",
+  "limits": "Development 0.31.0-dev.1 source/offline foundation only. Existing legacy effigies remain active. New native container/feeding/rendering and all three effigy assets are blocked/pending; SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -39,7 +43,10 @@
     "docs/EFFIGIES.md",
     "docs/EFFIGY_CONTAINER_PLAN.md",
     "art/README.md",
-    "docs/VALIDATION_0.30.0.md"
+    "src/ProjectNightfall/42/media/lua/shared/ProjectNightfall/PN_EffigyContainerPolicy.lua",
+    "docs/EFFIGY_CONTAINER_API_AUDIT.md",
+    "docs/VALIDATION_0.31.0-dev.1.md",
+    "art/effigy/ASSET_BRIEF.json"
   ],
   "relations": []
 }

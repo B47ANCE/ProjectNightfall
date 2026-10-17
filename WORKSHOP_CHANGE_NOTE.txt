@@ -1,3 +1,9 @@
+[b]Version 0.31.0-dev.1 - development foundation, 2026-10-17[/b]
+
+MP testing build - dedicated multiplayer NOT TESTED
+
+Starts the read-only effigy category and three-state visual policy. Mixed meat/body parts and mixed source categories are rejected by the policy. The reusable world container and visuals are not enabled; native transfer authority and asset integration remain blocked. Existing effigies are unchanged. No package or upload.
+
 [b]Version 0.30.0[/b]
 MP testing build - dedicated multiplayer NOT TESTED
 Switch required activation ID to B47ANCEDSPXTRM; preserve Workshop 3788593239, lightWorks API/save contracts and all infected UV policy. Both effigy and audit work are retained from main. No upload.

@@ -1,0 +1,76 @@
+{
+  "direct": "PASS",
+  "direct_errors": [],
+  "transitive": "PASS",
+  "transitive_errors": [],
+  "source_versions": [
+    {
+      "mod_id": "B47ANCEDSPXTRM",
+      "version": "0.30.0",
+      "source_tree_sha256": "f49ffe638819716c0f0b81e318dce812451b2815356d04b4188fd47ed854efa7"
+    },
+    {
+      "mod_id": "ProjectMORTIS",
+      "version": "0.25.0-dev.4",
+      "source_tree_sha256": "9e6af40c70343bf87473fb5dfec1740d678a2628636c7e9481152fbad1bfab9f"
+    },
+    {
+      "mod_id": "B47ANCEDPower",
+      "version": "0.17.0-dev.1",
+      "source_tree_sha256": "464d9699f54e51fa692b0043f2afce7a2e576a9a06b469843d8e452b067f1043"
+    },
+    {
+      "mod_id": "B47ANCEDHealthCare",
+      "version": "0.10.0",
+      "source_tree_sha256": "9b99cf162a26b01c8db6bd74f31d8ed8158b50503e8a5d2b414a5476a3345b8e"
+    },
+    {
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "version": "0.15.0",
+      "source_tree_sha256": "4b4ab32f084082cb2df28c28202797f55519d4cd8dd064f89812520e920e8b11"
+    }
+  ],
+  "scope": "Offline source contracts for 0.31.0-dev.1; no native/SP/dedicated evidence",
+  "locked_public_commits": [
+    {
+      "folder": "B47ANCEDSPXTRM",
+      "url": "https://github.com/B47ANCE/B47ANCEDSPXTRM.git",
+      "mod_id": "B47ANCEDSPXTRM",
+      "commit": "4dfd911353d1f4631feffbd3c6bfe592c52fbdea",
+      "version": "0.30.0",
+      "git_source_tree": "8ad6febb6d178bbe1fe9e58945fc3dca41a88f49"
+    },
+    {
+      "folder": "Project MORTIS",
+      "url": "https://github.com/B47ANCE/ProjectMORTIS.git",
+      "mod_id": "ProjectMORTIS",
+      "commit": "f0358fef2ec4519cbfb26bad641699488c7f8ec9",
+      "version": "0.25.0-dev.4",
+      "git_source_tree": "cdf88b660670c8d6c367db18ec387daf7f641d54"
+    },
+    {
+      "folder": "B47ANCEDPower",
+      "url": "https://github.com/B47ANCE/B47ANCEDPower.git",
+      "mod_id": "B47ANCEDPower",
+      "commit": "40ff9ebfe247d56d7dd2e308e7b7eabfb61a7ce0",
+      "version": "0.17.0-dev.1",
+      "git_source_tree": "30b97864ab3467b9468a71e6c35ed44bc717f8d4"
+    },
+    {
+      "folder": "B47ANCEDHealthCare",
+      "url": "https://github.com/B47ANCE/B47ANCEDHealthCare.git",
+      "mod_id": "B47ANCEDHealthCare",
+      "commit": "0c7fd8defe24d859db69d585c7a3f0b5f9649c76",
+      "version": "0.10.0",
+      "git_source_tree": "7de19e080ad238d2dd6522be156cc460678e7087"
+    },
+    {
+      "folder": "B47ANCEDKnowledgeAndWisdom",
+      "url": "https://github.com/B47ANCE/B47ANCEDKnowledgeAndWisdom.git",
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "commit": "ca5b724c63d49ab224f96b2daea3e17ad7498e44",
+      "version": "0.15.0",
+      "git_source_tree": "f360d58a11bc7477deb8267d9fa2bf63d375764c"
+    }
+  ]
+}

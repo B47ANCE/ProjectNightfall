@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.30.0",
+  "project_version": "0.31.0-dev.1",
   "canonical_version_file": "VERSION",
   "mod_ids": [
     "ProjectNightfall"
@@ -49,7 +49,9 @@
     "docs/audits/0.29.1-dev.1.dependencies.json",
     "docs/VALIDATION_0.29.1.md",
     "docs/VALIDATION_0.29.1-dev.1.md",
-    "docs/RUNTIME_ACCEPTANCE_0.29.1.md"
+    "docs/RUNTIME_ACCEPTANCE_0.29.1.md",
+    "docs/VALIDATION_0.30.0.md",
+    "docs/audits/0.30.0.dependencies.json"
   ],
   "developer_local_only": [
     ".agents",
@@ -66,7 +68,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "Current 0.30.0 source is not packaged; 0.27.4 Contents and archives remain historical.",
+  "packaging_status": "Current 0.31.0-dev.1 source is not packaged; 0.27.4 Contents and archives remain historical.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",

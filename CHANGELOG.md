@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.31.0-dev.1 - effigy container policy foundation, 2026-10-17
+
+- Development MINOR prerelease: read-only classification/admission for separate ordinary meat, human, regular-zombie, Feral and Smart-Feral categories. Validate whole insertion batches and derive only EMPTY, MEAT_LOADED and BODY_PART_LOADED from physical contents. Reject mixing, bags, duplicate/sparse/malformed input, unsupported provenance and invalid material; depleted parts stay category-locked until physically removed.
+- Record the native queued-transfer admission gap; do not expose a client-authoritative or optimistic world container. Existing effigy construction, feeding, schemas, balance and synchronization are unchanged.
+- Preserve the user-supplied spiked-post concept and define the three matching asset groups. No meshes, sprites or renderer generated.
+- 64 Lua files and 25 Python tests PASS offline; no native/SP/dedicated validation. G7/stable G8 BLOCKED; no package, deploy or upload. See docs/VALIDATION_0.31.0-dev.1.md.
+
 ## 0.30.0 - SPXTRM dependency transition, 2026-10-16
 
 - Documentation planning follow-up, 2026-10-17: record the user-approved reusable effigy container, separate source categories, prohibition on meat/body-part mixing, and three planned visual states. No runtime/art/version change or new gameplay validation.

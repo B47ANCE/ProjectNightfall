@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "status": "authoring brief; runtime assets NOT CREATED",
+  "reference": {
+    "path": "../references/effigy-user-concept.png",
+    "origin": "Image supplied by the user in this project conversation on 2026-10-17; rights/provenance not independently established",
+    "sha256": "03cb7944ba3c7c03280ec0d9410a114cb3cf155a8d6f3fa34559b2b462e2d377",
+    "width": 1536,
+    "height": 1024
+  },
+  "shape": "Upright rough wooden post with projecting sharpened pegs, rope lashings and splayed timber braces at the foot",
+  "shared_geometry": "Same frame, origin, footprint, orientations and scale for every visual state",
+  "states": [
+    {
+      "id": "EMPTY",
+      "contents": "No loaded stock; weathering/stains may remain"
+    },
+    {
+      "id": "MEAT_LOADED",
+      "contents": "Separate ordinary-meat group hung/impaled on the frame"
+    },
+    {
+      "id": "BODY_PART_LOADED",
+      "contents": "Separate representative body-part group; all four source categories share this visual initially"
+    }
+  ],
+  "limits": [
+    "No fourth skull/limb state; reference variations are art examples, not added gameplay states",
+    "Do not imply exact limb inventory from a generic representative display",
+    "Reference scale annotation is a proposed authoring cue, not verified native game scale",
+    "Source mesh/material/export, native sprite-or-model integration, container preservation and MP remain NOT TESTED",
+    "No paid generation, Meshy rigging/animation, deploy or publish performed"
+  ]
+}

@@ -2,7 +2,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.30.0`
+- Version: `0.31.0-dev.1`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -60,6 +60,8 @@ See [offline CI and exact commands](docs/CI.md), [localization support policy](d
 
 The integrated 0.29.1 candidate also includes the effigy transaction fix originally developed as 0.29.1-dev.1: exclusive reservations, reversible tissue/claim snapshots, verified source revisions and world removal only after successful ZombieFed. Consumed tombstones cannot feed twice or be re-registered. Reaction rules and nutrition values are unchanged; native persistence/replication remain untested. See [effigy contract](docs/EFFIGIES.md).
 
-Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](docs/VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
+Retained 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](docs/VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
 
 Planned effigy increment: a reusable restricted container with separate ordinary-meat and provenance-based body-part categories, and empty/meat-loaded/body-part-loaded visuals. This behavior and its assets are not implemented; see [the agreed container plan](docs/EFFIGY_CONTAINER_PLAN.md).
+
+Development MINOR prerelease 0.31.0-dev.1 starts the effigy container foundation. The read-only policy classifies ordinary Meat food and validated human/regular/Feral/Smart-Feral parts, rejects mixing and nested bags, validates whole batches, and derives EMPTY/MEAT_LOADED/BODY_PART_LOADED. It does not move items or enable a world container. The [native admission audit](docs/EFFIGY_CONTAINER_API_AUDIT.md) identifies a queued-transfer authority gap; live admission/feeding and rendering remain blocked. The supplied spiked-post concept is preserved under art/references. See [current validation](docs/VALIDATION_0.31.0-dev.1.md).

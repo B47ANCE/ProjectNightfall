@@ -1,6 +1,6 @@
 # Effigy container and asset plan
 
-Agreed design: 2026-10-17. Planning baseline: canonical Nightfall 0.30.0, merged source commit 6988b57b81ff0dbb859857eb79aace81c2e65c8f. Status: PLANNED, not implemented. Documentation-only planning retains 0.30.0; it changes no runtime, inventory, saved schema or existing reaction. Classify and record the implementation version before production edits; do not treat this plan as stable-release approval.
+Agreed design: 2026-10-17. Planning baseline: canonical Nightfall 0.30.0, merged source commit 6988b57b81ff0dbb859857eb79aace81c2e65c8f. Status: approved plan; 0.31.0-dev.1 adds a read-only policy foundation only. Live container/feeding/rendering remain NOT IMPLEMENTED. The original documentation-only planning follow-up retained 0.30.0 without runtime/inventory/schema/reaction changes. The implementation checkpoint below is versioned separately; neither planning nor this foundation grants stable-release approval.
 
 ## Approved behavior
 
@@ -91,3 +91,5 @@ This iteration changes documentation only. Run python scripts/check_versions.py 
 Installed-source evidence fingerprint: media/lua/server/Items/AcceptItemFunction.lua SHA-256 `5a18403647286026f1dc3c6370f82e84e0539c6c47fbbf537774cda708322243`.
 
 Installed-source evidence fingerprint: media/lua/server/Traps/STrapGlobalObject.lua SHA-256 `8658508304ea8bdefe2567f0a3886c6d6cdd712dde5dfca95d5d11c55ed20789`.
+
+Implementation checkpoint 0.31.0-dev.1: classification, container inspection, whole-batch admission previews and the three visual identifiers are implemented with offline regressions. This does not satisfy the server transfer gate; see [native API audit](EFFIGY_CONTAINER_API_AUDIT.md). The user supplied a spiked-post concept retained in [the asset brief](../art/effigy/ASSET_BRIEF.json). Existing gameplay/save paths remain unchanged.

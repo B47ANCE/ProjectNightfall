@@ -1,6 +1,6 @@
 # Nightfall Effigies
 
-## Planned reusable container - decision 2026-10-17
+## Reusable container foundation - decision 2026-10-17
 
 The approved next design uses a real restricted container: keep ordinary meat separate from body parts and keep human, regular-zombie, Feral and Smart-Feral source categories separate. Plan three visual states: EMPTY, MEAT_LOADED and BODY_PART_LOADED. This is not current runtime behavior. See [container/asset plan](EFFIGY_CONTAINER_PLAN.md) for ownership, transactions, unresolved gameplay inputs, migration and rendering gates. The implementation descriptions below retain the existing combined-item/consumed-object contract until a versioned replacement is verified.
 
@@ -202,3 +202,9 @@ Only the matching successful ZombieFed event transmits the committed record and 
 Leases are transient and callbacks must not yield. This is compensation for synchronous failures, not crash-atomic storage spanning hunger and world saves. A crash between resource writes, native removal/replication failure, streaming, late join/rejoin and dedicated restart remain [RUNTIME GATE]. Failed native cleanup may leave a visible inert object; inspect it without reactivating or duplicating stock. Existing destruction uses its separate claim path and now also enforces canonical authority. No balance/configuration or automatic lease recovery change is introduced.
 
 Run `python scripts/run_host_tests.py --only tests/test_effigy_food_transactions.lua tests/test_effigies.lua`. The integration uses actual MORTIS FoodSources, hunger coordinator, FaultIsolation, event bus and tissue models, with native stats/world/persistence boundaries mocked. See [current validation](VALIDATION_0.29.1-dev.1.md) for exact dependency snapshots and native gates.
+
+## 0.31.0-dev.1 read-only container foundation
+
+`PN_EffigyContainerPolicy.classify(item)`, `inspect(container)` and `validateInsertion(container, candidates)` now implement the agreed category/visual policy as read-only queries. They reject meat/part and cross-provenance mixing, duplicate/sparse/invalid batches, nested bags and malformed/future provenance/materials. Physically present depleted parts retain their category and body-part-loaded appearance. Validation returns a proposal, never a transfer authorization or lease; ownership/reach/capacity and committed resource changes are outside this foundation. No player-facing UI/reason strings or extra sandbox settings are introduced.
+
+The native transfer boundary is unsafe for a simple dynamic predicate: [audit](EFFIGY_CONTAINER_API_AUDIT.md). World binding, actual item transactions, migration, ordinary-meat effects and rendering stay blocked. Existing combined-item effigies/food transactions are unchanged. All three assets still need authoring; [concept brief](../art/effigy/ASSET_BRIEF.json). See [validation](VALIDATION_0.31.0-dev.1.md).
