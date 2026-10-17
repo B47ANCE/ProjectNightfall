@@ -151,7 +151,7 @@ Remaining release work includes:
 ## Optional research requirement
 
 `ProjectNightfall.RequireEffigyKnowledge` connects construction validation to
-experienceWorks' `ProjectNightfall.EffigyConstruction` knowledge key. Reading
+B47ANCEDKnowledgeAndWisdom's `ProjectNightfall.EffigyConstruction` knowledge key. Reading
 `NF-UV-003` then `NF-FIELD-026` unlocks construction; possession alone does not.
 The shared validator applies this to menus, queued-action revalidation and
 authoritative construction. Missing or failing knowledge providers reject the
@@ -186,3 +186,15 @@ unverifiable container state or failed rollback returns a recovery error and
 must not be represented as successful recovery. Engine/network failures and
 save interruption still need in-game and multiplayer testing. A committed
 construction is not reported as retryable merely because replication fails.
+
+## MORTIS API 1.6 feeding adapter (0.29.1-dev.1)
+
+[TESTED: offline Lua 5.1] The real effigy provider now uses transaction version 1. Reservation exclusively leases an active source without changing tissue, claims, persisted data or the world. The quote uses canonical nutrition (or the existing .5 material-less legacy fallback). It checks server authority, exact object/source identity, a loaded square, finite positions, the same floor, 1.25-tile reach and the actual reaction. Commit rechecks source revision, identity and eligibility after MORTIS verifies hunger and stages its cache.
+
+Commit installs the planned material losses, claim and consumed tombstone silently. Rollback restores the original composition, claim, status, revision and persisted snapshot, releasing only its own lease. Unknown/newer state refuses compensation rather than overwriting it; MORTIS quarantines failed compensation. An optional nonnegative integer revision remains within schema 1, with zero for existing saves. Claims, direct material consumption and destruction cannot compete with a food lease. No additional player setting is needed for internal transaction bookkeeping.
+
+Only the matching successful ZombieFed event transmits the committed record and attempts native world/square removal. Duplicate events do nothing. A cleanup exception leaves an inert consumed record, emits a bounded diagnostic and never grants a second feed. OnObjectAdded and explicit registration cannot revive a consumed tombstone. Existing IDs attached to another object are rejected, not silently rebound. Wrapper replacement needs native lifecycle evidence; this adapter does not guess identity.
+
+Leases are transient and callbacks must not yield. This is compensation for synchronous failures, not crash-atomic storage spanning hunger and world saves. A crash between resource writes, native removal/replication failure, streaming, late join/rejoin and dedicated restart remain [RUNTIME GATE]. Failed native cleanup may leave a visible inert object; inspect it without reactivating or duplicating stock. Existing destruction uses its separate claim path and now also enforces canonical authority. No balance/configuration or automatic lease recovery change is introduced.
+
+Run `python scripts/run_host_tests.py --only tests/test_effigy_food_transactions.lua tests/test_effigies.lua`. The integration uses actual MORTIS FoodSources, hunger coordinator, FaultIsolation, event bus and tissue models, with native stats/world/persistence boundaries mocked. See [current validation](VALIDATION_0.29.1-dev.1.md) for exact dependency snapshots and native gates.

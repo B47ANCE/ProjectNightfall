@@ -1,0 +1,44 @@
+{
+  "direct": "PASS",
+  "direct_errors": [],
+  "transitive": "PASS",
+  "transitive_errors": [],
+  "source_versions": [
+    {
+      "mod_id": "lightWorks",
+      "version": "0.29.0",
+      "source_tree_sha256": "63b60786d2a3ad3ba457676f0a7df41a94ecff8b664a559fb579587116e3e3eb",
+      "commit": "a2a018393c417c5e29dfda6153266c65b0e5da41",
+      "dirty": true
+    },
+    {
+      "mod_id": "ProjectMORTIS",
+      "version": "0.25.0-dev.3",
+      "source_tree_sha256": "8e0161a039f08b85e941fdb2ad91debe1357a3869a88a30da2744e106a5fe96e",
+      "commit": "2f9b03a376aaecc751e6c10ffcf399916f444400",
+      "dirty": false
+    },
+    {
+      "mod_id": "B47ANCEDPower",
+      "version": "0.17.0-dev.1",
+      "source_tree_sha256": "464d9699f54e51fa692b0043f2afce7a2e576a9a06b469843d8e452b067f1043",
+      "commit": "40ff9ebfe247d56d7dd2e308e7b7eabfb61a7ce0",
+      "dirty": false
+    },
+    {
+      "mod_id": "B47ANCEDHealthCare",
+      "version": "0.10.0",
+      "source_tree_sha256": "9b99cf162a26b01c8db6bd74f31d8ed8158b50503e8a5d2b414a5476a3345b8e",
+      "commit": "0c7fd8defe24d859db69d585c7a3f0b5f9649c76",
+      "dirty": false
+    },
+    {
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "version": "0.15.0",
+      "source_tree_sha256": "6eba31314928898d386086b6548aec0e75940a21b514cb7ddb63c0f0ed93dfc2",
+      "commit": "ca5b724c63d49ab224f96b2daea3e17ad7498e44",
+      "dirty": false
+    }
+  ],
+  "scope": "source contracts only; no game/runtime evidence"
+}

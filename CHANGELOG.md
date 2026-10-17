@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.29.1-dev.1 - 2026-10-16
+
+- Fix effigy consumption under MORTIS API 1.6 using exclusive reversible reservations, staged tissue loss and compensation. Remove native objects only after confirmed ZombieFed; retain inert consumed tombstones on cleanup failure.
+- Revalidate authority, object identity/liveness, source revision, floor/range and reaction at reserve/commit. Exclude other food claims/destruction during the lease. Prevent consumed-state re-registration and cross-object ID rebinding; completeClaim now enforces canonical authority.
+- Add actual MORTIS coordinator/model/event-bus integration regression with mocked native boundaries. 63 Lua and 19 Python tests PASS offline; native SP/dedicated durability, ownership, replication and restart NOT TESTED. G7 and stable G8 BLOCKED. No packaging/deployment/publication.
+
 ## 0.29.0 - remains inspection and current dependency audit, 2026-10-16
 
 - Target development MINOR: add read-only client remains-condition presentation; preserve canonical gameplay, loot and saved schemas. Update the required medical Mod ID/source layout to B47ANCEDHealthCare while preserving its verified medWorks Lua/item contracts.

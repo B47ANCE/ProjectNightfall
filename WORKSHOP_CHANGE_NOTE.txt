@@ -1,5 +1,5 @@
-[b]Version 0.29.0 - development source, 2026-10-16[/b]
+[b]Version 0.29.1-dev.1 - development source, 2026-10-16[/b]
 
-Adds read-only remains-condition information for the vanilla-selected Nightfall corpse, using the existing synchronized stage. Includes localization keys, malformed-state guards and controller/pooling regressions. Uses the current Health Care Mod ID while preserving its public Lua/item contract.
+Fixes effigy feeding for MORTIS API 1.6: reversible reserve/commit/rollback, exclusive claims, revision checks and post-success world removal. Failed cleanup leaves an inert consumed tombstone. Existing reaction rules and nutrition values are preserved.
 
-Offline: 62 Lua files and 19 Python tests PASS; direct/transitive dependency source contracts PASS. Actual UI, SP and dedicated multiplayer NOT TESTED. G7 and stable G8 BLOCKED. Current source is not packaged or published; historical artifacts remain preserved.
+Offline: 63 Lua files and 19 Python tests PASS; current dependency source contracts PASS. Native SP and dedicated multiplayer NOT TESTED. G7 and stable G8 BLOCKED. No current package, deployment or upload; historical artifacts preserved.

@@ -19,3 +19,5 @@ Every intentional runtime version iteration needs a changelog, honest evidence, 
 The 0.28.0 development MINOR reconciles the explicitly requested current dependency family integration. Nightfall APIs, persisted schemas and sandbox identifiers stay compatible; the required dependency installation set changes to current public IDs. Users must migrate the family together. The existing generated 0.27.4 tree and immutable archives are historical, excluded from current source mirrors and blocked for current release use. No 0.28.0 package is authorized by this fix request.
 
 0.29.0 is a development MINOR for the localized read-only remains-inspection presentation increment and current Health Care Mod ID reconciliation. Nightfall schemas, network ownership and gameplay values remain unchanged. Existing 0.27.4 outputs stay historical.
+
+0.29.1-dev.1 is a development PATCH for the compatible MORTIS API 1.6 effigy transaction adapter. The optional schema-1 revision defaults to zero for old active records. Reaction rules, source/provider IDs, sandbox settings and nutrition values stay unchanged. Current source is not packaged; old artifacts keep their versions.
