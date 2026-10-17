@@ -1,6 +1,6 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.29.1.
+Canonical version: 0.30.0.
 
 ## Current slice and next gates - 2026-10-16
 
@@ -54,3 +54,5 @@ Canonical version: 0.29.1.
 ## Prohibited
 
 - Project Remnants compatibility through MORTIS or any other path.
+
+Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.

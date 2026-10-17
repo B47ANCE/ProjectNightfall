@@ -1,0 +1,34 @@
+{
+  "direct": "PASS",
+  "direct_errors": [],
+  "transitive": "PASS",
+  "transitive_errors": [],
+  "source_versions": [
+    {
+      "mod_id": "B47ANCEDSPXTRM",
+      "version": "0.30.0",
+      "source_tree_sha256": "7a2a23e295960a15193ed1749a7aafd2da45a053fa2c4a7eea0edae679ea9446"
+    },
+    {
+      "mod_id": "ProjectMORTIS",
+      "version": "0.25.0-dev.4",
+      "source_tree_sha256": "9e6af40c70343bf87473fb5dfec1740d678a2628636c7e9481152fbad1bfab9f"
+    },
+    {
+      "mod_id": "B47ANCEDPower",
+      "version": "0.17.0-dev.1",
+      "source_tree_sha256": "464d9699f54e51fa692b0043f2afce7a2e576a9a06b469843d8e452b067f1043"
+    },
+    {
+      "mod_id": "B47ANCEDHealthCare",
+      "version": "0.10.1",
+      "source_tree_sha256": "69241428ba787735e9b09491ab6e0242ae5a5c01948f7f24595de7165f5f7478"
+    },
+    {
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "version": "0.16.0",
+      "source_tree_sha256": "f2e3c0bf129b8975cb47de25e23b3d2f52d636f27fb748a15a916dc9c10cd4cf"
+    }
+  ],
+  "scope": "source contracts only; no game/runtime evidence"
+}

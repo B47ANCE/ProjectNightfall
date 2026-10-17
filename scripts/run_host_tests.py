@@ -99,7 +99,9 @@ def main() -> int:
             lua.globals().arg = lua.table_from([str(ROOT / path).replace("\\", "/") for path in args])
             # Existing debug tests need debug mode; the release-gate test
             # explicitly overrides this to verify inert non-debug loading.
-            lua.execute("isDebugEnabled=function() return true end")
+            # Explicit host SP simulation. Tests can override either realm;
+            # undefined realm predicates must not masquerade as authority.
+            lua.execute("isDebugEnabled=function() return true end; isClient=function() return false end; isServer=function() return false end")
             try:
                 lua.execute(test.read_text(encoding="utf-8-sig"), name=str(test.relative_to(ROOT)))
                 if options.verbose:

@@ -1,6 +1,6 @@
-⚠ DEVELOPMENT BUILD — NOT YET PLAYABLE ⚠
+âš  DEVELOPMENT BUILD â€” NOT YET PLAYABLE âš 
 
-[b]Mod Version:[/b] 0.29.1
+[b]Mod Version:[/b] 0.30.0
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
@@ -30,7 +30,7 @@ A proper release announcement will be made when the mod reaches a playable state
 
 [ibb.co]
 Project Nightfall
-Project Nightfall is a UV-driven zombie overhaul that transforms daylight into a new survival threat. Sunlight forces zombies into hibernation—but darkness restores them, releases the Ferals, and gives Smart Ferals room to hunt.
+Project Nightfall is a UV-driven zombie overhaul that transforms daylight into a new survival threat. Sunlight forces zombies into hibernationâ€”but darkness restores them, releases the Ferals, and gives Smart Ferals room to hunt.
 Current Features
 
 - Sunlight damages zombies to a configurable health floor, then forces them into true fake-dead hibernation.
@@ -104,7 +104,7 @@ Effigies
 - Effigies preserve detached-part nutrition and drive transactional feeding, attraction, avoidance, destruction, and persistent Smart Feral hunts without omniscient tracking.
 
 No Ferals Mode
-The included Project: Nightfall — No Ferals preset retains UV damage, optional sunlight knockdown, hibernation, and nighttime rising without creating Ferals or Smart Ferals.
+The included Project: Nightfall â€” No Ferals preset retains UV damage, optional sunlight knockdown, hibernation, and nighttime rising without creating Ferals or Smart Ferals.
 Zombies rise again as regular zombies.
 Sandbox Customization
 Project Nightfall includes extensive controls for:
@@ -158,7 +158,7 @@ Required Mods
 
 - B47ANCEDKnowledgeAndWisdom (technical Mod ID: B47ANCEDKnowledgeAndWisdom)
 
-Project M.O.R.T.I.S. supplies the reusable infected API and supporting systems. It does not add Nightfall’s zombies.
+Project M.O.R.T.I.S. supplies the reusable infected API and supporting systems. It does not add Nightfallâ€™s zombies.
 lightWorks supplies serviceable lights, colored bulbs, and UV emission semantics.
 B47ANCEDPower supplies batteries, stored energy, and power-consumption calculations.
 B47ANCEDHealthCare supplies authoritative detached-part provenance used by effigies.
@@ -186,3 +186,5 @@ Technical Designer
 Compatibility Engineer
 QA Automation Developer
 Technical Writer and Documentation Maintainer
+
+Requires B47ANCED SPXTRM (Mod ID B47ANCEDSPXTRM, existing Workshop item 3788592008). Enable the replacement Mod ID on server and all clients; lightWorks Lua/save identifiers remain compatible.

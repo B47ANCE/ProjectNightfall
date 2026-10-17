@@ -2,7 +2,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.29.1`
+- Version: `0.30.0`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -21,7 +21,7 @@ Nightfall defines and controls Transforming, Feral, and Smart Feral zombies. It 
 - Indoor zombies receive at most one outdoor roaming request per night; vanilla remains responsible for ordinary nighttime activity.
 - Smart Ferals share fixed effigy-hunt origins, expiry, rage, and builder identity
   with members of their established intelligent horde.
-- Packaged `Project: Nightfall — No Ferals` preset: UV damage and optional sun knockdown remain, but hibernators rise as regular zombies.
+- Packaged `Project: Nightfall â€” No Ferals` preset: UV damage and optional sun knockdown remain, but hibernators rise as regular zombies.
 - Standard and high-output lightWorks UV bulbs with violet visible light.
 - Regular-zombie UV slowing and shelter seeking.
 - Feral solar reserve, rare tactical sprinting, and daytime shelter behavior.
@@ -38,7 +38,7 @@ Nightfall defines and controls Transforming, Feral, and Smart Feral zombies. It 
 - Bald, clean-shaven Feral and Smart Feral appearances.
 - M.O.R.T.I.S.-powered deeper-interior crowd flow for shelter entry.
 - Packaged `Project Nightfall` sandbox settings page.
-- Selectable `Project: Nightfall` and `Project: Nightfall — No Ferals` presets based on Apocalypse.
+- Selectable `Project: Nightfall` and `Project: Nightfall â€” No Ferals` presets based on Apocalypse.
 - Rare classified Project files registered through B47ANCED Knowledge & Wisdom, with genuine redactions, prerequisites, persistent knowledge unlocks, and restricted scientific/military loot pools.
 
 ## Documentation
@@ -59,3 +59,5 @@ Development PATCH 0.29.1 completes source audit/CI tooling and validates pinned 
 See [offline CI and exact commands](docs/CI.md), [localization support policy](docs/LOCALIZATION_POLICY.md), and the [runtime acceptance handoff](docs/RUNTIME_ACCEPTANCE_0.29.1.md). Source audit success does not grant release consistency or runtime approval.
 
 The integrated 0.29.1 candidate also includes the effigy transaction fix originally developed as 0.29.1-dev.1: exclusive reservations, reversible tissue/claim snapshots, verified source revisions and world removal only after successful ZombieFed. Consumed tombstones cannot feed twice or be re-registered. Reaction rules and nutrition values are unchanged; native persistence/replication remain untested. See [effigy contract](docs/EFFIGIES.md).
+
+Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](docs/VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.

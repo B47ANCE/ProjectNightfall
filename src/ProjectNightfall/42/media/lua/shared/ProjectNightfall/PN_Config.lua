@@ -1,8 +1,8 @@
 ProjectNightfall = ProjectNightfall or {}
-ProjectNightfall.VERSION = "0.29.1"
+ProjectNightfall.VERSION = "0.30.0"
 ProjectNightfall.Config = ProjectNightfall.Config or {}
 
--- Project Nightfall 0.29.1
+-- Project Nightfall 0.30.0
 ProjectNightfall.Config.POC = {
     Enabled = true,
     Debug = true,

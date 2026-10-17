@@ -1,6 +1,6 @@
-⚠ DEVELOPMENT BUILD — NOT YET PLAYABLE ⚠
+âš  DEVELOPMENT BUILD â€” NOT YET PLAYABLE âš 
 
-[b]Mod Version:[/b] 0.29.1
+[b]Mod Version:[/b] 0.30.0
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
@@ -30,14 +30,14 @@ A proper release announcement will be made when the mod reaches a playable state
 
 [ibb.co]
 Project Nightfall
-Project Nightfall is a UV-driven zombie overhaul that transforms daylight into a new survival threat. Sunlight forces zombies into hibernation—but darkness restores them, releases the Ferals, and gives Smart Ferals room to hunt.
+Project Nightfall is a UV-driven zombie overhaul that transforms daylight into a new survival threat. Sunlight forces zombies into hibernationâ€”but darkness restores them, releases the Ferals, and gives Smart Ferals room to hunt.
 Current Features
 
 - Sunlight damages zombies to a configurable health floor, then forces them into true fake-dead hibernation.
 
 - Hibernating zombies rise after nightfall and rapidly recover their health.
 
-- Artificial UV remains lethal and can permanently kill zombies.
+- Artificial UV passes through regional clothing protection, causes persistent localized tissue loss and wounds, and remains lethal.
 
 - Overlapping UV lights create dangerous UV hotbeds.
 
@@ -47,11 +47,13 @@ Current Features
 
 - Hibernators can be disturbed only at very close range and return to hibernation after disengaging.
 
-- Standard and high-output violet UV bulbs work through lightWorks.
+- Standard and high-output pure-blue UV bulbs work through lightWorks.
 
 - Artificial UV sources contribute independent damage, allowing overlapping lights to cook zombies faster.
 
 - Handheld, attached, weapon-mounted, and supported placed lamps can emit UV.
+
+- Marked infected corpses continue degrading under artificial UV through bounded emitter-local processing, with persistent remains stages while loot and cause of death stay intact.
 
 Ferals
 Zombies must remain fully starved for seven continuous days before they become eligible to rise as Ferals. Feeding resets that starvation timer.
@@ -99,10 +101,10 @@ Effigies
 
 - B47ANCEDHealthCare body parts retain source provenance and can build source-specific effigies.
 
-- Effigies drive attraction, avoidance, feeding, destruction, and persistent Smart Feral hunts without omniscient player tracking.
+- Effigies preserve detached-part nutrition and drive transactional feeding, attraction, avoidance, destruction, and persistent Smart Feral hunts without omniscient tracking.
 
 No Ferals Mode
-The included Project: Nightfall — No Ferals preset retains UV damage, optional sunlight knockdown, hibernation, and nighttime rising without creating Ferals or Smart Ferals.
+The included Project: Nightfall â€” No Ferals preset retains UV damage, optional sunlight knockdown, hibernation, and nighttime rising without creating Ferals or Smart Ferals.
 Zombies rise again as regular zombies.
 Sandbox Customization
 Project Nightfall includes extensive controls for:
@@ -152,9 +154,15 @@ Required Mods
 
 - Project M.O.R.T.I.S.
 
-Project M.O.R.T.I.S. supplies the reusable infected API and supporting systems. It does not add Nightfall’s zombies.
+- B47ANCEDHealthCare
+
+- B47ANCEDKnowledgeAndWisdom (technical Mod ID: B47ANCEDKnowledgeAndWisdom)
+
+Project M.O.R.T.I.S. supplies the reusable infected API and supporting systems. It does not add Nightfallâ€™s zombies.
 lightWorks supplies serviceable lights, colored bulbs, and UV emission semantics.
 B47ANCEDPower supplies batteries, stored energy, and power-consumption calculations.
+B47ANCEDHealthCare supplies authoritative detached-part provenance used by effigies.
+B47ANCEDKnowledgeAndWisdom supplies physical research and prerequisite knowledge progression.
 Compatibility and Testing
 Project Nightfall uses vanilla zombie instances and is designed to preserve compatibility with ordinary zombie spawning and population settings.
 Single-player development and testing are ongoing. Multiplayer compatibility is not currently claimed.
@@ -178,3 +186,5 @@ Technical Designer
 Compatibility Engineer
 QA Automation Developer
 Technical Writer and Documentation Maintainer
+
+Requires B47ANCED SPXTRM (Mod ID B47ANCEDSPXTRM, existing Workshop item 3788592008). Enable the replacement Mod ID on server and all clients; lightWorks Lua/save identifiers remain compatible.
