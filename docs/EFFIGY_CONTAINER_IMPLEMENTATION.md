@@ -1,8 +1,10 @@
-# Effigy frame loading — 0.31.0-dev.2
+# Effigy frame loading — 0.31.0-dev.3
 
 [VERIFIED: source inspection] Lua-only authority design for installed Steam build
 25485521; exact game SemVer UNKNOWN. [TESTED: offline Lua 5.1] Native boundaries
 are facades, not a running game. SP/dedicated transport, save and UI NOT TESTED.
+
+Current reusable feeding is specified in [EFFIGY_CONTAINER_FEEDING.md](EFFIGY_CONTAINER_FEEDING.md). Loading and feeding share the server mutation lease; the original dev.2 validation remains historical.
 
 ## Transfer race resolution
 
@@ -52,12 +54,12 @@ replace this design with a timeout-based category lock.
 | --- | --- |
 | Actual contents, condition, spoilage, MORTIS records | Native items in the real ItemContainer; MORTIS remains material/provenance owner |
 | First-item category and three visual states | Derived from all physical contents; no second stockpile or saved nutrition total |
-| Load replay revision | Server-written frame item modData, `ProjectNightfallEffigyContainer`, schemaVersion 1, nonnegative integer revision |
+| Tracked load/feed revision | Server-written frame item modData, `ProjectNightfallEffigyContainer`, schemaVersion 1, nonnegative integer revision |
 | UI snapshot | Client presentation only; every server load repeats validation |
 | In-progress batch guard | Transient server-only, scoped to a non-yielding call; no pending custom job to expire/cancel |
 
-The load revision advances once per committed batch and survives normal native
-item serialization. Native unloading does not advance this load-specific revision;
+The tracked mutation revision advances once per committed load or feeding batch and survives normal native
+item serialization. Native unloading does not advance this custom-mutation revision;
 it cannot bypass current-contents checks. A stale/duplicate load fails before
 movement and can receive a fresh snapshot. A request after physical emptying can
 select another category. Bones/depleted body parts retain the old category until
@@ -80,7 +82,7 @@ delivery, source/client readback, streaming and late joins are runtime gates.
 
 A disconnect before command processing makes no custom change; disconnect or
 acknowledgement loss after commit does not recreate items on retry. Restart has
-no custom transfer lease to restore. Native item-factory construction installs
+no delayed custom transfer queue; retained pending feed intents require human review. Native item-factory construction installs
 script guards before InventoryContainer.load fills the existing container.
 Actual native save/reload and item-modData durability are NOT TESTED. This is not
 a crash-atomic transaction across independently saved player/world inventories.
@@ -124,12 +126,7 @@ All three production models/textures and their native rendering adapter remain
 missing. The prototype uses the existing Bandage icon as an explicit placeholder,
 with no claimed effigy model. The user concept and asset brief remain authoritative.
 
-Reusable-frame construction/cost/knowledge flow, ordinary-meat AI effects,
-feeding actual stored parts, builder-versus-loader attribution, destruction and
-legacy migration are not bound by this slice. In particular, do not register the
-new frame with the old consumed-one-shot-effigy cleanup. No new AI effect or
-nutrition duplication is introduced. Existing combined Effigy items, tombstones,
-recipes and MORTIS food transactions remain on their previous path.
+Reusable feeding from actual meat/body-part stock is implemented by the separate server provider; see its feeding contract. Construction/cost/knowledge flow, non-feeding reactions, builder-versus-loader attribution, destruction and legacy migration remain pending. Do not register the new frame with the old consumed-one-shot-effigy cleanup. Existing combined Effigy items, tombstones, recipes and MORTIS food transactions remain on their previous path. Native chunk-save requests now accompany custom mutations; they do not prove durability.
 
 ## Human acceptance gates
 

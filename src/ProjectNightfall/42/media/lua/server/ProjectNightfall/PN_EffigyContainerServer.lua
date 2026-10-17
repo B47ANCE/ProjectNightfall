@@ -1,13 +1,13 @@
 require "ProjectNightfall/PN_Config"
 local Frame=require "ProjectNightfall/PN_EffigyContainer"
 local Policy=require "ProjectNightfall/PN_EffigyContainerPolicy"
+local State=require "ProjectNightfall/PN_EffigyContainerState"
 local Server={}
 -- A reentrant call may not observe a partially moved batch. Native packet
 -- processing and this non-yielding Lua handler run on the server main loop.
-local busy=setmetatable({},{__mode="k"})
 local reported=setmetatable({},{__mode="k"})
 local MAX_ITEMS=256 -- matches policy's technical inspection bound, not capacity
-local MAX_REVISION=9007199254740990 -- exact Lua-number integer safety limit
+local MAX_REVISION=State.MAX_REVISION
 local function report(t,reason)
     if reported[t.container] then return end
     reported[t.container]=true
@@ -48,19 +48,7 @@ local function accessible(player,object)
 end
 local function target(player,object)
     if not accessible(player,object) then return nil,"inaccessible" end
-    local frame=Frame.getFrame(object)
-    if not frame then return nil,"not_frame" end
-    local contents=frame:getItemContainer()
-    if not Frame.isClosed(contents) then return nil,"native_guard_missing" end
-    local data=frame:getModData()
-    local record=data[Frame.KEY]
-    if record==nil then
-        record={schemaVersion=1,revision=0};data[Frame.KEY]=record
-    end
-    if type(record)~="table" or record.schemaVersion~=1
-        or not integer(record.revision,0,MAX_REVISION) then return nil,"unsupported_record" end
-    if record.quarantined~=nil then return nil,"quarantined" end
-    return {frame=frame,container=contents,record=record}
+    return State.get(object)
 end
 local function ids(items)
     if type(items)~="table" then return nil end
@@ -84,7 +72,7 @@ function Server.inspect(player,object)
     if not authority() or not config() then return nil,"unavailable" end
     local t,reason=target(player,object)
     if not t then return nil,reason end
-    if busy[t.container] then return nil,"busy" end
+    if State.isBusy(t.container) then return nil,"busy" end
     return snapshot(t)
 end
 
@@ -113,6 +101,7 @@ local function transfer(player,t,items,count,revision)
     if not t.container:hasRoomFor(player,weight) then return nil,"capacity" end
     if isServer() and (type(sendRemoveItemFromContainer)~="function"
         or type(sendAddItemToContainer)~="function") then return nil,"sync_unavailable" end
+    if not State.canCheckpoint(t) then return nil,"persistence_unavailable" end
 
     local attempted=0
     local moved,problem=pcall(function()
@@ -126,6 +115,7 @@ local function transfer(player,t,items,count,revision)
         end
         local after=assert(Policy.inspect(t.container))
         if after.category~=proposal.category or after.itemCount~=proposal.itemCount then error("contents_readback") end
+        if not State.checkpoint(t) then error("frame_checkpoint_failed") end
     end)
     if not moved then
         local restored=true
@@ -139,7 +129,7 @@ local function transfer(player,t,items,count,revision)
             end)
             restored=restored and ok
         end
-        if not restored then t.record.quarantined="rollback_uncertain" end
+        if not restored then State.quarantine(t,"rollback_uncertain") end
         report(t,problem)
         return nil,restored and "move_failed" or "quarantined"
     end
@@ -153,7 +143,7 @@ local function transfer(player,t,items,count,revision)
                 sendAddItemToContainer(t.container,actual[i])
             end
         end)
-        if not synced then t.record.quarantined="sync_failed";report(t,"committed transmission failed") end
+        if not synced then State.quarantine(t,"sync_failed");report(t,"committed transmission failed") end
     end
     local view=snapshot(t)
     return view,t.record.quarantined and "committed_sync_failed" or nil
@@ -163,14 +153,15 @@ function Server.load(player,object,items,revision)
     if not authority() or not config() then return nil,"unavailable" end
     local count=ids(items);if not count then return nil,"invalid_batch" end
     local t,reason=target(player,object);if not t then return nil,reason end
-    if busy[t.container] then return nil,"busy" end
-    busy[t.container]=true
+    local owner={}
+    if not State.acquire(t,owner) then return nil,"busy" end
     local ok,view,result=pcall(transfer,player,t,items,count,revision)
-    busy[t.container]=nil
+    State.release(t,owner)
     if not ok then
-        t.record.quarantined="operation_failed";report(t,view)
+        State.quarantine(t,"operation_failed");report(t,view)
         return nil,"operation_failed"
     end
+    if view then State.changed(object) end
     return view,result
 end
 

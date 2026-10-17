@@ -8,10 +8,13 @@ function F.item(category)
     function item:getModData() return self.md end
     function item:getID() return self.id end
     function item:getContainer() return self.container end
+    function item:getWorldItem() return self.world end
     function item:IsInventoryContainer() return false end
     function item:getFoodType() return self.foodType end
     function item:getUnequippedWeight() return self.weight end
     function item:getName() return 'item '..self.id end
+    function item:getAge() return self.age or 0 end
+    function item:getCondition() return self.condition or 100 end
     if category~="meat" then
         assert(Detached.write(item,{schemaVersion=1,regionId="leftArm",speciesId="Mortis.Humanoid",
             sourceStableId="source"..serial,classifications={
@@ -78,6 +81,7 @@ function F.world()
     frame.world=object
     function object:getItem() return frame end
     function object:getSquare() return self.square end
+    function object:flagForHotSave() self.saveRequests=(self.saveRequests or 0)+1 end
     local objects={object}
     function square:getWorldObjects() return {size=function() return #objects end,get=function(_,i) return objects[i+1] end} end
     local source=F.container()

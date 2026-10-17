@@ -1,8 +1,12 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.31.0-dev.2
+Canonical version: 0.31.0-dev.3
 
 ## Current slice and next gates - 2026-10-17
+
+0.31.0-dev.3 implements [actual-item reusable feeding](EFFIGY_CONTAINER_FEEDING.md): server MORTIS transactions, shared loader/feed lease, native stock updates, compensation/quarantine and pending-intent recovery block. [Current validation](VALIDATION_0.31.0-dev.3.md) remains offline; native/dedicated acceptance, construction, non-feeding reactions/attribution, migration and three models remain next gates.
+
+### Retained dev.2 checkpoint
 
 0.31.0-dev.2 implements the [server-owned frame loader](EFFIGY_CONTAINER_IMPLEMENTATION.md), permanent native insertion guards, actual-item batching and source-aware menu. The separate prototype has no recipe/loot or production renderer. Next: human native contention/transport/save acceptance, then reusable feeding/construction and three matching assets. [Current evidence](VALIDATION_0.31.0-dev.2.md) is offline only; G7/stable G8 remain blocked.
 
@@ -25,7 +29,7 @@ Historical 0.29.1 integrates reversible effigy feeding and is a development PATC
 | Localization | EN authored; 28 locales English fallback; keys/placeholders checked | Fluent review / native layout |
 | MORTIS integration recovery | Four source findings corrected; actual-module and lifecycle-fragment regressions | Human own/foreign-owner, busy cleanup, compensation and observer/save/restart cases in MORTIS_RECOVERY.md |
 | Current dependency contracts | Source PASS, current public APIs retained | Whole-family native startup |
-| Reusable effigy container / art | Prototype: permanently closed native insertion, synchronous server item loading, localized menu and three derived states; user concept retained | [Native acceptance gates](EFFIGY_CONTAINER_IMPLEMENTATION.md); feeding/construction, migration and all three assets pending |
+| Reusable effigy container / art | Prototype: closed native insertion, server item loading/feeding, localized load menu and three derived states; user concept retained | [Native acceptance gates](EFFIGY_CONTAINER_IMPLEMENTATION.md); construction, non-feeding reactions/attribution, migration and all three assets pending |
 | Effigy feeding | Reserve/commit/rollback, actual MORTIS host integration | Native persistence, contention, removal transport and restart |
 | Remains-condition inspection | Read-only selected-corpse menu, localization keys, controller/pooling regressions PASS offline | SP/controller/late-join validation |
 | Native smoke and anatomical presentation | BLOCKED: safe instance cleanup, corpse render path and attachment exposure unverified | Verified adapter plus runtime probes |

@@ -1,3 +1,6 @@
+[b]Version 0.31.0-dev.3 - MP testing build - dedicated multiplayer NOT TESTED[/b]
+Reusable prototype-frame feeding from actual meat/body-part stock through server MORTIS transactions. Frames and depleted part items persist; category guards, compensation and recovery remain server owned. Construction and three models still pending. No upload performed.
+
 [b]Version 0.31.0-dev.2 - MP testing build - dedicated multiplayer NOT TESTED[/b]
 Development: server-owned effigy frame loading, permanent native insertion guard, category and batch validation. Prototype only: construction, feeding and three models remain pending. No upload performed.
 

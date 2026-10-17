@@ -2,7 +2,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.31.0-dev.2`
+- Version: `0.31.0-dev.3`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -75,4 +75,6 @@ The reviewed [feature overview](docs/MOD_OVERVIEW.json) describes source capabil
 and blocked work. All runtime tests remain human-operated; Knowledge MP storage
 is intentionally blocked. G7/stable G8 remain BLOCKED. No package/deploy/upload.
 
-Current 0.31.0-dev.2 implements a Lua-only server-owned loader for a separate, real EffigyFrame container prototype. Native insertion remains permanently closed; the server validates and synchronously moves actual items, preventing competing first-load and mixed-batch admission. A localized world menu labels source categories; sandbox capacity is server authoritative (1-40, default 20). Normal native unloading remains available. The prototype has no recipe/loot placement, feeding integration or production model yet; existing effigies remain intact. See [implementation and human gates](docs/EFFIGY_CONTAINER_IMPLEMENTATION.md) and [current offline evidence](docs/VALIDATION_0.31.0-dev.2.md). G7/stable G8 remain BLOCKED.
+Historical 0.31.0-dev.2 implemented a Lua-only server-owned loader for a separate, real EffigyFrame container prototype. Native insertion remains permanently closed; the server validates and synchronously moves actual items, preventing competing first-load and mixed-batch admission. A localized world menu labels source categories; sandbox capacity is server authoritative (1-40, default 20). Normal native unloading remains available. The prototype has no recipe/loot placement, feeding integration or production model yet; existing effigies remain intact. See [implementation and human gates](docs/EFFIGY_CONTAINER_IMPLEMENTATION.md) and [current offline evidence](docs/VALIDATION_0.31.0-dev.2.md). G7/stable G8 remain BLOCKED.
+
+Current 0.31.0-dev.3 adds reusable feeding to the real EffigyFrame prototype through server MORTIS reserve/commit/rollback transactions. Meals consume actual meat items or a part's edible canonical tissue, preserve the frame and depleted part items, and keep every source category separate until physical emptiness. Ordinary meat has no part-specific reactions/search/grudge. Source identity, item/material preimages and revisions are revalidated; loading shares the feeding lease. Pending/uncertain state blocks automatic replay, and native packets/save requests publish committed changes. Existing calorie/hunger settings are reused. The prototype remains undistributed, with construction, non-feeding reactions/attribution, migration and three models still pending. See [feeding contract](docs/EFFIGY_CONTAINER_FEEDING.md) and [current validation](docs/VALIDATION_0.31.0-dev.3.md). Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.

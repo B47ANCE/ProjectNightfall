@@ -208,3 +208,9 @@ Container foundation target: `python scripts/run_host_tests.py --dependencies .l
 ## 0.31.0-dev.2 implementation checkpoint
 
 The dynamic native admission blocker is resolved in source by permanently denying native insertion and using the synchronous server loader for a separate EffigyFrame prototype. Whole-batch validation, actual-item moves, revision checks, rollback/quarantine and localized load intents are implemented. Native unloading remains available. Capacity is a server sandbox option (1-40, default 20). See [implementation, limits and human gates](EFFIGY_CONTAINER_IMPLEMENTATION.md). Older foundation findings above are historical. Construction/loot distribution, reusable feeding, attribution, migration and three production models/rendering remain pending. Native/SP/dedicated validation is NOT TESTED; no package/deploy/upload.
+
+## 0.31.0-dev.3 reusable feeding checkpoint
+
+[Reusable frame feeding](EFFIGY_CONTAINER_FEEDING.md) now uses actual stored meat/part resources through the server MORTIS transaction coordinator. The user approved ordinary-meat feeding for hungry infected without part-specific reactions/search/grudges. Frames and depleted parts persist; category separation, shared load/feed leases, compensation and recovery guards remain authoritative. Existing calorie/hunger sandbox settings apply; no phantom legacy fallback stock is created. Construction, non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
+
+Focused command: `python scripts/run_host_tests.py --dependencies .local/ci-dependencies --only tests/test_effigy_container_feeding.lua tests/test_effigy_container_server.lua tests/test_effigy_container_menu.lua`. This uses real pinned MORTIS coordinator/material APIs with native boundaries mocked.

@@ -63,3 +63,7 @@ Additional selected packaged classes had no loose overrides at inspection:
 | zombie/scripting/objects/Item.class | `9e6a2f7fe48cc66843fea06b4821063d7cc6a73eaba0de8ee51d0a15c373202e` |
 
 The prototypes/tests do not prove native serialization, Lua invocation, UI selection or MP PASS. The per-user API draft records the server-wrapper limitation and factory/packet route as INFERRED / NOT_TESTED.
+
+## 0.31.0-dev.3 feeding extension
+
+The [feeding contract](EFFIGY_CONTAINER_FEEDING.md) uses real stored items, public MORTIS owner APIs, native server removal/same-ID replacement packets, and an exposed IsoObject.flagForHotSave request. [Selected native fingerprints](audits/0.31.0-dev.3.native.json) cover Food, IsoObject, IsoChunk and the replacement/exposure route. Both packaged and differing loose IsoObject/IsoChunk files were inspected for the relevant save/load hooks; their behavior agrees for these hooks, while loose provenance and active classpath remain UNKNOWN. No loose class is shipped or required. The per-user API draft records these routes as INFERRED / NOT_TESTED for invocation. Neither requested hot saves nor offline/native source inspection prove disk durability, packet correctness, restart safety or dedicated MP.
