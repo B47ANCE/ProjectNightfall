@@ -260,3 +260,7 @@ Inspection must show lifecycle, per-region exposure, injury/destruction,
 remaining tissue, clothing/transmission, active rate and smoke; plus weighted
 totals, contributing emitters, UV death flag and transition state. Native visuals,
 server behavior and disposal balance remain release gates, not host-test claims.
+
+### First client presentation increment - 0.29.0
+
+The selected-corpse context menu now shows a localized semantic remains-condition row and tooltip from the existing synchronized marker/stage. This is read-only information, not a native sprite replacement or smoke renderer. It uses no new networking or world scan and never changes loot, cause or tissue. All five stages, corrupt/future records, controller probes, pooled menus and disabled behavior have offline coverage. English fallback is declared for untranslated locales. SP/controller rendering and actual dedicated/late-join transport remain NOT TESTED. The native renderer gates above remain open.

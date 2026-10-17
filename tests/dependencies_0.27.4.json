@@ -1,0 +1,41 @@
+{
+  "nightfall_version": "0.27.4",
+  "scope": "Historical matching dependency snapshots for offline tests only; not current ecosystem compatibility or deployment inputs.",
+  "dependencies": [
+    {
+      "mod_id": "ProjectMORTIS",
+      "version": "0.23.2",
+      "fixture_folder": "Project MORTIS",
+      "archive": "Project MORTIS/dist/ProjectMORTIS-0.23.2-workshop-ready.zip",
+      "sha256": "59f966d82a46eeb618b10bcdf0dff1857f8c8c206e0cf25ee236d2dd3a915052"
+    },
+    {
+      "mod_id": "lightWorks",
+      "version": "0.25.2",
+      "fixture_folder": "lightWorks",
+      "archive": "lightWorks/dist/lightWorks-0.25.2-workshop-ready.zip",
+      "sha256": "d0c5f036a2568c1c58c05aec3e265205adbeb352f36cdbf1052faa07aa8579aa"
+    },
+    {
+      "mod_id": "powerWorks",
+      "version": "0.15.3",
+      "fixture_folder": "powerWorks",
+      "archive": "B47ANCEDPower/dist/powerWorks-0.15.3-workshop-ready.zip",
+      "sha256": "62dbd053370777cd052b35c4b53daba1017ef53cf4752f587fcd53e778fc990a"
+    },
+    {
+      "mod_id": "medWorks",
+      "version": "0.9.2",
+      "fixture_folder": "medWorks",
+      "archive": "medWorks/dist/medWorks-0.9.2-workshop-ready.zip",
+      "sha256": "b341504659c8f9052286b8ff643a7c225e278357f1adf1a644737fb22ca00502"
+    },
+    {
+      "mod_id": "experienceWorks",
+      "version": "0.12.2",
+      "fixture_folder": "experienceWorks",
+      "archive": "B47ANCEDKnowledgeAndWisdom/dist/experienceWorks-0.12.2-workshop-ready.zip",
+      "sha256": "24710e91360ed4bb3e43ca0c5c152e61185500cff793bd0af844479045083cb4"
+    }
+  ]
+}

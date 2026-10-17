@@ -1,9 +1,77 @@
 # Project Nightfall testing
 
-See [current in-game test handoff](IN_GAME_TEST_HANDOFF.md) for the frozen six-mod
-test set, latest preflight evidence, and compact gameplay priorities.
+Current source is 0.29.0. Run `python scripts/check_versions.py`, `python scripts/run_host_tests.py`, `python -m unittest discover -s tests -p "test_*.py"` and `python scripts/dependency_contracts.py`. Current results are 62/62 Lua and 19/19 Python PASS with source dependency contracts PASS. See [validation](VALIDATION_0.29.0.md). Native UI/SP/dedicated remain unverified; current source is not packaged. The historical sections below are not current proof.
 
-## Automated preflight
+## Historical offline entry points — 0.27.4, 2026-10-16
+
+See [packaging validation](PACKAGING_0.27.4.md) for current artifacts and
+[0.27.4 runtime-fix validation](VALIDATION_0.27.4.md) for behavior/evidence;
+the [takeover audit](AUDIT_2026-10-16.md) preserves the original 0.27.3 failures.
+Run from the project root using Python 3 with `lupa.lua51` installed. The selected
+0.27.4 contract uses five hash-pinned matching historical dependency archives;
+prepare isolated fixtures rather than substituting the renamed current APIs:
+
+```text
+python scripts/check_versions.py
+python scripts/prepare_test_dependencies.py
+python scripts/run_host_tests.py --dependencies .local/validation-dependencies
+python -m unittest discover -s tests -p test_packaging.py -v
+python scripts/package_project.py verify
+python scripts/audit_project.py --dependencies .local/validation-dependencies
+python scripts/check_versions.py --release
+```
+
+Current source versions PASS. The complete suite passes all 59 files in offline
+Lua 5.1 against the pinned historical set, including all five formerly failing intended-behavior assertions in
+`tests/audit/test_corpse_runtime_findings.lua` and the new corpse-runtime regression
+file. `--only tests/audit/test_corpse_runtime_findings.lua tests/test_uv_corpse_runtime_regressions.lua`
+isolates those cases. `--legacy-only` selects 58 top-level files and omits the
+audit path; use the default complete suite for current regression evidence.
+`--verbose` includes successful tests' diagnostic output. Include the explicit
+`--dependencies` fixture root with targeted/subset commands too.
+
+The default sibling lookup is intentionally unchanged and currently fails: the
+powerWorks source directory disappeared and experienceWorks moved to the new
+knowledge namespace without its old import alias. The matching archives listed
+in `tests/dependencies_0.27.4.json` retain their original bytes. The helper checks
+SHA-256, identity, version, paths, case, CRC and forbidden runtime payloads, then
+copies only selected first-party runtime files into `.local/validation-dependencies`.
+It caches originals under `.local/validation-archives` so unrelated directory
+renames cannot alter the selected test set. A fresh setup must supply those exact
+archives at the lock's retained locations or in that ignored cache. No code or
+aliases are added to production Nightfall or upstream dependencies. Current
+renamed-family interoperability remains a separate migration/runtime gate.
+
+All ten Python packaging tests pass. Current `Contents`, package verification,
+project audit with the explicit pinned root, and release consistency checks pass after the explicitly authorized
+0.27.4 package build. The source/art/artifact protection check uses the operation's
+captured pre-packaging baseline; older audit records retain their original scope.
+Declared historical ZIPs are checked for integrity without pretending they are
+current source. No deployment/uploader workflow is verified by these checks.
+
+53 authoritative Lua files compile in Lua 5.1; 29 localization folders have English
+key parity. This proves neither Kahlua compatibility nor translation quality.
+The existing 0.27.3 ZIP passed integrity/parity against the historical 0.27.3
+source. It is preserved, is not a 0.27.4 package, and was not relabeled or rebuilt.
+
+When packaging is explicitly requested, run `python scripts/package_project.py plan`
+then `python scripts/package_project.py build`. The build verifies source metadata,
+retains a superseded mirror, refreshes Contents, and writes/verifies the local ZIP,
+manifest and checksum. It rejects unexpected mirror files and different existing
+versioned artifacts. A second identical build must retain exactly the same bytes.
+This manual command never deploys, uploads, or starts the game/server.
+
+SP, hosted, native transport/serialization, clean-launcher compatibility and
+dedicated multiplayer were not exercised. G7 BLOCKED / NOT TESTED; G8 BLOCKED.
+The [in-game handoff](IN_GAME_TEST_HANDOFF.md) remains useful as a historical
+checklist, but its missing tools and old test totals are not current evidence.
+
+## Historical preflight and regression coverage
+
+The shared `tools/Verify-NightfallRelease.ps1`, `tools/Run-HostTests.ps1` and
+`tools/Analyze-NightfallConsole.ps1` paths referenced below were unavailable in
+the takeover layout. Preserve these earlier instructions as historical evidence;
+use the current offline commands above until the shared workflow is recovered.
 
 Den-defense tests inject explicit path rejection, native path exceptions, and
 failed objective cleanup. A cancellation waiting for cleanup must never attack;

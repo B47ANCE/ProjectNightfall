@@ -1,3 +1,6 @@
+-- Development-only UV inspection commands.
+if type(isDebugEnabled)=="function" and isDebugEnabled()~=true then return {} end
+
 -- Explicit SP debug inspection, not an automatic zombie scan or damage hook.
 function PNTestCombatInspect(zombie,quiet)
     local ok,result=pcall(function()

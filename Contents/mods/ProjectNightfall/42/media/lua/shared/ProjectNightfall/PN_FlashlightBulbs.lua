@@ -30,6 +30,7 @@ function PNFB.register()
     lightWorks.registerBulb({
         item = "ProjectNightfall.LightBulbUV",
         displayName = "UV Bulb",
+        translationKey = "ItemName_ProjectNightfall.LightBulbUV",
         tags = {
             UV = true,
             PROJECT_NIGHTFALL = true,
@@ -60,6 +61,7 @@ function PNFB.register()
     lightWorks.registerBulb({
         item = "ProjectNightfall.LightBulbUVHighOutput",
         displayName = "High-Output UV Bulb",
+        translationKey = "ItemName_ProjectNightfall.LightBulbUVHighOutput",
         tags = {
             UV = true,
             PROJECT_NIGHTFALL = true,

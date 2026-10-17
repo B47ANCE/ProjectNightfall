@@ -1,5 +1,16 @@
 {
   "ContextMenu_ProjectNightfall_BuildMacabreEffigy": "Build Macabre Effigy",
   "ContextMenu_ProjectNightfall_EffigyValidationUnavailable": "Effigy validation unavailable",
-  "ContextMenu_ProjectNightfall_EffigyConstructionUnavailable": "Effigy construction unavailable"
+  "ContextMenu_ProjectNightfall_EffigyConstructionUnavailable": "Effigy construction unavailable",
+  "ContextMenu_ProjectNightfall_RemainsCondition": "UV remains: %1",
+  "ContextMenu_ProjectNightfall_Remains_INTACT": "Intact",
+  "ContextMenu_ProjectNightfall_Remains_INTACT_Description": "Little UV tissue breakdown is recorded.",
+  "ContextMenu_ProjectNightfall_Remains_SCORCHED": "Scorched",
+  "ContextMenu_ProjectNightfall_Remains_SCORCHED_Description": "Early UV tissue breakdown is recorded.",
+  "ContextMenu_ProjectNightfall_Remains_DESICCATED": "Desiccated",
+  "ContextMenu_ProjectNightfall_Remains_DESICCATED_Description": "Substantial UV tissue breakdown is recorded.",
+  "ContextMenu_ProjectNightfall_Remains_CRITICAL": "Severe breakdown",
+  "ContextMenu_ProjectNightfall_Remains_CRITICAL_Description": "Most UV-affected tissue has broken down.",
+  "ContextMenu_ProjectNightfall_Remains_RESIDUAL": "Residual tissue",
+  "ContextMenu_ProjectNightfall_Remains_RESIDUAL_Description": "Only residual tissue remains."
 }

@@ -1,3 +1,6 @@
+-- Development-only inventory helper.
+if type(isDebugEnabled)=="function" and isDebugEnabled()~=true then return {} end
+
 require "ProjectNightfall/PN_FlashlightBulbs"
 
 ProjectNightfall = ProjectNightfall or {}

@@ -2,6 +2,15 @@
 
 > Consolidated status: [MASTER_ROADMAP.md](MASTER_ROADMAP.md).
 
+The historical 0.27.4 corpse-runtime fix resolves the five offline audit failures; all 59 host
+test files pass. See [runtime-fix validation](VALIDATION_0.27.4.md). The
+[packaging follow-up](PACKAGING_0.27.4.md) now supplies a reproducible verified
+development package and current Contents, with all historical data preserved.
+Obtain clean-launcher SP and dedicated MP evidence before new smoke, condition,
+or migration features. Packaging supplies no new runtime PASS evidence.
+
+Current development is 0.29.0. The current family source-contract audit passes after Health Care Mod ID reconciliation. The first read-only remains-condition UI increment is implemented with offline regressions; native smoke/physical remains visuals remain gated. See [current validation](VALIDATION_0.29.0.md). Obtain native UI/SP/dedicated evidence, then explicitly package a test build when requested.
+
 ## Current implementation
 
 Project Nightfall owns sunlight hibernation, starvation-gated Feral conversion,

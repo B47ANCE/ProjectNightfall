@@ -1,0 +1,53 @@
+{
+  "direct": "PASS",
+  "direct_errors": [],
+  "transitive": "BLOCKED",
+  "transitive_errors": [
+    {
+      "mod_id": "lightWorks",
+      "missing_required_mod_id": "powerWorks"
+    },
+    {
+      "mod_id": "medWorks",
+      "missing_required_mod_id": "experienceWorks"
+    },
+    {
+      "mod_id": "medWorks",
+      "path": "media/lua/shared/medWorks/CorpseRecovery.lua",
+      "obsolete_import": "experienceWorks/Progression"
+    },
+    {
+      "mod_id": "medWorks",
+      "path": "media/lua/shared/medWorks/Knowledge.lua",
+      "obsolete_import": "experienceWorks/API"
+    }
+  ],
+  "source_versions": [
+    {
+      "mod_id": "lightWorks",
+      "version": "0.25.5",
+      "source_tree_sha256": "2c4977deaaeaef7682bdbe40c9bc03fc80c1f171d7e4140f82d6d0776976477b"
+    },
+    {
+      "mod_id": "ProjectMORTIS",
+      "version": "0.24.0-dev.2",
+      "source_tree_sha256": "0e1e4572910a0941815595fb4b65a0249ba262e1064177411b326b4416793512"
+    },
+    {
+      "mod_id": "B47ANCEDPower",
+      "version": "0.17.0-dev.1",
+      "source_tree_sha256": "3a06a5ba3a25d31e5c65c1ee735e7279b45df7f6697627615bbaeb4e1a8c2db5"
+    },
+    {
+      "mod_id": "medWorks",
+      "version": "0.9.2",
+      "source_tree_sha256": "cc540527c7a2d1503de9823ec8defae8407886fb17e569e742cf71697b048cd2"
+    },
+    {
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "version": "0.13.0",
+      "source_tree_sha256": "069b883a798812f32a03e6159d7ae4db9fdb985bde3ea01c7ed63705727fa05c"
+    }
+  ],
+  "scope": "source contracts only; no game/runtime evidence"
+}

@@ -1,6 +1,6 @@
 ⚠ DEVELOPMENT BUILD — NOT YET PLAYABLE ⚠
 
-[b]Mod Version:[/b] 0.27.3
+[b]Mod Version:[/b] 0.29.0
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
@@ -97,7 +97,7 @@ Alpha Ferals
 
 Effigies
 
-- medWorks body parts retain source provenance and can build source-specific effigies.
+- B47ANCEDHealthCare body parts retain source provenance and can build source-specific effigies.
 
 - Effigies drive attraction, avoidance, feeding, destruction, and persistent Smart Feral hunts without omniscient player tracking.
 
@@ -146,7 +146,7 @@ Upcoming Features
 - Hosted and dedicated-server authority, persistence, late-join, group, and UV validation
 Required Mods
 
-- powerWorks
+- B47ANCEDPower
 
 - lightWorks
 
@@ -154,7 +154,7 @@ Required Mods
 
 Project M.O.R.T.I.S. supplies the reusable infected API and supporting systems. It does not add Nightfall’s zombies.
 lightWorks supplies serviceable lights, colored bulbs, and UV emission semantics.
-powerWorks supplies batteries, stored energy, and power-consumption calculations.
+B47ANCEDPower supplies batteries, stored energy, and power-consumption calculations.
 Compatibility and Testing
 Project Nightfall uses vanilla zombie instances and is designed to preserve compatibility with ordinary zombie spawning and population settings.
 Single-player development and testing are ongoing. Multiplayer compatibility is not currently claimed.

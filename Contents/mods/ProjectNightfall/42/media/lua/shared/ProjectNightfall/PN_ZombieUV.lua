@@ -1810,15 +1810,17 @@ function ZombieUV.getDiagnosticStats()
     return result
 end
 
-function PNTestStatus()
-    local s=ZombieUV.getDiagnosticStats()
-    print(string.format(
-        "[ProjectNightfall][Test] tick=%d tracked=%d created=%d processed=%d feralizations=%d rises=%d artificialUVDeaths=%d unexpectedDownDeaths=%d errors=%d",
-        tonumber(s.tick) or 0,tonumber(s.tracked) or 0,tonumber(s.created) or 0,tonumber(s.processed) or 0,
-        tonumber(s.feralizations) or 0,tonumber(s.rises) or 0,tonumber(s.artificialUVDeaths) or 0,
-        tonumber(s.deadWhileDown) or 0,tonumber(s.errors) or 0
-    ))
-    return s
+if type(isDebugEnabled)~="function" or isDebugEnabled()==true then
+    function PNTestStatus()
+        local s=ZombieUV.getDiagnosticStats()
+        print(string.format(
+            "[ProjectNightfall][Test] tick=%d tracked=%d created=%d processed=%d feralizations=%d rises=%d artificialUVDeaths=%d unexpectedDownDeaths=%d errors=%d",
+            tonumber(s.tick) or 0,tonumber(s.tracked) or 0,tonumber(s.created) or 0,tonumber(s.processed) or 0,
+            tonumber(s.feralizations) or 0,tonumber(s.rises) or 0,tonumber(s.artificialUVDeaths) or 0,
+            tonumber(s.deadWhileDown) or 0,tonumber(s.errors) or 0
+        ))
+        return s
+    end
 end
 local function runHitZombie(z,wielder,bodyPart,weapon)
     if not z or not wielder then return end

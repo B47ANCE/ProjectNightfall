@@ -30,6 +30,19 @@ powerWorks owns batteries, stored energy, and consumption calculation. lightWork
 
 All searches must remain local or bounded. Runtime code must use verified adapters and fail safely when optional engine capabilities are unavailable. Vanilla owns ordinary zombie movement and nighttime activation. At nightfall, Nightfall may rise hibernators, commit eligible Feral/Smart Feral conversions, and ask indoor zombies to roam outside; it must not globally replace the base zombie brain.
 
+`PN_UVCorpseRuntime` honors the Nightfall and regional-tissue enable gates before
+death marking or discovery. Its emitter identities and per-emitter relative tile
+cursors are transient authority-local state, retained across bounded scan chunks.
+The existing scan-square ceiling bounds both queued offsets and generation work;
+the existing square/process/candidate budgets still bound each update. Queued
+offsets follow their current source position and skip removed sources. Disabling
+or losing all emitters clears the transient queues; rediscovery starts at the
+current minute without charging unknown exposure. Pipeline failures advance the
+candidate turn, preserve the uncommitted clock, and report failure after updating
+diagnostics. An older tissue-journal completion advances only to its actual commit;
+derived remains-stage failures retry without replaying dose. No state schema or
+custom network protocol is added. Native persistence and transport remain gates.
+
 External mods, including the local research copy at
 `C:\Users\willi\Zomboid\mods\FadedsTheHive`, are clean-room research references
 only. Engine hooks and performance lessons may be verified independently; their
@@ -57,3 +70,17 @@ capacity and cannot lower an already greater score; artificial UV may reach 100%
 Wound stage is persistent and independent from spendable score. With
 `EnableFerals=false`, Nightfall clears its temporary Project M.O.R.T.I.S. identity
 when a hibernator rises and returns it to vanilla regular-zombie behavior.
+
+## Current dependency and corpse contracts (0.28.0)
+
+Nightfall now requires lightWorks, ProjectMORTIS, B47ANCEDPower, medWorks and B47ANCEDKnowledgeAndWisdom. Spectrum retains the lightWorks Mod ID/module namespace at the inspected snapshot. Power loads, battery item types, Power sandbox presets, research registration, knowledge queries, diagnostics and debug paths use current public identities. Nightfall research/knowledge IDs and persisted schemas stay unchanged. No old API aliases are installed. The independent transitive contract gate reports remaining upstream old dependencies; a host-suite pass does not clear whole-family startup.
+
+PN_CorpseDiscovery reads the existing vanilla collection size/get forms directly with persistent weak square cursors. Each square-budget unit permits at most eight collection slots plus bounded collection-method probing. Eight is an internal work batching limit; the existing server-authoritative square budget scales it, so no extra balance option is added. Collection reads continue at the next cursor, including on crowded squares, and pause at the first corpse denied admission. Empty/missing/shrunk collections remain bounded. On saturation, the runtime retires candidates only after a positive committed interval with no pending stage synchronization; failed or unfinished journal work retains its slot. Rediscovery establishes a new observation interval, preserving the existing no-absence-backfill policy. Actual high-density dedicated performance and native collection mutation remain runtime gates.
+
+The intelligent regular `destroy` reaction now enters the destruction action. Hunt/grudge propagation remains restricted to `destroy_search` after successful completion. No new client request or gameplay state owner is introduced.
+
+## Selected-corpse presentation (0.29.0)
+
+The required Health Care Mod ID/source directory is B47ANCEDHealthCare while its public medWorks Lua/global/item namespace stays unchanged. Nightfall does not inject aliases or edit dependencies. The source contract gate compares both Nightfall's required list and the selected dependencies.
+
+PN_UVRemainsMenu is client-only presentation. It reads vanilla ISWorldObjectContextMenu.fetchVars.body during the fill event, validates the existing infected marker and remains schema/stage pair, then adds a disabled information row with a localized tooltip. It never enumerates worldobjects/corpses, queues actions, creates anatomy, transmits state or writes modData. Controller test calls allocate no menu row; duplicate handling inspects the current options because panels are pooled. Only semantic stage is displayed: quantities can change between stage synchronization events. Existing Enabled is interpreted from sandbox first; there is no separate gameplay/configuration micro-setting. Native selection, tooltip layout and real synchronization/late joins remain runtime gates.

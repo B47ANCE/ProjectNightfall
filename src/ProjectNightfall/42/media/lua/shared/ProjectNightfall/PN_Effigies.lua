@@ -221,7 +221,7 @@ function Effigies.checkConstructionKnowledge(character)
         configured=config and config.RequireEffigyKnowledge
     end
     if configured==false then return true end
-    local knowledge=rawget(_G,"experienceWorks")
+    local knowledge=rawget(_G,"B47ANCEDKnowledgeAndWisdom")
     if type(knowledge)~="table" or type(knowledge.hasKnowledge)~="function" then
         return false,"effigy knowledge API unavailable"
     end

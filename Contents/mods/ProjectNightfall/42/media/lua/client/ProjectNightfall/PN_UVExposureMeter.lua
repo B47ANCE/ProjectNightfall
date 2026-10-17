@@ -1,3 +1,6 @@
+-- Development-only exposure measurement commands.
+if type(isDebugEnabled)=="function" and isDebugEnabled()~=true then return {} end
+
 -- One explicit, session-only SP experiment; no gameplay state writes.
 local session
 local function minute()
