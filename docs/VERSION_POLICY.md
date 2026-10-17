@@ -25,3 +25,13 @@ The 0.28.0 development MINOR reconciles the explicitly requested current depende
 The merge candidate retains canonical 0.29.1, the existing development PATCH from audit PR #3, while including the compatible 0.29.1-dev.1 effigy adapter from PR #2. Original prerelease validation and dependency reports remain historical, not current combined proof. Provider/source IDs, balance, configuration and existing schema-1 records remain compatible. No stable release or tag is implied.
 
 0.30.0 is a pre-1.0 MINOR compatibility transition for the required SPXTRM activation ID. Existing Nightfall schemas, balance, lightWorks API imports and infected UV ownership are unchanged. Matching mod lists on all peers are required. No stable-release approval is implied.
+
+0.30.1-dev.1 is a compatible development PATCH for the four MORTIS integration
+findings. Balance, sandbox IDs and existing state/network schemas are unchanged.
+The additive ProjectNightfallAssignmentRecovery record has its own version 1;
+uvSlowed is an optional boolean in existing lifecycle schema 1. Pending/unknown
+recovery records require review before downgrade; native save durability remains
+unverified. The reviewed docs/MOD_OVERVIEW.json version is also a current mirror.
+Its source digest follows the shared hub's raw-byte algorithm, including retained
+Contents: differing checkout line endings/layout safely require review, not a
+runtime PASS. Do not relabel historical validation or generated artifacts.

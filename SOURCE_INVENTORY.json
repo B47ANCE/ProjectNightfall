@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.30.0",
+  "project_version": "0.30.1-dev.1",
   "canonical_version_file": "VERSION",
   "mod_ids": [
     "ProjectNightfall"
@@ -49,7 +49,8 @@
     "docs/audits/0.29.1-dev.1.dependencies.json",
     "docs/VALIDATION_0.29.1.md",
     "docs/VALIDATION_0.29.1-dev.1.md",
-    "docs/RUNTIME_ACCEPTANCE_0.29.1.md"
+    "docs/RUNTIME_ACCEPTANCE_0.29.1.md",
+    "docs/VALIDATION_0.30.0.md"
   ],
   "developer_local_only": [
     ".agents",

@@ -11,7 +11,7 @@
       "folder": "Project MORTIS",
       "url": "https://github.com/B47ANCE/ProjectMORTIS.git",
       "mod_id": "ProjectMORTIS",
-      "commit": "f0358fef2ec4519cbfb26bad641699488c7f8ec9"
+      "commit": "6af5d141a2342179233db9131e749ee7b819383e"
     },
     {
       "folder": "B47ANCEDPower",
@@ -29,7 +29,7 @@
       "folder": "B47ANCEDKnowledgeAndWisdom",
       "url": "https://github.com/B47ANCE/B47ANCEDKnowledgeAndWisdom.git",
       "mod_id": "B47ANCEDKnowledgeAndWisdom",
-      "commit": "ca5b724c63d49ab224f96b2daea3e17ad7498e44"
+      "commit": "6ba66c0d8f246d438f2e2f3c974fee9f77fdb426"
     }
   ]
 }
