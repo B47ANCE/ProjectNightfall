@@ -99,3 +99,5 @@ Current 0.31.0-dev.5 revises frame assembly to **1 log, 3 large branches (Base.L
 Current publication target is 0.31.0-dev.6: a compatible packaging/metadata follow-up with no gameplay/schema changes. The unpublished dev.5 candidate is retained unchanged because its description exceeds the Steam 8,000-byte limit. Current description removes redundant recruitment/upcoming/duplicate text while preserving implemented features, credits and known limits. A packaging gate rejects oversized UTF-8 descriptions. See WORKSHOP_0.31.0-dev.6.md for exact validation/provenance; G7/stable G8 remain BLOCKED.
 
 The current dev.6 candidate also adopts the latest user-supplied B47ANCE-branded thumbnail: exact original source poster plus the approved 512-square upload derivative. The separate icon and historical artwork/packages are preserved.
+
+Authorized 0.31.0-dev.8 matching MP-test distribution preparation: source merged in dependency order; exact build-set inventory and package/provenance gates precede upload. Next: human fresh-world dedicated startup, two-client research/feeding, Insane-population timing, save/rejoin/restart. G7/stable G8 BLOCKED.

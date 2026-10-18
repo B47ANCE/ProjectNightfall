@@ -122,3 +122,5 @@
 ## Earlier development
 
 The imported source and Workshop change notes predate repository onboarding. Preserve their original dates, versions, and claims as historical evidence. This changelog does not reconstruct or certify missing release history.
+
+Publication preparation 0.31.0-dev.8 (2026-10-18): merged matching dependency set, current MP-test labels/known limits and source links, isolated validated packaging and fixed-item provenance. No runtime change or native validation claim. Upload outcome recorded separately.
