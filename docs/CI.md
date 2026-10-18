@@ -30,3 +30,5 @@ pins to merged 6af5d141a2342179233db9131e749ee7b819383e and
 6ba66c0d8f246d438f2e2f3c974fee9f77fdb426. The Knowledge MP guard remains enabled.
 New real-module recovery regressions use these exact inputs; fragments are labelled
 as fragment evidence. Other dependency pins remain unchanged.
+
+0.31.0-dev.7 advances only the Knowledge fixture to development commit eebfa3797bc95aab963816ec659896f5f018d982 (Knowledge PR #2, unmerged). The pinned private document backend and owner projection run in real-module regressions with simulated native boundaries. Diagnostics report structural document support without probing storage, and do not infer readiness from the broader AuthorityGuard; those other guards remain closed. CI is still offline, never a dedicated PASS.

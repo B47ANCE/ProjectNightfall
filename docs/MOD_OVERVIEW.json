@@ -2,9 +2,9 @@
   "schema": 1,
   "id": "night",
   "name": "Project Nightfall",
-  "version": "0.31.0-dev.6",
+  "version": "0.31.0-dev.7",
   "reviewed": true,
-  "source_digest": "9dccc1950e760582736df241756dbe2195a6c4b7685380227744a77e1b9ba5e3",
+  "source_digest": "853bb9b53aad3e4c8255aa53ea820e402883288f61458880465e42e559904456",
   "features": [
     {
       "status": "Source",
@@ -77,9 +77,13 @@
     {
       "status": "Source",
       "text": "Workshop packaging rejects canonical or serialized descriptions at the SDK UTF-8 byte limit before artifact mutation. Shortened publication text retains features, credits and explicit MP/research limitations; unpublished dev.5 artifacts preserved."
+    },
+    {
+      "status": "Source",
+      "text": "Dedicated effigy research selects pinned Knowledge 0.17.0 private document storage for fresh test worlds/server-created lives; real API gates assembly/placement. Diagnostics separate structural private document support from broader blocked guards and client presentation; initialized storage/character readiness remain unprobed. Existing-world migration/failure cases remain closed."
     }
   ],
-  "limits": "Development 0.31.0-dev.6 source/offline prototype. Assembly, placement, loading and reusable feeding implemented; no loot distribution, crafting-panel recipe or production renderer. Knowledge 0.16.0 dedicated storage remains blocked; research-required construction fails closed. Non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Recovery requires human review; save requests are not disk or cross-file atomicity proof. Legacy effigies/main recovery preserved. Authorized Workshop MP testing package is validated offline; current generated Contents and retained historical evidence are distinguished. Upload outcome is not MP verification.",
+  "limits": "Development 0.31.0-dev.7 source/offline prototype. Assembly, placement, category-restricted loading and reusable feeding implemented; no loot/crafting-panel recipe or production renderer. Knowledge 0.17.0 pinned development PR is unmerged; private documents support fresh worlds/server-created lives in source only. Existing-world migration, ambiguous identity and uncertain writes fail closed. Broader Knowledge guards stay blocked. Non-feeding reactions/attribution, migration and three models pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Published dev.6 Contents/artifacts remain historical; no dev.7 package/deploy/upload. Read-back/save requests are not fsync or cross-file atomicity proof.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -123,7 +127,13 @@
     "docs/packaging/0.31.0-dev.5.manifest.json",
     "docs/WORKSHOP_0.31.0-dev.6.md",
     "tests/test_packaging.py",
-    "docs/packaging/0.31.0-dev.6.manifest.json"
+    "docs/packaging/0.31.0-dev.6.manifest.json",
+    "docs/EFFIGY_DEDICATED_RESEARCH.md",
+    "docs/VALIDATION_0.31.0-dev.7.md",
+    "tests/test_dedicated_research_diagnostics.lua",
+    "tests/test_effigy_research_projection.lua",
+    "tests/dependencies.lock.json",
+    "docs/audits/0.31.0-dev.7.research.json"
   ],
   "relations": []
 }

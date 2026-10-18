@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.31.0-dev.6",
+  "project_version": "0.31.0-dev.7",
   "canonical_version_file": "VERSION",
   "mod_ids": [
     "ProjectNightfall"
@@ -54,7 +54,10 @@
     "docs/audits/0.30.0.dependencies.json",
     "dist/ProjectNightfall-0.31.0-dev.5-workshop-ready.zip",
     "docs/WORKSHOP_0.31.0-dev.5.md",
-    "docs/packaging/0.31.0-dev.5.manifest.json"
+    "docs/packaging/0.31.0-dev.5.manifest.json",
+    "dist/ProjectNightfall-0.31.0-dev.6-workshop-ready.zip",
+    "docs/WORKSHOP_0.31.0-dev.6.md",
+    "docs/packaging/0.31.0-dev.6.manifest.json"
   ],
   "developer_local_only": [
     ".agents",
@@ -71,7 +74,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "0.31.0-dev.6 Workshop MP testing candidate. Retain unpublished dev.5 package/mirror; shortened Steam description and UTF-8 size gate; G7/stable G8 BLOCKED.",
+  "packaging_status": "0.31.0-dev.7 development source only; published dev.6 mirror/packages retained, current packaging not requested; G7/stable G8 BLOCKED.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",
@@ -80,8 +83,8 @@
   "packaging_mirror": {
     "path": "Contents/mods/ProjectNightfall",
     "version": "0.31.0-dev.6",
-    "classification": "generated current Workshop MP testing mirror; authoritative source remains src/ProjectNightfall",
-    "use_for_release": true,
+    "classification": "retained published 0.31.0-dev.6 mirror; historical, not current source",
+    "use_for_release": false,
     "retained_previous_mirrors": [
       {
         "version": "0.31.0-dev.5",
@@ -103,7 +106,8 @@
         "files": 67,
         "tree_sha256": "51c590fbd9d01f6ecb3aca4e4b937aa41d973ccc3b0669b9beea1e4c3c652d06"
       }
-    ]
+    ],
+    "git_tree": "8a20e828fd4d659364a7087e8cd1b60cfa162e19"
   },
   "validation_dependencies": {
     "root": "current sibling source checkouts",
