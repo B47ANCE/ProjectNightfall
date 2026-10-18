@@ -2,9 +2,9 @@
   "schema": 1,
   "id": "night",
   "name": "Project Nightfall",
-  "version": "0.31.0-dev.8",
+  "version": "0.31.0-dev.9",
   "reviewed": true,
-  "source_digest": "e28d303b960afb354485f257abecf690daf371fae2e02cb202186f2939ec15f7",
+  "source_digest": "383fb4493f8e5263221dedb2f1bab5a7d2b81bd4c406fbaac25dc48620186192",
   "features": [
     {
       "status": "Source",
@@ -87,11 +87,15 @@
       "text": "Paired MORTIS global hunger FIFO/budget (default 32, server integer 1–512), elapsed-time catch-up/pre-meal settlement, idle-AI hunger query avoidance, 128-entry legacy discovery ceiling and authority-local queue diagnostics. Offline 100,000-actor work counts; native Insane-population timing NOT TESTED."
     },
     {
-      "status": "Source",
+      "status": "Historical",
       "text": "Matching Knowledge 0.17.0 / MORTIS 0.26.0-dev.9 / Nightfall 0.31.0-dev.8 Workshop uploads verified through cached-account SteamCMD in dependency order. Public metadata matches for MORTIS/Nightfall; Knowledge anonymous page unavailable. Distribution is not native dedicated proof."
+    },
+    {
+      "status": "Source",
+      "text": "User-approved transparent infected-only mod-list icon replaces the prior icon. Exact RGBA master/prompt retained; thumbnail/poster and gameplay/dependency contracts unchanged. Native mod-list display NOT TESTED."
     }
   ],
-  "limits": "Development 0.31.0-dev.8 source/offline prototype. Assembly, placement, category-restricted loading and reusable feeding implemented; no loot/crafting-panel recipe or production renderer. MORTIS PR #17 and Knowledge PR #2 are merged development dependencies; this Nightfall slice stacks on PR #9. Knowledge private documents support fresh worlds/server-created lives in source only; migration, ambiguous identities and uncertain writes fail closed. Broader guards remain blocked. Non-feeding reactions/attribution, migration and three models pending. Hunger work is bounded within the admitted queue ceiling; no native Insane-population FPS claim. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Dev.8 package parity verified offline; dev.6 artifacts remain historical; MP-test upload authorized, no deployment. Save requests are not disk/cross-file atomicity proof. Authorized matching MP-test publication preparation; earlier source-only/merged descriptions are historical checkpoints. G7/stable G8 remain blocked. All three authorized MP-test uploads succeeded on 2026-10-18. Exact receipts retain native/dedicated gates; Knowledge anonymous page result 9.",
+  "limits": "Development 0.31.0-dev.9 is a presentation-only icon iteration over published dev.8 gameplay. Knowledge 0.17.0 / MORTIS 0.26.0-dev.9 pins retained. Fresh-world research only; existing-world migration, broader Knowledge guards, effigy model/rendering, non-feeding influence and other recorded native acceptance remain blocked. Native icon display, SP/dedicated and Insane-population timing NOT TESTED; G7/stable G8 BLOCKED. Dev.8 packages/receipts and earlier build-set inventory remain historical. No server launch or local deployment.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -149,7 +153,10 @@
     "docs/MP_TEST_BUILD_SET.json",
     "docs/WORKSHOP_0.31.0-dev.8.md",
     "docs/packaging/0.31.0-dev.8.manifest.json",
-    "docs/publications/0.31.0-dev.8-workshop-3788593239.json"
+    "docs/publications/0.31.0-dev.8-workshop-3788593239.json",
+    "docs/ICON_0.31.0-dev.9.json",
+    "docs/WORKSHOP_0.31.0-dev.9.md",
+    "art/icons/nightfall-infected-transparent.png"
   ],
   "relations": []
 }

@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.31.0-dev.8",
+  "project_version": "0.31.0-dev.9",
   "canonical_version_file": "VERSION",
   "mod_ids": [
     "ProjectNightfall"
@@ -48,7 +48,6 @@
     "docs/VALIDATION_0.29.1-dev.1.md",
     "docs/audits/0.29.1-dev.1.dependencies.json",
     "docs/VALIDATION_0.29.1.md",
-    "docs/VALIDATION_0.29.1-dev.1.md",
     "docs/RUNTIME_ACCEPTANCE_0.29.1.md",
     "docs/VALIDATION_0.30.0.md",
     "docs/audits/0.30.0.dependencies.json",
@@ -57,7 +56,11 @@
     "docs/packaging/0.31.0-dev.5.manifest.json",
     "dist/ProjectNightfall-0.31.0-dev.6-workshop-ready.zip",
     "docs/WORKSHOP_0.31.0-dev.6.md",
-    "docs/packaging/0.31.0-dev.6.manifest.json"
+    "docs/packaging/0.31.0-dev.6.manifest.json",
+    "docs/WORKSHOP_0.31.0-dev.8.md",
+    "docs/packaging/0.31.0-dev.8.manifest.json",
+    "docs/publications/0.31.0-dev.8-workshop-3788593239.json",
+    "docs/MP_TEST_BUILD_SET.json"
   ],
   "developer_local_only": [
     ".agents",
@@ -74,7 +77,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "0.31.0-dev.8 matching MP-test upload verified through SteamCMD and public canonical description. Exact receipt in docs/publications; prior packages/mirrors retained. Native G7/stable G8 BLOCKED.",
+  "packaging_status": "0.31.0-dev.9 transparent icon source; authorized MP-test packaging/upload pending validation. Published dev.8 mirror/artifacts preserved; G7/stable G8 BLOCKED.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",
@@ -83,8 +86,8 @@
   "packaging_mirror": {
     "path": "Contents/mods/ProjectNightfall",
     "version": "0.31.0-dev.8",
-    "classification": "current authorized MP-test candidate; no native/stable gate approval",
-    "use_for_release": true,
+    "classification": "retained published dev.8 mirror; historical until authorized dev.9 build",
+    "use_for_release": false,
     "retained_previous_mirrors": [
       {
         "version": "0.31.0-dev.5",
@@ -114,7 +117,8 @@
         "tree_sha256": "c883d9be73d48e30e1c857f936325701d0c2fd7fa6bc2b5d77dc6e06e7b721d7",
         "files": 165
       }
-    ]
+    ],
+    "git_tree": "e58467f685d052d124adeecc522587e2911856fa"
   },
   "validation_dependencies": {
     "root": "current sibling source checkouts",

@@ -1,3 +1,9 @@
+[b]Version 0.31.0-dev.9 - MP testing build - dedicated multiplayer NOT TESTED[/b]
+Replace the mod-list icon with the approved transparent infected figure: no lettering, flashlight or background fill. Thumbnail/poster, dependency versions, gameplay, research, categories, recipes, sandbox and save/network contracts are unchanged.
+
+Matching dependencies remain Knowledge 0.17.0 and M.O.R.T.I.S. 0.26.0-dev.9. Native icon display and dedicated multiplayer NOT TESTED; existing-world research migration and other recorded limits remain. G7/stable G8 BLOCKED.
+
+[b]Earlier development notes (historical)[/b]
 [b]Version 0.31.0-dev.8 - MP testing build - dedicated multiplayer NOT TESTED[/b]
 Globally budgeted MORTIS hunger, visible-target-only hunger queries, bounded effigy discovery and authority-local queue diagnostics. Includes private dedicated document-research integration for fresh test worlds/server-created lives; research, categories, actual-item transactions and recipe tools remain enforced.
 

@@ -11,12 +11,12 @@ Preserve project-specific identity, instructions, source, local settings and run
 ## Identity and source ownership
 
 - Display name: Project Nightfall; Mod ID: `ProjectNightfall`; author: B47ANCE.
-- Canonical version: `0.31.0-dev.8` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
+- Canonical version: `0.31.0-dev.9` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
 - Public repository: https://github.com/B47ANCE/ProjectNightfall
 - Existing Workshop item: `3788593239`; item creation and visibility changes need separate authorization.
 - Authoritative runtime source: `src/ProjectNightfall/42/`.
 - `src/ProjectNightfall/info.txt`, `src/ProjectNightfall/thumbnail.png`, and `art/` are source/support assets.
-- `Contents/mods/ProjectNightfall/` is the retained published 0.31.0-dev.6 mirror; it is historical for current development and is not a current release input. Source remains authoritative. Rebuild only through scripts/package_project.py, never by independently editing mirrored code. The prior 0.27.4 mirror is retained under the SOURCE_INVENTORY backup entry and Git history.
+- `Contents/mods/ProjectNightfall/` is the retained published 0.31.0-dev.8 mirror; it is historical for current development and is not a current release input. Source remains authoritative. Rebuild only through scripts/package_project.py, never by independently editing mirrored code. The prior 0.27.4 mirror is retained under the SOURCE_INVENTORY backup entry and Git history.
 - `dist/`, staging backups, ZIPs, and `SHA256SUMS.txt` are generated/historical evidence, not implementation sources. Preserve them.
 - `SOURCE_INVENTORY.json` records these classifications. Current packaging is `python scripts/package_project.py build`; historical deployment/uploader tools remain unverified. The superseded 67-file Contents copy is retained under `dist/staging-backups/contents-51c590fbd9d0`; preserve it.
 
@@ -107,3 +107,5 @@ Current 0.31.0-dev.7 integrates the pushed Knowledge 0.17.0 development private 
 Current 0.31.0-dev.8: read docs/HUNGER_POPULATION_SCALING.md and docs/VALIDATION_0.31.0-dev.8.md. Use the exact paired MORTIS scheduler pin, its server-owned HungerWorkPerTick budget and authority-local diagnostics. Preserve FIFO admission, elapsed-time/pre-meal settlement, actual-item transaction guards and no global-clock fallback. Idle AI hunger queries require a visible target; never replace this with a stale hunger cache. Legacy queries over 128 examined entries return no partial candidate, preserving sources. Host counts are not native Insane-population benchmarks. G7/stable G8 remain BLOCKED; no package/deploy/upload.
 
 Authorized 2026-10-18 matching MP-test publication: read docs/WORKSHOP_0.31.0-dev.8.md and docs/MP_TEST_BUILD_SET.json. Source PRs are merged; earlier no-package/upload statements are historical task limits. Preserve merged runtime bytes, fixed existing item identity/visibility and all prior artifacts. G7/stable G8 remain blocked. Never run a wrapper that restarts Steam; ask separately after successful uploads.
+
+Current 0.31.0-dev.9 is the authorized transparent mod-icon iteration. Read docs/WORKSHOP_0.31.0-dev.9.md and docs/ICON_0.31.0-dev.9.json. Preserve exact approved RGBA icon/master bytes, the supplied thumbnail/poster and gameplay contracts. Package only through the established builder; retain dev.8 and older artifacts. This request authorizes commit/PR/merge and labelled existing-item MP-test publication, never local deploy or game/server launch. Steam restart requires a new post-success choice.

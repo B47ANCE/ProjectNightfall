@@ -1,6 +1,6 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.31.0-dev.8
+Canonical version: 0.31.0-dev.9
 
 ## Current slice and next gates - 2026-10-17
 
@@ -101,3 +101,5 @@ Current publication target is 0.31.0-dev.6: a compatible packaging/metadata foll
 The current dev.6 candidate also adopts the latest user-supplied B47ANCE-branded thumbnail: exact original source poster plus the approved 512-square upload derivative. The separate icon and historical artwork/packages are preserved.
 
 Authorized 0.31.0-dev.8 matching MP-test distribution preparation: source merged in dependency order; exact build-set inventory and package/provenance gates precede upload. Next: human fresh-world dedicated startup, two-client research/feeding, Insane-population timing, save/rejoin/restart. G7/stable G8 BLOCKED.
+
+Current 0.31.0-dev.9: install the approved transparent infected-only icon and publish the validated existing-item MP test update. Native mod-list appearance remains a human check. Gameplay roadmap and dedicated G7/stable G8 blockers are unchanged.
