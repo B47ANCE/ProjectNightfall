@@ -4,7 +4,7 @@
   "name": "Project Nightfall",
   "version": "0.31.0-dev.9",
   "reviewed": true,
-  "source_digest": "383fb4493f8e5263221dedb2f1bab5a7d2b81bd4c406fbaac25dc48620186192",
+  "source_digest": "3551384b577f540200baf77770d960317df124a2ec40ad9ffddcdafcea037547",
   "features": [
     {
       "status": "Source",
@@ -156,7 +156,8 @@
     "docs/publications/0.31.0-dev.8-workshop-3788593239.json",
     "docs/ICON_0.31.0-dev.9.json",
     "docs/WORKSHOP_0.31.0-dev.9.md",
-    "art/icons/nightfall-infected-transparent.png"
+    "art/icons/nightfall-infected-transparent.png",
+    "docs/packaging/0.31.0-dev.9.manifest.json"
   ],
   "relations": []
 }

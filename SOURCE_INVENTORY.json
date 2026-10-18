@@ -77,7 +77,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "0.31.0-dev.9 transparent icon source; authorized MP-test packaging/upload pending validation. Published dev.8 mirror/artifacts preserved; G7/stable G8 BLOCKED.",
+  "packaging_status": "0.31.0-dev.9 icon package/source/Contents parity verified offline; old mirrors/packages retained. Current upload pending; G7/stable G8 BLOCKED.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",
@@ -85,9 +85,9 @@
   },
   "packaging_mirror": {
     "path": "Contents/mods/ProjectNightfall",
-    "version": "0.31.0-dev.8",
-    "classification": "retained published dev.8 mirror; historical until authorized dev.9 build",
-    "use_for_release": false,
+    "version": "0.31.0-dev.9",
+    "classification": "current authorized dev.9 MP-test icon candidate; no native/stable gate approval",
+    "use_for_release": true,
     "retained_previous_mirrors": [
       {
         "version": "0.31.0-dev.5",
@@ -116,9 +116,16 @@
         "path": "dist/staging-backups/contents-c883d9be73d4",
         "tree_sha256": "c883d9be73d48e30e1c857f936325701d0c2fd7fa6bc2b5d77dc6e06e7b721d7",
         "files": 165
+      },
+      {
+        "version": "0.31.0-dev.8",
+        "classification": "published dev.8 mirror preserved before authorized transparent-icon dev.9 build",
+        "git_tree": "e58467f685d052d124adeecc522587e2911856fa",
+        "path": "dist/staging-backups/contents-20bd315453c6",
+        "tree_sha256": "20bd315453c62ce29bfaee8b9531c70e905b123b570296a3c07731c83e7491e5",
+        "files": 165
       }
-    ],
-    "git_tree": "e58467f685d052d124adeecc522587e2911856fa"
+    ]
   },
   "validation_dependencies": {
     "root": "current sibling source checkouts",

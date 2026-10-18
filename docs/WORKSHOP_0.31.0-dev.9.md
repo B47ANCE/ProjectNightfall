@@ -52,3 +52,5 @@ alpha, transparent corners and exact approved/master/runtime byte identity PASS.
 Native mod-list display remains NOT TESTED. Production Lua diff is version-marker
 updates only; no gameplay changes. The thumbnail/poster and fixture lock have no
 diff. Public index and final package/CI results are recorded in the PR/receipt.
+
+[TESTED: offline] Existing builder produced 165 source/mod files and 167 ZIP members with exact source/Contents/package parity and validated provenance. Package SHA-256: `be50c32a045719e0d95f7004c5e736ec8cb5c2648b3bf278e8320de4ae35b786`. Captured clean source commit: `0d6ae84c6153c0dd7ae62dcf3f0fb8ad5678e2dc`. Approved icon hash matches the ZIP member. Published dev.8 mirror retained at `dist/staging-backups/contents-20bd315453c6`, tree SHA-256 `20bd315453c62ce29bfaee8b9531c70e905b123b570296a3c07731c83e7491e5`. Portable manifest: [packaging/0.31.0-dev.9.manifest.json](packaging/0.31.0-dev.9.manifest.json). Actual upload not inferred from package success.
