@@ -4,7 +4,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.31.0-dev.8`
+- Version: `0.31.0-dev.9`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -98,3 +98,5 @@ Current 0.31.0-dev.8 pairs with the MORTIS 0.26.0-dev.9 development scheduler: a
 Authorized matching MP-test publication preparation for 0.31.0-dev.8: see [inputs, package and human gates](docs/WORKSHOP_0.31.0-dev.8.md). Knowledge 0.17.0, MORTIS 0.26.0-dev.9 and Nightfall 0.31.0-dev.8 are the selected set. No dedicated PASS or stable approval; publication outcome is recorded separately.
 
 Published the matching MP testing build **0.31.0-dev.8** to existing Workshop item **3788593239** on 2026-10-18. [Upload receipt and limits](docs/WORKSHOP_0.31.0-dev.8.md). G7/stable G8 remain blocked; no native multiplayer proof from distribution.
+
+Current 0.31.0-dev.9 installs the approved transparent infected-only mod icon, retaining the thumbnail/poster and all gameplay/dependency contracts. [Icon provenance, validation and publication](docs/WORKSHOP_0.31.0-dev.9.md). Native display and dedicated multiplayer remain NOT TESTED; G7/stable G8 BLOCKED.

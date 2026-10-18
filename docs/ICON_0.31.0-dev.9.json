@@ -1,0 +1,39 @@
+{
+  "version": "0.31.0-dev.9",
+  "scope": "Presentation-only approved subject cutout; no runtime gameplay change",
+  "source_thumbnail_sha256": "608d09e8919a997e8d950aab84280dbd1617652d50765c42d2f1b42b1d17c41e",
+  "approved_master": "art/icons/nightfall-infected-transparent.png",
+  "runtime_icon": "src/ProjectNightfall/42/icon.png",
+  "icon_sha256": "7d87b9db112e221a61f7db69adde94bea9cfb695ab5e64162bee0d8a8ea9f964",
+  "previous_icon_sha256": "94c6f128b153ca804df5f69dcde19096d52b0869f6c6dda1e82c87107c14c744",
+  "png_size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_range": [
+    0,
+    255
+  ],
+  "fully_transparent_pixels": 1011795,
+  "visible_subject_bounds_alpha_gt_8": [
+    144,
+    42,
+    1185,
+    1244
+  ],
+  "export": "Exact approved PNG bytes; no resize/redraw or background fill. Vanilla scales the icon.",
+  "installed_source_evidence": {
+    "steam_build": "25485521",
+    "file": "media/lua/client/OptionScreens/ModSelector/ModOrderListBox.lua",
+    "lines": [
+      235,
+      264
+    ],
+    "behavior": "drawTextureScaled(getTexture(item.item.icon), ..., 28, 28, ...)",
+    "native_execution": "NOT TESTED"
+  },
+  "SP": "NOT TESTED",
+  "G7": "BLOCKED / NOT TESTED",
+  "stable_G8": "BLOCKED"
+}

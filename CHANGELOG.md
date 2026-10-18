@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.31.0-dev.9 - transparent mod icon, 2026-10-18
+
+- Install the user-approved infected-only transparent PNG as the mod icon, preserving exact selected image bytes and authoring master/prompt. No text or background fill; no change to the project thumbnail/poster.
+- Compatible artwork-only prerelease; gameplay, dependency pins, configuration and saved/network schemas unchanged. Preserve prior packages/mirrors. Native mod-list display and dedicated MP NOT TESTED; G7/stable G8 BLOCKED.
+
 ## 0.31.0-dev.8 - hunger population scaling, 2026-10-17
 
 - Select the paired MORTIS bounded hunger scheduler; expose queue/work/error/wait counters in PNPerformanceStatus. Skip hunger advancement/queries when no visible chase target can use the result, without caching stale feeding facts.
