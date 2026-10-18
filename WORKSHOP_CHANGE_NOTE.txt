@@ -1,4 +1,13 @@
 [b]Version 0.31.0-dev.5 - MP testing build - dedicated multiplayer NOT TESTED[/b]
+Development test distribution: reusable restricted effigy frames with server-owned actual-item loading, reusable feeding, research-gated assembly and placement. Default cost: 1 log, 3 large branches, 1 rope, 8 nails. Working hammer, sharp knife and hand drill are required and retained. Ordinary meat and all body-part sources remain separate.
+
+Includes the current SPXTRM activation/dependency contracts, MORTIS recovery safeguards, corpse-processing/audit fixes, source-aware menus and the new Nightfall thumbnail.
+
+Known limits: Knowledge 0.16.0 dedicated research storage is blocked, so default research-required construction/placement fails closed there. All three frame models/rendering, non-feeding frame reactions/attribution and migration remain pending. Native/SP/dedicated validation NOT TESTED; G7 and stable-release G8 BLOCKED. Offline tests are not MP verification. Unknown or uncertain recovery records require review; no automatic replay/refund.
+
+[b]Historical development draft notes (not upload evidence)[/b]
+
+[b]Version 0.31.0-dev.5 - MP testing build - dedicated multiplayer NOT TESTED[/b]
 Frame assembly now defaults to 1 log, 3 large branches, 1 rope and 8 loose nails. Requires a working hammer, sharp knife and hand drill, retained unchanged. Server checks, research and category restrictions remain. Prototype models/native validation and dedicated Knowledge storage remain pending. No package or upload.
 
 [b]Version 0.31.0-dev.4 - MP testing build - dedicated multiplayer NOT TESTED[/b]

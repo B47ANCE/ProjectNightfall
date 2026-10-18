@@ -68,7 +68,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "Current 0.31.0-dev.5 source is not packaged; 0.27.4 Contents and archives remain historical.",
+  "packaging_status": "0.31.0-dev.5 Workshop MP testing candidate: rebuild only through scripts/package_project.py; source remains authoritative, prior artifacts retained, G7/stable G8 BLOCKED.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",
@@ -76,15 +76,23 @@
   },
   "packaging_mirror": {
     "path": "Contents/mods/ProjectNightfall",
-    "version": "0.27.4",
-    "classification": "historical generated 0.27.4 mirror; preserved until explicitly requested packaging of current source",
-    "use_for_release": false,
-    "retained_previous_copy": {
-      "path": "dist/staging-backups/contents-51c590fbd9d0",
-      "files": 67,
-      "tree_sha256": "51c590fbd9d01f6ecb3aca4e4b937aa41d973ccc3b0669b9beea1e4c3c652d06"
-    },
-    "git_tree": "78ee60785451301993de205f252ffd14e9aaf09b"
+    "version": "0.31.0-dev.5",
+    "classification": "generated current Workshop MP testing mirror; authoritative source remains src/ProjectNightfall",
+    "use_for_release": true,
+    "retained_previous_mirrors": [
+      {
+        "version": "0.27.4",
+        "git_tree": "78ee60785451301993de205f252ffd14e9aaf09b",
+        "path": "dist/staging-backups/contents-d5b4fced0911",
+        "tree_sha256": "d5b4fced091145a60d8224eb13bdd2696ebe272f1efb1af5e183720b4e42b50a",
+        "files": 152
+      },
+      {
+        "path": "dist/staging-backups/contents-51c590fbd9d0",
+        "files": 67,
+        "tree_sha256": "51c590fbd9d01f6ecb3aca4e4b937aa41d973ccc3b0669b9beea1e4c3c652d06"
+      }
+    ]
   },
   "validation_dependencies": {
     "root": "current sibling source checkouts",

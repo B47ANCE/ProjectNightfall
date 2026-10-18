@@ -45,3 +45,7 @@ The dynamic native admission blocker is resolved in source by permanently denyin
 ## User-supplied project thumbnail — 2026-10-17
 
 The supplied Nightfall/UV artwork is now the [project/Workshop preview](../preview.png) and [source mod thumbnail/poster](../src/ProjectNightfall/thumbnail.png). Both contain the exact supplied PNG bytes: 1254×1254, RGB, 1,492,415 bytes, SHA-256 `c6d61d90ef9d0ad87890c97ec862cd5ca0b0acb4ec82d8e64e9f8fb87013dd25`. No resize, crop, redraw or image generation was performed. Provenance is the user's attachment and instruction to use it; no independent authorship claim is made. The 32×32 mod icon is unchanged. Previous artwork remains in Git history and the protected historical Contents/packages. See [artwork validation](../docs/THUMBNAIL_2026-10-17.md). No package/deploy/Workshop upload.
+
+## Approved Workshop derivative — 2026-10-17
+
+For the explicit publish request, the user approved deterministic local resizing to satisfy the inspected PZ uploader's 256/512-square, 1,024,000-byte preview checks. Current preview.png is a 512×512 LANCZOS PNG derivative; source thumbnail.png retains the exact original 1254-square artwork. This supersedes the earlier shared-preview-byte checkpoint only for the upload copy. See docs/WORKSHOP_0.31.0-dev.5.md for hashes and validation. No redraw or image generation.

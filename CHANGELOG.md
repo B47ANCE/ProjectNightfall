@@ -2,6 +2,8 @@
 
 ## 0.31.0-dev.5 - frame recipe and reusable tools, 2026-10-17
 
+- Authorized Workshop MP testing distribution preparation: retain the supplied original poster, make an approved 512-square preview, update test labels/dependencies/source link/known limits, regenerate the current Contents mirror through the established builder and preserve prior provenance. Upload outcome is recorded separately; G7/stable G8 remain blocked.
+
 - Artwork follow-up: use the user-supplied Nightfall/UV image unchanged for the project/Workshop preview and source mod thumbnail. Preserve the separate icon and historical packages. This artwork-only change retains the development version; no gameplay change or upload.
 
 - User-selected default materials: 1 log, 3 large branches, 1 rope, 8 loose nails. Add bounded EffigyFrameLargeBranches sandbox quantity; update default logs/ropes without overriding saved explicit values.

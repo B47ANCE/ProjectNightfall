@@ -4,7 +4,7 @@
   "name": "Project Nightfall",
   "version": "0.31.0-dev.5",
   "reviewed": true,
-  "source_digest": "9e68171f75aee5ae6db9158aa40e6f4cad88eb2902af09dd33a517307ce06955",
+  "source_digest": "468bebb5bbd7d6fdd37eba7663da6691156dc828c01bf2d8d90c2c030a9aaa62",
   "features": [
     {
       "status": "Source",
@@ -75,7 +75,7 @@
       "text": "User-supplied Nightfall/UV project artwork copied unchanged to preview.png and the existing source mod thumbnail/poster; separate icon preserved. Native display and Workshop acceptance NOT TESTED."
     }
   ],
-  "limits": "Development 0.31.0-dev.5 source/offline prototype. Assembly, placement, loading and reusable feeding implemented; no loot distribution, crafting-panel recipe or production renderer. Knowledge 0.16.0 dedicated storage remains blocked; research-required construction fails closed. Non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Recovery requires human review; save requests are not disk or cross-file atomicity proof. Legacy effigies/main recovery preserved.",
+  "limits": "Development 0.31.0-dev.5 source/offline prototype. Assembly, placement, loading and reusable feeding implemented; no loot distribution, crafting-panel recipe or production renderer. Knowledge 0.16.0 dedicated storage remains blocked; research-required construction fails closed. Non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Recovery requires human review; save requests are not disk or cross-file atomicity proof. Legacy effigies/main recovery preserved. Authorized Workshop MP testing packaging is prepared separately; current generated Contents and retained historical evidence are distinguished. Upload outcome is not MP verification.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -113,7 +113,9 @@
     "tests/helpers/effigy_frame_tools.lua",
     "docs/audits/0.31.0-dev.5.recipe.json",
     "art/README.md",
-    "docs/THUMBNAIL_2026-10-17.md"
+    "docs/THUMBNAIL_2026-10-17.md",
+    "docs/WORKSHOP_0.31.0-dev.5.md",
+    "docs/audits/0.31.0-dev.5.workshop.json"
   ],
   "relations": []
 }
