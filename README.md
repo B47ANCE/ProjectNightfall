@@ -1,5 +1,7 @@
 # Project Nightfall
 
+![Project Nightfall thumbnail](preview.png)
+
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
 - Version: `0.31.0-dev.5`

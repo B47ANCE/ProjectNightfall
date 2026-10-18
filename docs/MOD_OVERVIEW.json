@@ -4,7 +4,7 @@
   "name": "Project Nightfall",
   "version": "0.31.0-dev.5",
   "reviewed": true,
-  "source_digest": "f4a13142dc011389edf4b955be1c69f1acf8aa828903025ad18c4db2f0982dd8",
+  "source_digest": "9e68171f75aee5ae6db9158aa40e6f4cad88eb2902af09dd33a517307ce06955",
   "features": [
     {
       "status": "Source",
@@ -69,6 +69,10 @@
     {
       "status": "Source",
       "text": "Research-gated reusable-frame assembly and actual-item placement through server-only commands. Configurable log/large-branch/rope/nail costs; working hammer/sharp knife and Base.HandDrill retained unchanged, exact inventory IDs, native world publication, safehouse/floor/reach checks, shared frame lease and server GlobalModData recovery guards. Context UI sends intent only; blocked dedicated Knowledge storage fails closed."
+    },
+    {
+      "status": "Source",
+      "text": "User-supplied Nightfall/UV project artwork copied unchanged to preview.png and the existing source mod thumbnail/poster; separate icon preserved. Native display and Workshop acceptance NOT TESTED."
     }
   ],
   "limits": "Development 0.31.0-dev.5 source/offline prototype. Assembly, placement, loading and reusable feeding implemented; no loot distribution, crafting-panel recipe or production renderer. Knowledge 0.16.0 dedicated storage remains blocked; research-required construction fails closed. Non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Recovery requires human review; save requests are not disk or cross-file atomicity proof. Legacy effigies/main recovery preserved.",
@@ -107,7 +111,9 @@
     "tests/test_effigy_frame_menu.lua",
     "docs/VALIDATION_0.31.0-dev.5.md",
     "tests/helpers/effigy_frame_tools.lua",
-    "docs/audits/0.31.0-dev.5.recipe.json"
+    "docs/audits/0.31.0-dev.5.recipe.json",
+    "art/README.md",
+    "docs/THUMBNAIL_2026-10-17.md"
   ],
   "relations": []
 }

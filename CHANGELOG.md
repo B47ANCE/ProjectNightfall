@@ -2,6 +2,8 @@
 
 ## 0.31.0-dev.5 - frame recipe and reusable tools, 2026-10-17
 
+- Artwork follow-up: use the user-supplied Nightfall/UV image unchanged for the project/Workshop preview and source mod thumbnail. Preserve the separate icon and historical packages. This artwork-only change retains the development version; no gameplay change or upload.
+
 - User-selected default materials: 1 log, 3 large branches, 1 rope, 8 loose nails. Add bounded EffigyFrameLargeBranches sandbox quantity; update default logs/ropes without overriding saved explicit values.
 - Require working, distinct hammer/sharp-knife tools and a Base.HandDrill in main inventory; equipped tools count and are never consumed or worn. Recheck authoritative tools before creating the committed output; compensate materials if a tool disappears.
 - Update localized cost/tool tips, source/native evidence and regressions for missing, broken, moved/nested and wrong tools/branches, retained condition/equipment, server costs and rollback. Research, placement and category contracts remain unchanged. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
