@@ -61,3 +61,18 @@ claim. Request separate Steam desktop restart confirmation only after success.
 27/27 Python tests PASS. Current source version mirrors PASS. These tests do not
 prove native/SP/dedicated behavior. Package build/integrity, strict parity and
 final exact-head CI results are recorded below after completion.
+
+[TESTED] Existing builder produced 165 source/mod files and 167 ZIP members with
+exact source/Contents/package parity, safe paths/types/case, CRC/data validation
+and clean captured-source provenance. Package SHA-256:
+52e49ed4325b12f345b68ae312346af74bea7a3d55c710197b0835c22d4d4966
+Source snapshot: dfd8007d04ba8cbd8e9bc76c19d591c7c378637a
+Source tree SHA-256: 5ae0581e117081979b3dd8c0ee001f0339075b1cfaeb0ff51fb61fd8e0364e67
+Portable manifest: packaging/0.31.0-dev.6.manifest.json. Prior dev.5 archive and both
+retained mirrors remain hash-identical; no cleanup.
+
+[TESTED] check_versions.py --release and full source/release-consistency audit
+PASS offline. No source or release-consistency failures. Public Git index review:
+508 files, no denied/potential-secret paths (heuristic, not comprehensive). Staged
+whitespace check PASS; portable manifest has LF formatting and identical JSON
+values to the immutable generated sidecar. Final CI and upload remain separate.

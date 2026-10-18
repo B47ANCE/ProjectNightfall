@@ -4,7 +4,7 @@
   "name": "Project Nightfall",
   "version": "0.31.0-dev.6",
   "reviewed": true,
-  "source_digest": "430909b8323c96c99535aac75e3a830d0457a96a320d3a13ac2d2b5703b83455",
+  "source_digest": "9dccc1950e760582736df241756dbe2195a6c4b7685380227744a77e1b9ba5e3",
   "features": [
     {
       "status": "Source",
@@ -122,7 +122,8 @@
     "docs/audits/0.31.0-dev.5.workshop.json",
     "docs/packaging/0.31.0-dev.5.manifest.json",
     "docs/WORKSHOP_0.31.0-dev.6.md",
-    "tests/test_packaging.py"
+    "tests/test_packaging.py",
+    "docs/packaging/0.31.0-dev.6.manifest.json"
   ],
   "relations": []
 }
