@@ -60,3 +60,11 @@ git -c core.autocrlf=false diff --cached --check
 ```
 
 Packaging verification and actual upload success are recorded only after execution. Exact-head CI results and final SHA are recorded in the publication PR. All G7/stable G8 native gates remain blocked.
+
+[TESTED: offline] Final source/release audit has no source or release-consistency
+failures. All 519 indexed files pass the credential/path heuristic. Mirror bytes
+retain source CRLF where present; final whitespace verification uses
+`git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --cached --check`
+to permit that representation while retaining ordinary whitespace checks.
+
+[TESTED: offline] Existing builder produced 165 source/mod files and 167 ZIP members with exact source/Contents/package parity and validated provenance. Package SHA-256: `f96244e3b25d3223406d53ec1fe5abc3240551ffb8872084f994e894e9d8857d`. Captured clean source commit: `f3f997678baf95e194122faeabd89ed87cf04be7`. Previous dev.6 mirror is retained at `dist/staging-backups/contents-c883d9be73d4` with tree SHA-256 `c883d9be73d48e30e1c857f936325701d0c2fd7fa6bc2b5d77dc6e06e7b721d7`. Portable manifest: [packaging/0.31.0-dev.8.manifest.json](packaging/0.31.0-dev.8.manifest.json). No upload success claimed here.

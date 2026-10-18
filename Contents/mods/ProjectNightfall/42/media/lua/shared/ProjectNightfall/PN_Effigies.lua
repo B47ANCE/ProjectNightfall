@@ -10,6 +10,9 @@ local FeralAI=require "ProjectNightfall/PN_FeralAI"
 local CLASSIFIER="ProjectNightfall.sourceSignature"
 local DATA_KEY="ProjectNightfallEffigy"
 local BUCKET_SIZE=16
+-- Technical query ceiling matches the reusable-frame discovery bound. An
+-- overfull local query returns no candidate, never a misleading partial choice.
+local MAX_QUERY_ENTRIES=128
 local MAX_PARTS=16
 local entries,buckets={},{}
 local foodLeases,foodCommits={},{}
@@ -362,11 +365,13 @@ function Effigies.nearby(zombie,radius)
     if not x then return {} end
     radius=math.max(1,math.min(256,finite(radius) or 20))
     local result,seen={},{}
+    local examined=0
     local bx1,bx2=math.floor((x-radius)/BUCKET_SIZE),math.floor((x+radius)/BUCKET_SIZE)
     local by1,by2=math.floor((y-radius)/BUCKET_SIZE),math.floor((y+radius)/BUCKET_SIZE)
     for bx=bx1,bx2 do for by=by1,by2 do
         local bucket=buckets[table.concat({bx,by,math.floor(z)},":")]
         if bucket then for id,entry in pairs(bucket) do
+            examined=examined+1;if examined>MAX_QUERY_ENTRIES then return {} end
             if not seen[id] and entry.status=="active" and not foodLeases[id] then
                 seen[id]=true
                 local dx,dy=entry.x-x,entry.y-y

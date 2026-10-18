@@ -104,7 +104,11 @@ function UVAI.buildWeightMap(zombie,state,globalDLS,exposedDLS,tick,storedUVEqui
     local chaseAlreadyActive=state.currentAction=="CHASE"
     local hungerThreshold=chaseAlreadyActive and Config.HungerChaseKeepThreshold
         or Config.HungerChaseStartThreshold
-    local hungerDrive,hungerLevel=MortisIntegration.getHungerDrive(zombie,hungerThreshold)
+    -- Hunger only changes CHASE, which requires an actually visible target.
+    -- Avoid advancing/reading canonical hunger for every idle population poll.
+    -- No cache: the next real chase decision sees feeding and current elapsed time.
+    local hungerDrive,hungerLevel=0,nil
+    if hasVisibleTarget then hungerDrive,hungerLevel=MortisIntegration.getHungerDrive(zombie,hungerThreshold) end
     local hungerBonus=hungerDrive*(chaseAlreadyActive and Config.HungerChaseKeepBonus
         or Config.HungerChaseStartBonus)
     local bleedingBonus,bleedingSeverity,bleedingLevel=0.0,"None",0
@@ -162,6 +166,7 @@ function UVAI.buildWeightMap(zombie,state,globalDLS,exposedDLS,tick,storedUVEqui
         bleedingBonus=bleedingBonus,bleedingSeverity=bleedingSeverity,
         bleedingLevel=bleedingLevel,
         hungerLevel=hungerLevel,hungerDrive=hungerDrive,hungerBonus=hungerBonus,
+        hungerQueried=hasVisibleTarget,
         hungerChasePhase=chaseAlreadyActive and "keep" or "start",
         effigy=effigy,effigyReaction=effigyReaction,effigyDistance=effigyDistance,
     }
