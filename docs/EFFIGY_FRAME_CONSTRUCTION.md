@@ -1,4 +1,4 @@
-# Reusable effigy frame construction — 0.31.0-dev.4
+# Reusable effigy frame construction — 0.31.0-dev.5
 
 [VERIFIED: source] Lua-only, server-owned assembly and placement are implemented.
 [TESTED: offline Lua 5.1] Native boundaries use facades; native/SP/dedicated NOT
@@ -6,10 +6,10 @@ TESTED. This is a development prototype. G7 BLOCKED / NOT TESTED; stable G8 BLOC
 
 ## Player flow and settings
 
-Select a loose log, rope or nail in inventory and choose **Assemble effigy frame**.
+Select a loose log, large branch, rope, nail or required tool in inventory and choose **Assemble effigy frame**.
 The action selects the exact required loose materials from the main inventory,
-then submits their IDs. Default cost is **4 Base.Log, 2 Base.Rope, 8 Base.Nails**.
-The user chose logs/rope instead of the proposed planks/cloth; nails were retained.
+then submits their IDs. Default cost is **1 Base.Log, 3 Base.LargeBranch, 1 Base.Rope, 8 Base.Nails**.
+The user selected these costs plus a hammer, knife and hand drill. Working hammer and sharp-knife vanilla tags qualify; the hand drill must be Base.HandDrill. Three distinct actual tools must be in main inventory (equipped is allowed). They are checked again by the server and remain unchanged, including condition; no tool is consumed.
 Bundled logs/rope and nail boxes must be unpacked first. Worn/equipped items,
 other players' items, nearby containers and nested bags are not ingredients.
 The output is one empty `ProjectNightfall.EffigyFrame` with permanent native
@@ -34,11 +34,12 @@ existing language folder; no new human translation is claimed.
 
 | Server sandbox ID | Default | Integer bounds | Existing saves |
 | --- | --- | --- | --- |
-| ProjectNightfall.EffigyFrameLogs | 4 | 1–10 | Missing value uses 4 |
-| ProjectNightfall.EffigyFrameRopes | 2 | 1–10 | Missing value uses 2 |
+| ProjectNightfall.EffigyFrameLogs | 1 | 1–10 | Missing value uses 1 |
+| ProjectNightfall.EffigyFrameLargeBranches | 3 | 1–10 | Missing value uses 3 |
+| ProjectNightfall.EffigyFrameRopes | 1 | 1–10 | Missing value uses 1 |
 | ProjectNightfall.EffigyFrameNails | 8 | 1–40 | Missing value uses 8 |
 
-Each value is checked by the server at commit; malformed/out-of-range values refuse
+Existing explicit sandbox costs remain unchanged; the new defaults apply when values are absent. Fixed tool roles and ingredient identities define the recipe; quantities are the balance settings. Each value is checked by the server at commit; malformed/out-of-range values refuse
 construction. Positive minima prevent accidental free production. The existing
 `Enabled` controls availability. Existing `RequireEffigyKnowledge` remains true
 by default: **NF-FIELD-026 / ProjectNightfall.EffigyConstruction** is checked for
@@ -108,7 +109,9 @@ save copies and exact real inventories; downgrading uncertain records is unsuppo
 
 ## Evidence and remaining gates
 
-[Native fingerprints](audits/0.31.0-dev.4.native.json): Steam build 25485521, exact
+[Current recipe evidence](audits/0.31.0-dev.5.recipe.json) records the distinct large-branch full type and working tool/tag contracts.
+
+[Retained placement native fingerprints](audits/0.31.0-dev.4.native.json): Steam build 25485521, exact
 SemVer UNKNOWN. Vanilla drop-action Lua calls the same actual-item overload and
 native publication helpers. Packaged classes and a differing loose IsoGridSquare
 were inspected. The loose decompiler inverts/reorders generator branches; the normal

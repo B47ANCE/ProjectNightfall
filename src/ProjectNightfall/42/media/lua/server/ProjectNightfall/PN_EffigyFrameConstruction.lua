@@ -59,6 +59,7 @@ function Build.craft(player,ids)
             root:Remove(item)
             if root:getItemWithID(item:getID())~=nil or item:getContainer()~=nil then error("remove_failed") end
         end
+        if not Recipe.tools(player) then error("tools_unavailable") end
         root:AddItem(output)
         if root:getItemWithID(output:getID())~=output or output:getContainer()~=root then error("add_failed") end
     end)

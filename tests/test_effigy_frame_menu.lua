@@ -4,13 +4,14 @@ local config=ProjectNightfall.Config.POC
 config.RequireEffigyKnowledge=false
 local p,o,frame,root=F.world();frame.world=nil;root:AddItem(frame)
 local selected
-for _,pair in ipairs({{'Base.Log',4},{'Base.Rope',2},{'Base.Nails',8}}) do
+for _,pair in ipairs({{'Base.Log',1},{'Base.LargeBranch',3},{'Base.Rope',1},{'Base.Nails',8}}) do
     for _=1,pair[2] do
         local item=F.item('meat');item.foodType=nil;item.kind=pair[1]
         function item:getFullType() return self.kind end
         root:AddItem(item);selected=selected or item
     end
 end
+local tools=dofile("tests/helpers/effigy_frame_tools.lua").add(F,root)
 getSpecificPlayer=function(index) assert(index==0);return p end
 getText=function(key,...) return key end
 ISInventoryPane={getActualItems=function(items) return items end}
@@ -42,10 +43,10 @@ assert(ctx.options[1].toolTip.description)
 Menu.inventory(0,ctx,{selected});assert(#ctx.options==1)
 local row=ctx.options[1];row.callback(row.target,unpack(row.args))
 assert(#sends==1 and sends[1].module==Menu.MODULE and sends[1].command=='craft')
-assert(#sends[1].args.items==14 and #root.items==15 and not frame.world)
+assert(#sends[1].args.items==13 and #root.items==17 and not frame.world)
 -- Click selection is refreshed after a queued native move/cost change.
 config.EffigyFrameLogs=5;row.callback(row.target,unpack(row.args));assert(#sends==1)
-config.EffigyFrameLogs=4
+config.EffigyFrameLogs=1
 ctx=context();assert(Menu.world(0,ctx,{o},true));assert(probes==1 and #ctx.options==0 and #sends==1)
 Menu.world(0,ctx,{o},false);Menu.world(0,ctx,{o},false);assert(#ctx.options==1)
 row=ctx.options[1].submenu.options[1];row.callback(row.target,unpack(row.args))
@@ -72,5 +73,5 @@ end}
 Menu.request(p,'place',{frameId=frame.id});assert(calls==1 and Menu.lastResult.ok)
 Menu.result('unrelated','result',{ok=false});assert(Menu.lastResult.ok)
 Menu.result(Menu.MODULE,'result',{ok=false,reason='inaccessible'});assert(not Menu.lastResult.ok)
-assert(#root.items==15 and frame.container==root and not frame.world)
+assert(#root.items==17 and frame.container==root and not frame.world)
 print('Effigy frame menu intent/knowledge/SP routing checks passed')

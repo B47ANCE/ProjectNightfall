@@ -2,9 +2,9 @@
   "schema": 1,
   "id": "night",
   "name": "Project Nightfall",
-  "version": "0.31.0-dev.4",
+  "version": "0.31.0-dev.5",
   "reviewed": true,
-  "source_digest": "9b5d24c3dbfca9c1787d4f53ddb2c23e5434108e75e4655c96bf63b2f0e0a76f",
+  "source_digest": "f4a13142dc011389edf4b955be1c69f1acf8aa828903025ad18c4db2f0982dd8",
   "features": [
     {
       "status": "Source",
@@ -68,10 +68,10 @@
     },
     {
       "status": "Source",
-      "text": "Research-gated reusable-frame assembly and actual-item placement through server-only commands. Configurable log/rope/nail costs, exact inventory IDs, native world publication, safehouse/floor/reach checks, shared frame lease and server GlobalModData recovery guards. Context UI sends intent only; blocked dedicated Knowledge storage fails closed."
+      "text": "Research-gated reusable-frame assembly and actual-item placement through server-only commands. Configurable log/large-branch/rope/nail costs; working hammer/sharp knife and Base.HandDrill retained unchanged, exact inventory IDs, native world publication, safehouse/floor/reach checks, shared frame lease and server GlobalModData recovery guards. Context UI sends intent only; blocked dedicated Knowledge storage fails closed."
     }
   ],
-  "limits": "Development 0.31.0-dev.4 source/offline prototype. Assembly, placement, loading and reusable feeding implemented; no loot distribution, crafting-panel recipe or production renderer. Knowledge 0.16.0 dedicated storage remains blocked; research-required construction fails closed. Non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Recovery requires human review; save requests are not disk or cross-file atomicity proof. Legacy effigies/main recovery preserved.",
+  "limits": "Development 0.31.0-dev.5 source/offline prototype. Assembly, placement, loading and reusable feeding implemented; no loot distribution, crafting-panel recipe or production renderer. Knowledge 0.16.0 dedicated storage remains blocked; research-required construction fails closed. Non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Recovery requires human review; save requests are not disk or cross-file atomicity proof. Legacy effigies/main recovery preserved.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -104,7 +104,10 @@
     "docs/EFFIGY_FRAME_CONSTRUCTION.md",
     "src/ProjectNightfall/42/media/lua/server/ProjectNightfall/PN_EffigyFrameConstruction.lua",
     "tests/test_effigy_frame_construction.lua",
-    "tests/test_effigy_frame_menu.lua"
+    "tests/test_effigy_frame_menu.lua",
+    "docs/VALIDATION_0.31.0-dev.5.md",
+    "tests/helpers/effigy_frame_tools.lua",
+    "docs/audits/0.31.0-dev.5.recipe.json"
   ],
   "relations": []
 }

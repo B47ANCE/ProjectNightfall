@@ -33,7 +33,7 @@ function Menu.inventory(playerIndex,context,items)
     if not player or not costs or not context or not ISInventoryPane then return end
     local selected=ISInventoryPane.getActualItems(items or {})
     local relevant=false
-    for _,item in ipairs(selected or {}) do if costs[item:getFullType()] then relevant=true;break end end
+    for _,item in ipairs(selected or {}) do if costs[item:getFullType()] or Recipe.isTool(item) then relevant=true;break end end
     if not relevant then return end
     for _,option in ipairs(context.options or {}) do if option.PNFrameCraft then return end end
     local ids,reason=Recipe.select(player)
@@ -43,8 +43,8 @@ function Menu.inventory(playerIndex,context,items)
     if ISInventoryPaneContextMenu and ISInventoryPaneContextMenu.addToolTip then
         local tip=ISInventoryPaneContextMenu.addToolTip()
         if tip then
-            tip.description=tr("Cost",costs["Base.Log"],costs["Base.Rope"],costs["Base.Nails"])
-            if not ids then tip.description=tip.description.." <LINE> "..tr(reason=="research_required" and "Research" or "Requirements") end
+            tip.description=tr("Cost",costs["Base.Log"],costs["Base.LargeBranch"],costs["Base.Rope"],costs["Base.Nails"])
+            if not ids then tip.description=tip.description.." <LINE> "..tr(reason=="research_required" and "Research" or reason=="tools_required" and "Tools" or "Requirements") end
             option.toolTip=tip
         end
     end

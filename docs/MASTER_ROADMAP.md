@@ -1,8 +1,12 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.31.0-dev.4
+Canonical version: 0.31.0-dev.5
 
 ## Current slice and next gates - 2026-10-17
+
+0.31.0-dev.5 updates frame materials to 1 log, 3 large branches, 1 rope and 8 nails, with working retained hammer/knife/hand-drill tools. See [current validation](VALIDATION_0.31.0-dev.5.md). Existing explicit server costs, research and category/placement contracts remain. Native/SP/dedicated and Knowledge storage gates remain blocked.
+
+### Retained dev.4 checkpoint
 
 0.31.0-dev.4 adds [research-gated frame assembly and placement](EFFIGY_FRAME_CONSTRUCTION.md), configurable log/rope/nail costs, actual-item world placement and server recovery guards. [Current validation](VALIDATION_0.31.0-dev.4.md) is offline only. Next: human native crafting/placement/transfer/feed/save acceptance; reconcile the Knowledge dependency's blocked dedicated research storage without bypassing its guard; then non-feeding reactions/attribution, migration and three production models/rendering.
 
@@ -81,3 +85,5 @@ Historical 0.29.1 integrates reversible effigy feeding and is a development PATC
 Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
 
 0.31.0-dev.1 is a development MINOR prerelease for the container policy foundation. Existing effigies retain their legacy implementation. No native transfer filter, world placement, feeding replacement or renderer is enabled. See [current validation](VALIDATION_0.31.0-dev.1.md).
+
+Current 0.31.0-dev.5 revises frame assembly to **1 log, 3 large branches (Base.LargeBranch), 1 rope and 8 loose nails**, with a working hammer, sharp knife and Base.HandDrill required as retained tools. Equipped tools count; tools must be in main inventory and remain unchanged. Server validation repeats tool availability before output insertion. Costs remain sandbox-controlled; existing explicit values are preserved. Research, category restrictions, actual-item placement, legacy effigies and recovery contracts are unchanged. See [construction](EFFIGY_FRAME_CONSTRUCTION.md) and [validation](VALIDATION_0.31.0-dev.5.md). Native/SP/dedicated NOT TESTED; Knowledge MP storage and G7/stable G8 remain blocked. No package/deploy/upload.

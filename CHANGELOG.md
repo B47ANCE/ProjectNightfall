@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.31.0-dev.5 - frame recipe and reusable tools, 2026-10-17
+
+- User-selected default materials: 1 log, 3 large branches, 1 rope, 8 loose nails. Add bounded EffigyFrameLargeBranches sandbox quantity; update default logs/ropes without overriding saved explicit values.
+- Require working, distinct hammer/sharp-knife tools and a Base.HandDrill in main inventory; equipped tools count and are never consumed or worn. Recheck authoritative tools before creating the committed output; compensate materials if a tool disappears.
+- Update localized cost/tool tips, source/native evidence and regressions for missing, broken, moved/nested and wrong tools/branches, retained condition/equipment, server costs and rollback. Research, placement and category contracts remain unchanged. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
+
 ## 0.31.0-dev.4 - reusable frame crafting and placement, 2026-10-17
 
 - Add server-owned context-menu assembly of an empty reusable frame from actual main-inventory materials. Defaults: 4 logs, 2 ropes and 8 loose nails, each with bounded server sandbox settings. Reuse the existing NF-FIELD-026 research check; missing/blocked knowledge fails closed. Legacy construction delegates to the same unchanged check.

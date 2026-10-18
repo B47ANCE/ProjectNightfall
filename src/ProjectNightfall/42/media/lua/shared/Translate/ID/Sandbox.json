@@ -203,9 +203,11 @@
   "Sandbox_ProjectNightfall_EffigyContainerCapacity": "Effigy container capacity",
   "Sandbox_ProjectNightfall_EffigyContainerCapacity_tooltip": "Maximum stored weight in a reusable effigy frame (1-40, default 20). Existing contents are retained when lowered; further loading is blocked until there is room. Server authoritative. Legacy effigies are unchanged.",
   "Sandbox_ProjectNightfall_EffigyFrameLogs": "Effigy frame logs",
-  "Sandbox_ProjectNightfall_EffigyFrameLogs_tooltip": "Number of loose logs consumed per reusable frame (1-10, default 4). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
+  "Sandbox_ProjectNightfall_EffigyFrameLogs_tooltip": "Number of loose logs consumed per reusable frame (1-10, default 1). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
   "Sandbox_ProjectNightfall_EffigyFrameRopes": "Effigy frame ropes",
-  "Sandbox_ProjectNightfall_EffigyFrameRopes_tooltip": "Number of loose ropes consumed per reusable frame (1-10, default 2). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
+  "Sandbox_ProjectNightfall_EffigyFrameRopes_tooltip": "Number of loose ropes consumed per reusable frame (1-10, default 1). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
   "Sandbox_ProjectNightfall_EffigyFrameNails": "Effigy frame nails",
-  "Sandbox_ProjectNightfall_EffigyFrameNails_tooltip": "Number of loose nails consumed per reusable frame (1-40, default 8). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged."
+  "Sandbox_ProjectNightfall_EffigyFrameNails_tooltip": "Number of loose nails consumed per reusable frame (1-40, default 8). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
+  "Sandbox_ProjectNightfall_EffigyFrameLargeBranches": "Effigy frame large branches",
+  "Sandbox_ProjectNightfall_EffigyFrameLargeBranches_tooltip": "Number of loose large branches consumed per reusable frame (1-10, default 3). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged."
 }

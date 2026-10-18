@@ -1,8 +1,8 @@
 ProjectNightfall = ProjectNightfall or {}
-ProjectNightfall.VERSION = "0.31.0-dev.4"
+ProjectNightfall.VERSION = "0.31.0-dev.5"
 ProjectNightfall.Config = ProjectNightfall.Config or {}
 
--- Project Nightfall 0.31.0-dev.4
+-- Project Nightfall 0.31.0-dev.5
 ProjectNightfall.Config.POC = {
     Enabled = true,
     Debug = true,
@@ -311,8 +311,9 @@ ProjectNightfall.Config.POC = {
 
     -- medWorks-part effigy influence and Smart Feral investigation.
     EffigyContainerCapacity = 20,
-    EffigyFrameLogs = 4,
-    EffigyFrameRopes = 2,
+    EffigyFrameLogs = 1,
+    EffigyFrameLargeBranches = 3,
+    EffigyFrameRopes = 1,
     EffigyFrameNails = 8,
     RequireEffigyKnowledge = true,
     EffigyInfluenceRadius = 24.0,
@@ -567,6 +568,7 @@ local SANDBOX_KEYS = {
     "EffigyInfluenceRadius",
     "EffigyContainerCapacity",
     "EffigyFrameLogs",
+    "EffigyFrameLargeBranches",
     "EffigyFrameRopes",
     "EffigyFrameNails",
     "RequireEffigyKnowledge",
