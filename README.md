@@ -100,3 +100,5 @@ Authorized matching MP-test publication preparation for 0.31.0-dev.8: see [input
 Published the matching MP testing build **0.31.0-dev.8** to existing Workshop item **3788593239** on 2026-10-18. [Upload receipt and limits](docs/WORKSHOP_0.31.0-dev.8.md). G7/stable G8 remain blocked; no native multiplayer proof from distribution.
 
 Current 0.31.0-dev.9 installs the approved transparent infected-only mod icon, retaining the thumbnail/poster and all gameplay/dependency contracts. [Icon provenance, validation and publication](docs/WORKSHOP_0.31.0-dev.9.md). Native display and dedicated multiplayer remain NOT TESTED; G7/stable G8 BLOCKED.
+
+Published **0.31.0-dev.9** with the selected transparent mod icon to existing Workshop item **3788593239** on 2026-10-18. [Validation and upload receipt](docs/WORKSHOP_0.31.0-dev.9.md). Offline/CI/package checks pass; native display and dedicated MP remain NOT TESTED. No gameplay, thumbnail/poster or dependency update.
