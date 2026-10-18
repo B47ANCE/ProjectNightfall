@@ -229,6 +229,7 @@ preset.MORTISPhysical = {
 preset.MORTISSystems = {
     EnableZombieHunger = true,
     HungerDaysToFull = 7.0,
+    HungerWorkPerTick = 32,
     EnableZombieDesiccation = true,
     DesiccationYearsToTerminal = 5.0,
     EnableTerminalWithering = true,

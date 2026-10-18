@@ -88,9 +88,10 @@ assert(closestShelter==interior,"emergency shelter search must include the loade
 zombie.z=0
 assert(Shelter.findNearby({isDead=function() error("stale") end})==nil)
 
-ProjectNightfall.MortisIntegration={
-    getHungerDrive=function() return 0.25,0.5 end,
-}
+local hungerReads=0
+ProjectNightfall.MortisIntegration={getHungerDrive=function()
+    hungerReads=hungerReads+1;return 0.25,0.5
+end}
 package.loaded["ProjectNightfall/PN_MortisIntegration"]=ProjectNightfall.MortisIntegration
 ProjectNightfall.Effigies={
     findNearbyReaction=function() return nil end,
@@ -104,7 +105,16 @@ local impairment=UVAI.computeImpairment(nil,nil)
 assert(impairment.combined==0)
 assert(UVAI.getProximityBonus(nil)==0)
 result=assert(UVAI.buildWeightMap(zombie,nil,nil,nil,nil))
-assert(result.action and result.hungerLevel==0.5)
+assert(result.action and result.hungerLevel==nil and not result.hungerQueried)
+for _=1,10000 do UVAI.buildWeightMap(zombie,{},0,0,0) end
+assert(hungerReads==0,'idle populations must not poll hunger for an impossible chase')
+zombie.isTargetVisible=function()return true end;zombie.getTarget=function()return other end
+local pursuit=UVAI.buildWeightMap(zombie,{},0,0,1)
+assert(pursuit.hungerQueried and pursuit.hungerLevel==0.5 and pursuit.hungerBonus>0 and hungerReads==1)
+local continued=UVAI.buildWeightMap(zombie,{currentAction='CHASE'},0,0,2)
+assert(continued.hungerBonus>pursuit.hungerBonus and hungerReads==2,'active chase persistence bonus retained')
+zombie.isTargetVisible=function()return false end;zombie.getTarget=function()end
+assert(UVAI.buildWeightMap(zombie,{},0,0,3).actual.CHASE==0 and hungerReads==2)
 
 local bleeding={getBodyDamage=function() error("unavailable") end}
 require "ProjectNightfall/PN_TargetStimulus"

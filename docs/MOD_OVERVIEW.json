@@ -2,9 +2,9 @@
   "schema": 1,
   "id": "night",
   "name": "Project Nightfall",
-  "version": "0.31.0-dev.7",
+  "version": "0.31.0-dev.8",
   "reviewed": true,
-  "source_digest": "853bb9b53aad3e4c8255aa53ea820e402883288f61458880465e42e559904456",
+  "source_digest": "5a1f2f6cf97187d58c8cff6adf62b775814764f1710ad319ef7544f5064e1186",
   "features": [
     {
       "status": "Source",
@@ -48,7 +48,7 @@
     },
     {
       "status": "Source",
-      "text": "Dependency diagnostics separate API surface from source capability readiness. MORTIS API 1.6/food transaction v1 required; Knowledge 0.16.0 affected MP storage remains blocked."
+      "text": "Dependency diagnostics separate API surface from source capability readiness. MORTIS API 1.6/food transaction v1 retained; pinned Knowledge 0.17.0 private documents support fresh dedicated lives in source, broader guards remain blocked."
     },
     {
       "status": "Source",
@@ -81,9 +81,13 @@
     {
       "status": "Source",
       "text": "Dedicated effigy research selects pinned Knowledge 0.17.0 private document storage for fresh test worlds/server-created lives; real API gates assembly/placement. Diagnostics separate structural private document support from broader blocked guards and client presentation; initialized storage/character readiness remain unprobed. Existing-world migration/failure cases remain closed."
+    },
+    {
+      "status": "Source",
+      "text": "Paired MORTIS global hunger FIFO/budget (default 32, server integer 1–512), elapsed-time catch-up/pre-meal settlement, idle-AI hunger query avoidance, 128-entry legacy discovery ceiling and authority-local queue diagnostics. Offline 100,000-actor work counts; native Insane-population timing NOT TESTED."
     }
   ],
-  "limits": "Development 0.31.0-dev.7 source/offline prototype. Assembly, placement, category-restricted loading and reusable feeding implemented; no loot/crafting-panel recipe or production renderer. Knowledge 0.17.0 pinned development PR is unmerged; private documents support fresh worlds/server-created lives in source only. Existing-world migration, ambiguous identity and uncertain writes fail closed. Broader Knowledge guards stay blocked. Non-feeding reactions/attribution, migration and three models pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Published dev.6 Contents/artifacts remain historical; no dev.7 package/deploy/upload. Read-back/save requests are not fsync or cross-file atomicity proof.",
+  "limits": "Development 0.31.0-dev.8 source/offline prototype. Assembly, placement, category-restricted loading and reusable feeding implemented; no loot/crafting-panel recipe or production renderer. MORTIS PR #17 and Knowledge PR #2 are unmerged development dependencies; this Nightfall slice stacks on PR #9. Knowledge private documents support fresh worlds/server-created lives in source only; migration, ambiguous identities and uncertain writes fail closed. Broader guards remain blocked. Non-feeding reactions/attribution, migration and three models pending. Hunger work is bounded within the admitted queue ceiling; no native Insane-population FPS claim. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Published dev.6 artifacts remain historical; no dev.8 package/deploy/upload. Save requests are not disk/cross-file atomicity proof.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -120,7 +124,6 @@
     "docs/VALIDATION_0.31.0-dev.5.md",
     "tests/helpers/effigy_frame_tools.lua",
     "docs/audits/0.31.0-dev.5.recipe.json",
-    "art/README.md",
     "docs/THUMBNAIL_2026-10-17.md",
     "docs/WORKSHOP_0.31.0-dev.5.md",
     "docs/audits/0.31.0-dev.5.workshop.json",
@@ -132,8 +135,13 @@
     "docs/VALIDATION_0.31.0-dev.7.md",
     "tests/test_dedicated_research_diagnostics.lua",
     "tests/test_effigy_research_projection.lua",
-    "tests/dependencies.lock.json",
-    "docs/audits/0.31.0-dev.7.research.json"
+    "docs/audits/0.31.0-dev.7.research.json",
+    "docs/HUNGER_POPULATION_SCALING.md",
+    "docs/VALIDATION_0.31.0-dev.8.md",
+    "docs/SANDBOX_OWNERSHIP.md",
+    "tests/test_ai_boundaries.lua",
+    "tests/test_effigies.lua",
+    "tests/test_testkit.lua"
   ],
   "relations": []
 }

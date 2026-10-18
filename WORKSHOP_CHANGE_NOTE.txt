@@ -1,3 +1,6 @@
+[b]Version 0.31.0-dev.8 - MP testing build - dedicated multiplayer NOT TESTED[/b]
+Development source: bounded MORTIS automatic hunger work, target-aware Nightfall hunger queries, bounded legacy effigy discovery and queue diagnostics. Preserve starvation and source-category rules. No package/upload; native population performance NOT TESTED.
+
 [b]Version 0.31.0-dev.7 - MP testing build - dedicated multiplayer NOT TESTED[/b]
 Development source: integrate Knowledge 0.17.0 private dedicated document research for fresh test worlds and server-created lives. Preserve research and category restrictions. Existing-world migration and all native/dedicated validation remain blocked. No package or upload for this iteration.
 

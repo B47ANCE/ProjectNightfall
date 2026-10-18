@@ -1,8 +1,12 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.31.0-dev.7
+Canonical version: 0.31.0-dev.8
 
 ## Current slice and next gates - 2026-10-17
+
+0.31.0-dev.8 adds the paired MORTIS global hunger budget/FIFO, idle-AI query avoidance, bounded legacy discovery and authority-local queue diagnostics. Offline 100,000-actor counts prove bounded work, not native Insane-population performance. Next: review the stacked Nightfall change and MORTIS PR #17, then human dedicated frame/tick/backlog, feeding/time/save/rejoin/restart acceptance with matching builds. See [performance contract](HUNGER_POPULATION_SCALING.md) and [current validation](VALIDATION_0.31.0-dev.8.md). G7/stable G8 BLOCKED. No new distribution.
+
+### Retained dev.7 research checkpoint
 
 0.31.0-dev.7 selects the pushed Knowledge 0.17.0 private dedicated document backend and corrects structural capability diagnostics. Real-module offline research-to-craft/place and owner projection tests pass; native dedicated NOT TESTED. Next: review/provide the exact matching Knowledge development build, then run the fresh-world two-client research/construction/rejoin/restart and storage-failure gate in [dedicated research](EFFIGY_DEDICATED_RESEARCH.md). Existing-world migration, non-feeding reactions/attribution and three models remain pending. G7/stable G8 BLOCKED.
 

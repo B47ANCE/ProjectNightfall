@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.31.0-dev.7",
+  "project_version": "0.31.0-dev.8",
   "canonical_version_file": "VERSION",
   "mod_ids": [
     "ProjectNightfall"
@@ -74,7 +74,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "0.31.0-dev.7 development source only; published dev.6 mirror/packages retained, current packaging not requested; G7/stable G8 BLOCKED.",
+  "packaging_status": "0.31.0-dev.8 development hunger scaling; published dev.6 mirror/packages retained. No current package; G7/stable G8 BLOCKED.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",

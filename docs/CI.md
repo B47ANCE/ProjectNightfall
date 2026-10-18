@@ -32,3 +32,5 @@ New real-module recovery regressions use these exact inputs; fragments are label
 as fragment evidence. Other dependency pins remain unchanged.
 
 0.31.0-dev.7 advances only the Knowledge fixture to development commit eebfa3797bc95aab963816ec659896f5f018d982 (Knowledge PR #2, unmerged). The pinned private document backend and owner projection run in real-module regressions with simulated native boundaries. Diagnostics report structural document support without probing storage, and do not infer readiness from the broader AuthorityGuard; those other guards remain closed. CI is still offline, never a dedicated PASS.
+
+0.31.0-dev.8 advances only the MORTIS pin to `a8a50e40732bebcee70ddb8d9bc7abd5403c1890` (0.26.0-dev.9, PR #17 unmerged). Knowledge stays at the dev.7 private-document pin; the other three pins remain unchanged. The real pinned modules run with simulated native boundaries. Population regressions assert operation counts, idle query avoidance and bounded dense discovery; these are not Kahlua/FPS or dedicated benchmarks. See [current validation](VALIDATION_0.31.0-dev.8.md).

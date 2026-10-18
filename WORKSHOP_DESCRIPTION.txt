@@ -1,6 +1,6 @@
 âš  DEVELOPMENT BUILD â€” NOT YET PLAYABLE âš 
 
-[b]Mod Version:[/b] 0.31.0-dev.7
+[b]Mod Version:[/b] 0.31.0-dev.8
 
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 

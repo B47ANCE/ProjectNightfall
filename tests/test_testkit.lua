@@ -51,6 +51,22 @@ assert(PNTestGiveResearch()==false)
 
 print("Project Nightfall test-kit checks passed")
 
+Mortis=Mortis or {};Mortis.Engine=Mortis.Engine or {}
+Mortis.Engine.getHungerSchedulingDiagnostics=function()return {authoritative=true,queued=100000,configuredBudget=32,attempted=64,checked=63,
+    fed=2,seeking=3,skipped=4,errors=1,overflow=0,oldestWaitTicks=42}end
+local performanceOK,performance=PNPerformanceStatus()
+assert(performanceOK and performance.hunger.queued==100000 and performance.hunger.checked==63 and performance.hunger.errors==1)
+local originalPrint,lines=print,{}
+print=function(line)lines[#lines+1]=line end
+Mortis.Engine.getHungerSchedulingDiagnostics=function()return {authoritative=false,queued=0}end
+assert(PNPerformanceStatus())
+assert(table.concat(lines,'\n'):find('authoritative server queue unavailable',1,true))
+assert(not table.concat(lines,'\n'):find('authority-local hunger queued=',1,true),'client zero must not masquerade as server evidence')
+lines={};Mortis.Engine.getHungerSchedulingDiagnostics=nil
+assert(PNPerformanceStatus())
+assert(table.concat(lines,'\n'):find('hunger scheduling diagnostics unavailable',1,true))
+print=originalPrint
+
 assert(PNTestCombatKit()==false,"multiplayer grant must be refused")
 isClient=function()return false end
 local floor={};local granted={}
