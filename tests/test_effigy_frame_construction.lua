@@ -256,3 +256,78 @@ reject('non_authority',Build.craft,p,ids)
 assert(not Build.onCommand(Build.MODULE,'place',p,{}))
 assert(#root.items==16 and #F.packets==0)
 print('Effigy frame construction/placement authority and compensation checks passed')
+
+-- Actual pinned dedicated backend, default research requirement enabled.
+-- Only native file/lifecycle/read-completion boundaries are simulated.
+local Private=dofile('tests/helpers/private_knowledge_fixture.lua')
+p,frame,root=setup();ids,actual=ingredients(root)
+local alice,aliceRoot,aliceIds=p,root,ids
+local bob,bobFrame,bobRoot=setup();local bobIds=ingredients(bobRoot)
+Private.install();Private.bindActor(alice,'research-alice',0);Private.bindActor(bob,'research-bob',0)
+Private.players={alice,bob};config.RequireEffigyKnowledge=true
+local Store=require 'B47ANCEDKnowledgeAndWisdom/PrivateKnowledge'
+reject('research_required',Build.craft,alice,aliceIds)
+assert(Store.initialize(true) and Store.newLife(alice) and Store.newLife(bob))
+bobRoot:AddItem(bobFrame)
+-- Client-replaceable old knowledge facts never become dedicated authority.
+bob.md[Knowledge.ROOT_KEY]={schemaVersion=1,documents={['NF-FIELD-026']={}},
+    knowledge={['ProjectNightfall.EffigyConstruction']={owner='ProjectNightfall',sourceDocument='NF-FIELD-026'}}}
+reject('research_required',Build.craft,bob,bobIds)
+reject('research_required',Build.place,bob,bobFrame.id,10,10,0)
+local function book(kind)
+    local item=F.item('meat');item.foodType=nil
+    function item:getFullType()return kind end
+    return item
+end
+function aliceRoot:contains(item)return self:getItemWithID(item.id)==item end
+local basic=book('ProjectNightfall.Research_NF_UV_003')
+local field=book('ProjectNightfall.Research_NF_FIELD_026')
+aliceRoot:AddItem(basic);aliceRoot:AddItem(field)
+ISReadABook={complete=function()return true end}
+require 'B47ANCEDKnowledgeAndWisdom/ReadCompletion'
+local action={character=alice,item=field}
+assert(ISReadABook.complete(action));assert(not Knowledge.hasKnowledge(alice,'ProjectNightfall.EffigyConstruction'),'prerequisite remains required')
+action.item=basic;assert(ISReadABook.complete(action))
+action.item=field;action.forceStopped=true;assert(ISReadABook.complete(action))
+assert(not Knowledge.hasKnowledge(alice,'ProjectNightfall.EffigyConstruction'),'cancelled read cannot unlock')
+action.forceStopped=false;aliceRoot:Remove(field);assert(ISReadABook.complete(action))
+assert(not Knowledge.hasKnowledge(alice,'ProjectNightfall.EffigyConstruction'),'unheld read cannot unlock')
+aliceRoot:AddItem(field);assert(ISReadABook.complete(action))
+assert(Knowledge.hasKnowledge(alice,'ProjectNightfall.EffigyConstruction'))
+assert(not Knowledge.hasKnowledge(bob,'ProjectNightfall.EffigyConstruction'))
+local journal={};for name,bytes in pairs(Private.files)do journal[name]=bytes end
+assert(ISReadABook.complete(action),'duplicate completion is idempotent')
+for name,bytes in pairs(Private.files)do assert(bytes==journal[name])end
+crafted=assert(Build.craft(alice,aliceIds),'private research must permit real construction')
+assert(Frame.isClosed(crafted.contents) and crafted.contents:getItems():size()==0)
+reject('item_unavailable',Build.craft,alice,aliceIds)
+-- No grant RPC or stolen opaque reference can authorize the other account.
+assert(not Store.command('B47ANCEDKnowledgeAndWisdom.Knowledge','grant',bob,{document='NF-FIELD-026'}))
+local bobLife=bob.md[Store.LIFE_KEY];bob.md[Store.LIFE_KEY]=alice.md[Store.LIFE_KEY]
+reject('research_required',Build.craft,bob,bobIds);bob.md[Store.LIFE_KEY]=bobLife
+-- Fresh API/backend instance simulates restart; public references plus private
+-- bytes survive. Rejoining uses a new server-listed actor for the same life.
+Knowledge,Store=Private.reload();assert(Store.initialize(false))
+local rejoined=setup();rejoined.md=alice.md;rejoined.inventory=aliceRoot
+Private.bindActor(rejoined,'research-alice',0);Private.players={rejoined,bob}
+assert(Knowledge.hasKnowledge(rejoined,'ProjectNightfall.EffigyConstruction'))
+config.RequireEffigyKnowledge=true
+assert(Build.place(rejoined,crafted.id,10,10,0),'rejoined researched actor can place the actual frame')
+-- Preserve the frame and remaining ingredients when private storage fails.
+local nextIds,nextActual=ingredients(aliceRoot)
+local nextFrame=assert(Build.craft(rejoined,nextIds))
+Private.mode='drop'
+local learned,why=Knowledge.learn(bob,'NF-UV-003')
+assert(not learned and why=='PRIVATE_STORE_WRITE_UNCERTAIN')
+reject('research_required',Build.place,rejoined,nextFrame.id,10,10,0)
+assert(aliceRoot:getItemWithID(nextFrame.id)==nextFrame)
+reject('research_required',Build.craft,bob,bobIds)
+for _,id in ipairs(bobIds)do assert(bobRoot:getItemWithID(id))end
+-- Existing worlds without a private ledger keep their old facts, never import.
+Private.mode='normal';Private.world='nightfall-existing-world-no-private-store'
+Knowledge,Store=Private.reload()
+local initialized,migration=Store.initialize(false)
+assert(not initialized and migration=='PRIVATE_MIGRATION_REQUIRED')
+reject('research_required',Build.craft,bob,bobIds)
+assert(bob.md[Knowledge.ROOT_KEY].knowledge['ProjectNightfall.EffigyConstruction'])
+print('Real private dedicated research gates craft/place; forged facts, replay, restart and storage failures tested offline')

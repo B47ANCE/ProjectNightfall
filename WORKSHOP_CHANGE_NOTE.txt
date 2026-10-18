@@ -1,3 +1,6 @@
+[b]Version 0.31.0-dev.7 - MP testing build - dedicated multiplayer NOT TESTED[/b]
+Development source: integrate Knowledge 0.17.0 private dedicated document research for fresh test worlds and server-created lives. Preserve research and category restrictions. Existing-world migration and all native/dedicated validation remain blocked. No package or upload for this iteration.
+
 [b]Version 0.31.0-dev.6 - MP testing build - dedicated multiplayer NOT TESTED[/b]
 Publishing metadata correction; gameplay unchanged from dev.5. Shortened description and an enforced UTF-8 size limit prevent rejection.
 

@@ -1,8 +1,12 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.31.0-dev.6
+Canonical version: 0.31.0-dev.7
 
 ## Current slice and next gates - 2026-10-17
+
+0.31.0-dev.7 selects the pushed Knowledge 0.17.0 private dedicated document backend and corrects structural capability diagnostics. Real-module offline research-to-craft/place and owner projection tests pass; native dedicated NOT TESTED. Next: review/provide the exact matching Knowledge development build, then run the fresh-world two-client research/construction/rejoin/restart and storage-failure gate in [dedicated research](EFFIGY_DEDICATED_RESEARCH.md). Existing-world migration, non-feeding reactions/attribution and three models remain pending. G7/stable G8 BLOCKED.
+
+### Retained dev.5 checkpoint
 
 0.31.0-dev.5 updates frame materials to 1 log, 3 large branches, 1 rope and 8 nails, with working retained hammer/knife/hand-drill tools. See [current validation](VALIDATION_0.31.0-dev.5.md). Existing explicit server costs, research and category/placement contracts remain. Native/SP/dedicated and Knowledge storage gates remain blocked.
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.31.0-dev.7 - dedicated effigy research integration, 2026-10-17
+
+- Pin the pushed Knowledge 0.17.0 development source for private dedicated document research. Preserve server-only checks, research requirement, category restrictions and all recipe/save contracts; existing worlds without private migration remain refused.
+- Distinguish structural support for private document storage from the intentionally blocked broader Knowledge guards. Client projections remain presentation only; diagnostics never initialize storage or query a player ledger.
+- Add real-backend construction/research, forgery, reconnect/restart and failure regressions. Native dedicated NOT TESTED; G7/stable G8 BLOCKED. Retain published dev.6 Contents/artifacts unchanged; no package/deploy/upload.
+
 ## 0.31.0-dev.6 - Workshop description size gate, 2026-10-17
 
 - Compatible publishing/packaging follow-up: shorten the canonical description below the Steam UTF-8 byte limit while preserving implemented features, research/MP limitations and credits. Add a fail-closed pre-packaging size check for both canonical and serialized descriptions, including multibyte regression coverage.

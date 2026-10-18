@@ -1,4 +1,4 @@
-# Reusable effigy frame construction — 0.31.0-dev.5
+# Reusable effigy frame construction — 0.31.0-dev.7
 
 [VERIFIED: source] Lua-only, server-owned assembly and placement are implemented.
 [TESTED: offline Lua 5.1] Native boundaries use facades; native/SP/dedicated NOT
@@ -45,9 +45,10 @@ construction. Positive minima prevent accidental free production. The existing
 by default: **NF-FIELD-026 / ProjectNightfall.EffigyConstruction** is checked for
 assembly and custom placement, using the same helper as legacy construction.
 Client knowledge is presentation only. Missing provider, exception or unknown
-knowledge refuses. Knowledge 0.16.0 intentionally blocks dedicated storage;
-research-required actions consequently fail closed there. This implementation
-neither bypasses that dependency nor changes the authoritative research setting.
+knowledge refuses. The current pin selects Knowledge 0.17.0 development private
+document storage for fresh dedicated worlds/server-created lives. Missing private
+identity, failed storage and existing worlds without migration still fail closed.
+No research bypass. See [dedicated integration and native gates](EFFIGY_DEDICATED_RESEARCH.md).
 
 Native pickup/drop/unloading remain vanilla operations over existing items. They
 are not new frame creation and are not intercepted by this custom research/one-
@@ -123,8 +124,8 @@ inspection does not prove actual Lua dispatch or networking.
 Human-operated native/SP/dedicated tests must cover:
 
 1. Learn NF-UV-003 then NF-FIELD-026; confirm default research denial and eventual
-   access where the dependency supports storage. Dedicated research stays blocked
-   until that dependency contract is safely reconciled. Test missing provider,
+   access with the matching private document backend. Native dedicated remains unverified
+   until the paired builds pass the dedicated acceptance gate. Test missing provider,
    forged client knowledge and server setting changes without client authority.
 2. Assemble with exact loose materials; repeat missing/nested/equipped/bundled inputs,
    duplicate/stale requests and native transfers winning before/after construction.

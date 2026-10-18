@@ -1,0 +1,18 @@
+{
+  "version": "0.31.0-dev.7",
+  "environment": "offline Windows Python 3.12.14 / Lupa 2.6 Lua 5.1; native dedicated NOT TESTED",
+  "steam_build": "25485521",
+  "effective_game_semver": "UNKNOWN",
+  "knowledge_commit": "eebfa3797bc95aab963816ec659896f5f018d982",
+  "knowledge_version": "0.17.0 development branch, unmerged",
+  "prior_knowledge_commit": "6ba66c0d8f246d438f2e2f3c974fee9f77fdb426",
+  "source_cause": "Prior Knowledge guard refuses dedicated character storage; new private document backend is separate from broader guards. Nightfall previously diagnosed all MP document storage as blocked.",
+  "production_gate": "Existing PN_EffigyKnowledge remains strict server hasKnowledge query; no bypass or duplicate ledger.",
+  "diagnostic_scope": "Structural API surface only; no readiness/identity query, module-cache dependency, storage installation or mutation.",
+  "package_loaded": "UNKNOWN native availability; no literal package.loaded/package.preload use found in inspected installed media/lua. Absence of callers does not prove native absence. Production code avoids the assumption; regression removes host package global.",
+  "native_library_search": "OnNewGame build 25485521 curated SOURCE_HASH_MATCH; reused source evidence only, not native invocation.",
+  "lua_tests": "73/73 PASS offline (final rerun recorded in validation)",
+  "python_tests": "27/27 PASS offline",
+  "G7": "BLOCKED / NOT TESTED",
+  "stable_G8": "BLOCKED"
+}

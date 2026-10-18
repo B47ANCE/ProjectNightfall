@@ -16,8 +16,10 @@ local function method(root, ...)
     return type(value) == "function"
 end
 
--- Read only the dependency's side-effect-free authority guard, never player stores.
-local function capabilities(mortis,guard)
+-- Structural API evidence only: no backend installation/readiness probe, player
+-- resolution or ledger query. Host Lua's package.loaded is not a native contract.
+-- Knowledge 0.17 private documents are independent of its broader guards.
+local function capabilities(mortis,guard,knowledge)
     local result={status="UNKNOWN",issues={},foodTransactions="UNAVAILABLE",knowledgeStorage="UNKNOWN"}
     if type(mortis)=="table" and type(mortis.FoodSources)=="table" and mortis.FoodSources.TRANSACTION_VERSION==1 then
         result.foodTransactions="v1"
@@ -29,9 +31,16 @@ local function capabilities(mortis,guard)
     if method(guard,"realm") and method(guard,"write") and method(guard,"characterRead") then
         local called,realm=pcall(guard.realm)
         result.realm=called and realm or "unknown"
-        if called and (realm=="server" or realm=="client") and guard.MULTIPLAYER_BLOCKED=="MULTIPLAYER_STORAGE_UNAVAILABLE" then
-            result.knowledgeStorage="BLOCKED"
-            result.issues[#result.issues+1]="MULTIPLAYER_STORAGE_UNAVAILABLE"
+        if called and (realm=="server" or realm=="client") then
+            if method(knowledge,"_installKnowledgeBackend") then
+                -- Presence supports the pinned 0.17 document contract, not an
+                -- initialized backend or any particular character's permission.
+                result.knowledgeStorage=realm=="server" and "PRIVATE_DOCUMENT_BACKEND_SUPPORTED" or "CLIENT_PROJECTION_SUPPORTED"
+                result.issues[#result.issues+1]="Knowledge document readiness/identity not inspected"
+            else
+                result.knowledgeStorage="BLOCKED"
+                result.issues[#result.issues+1]="MULTIPLAYER_STORAGE_UNAVAILABLE"
+            end
         elseif called and realm=="sp" then
             local writeCalled,writable=pcall(guard.write)
             local readCalled,readable=pcall(guard.characterRead)
@@ -41,7 +50,9 @@ local function capabilities(mortis,guard)
         else result.issues[#result.issues+1]="Knowledge authority/capability requires review" end
     else result.issues[#result.issues+1]="Knowledge authority guard unavailable" end
     if result.knowledgeStorage=="BLOCKED" or result.foodTransactions=="UNAVAILABLE" then result.status="BLOCKED"
-    elseif result.knowledgeStorage=="SP_SOURCE_PERMITTED" then result.status="SOURCE_CAPABILITIES_AVAILABLE" end
+    elseif result.knowledgeStorage=="SP_SOURCE_PERMITTED" then
+        result.status="SOURCE_CAPABILITIES_AVAILABLE"
+    elseif result.knowledgeStorage=="CLIENT_PROJECTION_SUPPORTED" then result.status="PRESENTATION_ONLY" end
     return result
 end
 
@@ -88,7 +99,7 @@ function Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienc
     need(method(experienceworks,"registerKnowledge"), "B47ANCEDKnowledgeAndWisdom.registerKnowledge")
     need(method(experienceworks,"hasKnowledgeDefinition"), "B47ANCEDKnowledgeAndWisdom.hasKnowledgeDefinition")
     need(method(experienceworks,"hasKnowledge"), "B47ANCEDKnowledgeAndWisdom.hasKnowledge")
-    local readiness=capabilities(mortis,guard)
+    local readiness=capabilities(mortis,guard,experienceworks)
     if #missing>0 then
         readiness.status="BLOCKED"
         readiness.issues[#readiness.issues+1]="Required family API surface incomplete"
