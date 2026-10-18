@@ -11,12 +11,12 @@ Preserve project-specific identity, instructions, source, local settings and run
 ## Identity and source ownership
 
 - Display name: Project Nightfall; Mod ID: `ProjectNightfall`; author: B47ANCE.
-- Canonical version: `0.31.0-dev.5` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
+- Canonical version: `0.31.0-dev.6` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
 - Public repository: https://github.com/B47ANCE/ProjectNightfall
 - Existing Workshop item: `3788593239`; item creation and visibility changes need separate authorization.
 - Authoritative runtime source: `src/ProjectNightfall/42/`.
 - `src/ProjectNightfall/info.txt`, `src/ProjectNightfall/thumbnail.png`, and `art/` are source/support assets.
-- `Contents/mods/ProjectNightfall/` is the generated current 0.31.0-dev.5 Workshop MP testing mirror after the authorized packaging step. Source remains authoritative. Rebuild only through scripts/package_project.py, never by independently editing mirrored code. The prior 0.27.4 mirror is retained under the SOURCE_INVENTORY backup entry and Git history.
+- `Contents/mods/ProjectNightfall/` is the generated current 0.31.0-dev.6 Workshop MP testing mirror after the authorized packaging step. Source remains authoritative. Rebuild only through scripts/package_project.py, never by independently editing mirrored code. The prior 0.27.4 mirror is retained under the SOURCE_INVENTORY backup entry and Git history.
 - `dist/`, staging backups, ZIPs, and `SHA256SUMS.txt` are generated/historical evidence, not implementation sources. Preserve them.
 - `SOURCE_INVENTORY.json` records these classifications. Current packaging is `python scripts/package_project.py build`; historical deployment/uploader tools remain unverified. The superseded 67-file Contents copy is retained under `dist/staging-backups/contents-51c590fbd9d0`; preserve it.
 
@@ -55,7 +55,7 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 ## Validation and iteration
 
-Read `docs/VALIDATION_0.31.0-dev.5.md` for current audit/implementation/evidence. Earlier 0.29.1-dev.1/0.29.0/0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
+Read `docs/WORKSHOP_0.31.0-dev.6.md` for current distribution evidence; gameplay validation remains separately versioned. Earlier 0.29.1-dev.1/0.29.0/0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
 
 Run with real Python 3.12+ and lupa.lua51:
 
@@ -97,3 +97,7 @@ Current 0.31.0-dev.5 revises frame assembly to **1 log, 3 large branches (Base.L
 ## Authorized 0.31.0-dev.5 Workshop MP testing distribution
 
 The user explicitly requested merge and publish. PR #7 merged at 264f3c34dddf5da324b533e699cff14e4d1f2023. Follow docs/WORKSHOP_0.31.0-dev.5.md for the current packaging/upload evidence; older no-package statements are historical checkpoints. The user approved a deterministic local 512-square upload preview while retaining the original 1254-square source poster. Keep the existing Workshop ID/visibility, Lua-only authority and the Knowledge guard. G7/stable G8 remain blocked; an upload is distribution evidence only. Never run the stale legacy updater or automatically restart Steam. Ask for each Steam desktop restart only after confirmed successful upload. No game/server launch or local deployment is authorized.
+
+Current publication target is 0.31.0-dev.6: a compatible packaging/metadata follow-up with no gameplay/schema changes. The unpublished dev.5 candidate is retained unchanged because its description exceeds the Steam 8,000-byte limit. Current description removes redundant recruitment/upcoming/duplicate text while preserving implemented features, credits and known limits. A packaging gate rejects oversized UTF-8 descriptions. See docs/WORKSHOP_0.31.0-dev.6.md for exact validation/provenance; G7/stable G8 remain BLOCKED.
+
+The current dev.6 candidate also adopts the latest user-supplied B47ANCE-branded thumbnail: exact original source poster plus the approved 512-square upload derivative. The separate icon and historical artwork/packages are preserved.

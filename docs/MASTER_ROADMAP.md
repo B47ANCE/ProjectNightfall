@@ -1,6 +1,6 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.31.0-dev.5
+Canonical version: 0.31.0-dev.6
 
 ## Current slice and next gates - 2026-10-17
 
@@ -87,3 +87,7 @@ Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces 
 0.31.0-dev.1 is a development MINOR prerelease for the container policy foundation. Existing effigies retain their legacy implementation. No native transfer filter, world placement, feeding replacement or renderer is enabled. See [current validation](VALIDATION_0.31.0-dev.1.md).
 
 Current 0.31.0-dev.5 revises frame assembly to **1 log, 3 large branches (Base.LargeBranch), 1 rope and 8 loose nails**, with a working hammer, sharp knife and Base.HandDrill required as retained tools. Equipped tools count; tools must be in main inventory and remain unchanged. Server validation repeats tool availability before output insertion. Costs remain sandbox-controlled; existing explicit values are preserved. Research, category restrictions, actual-item placement, legacy effigies and recovery contracts are unchanged. See [construction](EFFIGY_FRAME_CONSTRUCTION.md) and [validation](VALIDATION_0.31.0-dev.5.md). Native/SP/dedicated NOT TESTED; Knowledge MP storage and G7/stable G8 remain blocked. No package/deploy/upload.
+
+Current publication target is 0.31.0-dev.6: a compatible packaging/metadata follow-up with no gameplay/schema changes. The unpublished dev.5 candidate is retained unchanged because its description exceeds the Steam 8,000-byte limit. Current description removes redundant recruitment/upcoming/duplicate text while preserving implemented features, credits and known limits. A packaging gate rejects oversized UTF-8 descriptions. See WORKSHOP_0.31.0-dev.6.md for exact validation/provenance; G7/stable G8 remain BLOCKED.
+
+The current dev.6 candidate also adopts the latest user-supplied B47ANCE-branded thumbnail: exact original source poster plus the approved 512-square upload derivative. The separate icon and historical artwork/packages are preserved.

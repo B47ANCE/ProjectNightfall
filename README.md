@@ -4,7 +4,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.31.0-dev.5`
+- Version: `0.31.0-dev.6`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -86,3 +86,7 @@ Historical 0.31.0-dev.4 adds [frame crafting and placement](docs/EFFIGY_FRAME_CO
 Current 0.31.0-dev.5 revises frame assembly to **1 log, 3 large branches (Base.LargeBranch), 1 rope and 8 loose nails**, with a working hammer, sharp knife and Base.HandDrill required as retained tools. Equipped tools count; tools must be in main inventory and remain unchanged. Server validation repeats tool availability before output insertion. Costs remain sandbox-controlled; existing explicit values are preserved. Research, category restrictions, actual-item placement, legacy effigies and recovery contracts are unchanged. See [construction](docs/EFFIGY_FRAME_CONSTRUCTION.md) and [validation](docs/VALIDATION_0.31.0-dev.5.md). Native/SP/dedicated NOT TESTED; Knowledge MP storage and G7/stable G8 remain blocked. No package/deploy/upload.
 
 Workshop MP testing candidate: the user requested merge/publication of 0.31.0-dev.5. The authorized packaging step regenerates the current Contents mirror and retains the prior 0.27.4 tree; older un-packaged checkpoints above remain historical. The upload preview is an approved deterministic 512-square derivative; the original full-resolution source poster is preserved. See [distribution/provenance and limitations](docs/WORKSHOP_0.31.0-dev.5.md). Dedicated research remains fail-closed, three frame models are pending, native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. An upload does not prove MP correctness.
+
+Current publication target is 0.31.0-dev.6: a compatible packaging/metadata follow-up with no gameplay/schema changes. The unpublished dev.5 candidate is retained unchanged because its description exceeds the Steam 8,000-byte limit. Current description removes redundant recruitment/upcoming/duplicate text while preserving implemented features, credits and known limits. A packaging gate rejects oversized UTF-8 descriptions. See docs/WORKSHOP_0.31.0-dev.6.md for exact validation/provenance; G7/stable G8 remain BLOCKED.
+
+The current dev.6 candidate also adopts the latest user-supplied B47ANCE-branded thumbnail: exact original source poster plus the approved 512-square upload derivative. The separate icon and historical artwork/packages are preserved.

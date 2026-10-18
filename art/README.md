@@ -49,3 +49,7 @@ The supplied Nightfall/UV artwork is now the [project/Workshop preview](../previ
 ## Approved Workshop derivative — 2026-10-17
 
 For the explicit publish request, the user approved deterministic local resizing to satisfy the inspected PZ uploader's 256/512-square, 1,024,000-byte preview checks. Current preview.png is a 512×512 LANCZOS PNG derivative; source thumbnail.png retains the exact original 1254-square artwork. This supersedes the earlier shared-preview-byte checkpoint only for the upload copy. See docs/WORKSHOP_0.31.0-dev.5.md for hashes and validation. No redraw or image generation.
+
+## Latest branded thumbnail — 2026-10-17
+
+The user replaced the artwork with the latest B47ANCE-branded attachment. Current source poster preserves its exact supplied 1254×1254 PNG bytes (SHA-256 `608d09e8919a997e8d950aab84280dbd1617652d50765c42d2f1b42b1d17c41e`). Current preview.png is the approved local Pillow LANCZOS 512×512 derivative (259710 bytes, SHA-256 `7bd12db011fdaf3a0a5c583f88f0a4a0ae353cf060012cf3c25c9f12cd4e238d`). No crop, redraw or image generation. The separate mod icon is unchanged; earlier artwork/checkpoints remain historical in Git and retained packages. Source provenance is the user attachment, not an independent authorship claim. See [current publication validation](../docs/WORKSHOP_0.31.0-dev.6.md). Native visual validation remains NOT TESTED.
