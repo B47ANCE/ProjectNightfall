@@ -26,6 +26,8 @@ The merge candidate retains canonical 0.29.1, the existing development PATCH fro
 
 0.30.0 is a pre-1.0 MINOR compatibility transition for the required SPXTRM activation ID. Existing Nightfall schemas, balance, lightWorks API imports and infected UV ownership are unchanged. Matching mod lists on all peers are required. No stable-release approval is implied.
 
+0.31.0-dev.1 is a development MINOR prerelease starting the reusable effigy container foundation. Read-only admission/classification and derived visual states are added; native transfer binding is blocked by a confirmed queued-transfer validation gap. Existing schema-1 effigies, authority, feeding, recipes and balance remain unchanged. No live container or renderer is enabled.
+
 0.30.1-dev.1 is a compatible development PATCH for the four MORTIS integration
 findings. Balance, sandbox IDs and existing state/network schemas are unchanged.
 The additive ProjectNightfallAssignmentRecovery record has its own version 1;
@@ -35,3 +37,11 @@ unverified. The reviewed docs/MOD_OVERVIEW.json version is also a current mirror
 Its source digest follows the shared hub's raw-byte algorithm, including retained
 Contents: differing checkout line endings/layout safely require review, not a
 runtime PASS. Do not relabel historical validation or generated artifacts.
+
+0.31.0-dev.2 continues the development MINOR feature begun in dev.1, now including main's compatible MORTIS recovery patch. It adds a separate EffigyFrame item/protocol and schema-1 load-revision record without changing legacy Effigy/save/food contracts. Native insertion is permanently closed; no stable release is implied. New sandbox capacity defaults to 20 on existing saves and never truncates stored items when lowered. Unknown/newer or quarantined frame records refuse loading; no downgrade/migration reconstruction is provided.
+
+0.31.0-dev.3 continues the development MINOR with actual-item reusable feeding. Legacy Effigy schemas/contracts remain unchanged. Prototype frame schema 1 gains an optional opaque pendingFeed marker; existing clean dev.2 records continue without migration. The existing revision now tracks custom feeding as well as loading. Retained/unknown intents and foreign/future state require human review; no automatic replay, rollback reconstruction or downgrade of uncertain records is supported. No new gameplay setting is added: existing calorie calibration and MORTIS hunger settings apply.
+
+0.31.0-dev.4 continues the compatible development MINOR with frame assembly/placement and additive bounded construction-cost sandbox IDs. Missing existing-save costs use 4 logs/2 ropes/8 nails; invalid server values refuse construction rather than creating free frames. Legacy research behavior is extracted unchanged to a shared helper. Frame schema 1 gains an optional pendingPlacement guard; the separate server GlobalModData construction journal has schemaVersion 1. No automatic recovery, downgrade or migration of retained/unknown operations is provided. Native saves are not immediate or cross-file atomicity proof; stable release remains blocked.
+
+0.31.0-dev.5 continues the compatible MINOR prerelease with the user-selected recipe balance/tool requirements. No save/network schema changes. Defaults become 1 log/3 large branches/1 rope/8 nails; explicit existing sandbox values are preserved. EffigyFrameLargeBranches is additive (1–10, default 3). Working hammer/knife/hand-drill tool roles are required and retained without wear. Historical dev.4 evidence remains tied to its earlier recipe.

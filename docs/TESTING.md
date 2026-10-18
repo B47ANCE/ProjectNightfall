@@ -1,6 +1,6 @@
 # Project Nightfall testing
 
-Current source is 0.30.0. Run the existing version, host, Python, dependency and source-audit commands. Latest 63 Lua and 25 Python files PASS offline; see [current validation](VALIDATION_0.30.0.md). Native/SP/dedicated remain NOT TESTED. Use the B47ANCEDSPXTRM activation ID on every peer; old lightWorks imports/save keys remain compatible. Current source is not packaged.
+Current source is 0.31.0-dev.1. Run the existing version, host, Python, dependency and source-audit commands. Latest 64 Lua and 25 Python files PASS offline; see [current validation](VALIDATION_0.31.0-dev.1.md). Native/SP/dedicated remain NOT TESTED. Use the B47ANCEDSPXTRM activation ID on every peer; old lightWorks imports/save keys remain compatible. Current source is not packaged.
 
 Current reproducible commands use `prepare_ci_dependencies.py` and `--dependencies .local/ci-dependencies`; see [CI](CI.md). The historical archive helper below remains unchanged. See the [current runtime handoff](RUNTIME_ACCEPTANCE_0.29.1.md) for blocked native/SP/dedicated cases.
 
@@ -201,4 +201,16 @@ Counters and host tests do not prove native animation, rendering, pathfinding,
 audio, multiplayer replication, or long-session balance. Those remain visual
 and in-game release gates.
 
-Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
+Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.31.0-dev.1.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
+
+Container foundation target: `python scripts/run_host_tests.py --dependencies .local/ci-dependencies --only tests/test_effigy_container_policy.lua`. This exercises the actual MORTIS provenance/material modules with native item/container boundaries mocked; it does not exercise a live world container or engine transactions.
+
+## 0.31.0-dev.2 implementation checkpoint
+
+The dynamic native admission blocker is resolved in source by permanently denying native insertion and using the synchronous server loader for a separate EffigyFrame prototype. Whole-batch validation, actual-item moves, revision checks, rollback/quarantine and localized load intents are implemented. Native unloading remains available. Capacity is a server sandbox option (1-40, default 20). See [implementation, limits and human gates](EFFIGY_CONTAINER_IMPLEMENTATION.md). Older foundation findings above are historical. Construction/loot distribution, reusable feeding, attribution, migration and three production models/rendering remain pending. Native/SP/dedicated validation is NOT TESTED; no package/deploy/upload.
+
+## 0.31.0-dev.3 reusable feeding checkpoint
+
+[Reusable frame feeding](EFFIGY_CONTAINER_FEEDING.md) now uses actual stored meat/part resources through the server MORTIS transaction coordinator. The user approved ordinary-meat feeding for hungry infected without part-specific reactions/search/grudges. Frames and depleted parts persist; category separation, shared load/feed leases, compensation and recovery guards remain authoritative. Existing calorie/hunger sandbox settings apply; no phantom legacy fallback stock is created. Construction, non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
+
+Focused command: `python scripts/run_host_tests.py --dependencies .local/ci-dependencies --only tests/test_effigy_container_feeding.lua tests/test_effigy_container_server.lua tests/test_effigy_container_menu.lua`. This uses real pinned MORTIS coordinator/material APIs with native boundaries mocked.

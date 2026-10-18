@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.31.0-dev.5 - frame recipe and reusable tools, 2026-10-17
+
+- Artwork follow-up: use the user-supplied Nightfall/UV image unchanged for the project/Workshop preview and source mod thumbnail. Preserve the separate icon and historical packages. This artwork-only change retains the development version; no gameplay change or upload.
+
+- User-selected default materials: 1 log, 3 large branches, 1 rope, 8 loose nails. Add bounded EffigyFrameLargeBranches sandbox quantity; update default logs/ropes without overriding saved explicit values.
+- Require working, distinct hammer/sharp-knife tools and a Base.HandDrill in main inventory; equipped tools count and are never consumed or worn. Recheck authoritative tools before creating the committed output; compensate materials if a tool disappears.
+- Update localized cost/tool tips, source/native evidence and regressions for missing, broken, moved/nested and wrong tools/branches, retained condition/equipment, server costs and rollback. Research, placement and category contracts remain unchanged. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
+
+## 0.31.0-dev.4 - reusable frame crafting and placement, 2026-10-17
+
+- Add server-owned context-menu assembly of an empty reusable frame from actual main-inventory materials. Defaults: 4 logs, 2 ropes and 8 loose nails, each with bounded server sandbox settings. Reuse the existing NF-FIELD-026 research check; missing/blocked knowledge fails closed. Legacy construction delegates to the same unchanged check.
+- Place the actual frame, including valid stored contents, through the vanilla world-inventory-item route. Validate ownership, equipment, knowledge, loaded adjacent tile, floor/obstruction, safehouse permission, weight and shared frame lease. Publish only committed changes; repeated IDs cannot create a second frame.
+- Compensate partial native construction/placement failures without cloning or stealing foreign items. Retain uncertain guards in server GlobalModData and frame state; unknown/pending records block automatic replay. Player ModData is not trusted for recovery. Native saves are not crash/cross-file atomicity proof.
+- Localized intent-only UI, source/native fingerprints and new regressions. Native/SP/dedicated NOT TESTED; Knowledge MP storage, non-feeding influence/attribution, migration and all three production models remain gates. No package, deploy or upload.
+
+## 0.31.0-dev.3 - reusable frame feeding, 2026-10-17
+
+- Add a server/SP MORTIS transaction-v1 provider over actual stored items. Each meal removes one complete ordinary-meat item or consumes the edible canonical tissue from one part; frames, remaining stock and depleted physical parts survive. No duplicate nutrient ledger or legacy .5 fallback.
+- Ordinary meat feeds hungry infected without body-part reactions, searches or grudges. Existing source-specific body-part consumption eligibility and all five exclusive categories remain; only physical emptiness clears a category.
+- Share a server lease with loading; revalidate exact items/material preimages, world identity, reach, actor/reaction and revision. Compensate failed meals; preserve foreign state and quarantine uncertain rollback or successful-publication failure. Retained pending feed intents block automatic replay after reload.
+- Use native same-ID part replacement/removal packets and explicit frame chunk-save requests. Add bounded loaded-object discovery and real-coordinator regressions. Construction, non-feeding reactions/attribution, migration and three production models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
+
+## 0.31.0-dev.2 - server-owned effigy frame loading, 2026-10-17
+
+- Merge current main MORTIS recovery fixes and the current pinned dependency contracts, retaining all prior validation as historical.
+- Resolve the dynamic-admission race through permanently closed native insertion and synchronous server Lua loading of actual items; validate whole batches, ownership, reach, safehouses, equipment, capacity, category and replay revision. Preserve native unloading, original item identity/provenance and legacy effigies. No custom Java or private queue access.
+- Add an undistributed EffigyFrame container prototype, localized source-aware load menu and server sandbox capacity (1-40, default 20). Derive only the three agreed visual states. No recipe/loot replacement, reusable feeding, migration or production renderer/model is enabled.
+- Restore failed batches before publication; quarantine uncertain rollback or committed transport failure without recreating items. Add server, client-intent and race regressions. Dedicated/native durability remains NOT TESTED; G7/stable G8 BLOCKED. See docs/VALIDATION_0.31.0-dev.2.md.
+
+## 0.31.0-dev.1 - effigy container policy foundation, 2026-10-17
+
+- Development MINOR prerelease: read-only classification/admission for separate ordinary meat, human, regular-zombie, Feral and Smart-Feral categories. Validate whole insertion batches and derive only EMPTY, MEAT_LOADED and BODY_PART_LOADED from physical contents. Reject mixing, bags, duplicate/sparse/malformed input, unsupported provenance and invalid material; depleted parts stay category-locked until physically removed.
+- Record the native queued-transfer admission gap; do not expose a client-authoritative or optimistic world container. Existing effigy construction, feeding, schemas, balance and synchronization are unchanged.
+- Preserve the user-supplied spiked-post concept and define the three matching asset groups. No meshes, sprites or renderer generated.
+- 64 Lua files and 25 Python tests PASS offline; no native/SP/dedicated validation. G7/stable G8 BLOCKED; no package, deploy or upload. See docs/VALIDATION_0.31.0-dev.1.md.
+
 ## 0.30.1-dev.1 - MORTIS recovery fixes, 2026-10-17
 
 - Release only Nightfall-owned movement requests/ceiling before canonical clear; disable commits NORMAL only after verified cleanup, with other owners preserved.
@@ -10,6 +46,8 @@
 - Offline evidence only. Runtime tests remain human-operated; G7/stable G8 BLOCKED. No package/deploy/launch/upload.
 
 ## 0.30.0 - SPXTRM dependency transition, 2026-10-16
+
+- Documentation planning follow-up, 2026-10-17: record the user-approved reusable effigy container, separate source categories, prohibition on meat/body-part mixing, and three planned visual states. No runtime/art/version change or new gameplay validation.
 
 - MINOR before 1.0: required activation Mod ID changes from lightWorks to B47ANCEDSPXTRM. Update server/client mod lists together; existing Lua imports, saved fields, optical geometry and infected policy stay unchanged.
 - Preserve current main audit/CI and reversible MORTIS effigy fixes. Pin the matching public SPXTRM source for offline CI. Source checks do not prove native loader or multiplayer behavior. G7/stable G8 BLOCKED.

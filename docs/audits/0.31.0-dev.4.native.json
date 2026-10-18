@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "steam_build": "25485521",
+  "game_semver": "UNKNOWN",
+  "jar_sha256": "e1a69eb743ede60b213a0fe7f8b83d4fcab773036d256cc4543a336f3b058a33",
+  "scope": "Installed packaged native/vanilla Lua source inspection only; native invocation, SP, dedicated and active classpath precedence NOT TESTED",
+  "classes": [
+    {
+      "entry": "zombie/iso/IsoGridSquare.class",
+      "packaged_sha256": "e8192f87d88da607abe0293228c84efbd822ed4ac0a331102c030bc3eeaba467",
+      "loose_sha256": "92be3b470227da4f28151ea8b6f7c0aca4f0296b0b646dda6bb44929e8149ec6"
+    },
+    {
+      "entry": "zombie/iso/objects/IsoWorldInventoryObject.class",
+      "packaged_sha256": "7be6f2d54525fa587908ce8efa7da5d26cfd3d19bd1cc02911ee12f7649857b3",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/iso/areas/SafeHouse.class",
+      "packaged_sha256": "217d78299ea10c5d892b7ef36e8b39016f390941c57a8957fc01cb4964274c2d",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/world/moddata/ModData.class",
+      "packaged_sha256": "5a19f07f06db59c8e2c074e303c3eb9a08e860b09e54e2bba2598f154a1cb808",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/world/moddata/GlobalModData.class",
+      "packaged_sha256": "1c66b5e0c66b2c7b813c977fa91d2282a022605d12d44560298e30b340f8a718",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/network/packets/service/GlobalModDataPacket.class",
+      "packaged_sha256": "652276687c148a86b4eb5ab720af40a1cbc162c587be3d9803ab76fef69cc36a",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/Lua/LuaManager$Exposer.class",
+      "packaged_sha256": "9727656efbc06d7772661775f7a6885c7976b9e09472d7b128a3d5638ea68efa",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/inventory/InventoryItem.class",
+      "packaged_sha256": "48f01be16d1ef1b76e37638fac6e25ca4eb285ad38ab2f462caa5597318c7f9d",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/inventory/ItemContainer.class",
+      "packaged_sha256": "a2ac7dd6235f91255dc57b91419a2c8609bdb105214cddf7fb445b70507b6f96",
+      "loose_sha256": null
+    }
+  ],
+  "vanilla_lua": [
+    {
+      "path": "media/lua/shared/TimedActions/ISDropWorldItemAction.lua",
+      "sha256": "1a1db7308a9cee66889ed197320d8ceb9a8373fcdf557d8e14d27b10ef644db3"
+    },
+    {
+      "path": "media/lua/shared/TimedActions/ISDestroyStuffAction.lua",
+      "sha256": "0e5214267f1b9e0161b9115e2b844f7b477c8d828f0ea9a76b9f1be0fcd9f99c"
+    },
+    {
+      "path": "media/lua/server/Foraging/forageServer.lua",
+      "sha256": "f4e6dd2f419dee8692defcf96207b71dc67f73f8af805d71c394c486e1d489ce"
+    },
+    {
+      "path": "media/scripts/generated/items/normal.txt",
+      "sha256": "b76cf5f91dce33567ca2bda305c4e450be297aae6b1fc11b5b34dcb280d74567"
+    }
+  ],
+  "facts": [
+    "Actual-item AddWorldInventoryItem(item,.5,.5,0,false) returns that item and suppresses automatic server publication. It registers IsoWorldInventoryObject in square objects/worldObjects, then installs item.worldItem. Its constructor clears item.container before the root inventory list is explicitly removed.",
+    "ItemContainer.Remove searches by actual object identity and removes the root entry even if item.container was already cleared. AddItem checks duplicate IDs before relinking. Rollback of an unpublished placed object uses RemoveTileObject(object,false), followed by explicit setWorldItem(nil) and verified inventory relinking.",
+    "IsoWorldInventoryObject.setIgnoreRemoveSandbox(true) is the vanilla drop route opt-out from floor cleanup. Placement retains placeholder rendering, actual inventory identity and contained parts.",
+    "SafeHouse exposes playerAllowed(IsoPlayer) and playerAllowed(String); the vanilla destruction action uses the player-object overload. Placement also requires native loot permission, loaded adjacent same-floor square, solid floor, unblocked/non-window edge, isFree(false), no existing frame and floor weight at most 50.",
+    "ModData.getOrCreate is exposed and used by vanilla server Lua. GlobalModData serializes canonical tables on world save. GlobalModDataPacket.parse constructs a separate incoming table and emits OnReceiveGlobalModData; it does not install that incoming table. Nightfall has no receive/import handler and never transmits its recovery store.",
+    "GlobalModData is client request-readable, so the recovery store contains only non-secret operation/ID/location/username metadata, never research contents or grants. It is not a substitute for the Knowledge dependency ledger. Save requests/normal saves are not immediate disk or cross-file atomicity proof.",
+    "A differing loose IsoGridSquare.class is installed. Its decompiled actual-item AddWorldInventoryItem, RemoveTileObject(false), TreatAsSolidFloor, isFree(false) and getTotalWeightOfItemsOnFloor methods were compared with the packaged class. See recorded comparison; loose provenance and active precedence remain UNKNOWN. No loose class is shipped or required by Nightfall.",
+    "The differing AddWorldInventoryItem method decompiles with an inverted generator branch and reordered branches; manual comparison finds the normal InventoryContainer frame path uses the same actual-item construction, list registration, back-link, addToWorld and conditional transmit sequence. This is source interpretation, not active-classpath/runtime proof."
+  ],
+  "loose_square_comparison": {
+    "public InventoryItem AddWorldInventoryItem(InventoryItem item, float x, float y, float height, boolean transmit, boolean synchSpawn)": "DIFFERENT/MISSING",
+    "public int RemoveTileObject(IsoObject obj, boolean safelyRemove)": "SAME",
+    "public boolean TreatAsSolidFloor()": "SAME",
+    "public boolean isFree(boolean bCountOtherCharacters)": "SAME",
+    "public float getTotalWeightOfItemsOnFloor()": "SAME"
+  }
+}

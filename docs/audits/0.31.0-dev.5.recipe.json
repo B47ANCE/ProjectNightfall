@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "project_version": "0.31.0-dev.5",
+  "steam_build": "25485521",
+  "game_semver": "UNKNOWN",
+  "scope": "Installed vanilla Lua/item definitions inspected; offline facades only; native/SP/dedicated NOT TESTED",
+  "files": [
+    {
+      "path": "media/scripts/generated/items/normal.txt",
+      "sha256": "b76cf5f91dce33567ca2bda305c4e450be297aae6b1fc11b5b34dcb280d74567"
+    },
+    {
+      "path": "media/scripts/generated/items/weapon.txt",
+      "sha256": "742414e701d360a9076099f9842bd9cc65c2d9ba9497af8b0ce470ee147467c5"
+    },
+    {
+      "path": "media/lua/shared/Translate/EN/ItemName.json",
+      "sha256": "9aac068151021899bfc4112abc3f3314a5a1e7c50512da6be6d582f983d23f8e"
+    },
+    {
+      "path": "media/lua/shared/Moveables/ISMoveableDefinitions.lua",
+      "sha256": "667153f91c02545e87a3d1cabd46ded97a4831d45c535b9c92970efb031fbf6d"
+    },
+    {
+      "path": "media/lua/client/Farming/CFarming_Interact.lua",
+      "sha256": "079f2e5821d83486d84503045289b040aa4b98d28d51b6be267b3de4d1f094d0"
+    }
+  ],
+  "facts": [
+    "Base.LargeBranch is the large branch; Base.TreeBranch2 is a separate smaller tree branch. Only Base.LargeBranch is a frame ingredient.",
+    "Base.Hammer uses base:hammer; Base.KitchenKnife uses base:sharpknife; vanilla Lua calls item:hasTag(ItemTag.HAMMER) and maps ItemTag.SHARP_KNIFE. Tool variants with those tags qualify if condition is positive.",
+    "Base.HandDrill is an existing normal tool with drillwood/drillmetal/drillwoodpoor tags. The recipe requires this exact full type; weaker wood-drilling tools are not substitutes.",
+    "Tools must be three distinct actual owned main-inventory objects with positive finite condition. Equipped tools are allowed. No consumption, condition change, new persistence/network schema or research bypass."
+  ]
+}

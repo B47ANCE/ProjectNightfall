@@ -29,3 +29,19 @@ multiplies that tint; a blue glass texture alone must not accidentally color the
 metal base or obscure variant markings. Preserve emitted RGB and UV power behavior
 in their existing owners. Standard/high-output differentiation remains a separate
 inventory-art task, not permission to alter intensity, cone or physical fit.
+
+## Planned effigy assets - 2026-10-17
+
+The [approved container plan](../docs/EFFIGY_CONTAINER_PLAN.md) requires three initial visual states: EMPTY, MEAT_LOADED and BODY_PART_LOADED. Author one shared frame with separate contents groups, matching origin/scale/footprint, materials and UVs. The four provenance-based body-part categories share one body-part-loaded appearance initially; no mixed-content variant is allowed. Partial/full, broken and per-limb variants are deferred. No effigy models have been created or validated by this plan. The final runtime export format awaits a verified Lua-only world-object rendering path; Blender-authored states may need directional isometric sprite exports rather than arbitrary FBX swapping.
+
+## Effigy concept and implementation foundation - 2026-10-17
+
+The user supplied [this effigy concept](references/effigy-user-concept.png): an upright spiked wooden post with rope lashings and a braced foot. Exact supplied PNG bytes are preserved, SHA-256 `03cb7944ba3c7c03280ec0d9410a114cb3cf155a8d6f3fa34559b2b462e2d377`; this is a user-provided reference, not independently established provenance or native-game evidence. The [asset brief](effigy/ASSET_BRIEF.json) assigns the same frame to EMPTY, MEAT_LOADED and BODY_PART_LOADED, with separate contents groups. Skull/limb examples do not create extra states. The policy now derives those three identifiers, but no effigy mesh, texture, sprite export or renderer has been created/enabled.
+
+## 0.31.0-dev.2 implementation checkpoint
+
+The dynamic native admission blocker is resolved in source by permanently denying native insertion and using the synchronous server loader for a separate EffigyFrame prototype. Whole-batch validation, actual-item moves, revision checks, rollback/quarantine and localized load intents are implemented. Native unloading remains available. Capacity is a server sandbox option (1-40, default 20). See [implementation, limits and human gates](../docs/EFFIGY_CONTAINER_IMPLEMENTATION.md). Older foundation findings above are historical. Construction/loot distribution, reusable feeding, attribution, migration and three production models/rendering remain pending. Native/SP/dedicated validation is NOT TESTED; no package/deploy/upload.
+
+## User-supplied project thumbnail — 2026-10-17
+
+The supplied Nightfall/UV artwork is now the [project/Workshop preview](../preview.png) and [source mod thumbnail/poster](../src/ProjectNightfall/thumbnail.png). Both contain the exact supplied PNG bytes: 1254×1254, RGB, 1,492,415 bytes, SHA-256 `c6d61d90ef9d0ad87890c97ec862cd5ca0b0acb4ec82d8e64e9f8fb87013dd25`. No resize, crop, redraw or image generation was performed. Provenance is the user's attachment and instruction to use it; no independent authorship claim is made. The 32×32 mod icon is unchanged. Previous artwork remains in Git history and the protected historical Contents/packages. See [artwork validation](../docs/THUMBNAIL_2026-10-17.md). No package/deploy/Workshop upload.

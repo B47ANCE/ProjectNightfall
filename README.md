@@ -1,8 +1,10 @@
 # Project Nightfall
 
+![Project Nightfall thumbnail](preview.png)
+
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.30.1-dev.1`
+- Version: `0.31.0-dev.5`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -60,13 +62,25 @@ See [offline CI and exact commands](docs/CI.md), [localization support policy](d
 
 The integrated 0.29.1 candidate also includes the effigy transaction fix originally developed as 0.29.1-dev.1: exclusive reservations, reversible tissue/claim snapshots, verified source revisions and world removal only after successful ZombieFed. Consumed tombstones cannot feed twice or be re-registered. Reaction rules and nutrition values are unchanged; native persistence/replication remain untested. See [effigy contract](docs/EFFIGIES.md).
 
-Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](docs/VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
+Retained 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](docs/VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
+
+Agreed effigy design: a reusable restricted container with separate ordinary-meat and provenance-based body-part categories, and empty/meat-loaded/body-part-loaded visuals. Its implementation is staged; see [the agreed container plan](docs/EFFIGY_CONTAINER_PLAN.md).
+
+Historical development MINOR prerelease 0.31.0-dev.1 started the effigy container foundation. The read-only policy classifies ordinary Meat food and validated human/regular/Feral/Smart-Feral parts, rejects mixing and nested bags, validates whole batches, and derives EMPTY/MEAT_LOADED/BODY_PART_LOADED. It does not move items or enable a world container. The [native admission audit](docs/EFFIGY_CONTAINER_API_AUDIT.md) identifies a queued-transfer authority gap; live admission/feeding and rendering remain blocked. The supplied spiked-post concept is preserved under art/references. See [foundation validation](docs/VALIDATION_0.31.0-dev.1.md).
 
 Development PATCH 0.30.1-dev.1 fixes the four audited MORTIS integration findings:
 verified own-owner cleanup before phase commit, retryable UV release before
 hibernation, checked assignment compensation with a retained recovery journal,
 and separate capability-readiness diagnostics. See [recovery contracts and human
-cases](docs/MORTIS_RECOVERY.md) and [current validation](docs/VALIDATION_0.30.1-dev.1.md).
+cases](docs/MORTIS_RECOVERY.md) and [recovery validation](docs/VALIDATION_0.30.1-dev.1.md).
 The reviewed [feature overview](docs/MOD_OVERVIEW.json) describes source capability
 and blocked work. All runtime tests remain human-operated; Knowledge MP storage
 is intentionally blocked. G7/stable G8 remain BLOCKED. No package/deploy/upload.
+
+Historical 0.31.0-dev.2 implemented a Lua-only server-owned loader for a separate, real EffigyFrame container prototype. Native insertion remains permanently closed; the server validates and synchronously moves actual items, preventing competing first-load and mixed-batch admission. A localized world menu labels source categories; sandbox capacity is server authoritative (1-40, default 20). Normal native unloading remains available. The prototype has no recipe/loot placement, feeding integration or production model yet; existing effigies remain intact. See [implementation and human gates](docs/EFFIGY_CONTAINER_IMPLEMENTATION.md) and [current offline evidence](docs/VALIDATION_0.31.0-dev.2.md). G7/stable G8 remain BLOCKED.
+
+Historical 0.31.0-dev.3 adds reusable feeding to the real EffigyFrame prototype through server MORTIS reserve/commit/rollback transactions. Meals consume actual meat items or a part's edible canonical tissue, preserve the frame and depleted part items, and keep every source category separate until physical emptiness. Ordinary meat has no part-specific reactions/search/grudge. Source identity, item/material preimages and revisions are revalidated; loading shares the feeding lease. Pending/uncertain state blocks automatic replay, and native packets/save requests publish committed changes. Existing calorie/hunger settings are reused. The prototype remains undistributed, with construction, non-feeding reactions/attribution, migration and three models still pending. See [feeding contract](docs/EFFIGY_CONTAINER_FEEDING.md) and [current validation](docs/VALIDATION_0.31.0-dev.3.md). Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
+
+Historical 0.31.0-dev.4 adds [frame crafting and placement](docs/EFFIGY_FRAME_CONSTRUCTION.md). Right-click loose logs/rope/nails to assemble an empty frame (defaults: 4 logs, 2 ropes, 8 nails in main inventory); right-click an adjacent clear tile to place an owned frame. Server sandbox costs and the existing NF-FIELD-026 research requirement are checked again on the server. The actual frame and stored items move together; native insertion remains closed. Assembly is a synchronous context action, not a new crafting-panel recipe or timed recipe. Recovery guards are server owned. Knowledge 0.16.0 dedicated storage remains blocked, so research-required construction/placement also fails closed there. Placeholder appearance remains; non-feeding influence/attribution, migration and three production assets are pending. [Current validation](docs/VALIDATION_0.31.0-dev.4.md) is offline only; native/SP/dedicated NOT TESTED, G7/stable G8 BLOCKED.
+
+Current 0.31.0-dev.5 revises frame assembly to **1 log, 3 large branches (Base.LargeBranch), 1 rope and 8 loose nails**, with a working hammer, sharp knife and Base.HandDrill required as retained tools. Equipped tools count; tools must be in main inventory and remain unchanged. Server validation repeats tool availability before output insertion. Costs remain sandbox-controlled; existing explicit values are preserved. Research, category restrictions, actual-item placement, legacy effigies and recovery contracts are unchanged. See [construction](docs/EFFIGY_FRAME_CONSTRUCTION.md) and [validation](docs/VALIDATION_0.31.0-dev.5.md). Native/SP/dedicated NOT TESTED; Knowledge MP storage and G7/stable G8 remain blocked. No package/deploy/upload.

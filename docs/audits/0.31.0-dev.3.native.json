@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "steam_build": "25485521",
+  "game_semver": "UNKNOWN",
+  "jar_sha256": "e1a69eb743ede60b213a0fe7f8b83d4fcab773036d256cc4543a336f3b058a33",
+  "scope": "Packaged and selected loose native source inspected; no game classes executed; active classpath/native/SP/dedicated NOT TESTED",
+  "classes": [
+    {
+      "entry": "zombie/inventory/types/Food.class",
+      "packaged_sha256": "14a5b02878a5608e3a28d3e91110961b3576694badf127dc7fe2749b8393d8b1",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/iso/IsoObject.class",
+      "packaged_sha256": "22387ecf47c1cf9aac192466de6298067f27584160c76a72baee38c6ad36dff2",
+      "loose_sha256": "78e9c2248c12bb8d230fa790c4b0cd11539ced3c4542f59901badc8b6297f0a4"
+    },
+    {
+      "entry": "zombie/iso/IsoChunk.class",
+      "packaged_sha256": "5048becc3f46f746686513d4dcadb137e6e11bfd44617075f41923b3db11650a",
+      "loose_sha256": "9bc4b8d2410bff226989736c167c731fda0c9f4382332a9b72db56489a28bea5"
+    },
+    {
+      "entry": "zombie/Lua/LuaManager$Exposer.class",
+      "packaged_sha256": "9727656efbc06d7772661775f7a6885c7976b9e09472d7b128a3d5638ea68efa",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/Lua/LuaManager$GlobalObject.class",
+      "packaged_sha256": "80ecbd3bd702db2f992db6cba7cb09c32d775fa6f2a3297e0460874ff5ba20c7",
+      "loose_sha256": null
+    },
+    {
+      "entry": "zombie/network/packets/ReplaceInventoryItemInContainerPacket.class",
+      "packaged_sha256": "5a33e8e8328db89d26fc4ae032ea4d6b649436cc610eeea0388c9413da425a12",
+      "loose_sha256": null
+    }
+  ],
+  "observations": [
+    "Food calorie/nutrient getters are public; Food is explicitly Lua-exposed. Complete-item consumption avoids irreversible partial-food scaling during compensation.",
+    "IsoObject.flagForHotSave and IsoChunk save flag/load-square event were inspected in BOTH packaged and differing loose files. The relevant public save request and LoadGridsquare behavior agree. Loose-file provenance and actual classpath precedence are UNKNOWN. No loose class is shipped or required by Nightfall.",
+    "The exposed save request sets a chunk hot-save flag unless suppressed during loading; it proves neither immediate disk durability nor cross-file atomicity.",
+    "GlobalObject exposes sendReplaceItemInContainer; server ClientCommands.item.changeRecording demonstrates the same old/new item argument. The native client packet removes the old ID, inserts serialized item data and updates queued-action references."
+  ]
+}

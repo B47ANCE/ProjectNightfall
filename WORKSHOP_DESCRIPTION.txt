@@ -1,6 +1,6 @@
 âš  DEVELOPMENT BUILD â€” NOT YET PLAYABLE âš 
 
-[b]Mod Version:[/b] 0.30.1-dev.1
+[b]Mod Version:[/b] 0.31.0-dev.5
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
@@ -188,3 +188,6 @@ QA Automation Developer
 Technical Writer and Documentation Maintainer
 
 Requires B47ANCED SPXTRM (Mod ID B47ANCEDSPXTRM, existing Workshop item 3788592008). Enable the replacement Mod ID on server and all clients; lightWorks Lua/save identifiers remain compatible.
+
+[b]Development frame construction[/b]
+0.31.0-dev.5 adds server-owned assembly (default 1 log, 3 large branches, 1 rope, 8 loose nails; reusable hammer, knife and hand drill required) and placement with the existing research requirement. Prototype appearance; dedicated research storage and native/SP/MP validation remain blocked. No upload performed.

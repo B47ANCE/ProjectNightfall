@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "project_version": "0.31.0-dev.2",
+  "scope": "Pinned public source fixtures; offline only; native SP/dedicated NOT TESTED",
+  "dependencies": [
+    {
+      "folder": "B47ANCEDSPXTRM",
+      "url": "https://github.com/B47ANCE/B47ANCEDSPXTRM.git",
+      "mod_id": "B47ANCEDSPXTRM",
+      "commit": "4dfd911353d1f4631feffbd3c6bfe592c52fbdea",
+      "version": "0.30.0",
+      "git_source_tree": "8ad6febb6d178bbe1fe9e58945fc3dca41a88f49"
+    },
+    {
+      "folder": "Project MORTIS",
+      "url": "https://github.com/B47ANCE/ProjectMORTIS.git",
+      "mod_id": "ProjectMORTIS",
+      "commit": "6af5d141a2342179233db9131e749ee7b819383e",
+      "version": "0.26.0-dev.3",
+      "git_source_tree": "07a8653aea2ffe7f6ff038bb0efa977e78367eb9"
+    },
+    {
+      "folder": "B47ANCEDPower",
+      "url": "https://github.com/B47ANCE/B47ANCEDPower.git",
+      "mod_id": "B47ANCEDPower",
+      "commit": "40ff9ebfe247d56d7dd2e308e7b7eabfb61a7ce0",
+      "version": "0.17.0-dev.1",
+      "git_source_tree": "30b97864ab3467b9468a71e6c35ed44bc717f8d4"
+    },
+    {
+      "folder": "B47ANCEDHealthCare",
+      "url": "https://github.com/B47ANCE/B47ANCEDHealthCare.git",
+      "mod_id": "B47ANCEDHealthCare",
+      "commit": "0c7fd8defe24d859db69d585c7a3f0b5f9649c76",
+      "version": "0.10.0",
+      "git_source_tree": "7de19e080ad238d2dd6522be156cc460678e7087"
+    },
+    {
+      "folder": "B47ANCEDKnowledgeAndWisdom",
+      "url": "https://github.com/B47ANCE/B47ANCEDKnowledgeAndWisdom.git",
+      "mod_id": "B47ANCEDKnowledgeAndWisdom",
+      "commit": "6ba66c0d8f246d438f2e2f3c974fee9f77fdb426",
+      "version": "0.16.0",
+      "git_source_tree": "e337ca579eaf1a407bbb3cdfeba36b848b4b7e57"
+    }
+  ],
+  "contracts": {
+    "direct": "PASS",
+    "direct_errors": [],
+    "transitive": "PASS",
+    "transitive_errors": [],
+    "source_versions": [
+      {
+        "mod_id": "B47ANCEDSPXTRM",
+        "version": "0.30.0",
+        "source_tree_sha256": "f49ffe638819716c0f0b81e318dce812451b2815356d04b4188fd47ed854efa7"
+      },
+      {
+        "mod_id": "ProjectMORTIS",
+        "version": "0.26.0-dev.3",
+        "source_tree_sha256": "0c73f129590343550f3b3a11234705da8a7c9821c7104cb97dcfc2205124494d"
+      },
+      {
+        "mod_id": "B47ANCEDPower",
+        "version": "0.17.0-dev.1",
+        "source_tree_sha256": "464d9699f54e51fa692b0043f2afce7a2e576a9a06b469843d8e452b067f1043"
+      },
+      {
+        "mod_id": "B47ANCEDHealthCare",
+        "version": "0.10.0",
+        "source_tree_sha256": "9b99cf162a26b01c8db6bd74f31d8ed8158b50503e8a5d2b414a5476a3345b8e"
+      },
+      {
+        "mod_id": "B47ANCEDKnowledgeAndWisdom",
+        "version": "0.16.0",
+        "source_tree_sha256": "1c81cecd6e26a0d5cf79fac18afd57fd24563dff8177a0d510ad231898146279"
+      }
+    ],
+    "scope": "source contracts only; no game/runtime evidence"
+  }
+}

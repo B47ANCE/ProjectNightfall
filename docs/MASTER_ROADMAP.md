@@ -1,8 +1,24 @@
 # Project Nightfall Master Roadmap
 
-Canonical version: 0.30.1-dev.1
+Canonical version: 0.31.0-dev.5
 
 ## Current slice and next gates - 2026-10-17
+
+0.31.0-dev.5 updates frame materials to 1 log, 3 large branches, 1 rope and 8 nails, with working retained hammer/knife/hand-drill tools. See [current validation](VALIDATION_0.31.0-dev.5.md). Existing explicit server costs, research and category/placement contracts remain. Native/SP/dedicated and Knowledge storage gates remain blocked.
+
+### Retained dev.4 checkpoint
+
+0.31.0-dev.4 adds [research-gated frame assembly and placement](EFFIGY_FRAME_CONSTRUCTION.md), configurable log/rope/nail costs, actual-item world placement and server recovery guards. [Current validation](VALIDATION_0.31.0-dev.4.md) is offline only. Next: human native crafting/placement/transfer/feed/save acceptance; reconcile the Knowledge dependency's blocked dedicated research storage without bypassing its guard; then non-feeding reactions/attribution, migration and three production models/rendering.
+
+### Retained dev.3 checkpoint
+
+0.31.0-dev.3 implements [actual-item reusable feeding](EFFIGY_CONTAINER_FEEDING.md): server MORTIS transactions, shared loader/feed lease, native stock updates, compensation/quarantine and pending-intent recovery block. [Current validation](VALIDATION_0.31.0-dev.3.md) remains offline; native/dedicated acceptance, construction, non-feeding reactions/attribution, migration and three models remain next gates.
+
+### Retained dev.2 checkpoint
+
+0.31.0-dev.2 implements the [server-owned frame loader](EFFIGY_CONTAINER_IMPLEMENTATION.md), permanent native insertion guards, actual-item batching and source-aware menu. The separate prototype has no recipe/loot or production renderer. Next: human native contention/transport/save acceptance, then reusable feeding/construction and three matching assets. [Current evidence](VALIDATION_0.31.0-dev.2.md) is offline only; G7/stable G8 remain blocked.
+
+## Retained earlier slices
 
 0.30.1-dev.1 resolves the four bounded Nightfall/MORTIS source findings. See
 [MORTIS recovery](MORTIS_RECOVERY.md) and [current validation](VALIDATION_0.30.1-dev.1.md).
@@ -13,7 +29,7 @@ no native gate is closed by these regressions.
 
 ## Historical 0.29.1 source slice
 
-0.29.1 integrates reversible effigy feeding and is a development PATCH completing audit phase separation, pinned public dependency fixtures, Linux/Windows offline CI and localization validation. All 63 Lua and 25 Python tests pass offline for the locked commits. See [current validation](VALIDATION_0.29.1.md), [CI](CI.md) and [runtime acceptance](RUNTIME_ACCEPTANCE_0.29.1.md). Current source is not packaged; 0.27.4 outputs remain historical. G7/G8 remain blocked.
+Historical 0.29.1 integrates reversible effigy feeding and is a development PATCH completing audit phase separation, pinned public dependency fixtures, Linux/Windows offline CI and localization validation. All 63 Lua and 25 Python tests pass offline for the locked commits. See [current validation](VALIDATION_0.29.1.md), [CI](CI.md) and [runtime acceptance](RUNTIME_ACCEPTANCE_0.29.1.md). Current source is not packaged; 0.27.4 outputs remain historical. G7/G8 remain blocked.
 
 | Roadmap slice | Implementation/evidence | Next gate |
 | --- | --- | --- |
@@ -21,6 +37,7 @@ no native gate is closed by these regressions.
 | Localization | EN authored; 28 locales English fallback; keys/placeholders checked | Fluent review / native layout |
 | MORTIS integration recovery | Four source findings corrected; actual-module and lifecycle-fragment regressions | Human own/foreign-owner, busy cleanup, compensation and observer/save/restart cases in MORTIS_RECOVERY.md |
 | Current dependency contracts | Source PASS, current public APIs retained | Whole-family native startup |
+| Reusable effigy container / art | Prototype: closed native insertion, server assembly/placement and item loading/feeding, localized intent menus and three derived states; user concept retained | [Native acceptance gates](EFFIGY_CONTAINER_IMPLEMENTATION.md); dedicated research storage, non-feeding reactions/attribution, migration and all three assets pending |
 | Effigy feeding | Reserve/commit/rollback, actual MORTIS host integration | Native persistence, contention, removal transport and restart |
 | Remains-condition inspection | Read-only selected-corpse menu, localization keys, controller/pooling regressions PASS offline | SP/controller/late-join validation |
 | Native smoke and anatomical presentation | BLOCKED: safe instance cleanup, corpse render path and attachment exposure unverified | Verified adapter plus runtime probes |
@@ -66,3 +83,7 @@ no native gate is closed by these regressions.
 - Project Remnants compatibility through MORTIS or any other path.
 
 Current 0.30.0 dependency transition: B47ANCED SPXTRM (B47ANCEDSPXTRM) replaces the lightWorks activation Mod ID. Existing Lua/save contracts and infected consequences remain unchanged. The prior audit/CI and effigy changes are retained from main. See [current validation](VALIDATION_0.30.0.md). Actual loader/SP/dedicated NOT TESTED; no package/deploy/upload.
+
+0.31.0-dev.1 is a development MINOR prerelease for the container policy foundation. Existing effigies retain their legacy implementation. No native transfer filter, world placement, feeding replacement or renderer is enabled. See [current validation](VALIDATION_0.31.0-dev.1.md).
+
+Current 0.31.0-dev.5 revises frame assembly to **1 log, 3 large branches (Base.LargeBranch), 1 rope and 8 loose nails**, with a working hammer, sharp knife and Base.HandDrill required as retained tools. Equipped tools count; tools must be in main inventory and remain unchanged. Server validation repeats tool availability before output insertion. Costs remain sandbox-controlled; existing explicit values are preserved. Research, category restrictions, actual-item placement, legacy effigies and recovery contracts are unchanged. See [construction](EFFIGY_FRAME_CONSTRUCTION.md) and [validation](VALIDATION_0.31.0-dev.5.md). Native/SP/dedicated NOT TESTED; Knowledge MP storage and G7/stable G8 remain blocked. No package/deploy/upload.
