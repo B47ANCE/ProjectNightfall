@@ -16,15 +16,44 @@ local function method(root, ...)
     return type(value) == "function"
 end
 
-function Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienceworks)
+-- Read only the dependency's side-effect-free authority guard, never player stores.
+local function capabilities(mortis,guard)
+    local result={status="UNKNOWN",issues={},foodTransactions="UNAVAILABLE",knowledgeStorage="UNKNOWN"}
+    if type(mortis)=="table" and type(mortis.FoodSources)=="table" and mortis.FoodSources.TRANSACTION_VERSION==1 then
+        result.foodTransactions="v1"
+    else result.issues[#result.issues+1]="MORTIS food transaction v1 unavailable" end
+    if guard==nil then
+        local loaded,value=pcall(require,"B47ANCEDKnowledgeAndWisdom/AuthorityGuard")
+        if loaded then guard=value end
+    end
+    if method(guard,"realm") and method(guard,"write") and method(guard,"characterRead") then
+        local called,realm=pcall(guard.realm)
+        result.realm=called and realm or "unknown"
+        if called and (realm=="server" or realm=="client") and guard.MULTIPLAYER_BLOCKED=="MULTIPLAYER_STORAGE_UNAVAILABLE" then
+            result.knowledgeStorage="BLOCKED"
+            result.issues[#result.issues+1]="MULTIPLAYER_STORAGE_UNAVAILABLE"
+        elseif called and realm=="sp" then
+            local writeCalled,writable=pcall(guard.write)
+            local readCalled,readable=pcall(guard.characterRead)
+            if writeCalled and writable==true and readCalled and readable==true then
+                result.knowledgeStorage="SP_SOURCE_PERMITTED"
+            else result.issues[#result.issues+1]="Knowledge SP authority unavailable" end
+        else result.issues[#result.issues+1]="Knowledge authority/capability requires review" end
+    else result.issues[#result.issues+1]="Knowledge authority guard unavailable" end
+    if result.knowledgeStorage=="BLOCKED" or result.foodTransactions=="UNAVAILABLE" then result.status="BLOCKED"
+    elseif result.knowledgeStorage=="SP_SOURCE_PERMITTED" then result.status="SOURCE_CAPABILITIES_AVAILABLE" end
+    return result
+end
+
+function Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienceworks, guard)
     local missing = {}
     local function need(ok, label) if not ok then missing[#missing + 1] = label end end
     need(type(lightworks)=="table", "lightWorks")
     need(method(lightworks,"registerBulb"), "lightWorks.registerBulb")
     need(method(lightworks,"UV","getSunlightExposure"), "lightWorks.UV.getSunlightExposure")
     need(method(lightworks,"UV","getArtificialExposure"), "lightWorks.UV.getArtificialExposure")
-    need(type(powerworks)=="table", "powerWorks")
-    need(method(powerworks,"registerLoad"), "powerWorks.registerLoad")
+    need(type(powerworks)=="table", "B47ANCEDPower")
+    need(method(powerworks,"registerLoad"), "B47ANCEDPower.registerLoad")
     need(type(mortis)=="table", "Project M.O.R.T.I.S.")
     need(method(mortis,"getTypeId"), "M.O.R.T.I.S. getTypeId")
     need(method(mortis,"Authority","canWriteCanonicalState"), "M.O.R.T.I.S. authority API")
@@ -33,45 +62,61 @@ function Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienc
     need(method(mortis,"negotiateAPI"), "M.O.R.T.I.S. compatibility API")
     if method(mortis,"negotiateAPI") then
         local called,compatible=pcall(mortis.negotiateAPI,{
-            consumer="ProjectNightfall", minimum="1.3.0", maximumExclusive="2.0.0",
+            consumer="ProjectNightfall", minimum="1.6.0", maximumExclusive="2.0.0",
             required={
                 ["Engine.takeTrackedBatch"]="function",
                 ["ZombieHunger.getStarvationHours"]="function",
                 ["ZombieHunger.getDrive"]="function",
                 ["Groups.create"]="function",
+                ["assign"]="function", ["clearAssignment"]="function",
+                ["Anatomy.applyNutritionProfile"]="function",
+                ["LocomotionOverrides.release"]="function",
+                ["LocomotionOverrides.releaseCeiling"]="function",
+                ["FoodSources.TRANSACTION_VERSION"]="number",
+                ["registerFoodSourceProvider"]="function",
             },
         })
         need(called and compatible==true,"M.O.R.T.I.S. API version/surface incompatible")
     end
+    need(type(mortis)=="table" and type(mortis.FoodSources)=="table"
+        and mortis.FoodSources.TRANSACTION_VERSION==1,"M.O.R.T.I.S. food transaction v1")
     need(type(medworks)=="table", "medWorks")
     need(method(medworks,"getDetachedPartProvenance"), "medWorks detached-part API")
     need(method(medworks,"performProcedure"), "medWorks procedure API")
-    need(type(experienceworks)=="table", "experienceWorks")
-    need(method(experienceworks,"registerDocument"), "experienceWorks.registerDocument")
-    need(method(experienceworks,"registerKnowledge"), "experienceWorks.registerKnowledge")
-    need(method(experienceworks,"hasKnowledgeDefinition"), "experienceWorks.hasKnowledgeDefinition")
-    need(method(experienceworks,"hasKnowledge"), "experienceWorks.hasKnowledge")
+    need(type(experienceworks)=="table", "B47ANCEDKnowledgeAndWisdom")
+    need(method(experienceworks,"registerDocument"), "B47ANCEDKnowledgeAndWisdom.registerDocument")
+    need(method(experienceworks,"registerKnowledge"), "B47ANCEDKnowledgeAndWisdom.registerKnowledge")
+    need(method(experienceworks,"hasKnowledgeDefinition"), "B47ANCEDKnowledgeAndWisdom.hasKnowledgeDefinition")
+    need(method(experienceworks,"hasKnowledge"), "B47ANCEDKnowledgeAndWisdom.hasKnowledge")
+    local readiness=capabilities(mortis,guard)
+    if #missing>0 then
+        readiness.status="BLOCKED"
+        readiness.issues[#readiness.issues+1]="Required family API surface incomplete"
+    end
     return #missing == 0, missing, {
         ProjectNightfall=version(ProjectNightfall),
-        experienceWorks=version(experienceworks),
+        B47ANCEDKnowledgeAndWisdom=version(experienceworks),
         ProjectMORTIS=version(mortis),
         MortisAPI=version(mortis,"API_VERSION"),
         medWorks=version(medworks),
-        powerWorks=version(powerworks),
+        B47ANCEDPower=version(powerworks),
         lightWorks=version(lightworks),
-    }
+    }, readiness
 end
 
 function Diagnostics.report(lightworks, powerworks, mortis, medworks, experienceworks)
-    local ok, missing, versions = Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienceworks)
+    local ok, missing, versions, readiness = Diagnostics.inspect(lightworks, powerworks, mortis, medworks, experienceworks)
     if ok then
-        print(string.format("[ProjectNightfall][Dependencies] required family APIs verified: ProjectNightfall=%s experienceWorks=%s ProjectMORTIS=%s MORTIS_API=%s medWorks=%s powerWorks=%s lightWorks=%s",
-            versions.ProjectNightfall,versions.experienceWorks,versions.ProjectMORTIS,
-            versions.MortisAPI,versions.medWorks,versions.powerWorks,versions.lightWorks))
+        print(string.format("[ProjectNightfall][Dependencies] required family source API surface present (native NOT TESTED): ProjectNightfall=%s B47ANCEDKnowledgeAndWisdom=%s ProjectMORTIS=%s MORTIS_API=%s medWorks=%s B47ANCEDPower=%s lightWorks=%s",
+            versions.ProjectNightfall,versions.B47ANCEDKnowledgeAndWisdom,versions.ProjectMORTIS,
+            versions.MortisAPI,versions.medWorks,versions.B47ANCEDPower,versions.lightWorks))
     else
         print("[ProjectNightfall][Dependencies] ERROR incomplete required installation: " .. table.concat(missing, ", "))
     end
-    return ok, missing, versions
+    print("[ProjectNightfall][Dependencies] source capability readiness="..readiness.status
+        .." food="..readiness.foodTransactions.." knowledge="..readiness.knowledgeStorage
+        .."; "..table.concat(readiness.issues,", ").."; native/dedicated NOT TESTED")
+    return ok, missing, versions, readiness
 end
 
 return Diagnostics

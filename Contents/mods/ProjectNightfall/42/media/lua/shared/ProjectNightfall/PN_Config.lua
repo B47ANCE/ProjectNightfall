@@ -1,8 +1,8 @@
 ProjectNightfall = ProjectNightfall or {}
-ProjectNightfall.VERSION = "0.27.4"
+ProjectNightfall.VERSION = "0.31.0-dev.5"
 ProjectNightfall.Config = ProjectNightfall.Config or {}
 
--- Project Nightfall 0.27.4
+-- Project Nightfall 0.31.0-dev.5
 ProjectNightfall.Config.POC = {
     Enabled = true,
     Debug = true,
@@ -310,6 +310,11 @@ ProjectNightfall.Config.POC = {
     HungerChaseKeepBonus = 35.0,
 
     -- medWorks-part effigy influence and Smart Feral investigation.
+    EffigyContainerCapacity = 20,
+    EffigyFrameLogs = 1,
+    EffigyFrameLargeBranches = 3,
+    EffigyFrameRopes = 1,
+    EffigyFrameNails = 8,
     RequireEffigyKnowledge = true,
     EffigyInfluenceRadius = 24.0,
     EffigyAvoidWeight = 130.0,
@@ -561,6 +566,11 @@ local SANDBOX_KEYS = {
     "HungerChaseStartBonus",
     "HungerChaseKeepBonus",
     "EffigyInfluenceRadius",
+    "EffigyContainerCapacity",
+    "EffigyFrameLogs",
+    "EffigyFrameLargeBranches",
+    "EffigyFrameRopes",
+    "EffigyFrameNails",
     "RequireEffigyKnowledge",
     "EffigyAvoidWeight",
     "EffigyDestroyWeight",

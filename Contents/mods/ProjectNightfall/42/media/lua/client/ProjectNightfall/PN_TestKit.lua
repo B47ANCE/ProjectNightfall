@@ -5,7 +5,7 @@ ProjectNightfall = ProjectNightfall or {}
 ProjectNightfall.TestKit = ProjectNightfall.TestKit or {}
 
 local TestKit = ProjectNightfall.TestKit
-local KIT_VERSION = "0.27.4"
+local KIT_VERSION = "0.31.0-dev.5"
 local MARKER = "ProjectNightfall.TestKitVersion"
 local TEST_STARVATION_HOURS = 1.0
 
@@ -21,12 +21,12 @@ local contents = {
     { "Base.Pistol", 1 },
     { "Base.Shotgun", 1 },
     { "Base.Battery", 8 },
-    { "powerWorks.BatteryAA", 8 },
-    { "powerWorks.BatteryD", 4 },
-    { "powerWorks.BatteryCoin", 4 },
-    { "powerWorks.BatteryPackSmall", 1 },
-    { "powerWorks.BatteryPackLarge", 1 },
-    { "powerWorks.SolarMilitaryWatch_Left", 1 },
+    { "B47ANCEDPower.BatteryAA", 8 },
+    { "B47ANCEDPower.BatteryD", 4 },
+    { "B47ANCEDPower.BatteryCoin", 4 },
+    { "B47ANCEDPower.BatteryPackSmall", 1 },
+    { "B47ANCEDPower.BatteryPackLarge", 1 },
+    { "B47ANCEDPower.SolarMilitaryWatch_Left", 1 },
     { "Base.WristWatch_Left_DigitalBlack", 1 },
     { "Base.WristWatch_Left_ClassicBlack", 1 },
     { "Base.DuctTape", 2 },
@@ -168,8 +168,8 @@ function PNTestCombatKit()
         if add("Base."..id) then report.gear=report.gear+1 end
     end
     for _,id in ipairs({"Base.Screwdriver","Base.Pliers","Base.Bag_Schoolbag",
-        "powerWorks.BatteryAA","powerWorks.BatteryAA","powerWorks.BatteryAAA","powerWorks.BatteryAAA",
-        "powerWorks.BatteryD","powerWorks.BatteryD"}) do add(id) end
+        "B47ANCEDPower.BatteryAA","B47ANCEDPower.BatteryAA","B47ANCEDPower.BatteryAAA","B47ANCEDPower.BatteryAAA",
+        "B47ANCEDPower.BatteryD","B47ANCEDPower.BatteryD"}) do add(id) end
     print(string.format("[ProjectNightfall][CombatKit] floodlights=%d/10 looseUV=%d/10 loadedSpareMags=%d/6 gear=%d/13 failures=%d",
         report.floodlights,report.bulbs,report.magazines,report.gear,#failures))
     print("[ProjectNightfall][CombatKit] Equip gear and rifle; service gunlight battery if needed. Place floodlights and supply electricity before testing bulbs.")
@@ -184,7 +184,7 @@ function PNTestGiveResearch()
     if type(isClient)=="function" and isClient() then return false,"use this inventory fixture in single-player" end
     local player=type(getPlayer)=="function" and getPlayer() or nil
     local inventory=player and player:getInventory()
-    local Archive=rawget(_G,"experienceWorks")
+    local Archive=rawget(_G,"B47ANCEDKnowledgeAndWisdom")
     if not inventory or not Archive or type(Archive.getDocument)~="function" then return false,"research runtime unavailable" end
     local granted,missing={},{}
     for _,id in ipairs(researchIds) do
@@ -198,7 +198,7 @@ end
 
 function PNTestResearchStatus()
     local player=type(getPlayer)=="function" and getPlayer() or nil
-    local Archive=rawget(_G,"experienceWorks")
+    local Archive=rawget(_G,"B47ANCEDKnowledgeAndWisdom")
     if not player or not Archive then return false,"research runtime unavailable" end
     local results={}
     for _,id in ipairs(researchIds) do

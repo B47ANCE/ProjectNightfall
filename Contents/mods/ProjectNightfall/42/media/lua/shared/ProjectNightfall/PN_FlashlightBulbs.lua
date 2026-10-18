@@ -10,9 +10,9 @@ local function uvVisibleColor()
     return {r=color.r,g=color.g,b=color.b}
 end
 
-local function registerpowerWorksLoads()
-    require "powerWorks/Definitions"
-    local power=rawget(_G,"powerWorks")
+local function registerB47ANCEDPowerLoads()
+    require "B47ANCEDPower/Definitions"
+    local power=rawget(_G,"B47ANCEDPower")
     if not power or not power.registerLoad then return false end
     power.registerLoad({item="ProjectNightfall.LightBulbUV",provider="ProjectNightfall",consumptionMultiplier=1.25})
     power.registerLoad({item="ProjectNightfall.LightBulbUVHighOutput",provider="ProjectNightfall",consumptionMultiplier=2.0})
@@ -90,12 +90,12 @@ function PNFB.register()
     })
 
     print("[ProjectNightfall][UVBulbs] Registered standard + high-output UV bulbs with lightWorks")
-    if registerpowerWorksLoads() then
-        print("[ProjectNightfall][UVBulbs] Registered powerWorks UV consumption loads")
+    if registerB47ANCEDPowerLoads() then
+        print("[ProjectNightfall][UVBulbs] Registered B47ANCEDPower UV consumption loads")
     end
     return true
 end
 
 PNFB.register()
-if Events and Events.OnGameStart then Events.OnGameStart.Add(registerpowerWorksLoads) end
-if Events and Events.OnServerStarted then Events.OnServerStarted.Add(registerpowerWorksLoads) end
+if Events and Events.OnGameStart then Events.OnGameStart.Add(registerB47ANCEDPowerLoads) end
+if Events and Events.OnServerStarted then Events.OnServerStarted.Add(registerB47ANCEDPowerLoads) end
