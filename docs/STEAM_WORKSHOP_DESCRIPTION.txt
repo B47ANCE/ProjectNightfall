@@ -159,7 +159,7 @@ The separate reusable frame accepts actual ordinary meat or one body-part source
 Default assembly consumes 1 log, 3 large branches, 1 rope and 8 loose nails; a working hammer, sharp knife and hand drill are required and retained. Material quantities are server sandbox options. NF-FIELD-026 research remains required by default.
 
 [b]Known limitations for this MP testing build[/b]
-- Requires Knowledge 0.17.0 private document storage for fresh dedicated test worlds/server-created lives. Existing-world migration, missing identities and storage failures remain fail-closed. Native dedicated research is NOT TESTED.
+- Matching test set: Knowledge 0.17.0 + M.O.R.T.I.S. 0.26.0-dev.9. Fresh dedicated worlds/server-created lives only; migration/identity/storage failures stay closed. Native research and Insane-population timing NOT TESTED.
 - All three frame models/rendering remain pending; the frame uses placeholder appearance. Non-feeding influence/attribution and legacy conversion for reusable frames are pending. Legacy combined effigies keep their separate behavior.
 - Native transfers, competing feeds, save durability, late join/rejoin and dedicated restart have NOT been validated. Unknown/pending/quarantined operations block automatic recovery. Save requests are not immediate disk or cross-file atomicity proof.
 - Use disposable test saves and the matching dependency family. This is experimental development software.

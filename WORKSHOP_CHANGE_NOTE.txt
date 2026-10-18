@@ -1,6 +1,9 @@
 [b]Version 0.31.0-dev.8 - MP testing build - dedicated multiplayer NOT TESTED[/b]
-Development source: bounded MORTIS automatic hunger work, target-aware Nightfall hunger queries, bounded legacy effigy discovery and queue diagnostics. Preserve starvation and source-category rules. No package/upload; native population performance NOT TESTED.
+Globally budgeted MORTIS hunger, visible-target-only hunger queries, bounded effigy discovery and authority-local queue diagnostics. Includes private dedicated document-research integration for fresh test worlds/server-created lives; research, categories, actual-item transactions and recipe tools remain enforced.
 
+Matching dependencies: Knowledge 0.17.0 and M.O.R.T.I.S. 0.26.0-dev.9. Existing-world research migration is unsupported. Native Insane-population timing, construction/feeding/contention and save/rejoin/restart are NOT TESTED. Models/rendering and non-feeding frame influence remain pending. G7/stable G8 BLOCKED.
+
+[b]Earlier development notes (historical)[/b]
 [b]Version 0.31.0-dev.7 - MP testing build - dedicated multiplayer NOT TESTED[/b]
 Development source: integrate Knowledge 0.17.0 private dedicated document research for fresh test worlds and server-created lives. Preserve research and category restrictions. Existing-world migration and all native/dedicated validation remain blocked. No package or upload for this iteration.
 

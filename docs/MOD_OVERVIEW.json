@@ -4,7 +4,7 @@
   "name": "Project Nightfall",
   "version": "0.31.0-dev.8",
   "reviewed": true,
-  "source_digest": "5a1f2f6cf97187d58c8cff6adf62b775814764f1710ad319ef7544f5064e1186",
+  "source_digest": "2f5b56e1f303b3804faeb4322c022266b205b7b9679d386186e219456d2ac826",
   "features": [
     {
       "status": "Source",
@@ -85,9 +85,13 @@
     {
       "status": "Source",
       "text": "Paired MORTIS global hunger FIFO/budget (default 32, server integer 1–512), elapsed-time catch-up/pre-meal settlement, idle-AI hunger query avoidance, 128-entry legacy discovery ceiling and authority-local queue diagnostics. Offline 100,000-actor work counts; native Insane-population timing NOT TESTED."
+    },
+    {
+      "status": "Source",
+      "text": "Merged matching Knowledge 0.17.0 / MORTIS 0.26.0-dev.9 / Nightfall 0.31.0-dev.8 MP-test publication selection, fixed existing Workshop identity and exact runtime inventory. Native dedicated NOT TESTED; actual upload evidence is separate."
     }
   ],
-  "limits": "Development 0.31.0-dev.8 source/offline prototype. Assembly, placement, category-restricted loading and reusable feeding implemented; no loot/crafting-panel recipe or production renderer. MORTIS PR #17 and Knowledge PR #2 are unmerged development dependencies; this Nightfall slice stacks on PR #9. Knowledge private documents support fresh worlds/server-created lives in source only; migration, ambiguous identities and uncertain writes fail closed. Broader guards remain blocked. Non-feeding reactions/attribution, migration and three models pending. Hunger work is bounded within the admitted queue ceiling; no native Insane-population FPS claim. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Published dev.6 artifacts remain historical; no dev.8 package/deploy/upload. Save requests are not disk/cross-file atomicity proof.",
+  "limits": "Development 0.31.0-dev.8 source/offline prototype. Assembly, placement, category-restricted loading and reusable feeding implemented; no loot/crafting-panel recipe or production renderer. MORTIS PR #17 and Knowledge PR #2 are merged development dependencies; this Nightfall slice stacks on PR #9. Knowledge private documents support fresh worlds/server-created lives in source only; migration, ambiguous identities and uncertain writes fail closed. Broader guards remain blocked. Non-feeding reactions/attribution, migration and three models pending. Hunger work is bounded within the admitted queue ceiling; no native Insane-population FPS claim. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED. Published dev.6 artifacts remain historical; MP-test packaging/upload authorized; no deployment. Save requests are not disk/cross-file atomicity proof. Authorized matching MP-test publication preparation; earlier source-only/merged descriptions are historical checkpoints. G7/stable G8 remain blocked.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -141,7 +145,9 @@
     "docs/SANDBOX_OWNERSHIP.md",
     "tests/test_ai_boundaries.lua",
     "tests/test_effigies.lua",
-    "tests/test_testkit.lua"
+    "tests/test_testkit.lua",
+    "docs/MP_TEST_BUILD_SET.json",
+    "docs/WORKSHOP_0.31.0-dev.8.md"
   ],
   "relations": []
 }
