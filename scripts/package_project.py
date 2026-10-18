@@ -28,6 +28,9 @@ MOD = "ProjectNightfall"
 SOURCE = f"src/{MOD}"
 MIRROR = f"Contents/mods/{MOD}"
 MAX_BYTES = 100_000_000  # Technical inspection/memory ceiling, not gameplay balance.
+# Steamworks k_cchPublishedDocumentDescriptionMax (bytes, including buffer headroom).
+# https://partner.steamgames.com/doc/api/isteamremotestorage
+STEAM_DESCRIPTION_MAX_BYTES = 8000
 
 
 class PackageError(ValueError):
@@ -111,6 +114,12 @@ def inputs(root: Path) -> tuple[str, dict[str, bytes], dict]:
     descriptor = expected["workshop.txt"].decode("utf-8-sig")
     if f"description=[b]Mod Version:[/b] {version}" not in descriptor:
         raise PackageError("Workshop descriptor version mismatch")
+    rendered_description = "\n".join(line.partition("=")[2] for line in descriptor.splitlines()
+                                     if line.startswith("description="))
+    canonical_description = owned(root, "WORKSHOP_DESCRIPTION.txt").read_text(encoding="utf-8-sig")
+    if any(len(text.encode("utf-8")) >= STEAM_DESCRIPTION_MAX_BYTES
+           for text in (rendered_description, canonical_description)):
+        raise PackageError("Workshop description must be under 8000 UTF-8 bytes")
     for name in ("WORKSHOP_CHANGE_NOTE.txt", "WORKSHOP_DESCRIPTION.txt", "workshop.txt"):
         text = owned(root, name).read_text(encoding="utf-8-sig")
         if "\\n" in text or "\n\n" not in text and name != "workshop.txt":

@@ -167,6 +167,11 @@ preset.ProjectNightfall = {
     HungerChaseStartBonus = 20.0,
     HungerChaseKeepBonus = 35.0,
     EffigyInfluenceRadius = 24.0,
+    EffigyContainerCapacity = 20,
+    EffigyFrameLogs = 1,
+    EffigyFrameLargeBranches = 3,
+    EffigyFrameRopes = 1,
+    EffigyFrameNails = 8,
     RequireEffigyKnowledge = true,
     EffigyAvoidWeight = 130.0,
     EffigyDestroyWeight = 145.0,
@@ -232,7 +237,7 @@ preset.MORTISSystems = {
     FoodValueMultiplier = 1.0,
 }
 
-preset.powerWorks = {
+preset.B47ANCEDPower = {
     BatteryCapacityMultiplier = 1.0,
     GlobalConsumptionMultiplier = 1.0,
     UVConsumptionMultiplier = 1.0,

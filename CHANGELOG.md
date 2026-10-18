@@ -1,6 +1,13 @@
 # Changelog
 
+## 0.31.0-dev.6 - Workshop description size gate, 2026-10-17
+
+- Compatible publishing/packaging follow-up: shorten the canonical description below the Steam UTF-8 byte limit while preserving implemented features, research/MP limitations and credits. Add a fail-closed pre-packaging size check for both canonical and serialized descriptions, including multibyte regression coverage.
+- Preserve the immutable unpublished dev.5 candidate and prior mirror/provenance; generate a new dev.6 package instead of overwriting artifacts. Gameplay, research, configuration defaults and save/network schemas are unchanged apart from current version markers. Use the latest user-supplied B47ANCE-branded thumbnail, retaining exact original source bytes and an approved deterministic 512-square Workshop derivative. G7/stable G8 remain blocked; upload outcome is separate.
+
 ## 0.31.0-dev.5 - frame recipe and reusable tools, 2026-10-17
+
+- Authorized Workshop MP testing distribution preparation: retain the supplied original poster, make an approved 512-square preview, update test labels/dependencies/source link/known limits, regenerate the current Contents mirror through the established builder and preserve prior provenance. Upload outcome is recorded separately; G7/stable G8 remain blocked.
 
 - Artwork follow-up: use the user-supplied Nightfall/UV image unchanged for the project/Workshop preview and source mod thumbnail. Preserve the separate icon and historical packages. This artwork-only change retains the development version; no gameplay change or upload.
 

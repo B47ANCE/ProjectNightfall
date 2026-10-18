@@ -142,7 +142,7 @@ function UVAI.buildWeightMap(zombie,state,globalDLS,exposedDLS,tick,storedUVEqui
     end
     actual.AVOID_EFFIGY=(effigyReaction and effigyReaction.action=="avoid") and
         (Config.EffigyAvoidWeight+effigyFactor*35) or 0
-    actual.DESTROY_EFFIGY=(effigyReaction and effigyReaction.action=="destroy_search") and
+    actual.DESTROY_EFFIGY=(effigyReaction and (effigyReaction.action=="destroy_search" or effigyReaction.action=="destroy")) and
         (Config.EffigyDestroyWeight+effigyFactor*35) or 0
 
     local perceived={}

@@ -1,34 +1,13 @@
 âš  DEVELOPMENT BUILD â€” NOT YET PLAYABLE âš 
 
-[b]Mod Version:[/b] 0.31.0-dev.5
+[b]Mod Version:[/b] 0.31.0-dev.6
+
+[b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
 This mod is currently under active development and is NOT in a playable or release-ready state.
 
 This Workshop page is currently public for development and collaboration purposes only. The mod may contain unfinished systems, missing content, placeholder assets, bugs, broken features, or other issues that make it unsuitable for normal gameplay.
 
-At this stage, the mod is only intended for people who would like to help with:
-
-- Artwork and visual assets
-
-- Item, texture, sprite, and other game assets
-
-- Testing experimental or unfinished features
-
-- Bug hunting and debugging
-
-- Compatibility and multiplayer testing
-
-- Providing technical feedback during development
-
-Please do not subscribe expecting a finished gameplay experience.
-
-Features may be incomplete, changed substantially, temporarily disabled, or removed entirely as development continues. Updates may also break existing saves or require a fresh save without warning.
-
-If you're interested in helping with development, testing, artwork, or assets, your involvement is welcome and appreciated.
-
-A proper release announcement will be made when the mod reaches a playable state.
-
-[ibb.co]
 Project Nightfall
 Project Nightfall is a UV-driven zombie overhaul that transforms daylight into a new survival threat. Sunlight forces zombies into hibernationâ€”but darkness restores them, releases the Ferals, and gives Smart Ferals room to hunt.
 Current Features
@@ -38,8 +17,6 @@ Current Features
 - Hibernating zombies rise after nightfall and rapidly recover their health.
 
 - Artificial UV passes through regional clothing protection, causes persistent localized tissue loss and wounds, and remains lethal.
-
-- Overlapping UV lights create dangerous UV hotbeds.
 
 - Regular zombies are slowed by direct sunlight and artificial UV.
 
@@ -133,24 +110,11 @@ Project Nightfall includes extensive controls for:
 
 The packaged Project: Nightfall preset configures the recommended experience and gives Nightfall control over zombie movement. Vanilla random sprinters, fake-dead spawning, and rally groups are disabled to prevent conflicting behavior.
 
-Upcoming Features
-
-- Live balancing of sunlight, artificial UV, Feral reserve use, shelter choice, and very-high-population behavior
-
-- Refined flanking, ambush, shelter selection, crowd flow, and persistent investigations
-
-- Final dedicated Smart Feral screech audio replacing the current positional prototype
-
-- Safe target-specific Smart Feral vengeance bonuses if a verified native combat hook becomes available
-
-- Additional evidence-backed Alpha migration pressure, discovered destinations, and temporary daylight shelters
-
-- Hosted and dedicated-server authority, persistence, late-join, group, and UV validation
 Required Mods
 
 - B47ANCEDPower
 
-- lightWorks
+- B47ANCED SPXTRM (Mod ID: B47ANCEDSPXTRM; lightWorks Lua namespace)
 
 - Project M.O.R.T.I.S.
 
@@ -165,7 +129,7 @@ B47ANCEDHealthCare supplies authoritative detached-part provenance used by effig
 B47ANCEDKnowledgeAndWisdom supplies physical research and prerequisite knowledge progression.
 Compatibility and Testing
 Project Nightfall uses vanilla zombie instances and is designed to preserve compatibility with ordinary zombie spawning and population settings.
-Single-player development and testing are ongoing. Multiplayer compatibility is not currently claimed.
+Current native single-player and dedicated multiplayer validation are NOT TESTED. Offline Lua/Python tests and Linux/Windows CI do not establish gameplay correctness. Stable-release G8 remains BLOCKED pending dedicated G7 evidence.
 
 Credits
 
@@ -189,5 +153,16 @@ Technical Writer and Documentation Maintainer
 
 Requires B47ANCED SPXTRM (Mod ID B47ANCEDSPXTRM, existing Workshop item 3788592008). Enable the replacement Mod ID on server and all clients; lightWorks Lua/save identifiers remain compatible.
 
-[b]Development frame construction[/b]
-0.31.0-dev.5 adds server-owned assembly (default 1 log, 3 large branches, 1 rope, 8 loose nails; reusable hammer, knife and hand drill required) and placement with the existing research requirement. Prototype appearance; dedicated research storage and native/SP/MP validation remain blocked. No upload performed.
+[b]Reusable effigy frame testing[/b]
+The separate reusable frame accepts actual ordinary meat or one body-part source category at a time. Human, regular-zombie, Feral and Smart-Feral parts remain separate; depleted physical parts keep the category locked until removed. Server-owned loading and MORTIS feeding preserve the frame and real stock. Ordinary meat does not trigger body-part searches or grudges.
+
+Default assembly consumes 1 log, 3 large branches, 1 rope and 8 loose nails; a working hammer, sharp knife and hand drill are required and retained. Material quantities are server sandbox options. NF-FIELD-026 research remains required by default.
+
+[b]Known limitations for this MP testing build[/b]
+- Knowledge 0.16.0 intentionally blocks dedicated research storage. With the default research requirement, frame construction/placement fails closed on dedicated servers; this upload does not bypass that dependency guard.
+- All three frame models/rendering remain pending; the frame uses placeholder appearance. Non-feeding influence/attribution and legacy conversion for reusable frames are pending. Legacy combined effigies keep their separate behavior.
+- Native transfers, competing feeds, save durability, late join/rejoin and dedicated restart have NOT been validated. Unknown/pending/quarantined operations block automatic recovery. Save requests are not immediate disk or cross-file atomicity proof.
+- Use disposable test saves and the matching dependency family. This is experimental development software.
+
+[b]Source Code and Development[/b]
+[url=https://github.com/B47ANCE/ProjectNightfall]GitHub — Source Code & Issues[/url]

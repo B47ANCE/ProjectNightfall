@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "project_version": "0.31.0-dev.5",
+  "steam_build": "25485521",
+  "game_semver": "UNKNOWN",
+  "scope": "installed source/static checks, native upload/display NOT TESTED",
+  "jar_sha256": "e1a69eb743ede60b213a0fe7f8b83d4fcab773036d256cc4543a336f3b058a33",
+  "class_entry": "zombie/core/znet/SteamWorkshopItem.class",
+  "packaged_sha256": "9d1d15bedf811f0593e75d3b3e5263d48a64e9b141010bbcba7d105083350d9f",
+  "loose_sha256": null,
+  "observed_preview_checks": {
+    "format": "PNG",
+    "dimensions": [
+      256,
+      512
+    ],
+    "square": true,
+    "maximum_bytes": 1024000
+  },
+  "contentfolder": "Contents",
+  "required_child": "mods",
+  "original_poster_sha256": "c6d61d90ef9d0ad87890c97ec862cd5ca0b0acb4ec82d8e64e9f8fb87013dd25",
+  "preview_sha256": "d08247c8a3197ad455a2d67df0d8ee935ed27b8ba7bd139ce1dd51a68d7a4532",
+  "preview_size": 254160,
+  "retained_mirror": {
+    "backup": "dist/staging-backups/contents-d5b4fced0911",
+    "old_mirror_tree_sha256": "d5b4fced091145a60d8224eb13bdd2696ebe272f1efb1af5e183720b4e42b50a",
+    "old_mirror_files": 152
+  },
+  "remarks": [
+    "User explicitly approved local deterministic 512-square resize. Original source poster is unchanged.",
+    "Legacy updater and VDF target a missing old checkout; the existing SteamCMD executable/login source are reused without running that wrapper.",
+    "PZ native getContentFolder returns Contents; passing the parent Workshop folder would produce the wrong runtime root.",
+    "Source/native gate evidence only. No engine classes executed or shipped."
+  ]
+}

@@ -199,5 +199,15 @@
   ,"Sandbox_ProjectNightfall_IndependentSuicidalUVAttackChance_tooltip": "Rare roll for a regular zombie or normal Feral already exposed to active artificial UV. Unsupported or inactive fixtures are never targeted."
   ,"Sandbox_ProjectNightfall_EnableFerals_tooltip": "Disable for UV damage, sunlight hibernation and regular-zombie nighttime rises without Ferals or Smart Ferals."
   ,"Sandbox_ProjectNightfall_RequireStarvationForFerals_tooltip": "A zombie must completely deplete its hunger stores, then remain continuously starved for the configured duration. Eating resets the starvation timer."
-  ,"Sandbox_ProjectNightfall_EnableSunKnockdown_tooltip": "When enabled, sunlight knocks zombies down at the natural-UV health floor. They hibernate until the nighttime rise event."
+  ,"Sandbox_ProjectNightfall_EnableSunKnockdown_tooltip": "When enabled, sunlight knocks zombies down at the natural-UV health floor. They hibernate until the nighttime rise event.",
+  "Sandbox_ProjectNightfall_EffigyContainerCapacity": "Effigy container capacity",
+  "Sandbox_ProjectNightfall_EffigyContainerCapacity_tooltip": "Maximum stored weight in a reusable effigy frame (1-40, default 20). Existing contents are retained when lowered; further loading is blocked until there is room. Server authoritative. Legacy effigies are unchanged.",
+  "Sandbox_ProjectNightfall_EffigyFrameLogs": "Effigy frame logs",
+  "Sandbox_ProjectNightfall_EffigyFrameLogs_tooltip": "Number of loose logs consumed per reusable frame (1-10, default 1). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
+  "Sandbox_ProjectNightfall_EffigyFrameRopes": "Effigy frame ropes",
+  "Sandbox_ProjectNightfall_EffigyFrameRopes_tooltip": "Number of loose ropes consumed per reusable frame (1-10, default 1). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
+  "Sandbox_ProjectNightfall_EffigyFrameNails": "Effigy frame nails",
+  "Sandbox_ProjectNightfall_EffigyFrameNails_tooltip": "Number of loose nails consumed per reusable frame (1-40, default 8). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged.",
+  "Sandbox_ProjectNightfall_EffigyFrameLargeBranches": "Effigy frame large branches",
+  "Sandbox_ProjectNightfall_EffigyFrameLargeBranches_tooltip": "Number of loose large branches consumed per reusable frame (1-10, default 3). Main inventory only. Server authoritative; missing old-save values use the default. Research requirement is unchanged."
 }

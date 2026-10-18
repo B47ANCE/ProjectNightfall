@@ -5,7 +5,7 @@ local Persistence = ProjectNightfall.StatePersistence
 local SCHEMA_VERSION = 1
 local FIELDS = {
     "anatomyCrawlerRestricted", "anatomyWalkingBeforeRestriction",
-    "walkingBeforeLifecycleHold",
+    "walkingBeforeLifecycleHold", "uvSlowed",
     "phase", "smartFeral", "alphaFeral", "alphaState", "alphaCallWorldAgeHours", "playDeadEngaged",
     "hibernationDisturbed", "hibernationWakeDistance", "hibernationGiveUpDistance",
     "wasOutside", "shelterHoldUntilHours", "shelterHoldActive",
@@ -18,7 +18,7 @@ local FIELDS = {
 }
 local BOOLEAN_FIELDS = {
     anatomyCrawlerRestricted=true, anatomyWalkingBeforeRestriction=true,
-    walkingBeforeLifecycleHold=true,
+    walkingBeforeLifecycleHold=true, uvSlowed=true,
     smartFeral=true, alphaFeral=true, playDeadEngaged=true, hibernationDisturbed=true,
     wasOutside=true, shelterHoldActive=true, feralGearProcessed=true,
     smartGearProcessed=true, feralEligibleAtKnockdown=true, dayDormant=true,

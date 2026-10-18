@@ -64,6 +64,23 @@ class PackagingTests(unittest.TestCase):
         self.assertEqual(packaging.build(self.root)["sha256"], report["sha256"])
         self.assertEqual([path.read_bytes() for path in paths], before)
 
+    def test_oversized_description_is_rejected_before_package_mutation(self):
+        old = packaging.read_tree(self.root / packaging.MIRROR)
+        self.write("WORKSHOP_DESCRIPTION.txt", ("Development\n\n" + "x" * 8000).encode())
+        with self.assertRaisesRegex(packaging.PackageError, "8000 UTF-8 bytes"):
+            packaging.build(self.root)
+        self.assertEqual(packaging.read_tree(self.root / packaging.MIRROR), old)
+        self.assertFalse((self.root / "dist").exists())
+
+    def test_serialized_description_limit_counts_utf8_bytes(self):
+        value = "[b]Mod Version:[/b] 0.27.4\n" + "é" * 4000
+        self.assertLess(len(value), 8000)
+        self.write("workshop.txt", ("version=1\n" + "\n".join(
+            "description=" + line for line in value.splitlines()) + "\n").encode())
+        with self.assertRaisesRegex(packaging.PackageError, "8000 UTF-8 bytes"):
+            packaging.inputs(self.root)
+        self.assertFalse((self.root / "dist").exists())
+
     def test_changed_inputs_cannot_overwrite_existing_package(self):
         packaging.build(self.root)
         archive = packaging.locations(self.root, "0.27.4")[0]

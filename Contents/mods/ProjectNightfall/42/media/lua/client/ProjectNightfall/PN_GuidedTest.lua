@@ -39,8 +39,8 @@ end
 local function reportLines(s)
     local counts={PASS=0,FAIL=0,SKIP=0,PENDING=0}
     local output={"theWorks in-game test results","Mod: Project Nightfall","Mod ID: ProjectNightfall",
-        "Mod version: "..tostring(ProjectNightfall.VERSION or "0.27.4"),"Started: "..tostring(s.startedAt or "unavailable"),
-        "Dependencies enabled for this stage: experienceWorks, ProjectMORTIS, medWorks, powerWorks, lightWorks","","FEATURE RESULTS"}
+        "Mod version: "..tostring(ProjectNightfall.VERSION or "0.31.0-dev.6"),"Started: "..tostring(s.startedAt or "unavailable"),
+        "Dependencies enabled for this stage: B47ANCEDKnowledgeAndWisdom, ProjectMORTIS, B47ANCEDHealthCare, B47ANCEDPower, B47ANCEDSPXTRM","","FEATURE RESULTS"}
     for index,step in ipairs(steps) do
         local result=s.results[step.id] or {status="PENDING",note=""}; counts[result.status]=(counts[result.status] or 0)+1
         output[#output+1]=string.format("%02d. [%s] %s | %s",index,result.status,step.id,tostring(result.note or ""):gsub("[\r\n]+"," "))

@@ -1,6 +1,6 @@
 {
   "project": "Project Nightfall",
-  "project_version": "0.31.0-dev.5",
+  "project_version": "0.31.0-dev.6",
   "canonical_version_file": "VERSION",
   "mod_ids": [
     "ProjectNightfall"
@@ -51,7 +51,10 @@
     "docs/VALIDATION_0.29.1-dev.1.md",
     "docs/RUNTIME_ACCEPTANCE_0.29.1.md",
     "docs/VALIDATION_0.30.0.md",
-    "docs/audits/0.30.0.dependencies.json"
+    "docs/audits/0.30.0.dependencies.json",
+    "dist/ProjectNightfall-0.31.0-dev.5-workshop-ready.zip",
+    "docs/WORKSHOP_0.31.0-dev.5.md",
+    "docs/packaging/0.31.0-dev.5.manifest.json"
   ],
   "developer_local_only": [
     ".agents",
@@ -68,7 +71,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "Current 0.31.0-dev.5 source is not packaged; 0.27.4 Contents and archives remain historical.",
+  "packaging_status": "0.31.0-dev.6 Workshop MP testing candidate. Retain unpublished dev.5 package/mirror; shortened Steam description and UTF-8 size gate; G7/stable G8 BLOCKED.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",
@@ -76,15 +79,31 @@
   },
   "packaging_mirror": {
     "path": "Contents/mods/ProjectNightfall",
-    "version": "0.27.4",
-    "classification": "historical generated 0.27.4 mirror; preserved until explicitly requested packaging of current source",
-    "use_for_release": false,
-    "retained_previous_copy": {
-      "path": "dist/staging-backups/contents-51c590fbd9d0",
-      "files": 67,
-      "tree_sha256": "51c590fbd9d01f6ecb3aca4e4b937aa41d973ccc3b0669b9beea1e4c3c652d06"
-    },
-    "git_tree": "78ee60785451301993de205f252ffd14e9aaf09b"
+    "version": "0.31.0-dev.6",
+    "classification": "generated current Workshop MP testing mirror; authoritative source remains src/ProjectNightfall",
+    "use_for_release": true,
+    "retained_previous_mirrors": [
+      {
+        "version": "0.31.0-dev.5",
+        "classification": "unpublished candidate; description exceeds Steam limit",
+        "git_tree": "84f439bef8d2277feb7ea100e852eba2b1d85619",
+        "path": "dist/staging-backups/contents-adbc4e4090f3",
+        "tree_sha256": "adbc4e4090f372b13291ba45468150c63c30d72e3721b169dc8f0259e3155f65",
+        "files": 165
+      },
+      {
+        "version": "0.27.4",
+        "git_tree": "78ee60785451301993de205f252ffd14e9aaf09b",
+        "path": "dist/staging-backups/contents-d5b4fced0911",
+        "tree_sha256": "d5b4fced091145a60d8224eb13bdd2696ebe272f1efb1af5e183720b4e42b50a",
+        "files": 152
+      },
+      {
+        "path": "dist/staging-backups/contents-51c590fbd9d0",
+        "files": 67,
+        "tree_sha256": "51c590fbd9d01f6ecb3aca4e4b937aa41d973ccc3b0669b9beea1e4c3c652d06"
+      }
+    ]
   },
   "validation_dependencies": {
     "root": "current sibling source checkouts",

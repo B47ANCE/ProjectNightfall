@@ -31,9 +31,9 @@ Requirements:
 - Project Zomboid Build 42.20.3 or later
 - lightWorks
 - Project M.O.R.T.I.S. (technical Mod ID: ProjectMORTIS)
-- powerWorks
-- medWorks
-- experienceWorks
+- B47ANCEDPower
+- B47ANCEDHealthCare
+- B47ANCEDKnowledgeAndWisdom
 
 Known limitations:
 - Balance and multiplayer behavior remain under active testing.
@@ -43,7 +43,7 @@ Author:
 B47ANCE
 
 Version:
-0.27.4
+0.31.0-dev.6
 
 Internal Mod ID:
 ProjectNightfall
