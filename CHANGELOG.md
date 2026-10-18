@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.31.0-dev.4 - reusable frame crafting and placement, 2026-10-17
+
+- Add server-owned context-menu assembly of an empty reusable frame from actual main-inventory materials. Defaults: 4 logs, 2 ropes and 8 loose nails, each with bounded server sandbox settings. Reuse the existing NF-FIELD-026 research check; missing/blocked knowledge fails closed. Legacy construction delegates to the same unchanged check.
+- Place the actual frame, including valid stored contents, through the vanilla world-inventory-item route. Validate ownership, equipment, knowledge, loaded adjacent tile, floor/obstruction, safehouse permission, weight and shared frame lease. Publish only committed changes; repeated IDs cannot create a second frame.
+- Compensate partial native construction/placement failures without cloning or stealing foreign items. Retain uncertain guards in server GlobalModData and frame state; unknown/pending records block automatic replay. Player ModData is not trusted for recovery. Native saves are not crash/cross-file atomicity proof.
+- Localized intent-only UI, source/native fingerprints and new regressions. Native/SP/dedicated NOT TESTED; Knowledge MP storage, non-feeding influence/attribution, migration and all three production models remain gates. No package, deploy or upload.
+
 ## 0.31.0-dev.3 - reusable frame feeding, 2026-10-17
 
 - Add a server/SP MORTIS transaction-v1 provider over actual stored items. Each meal removes one complete ordinary-meat item or consumes the edible canonical tissue from one part; frames, remaining stock and depleted physical parts survive. No duplicate nutrient ledger or legacy .5 fallback.

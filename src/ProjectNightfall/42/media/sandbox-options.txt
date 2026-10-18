@@ -170,3 +170,8 @@ option ProjectNightfall.HibernationGiveUpDistanceMin { type = double, min = 1.0,
 option ProjectNightfall.HibernationGiveUpDistanceMax { type = double, min = 1.0, max = 50.0, default = 7.0, page = ProjectNightfall, translation = ProjectNightfall_HibernationGiveUpDistanceMax, }
 
 option ProjectNightfall.EffigyContainerCapacity { type = integer, min = 1, max = 40, default = 20, page = ProjectNightfall, translation = ProjectNightfall_EffigyContainerCapacity, }
+
+// Reusable frame costs: server interpreted; absent old-save values use defaults.
+option ProjectNightfall.EffigyFrameLogs { type = integer, min = 1, max = 10, default = 4, page = ProjectNightfall, translation = ProjectNightfall_EffigyFrameLogs, }
+option ProjectNightfall.EffigyFrameRopes { type = integer, min = 1, max = 10, default = 2, page = ProjectNightfall, translation = ProjectNightfall_EffigyFrameRopes, }
+option ProjectNightfall.EffigyFrameNails { type = integer, min = 1, max = 40, default = 8, page = ProjectNightfall, translation = ProjectNightfall_EffigyFrameNails, }

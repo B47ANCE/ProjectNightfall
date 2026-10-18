@@ -101,3 +101,7 @@ The dynamic native admission blocker is resolved in source by permanently denyin
 ## 0.31.0-dev.3 reusable feeding checkpoint
 
 [Reusable frame feeding](EFFIGY_CONTAINER_FEEDING.md) now uses actual stored meat/part resources through the server MORTIS transaction coordinator. The user approved ordinary-meat feeding for hungry infected without part-specific reactions/search/grudges. Frames and depleted parts persist; category separation, shared load/feed leases, compensation and recovery guards remain authoritative. Existing calorie/hunger sandbox settings apply; no phantom legacy fallback stock is created. Construction, non-feeding influence/attribution, migration and three models remain pending. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.
+
+## 0.31.0-dev.4 construction checkpoint
+
+[Reusable frame assembly and placement](EFFIGY_FRAME_CONSTRUCTION.md) are now implemented as server-owned context actions with actual inventory IDs, bounded log/rope/nail sandbox costs and the unchanged NF-FIELD-026 research gate. Legacy recipes, native pickup/drop, category guards and reusable feeding remain intact. The shared frame lease and pendingPlacement guard cover placement; server GlobalModData retains uncertain construction operations. Older checkpoints above remain historical. No new production renderer/model, loot distribution, legacy migration or dedicated research-storage bypass is added. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.

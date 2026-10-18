@@ -123,3 +123,7 @@ Confirm exact item IDs, material receipts, native calories/condition/age, hunger
 category and visual identifiers on server and both clients. Repeat the existing
 loader safehouse/capacity cases and all legacy effigy regressions. No runtime test
 was launched by this implementation request.
+
+## 0.31.0-dev.4 construction checkpoint
+
+[Reusable frame assembly and placement](EFFIGY_FRAME_CONSTRUCTION.md) are now implemented as server-owned context actions with actual inventory IDs, bounded log/rope/nail sandbox costs and the unchanged NF-FIELD-026 research gate. Legacy recipes, native pickup/drop, category guards and reusable feeding remain intact. The shared frame lease and pendingPlacement guard cover placement; server GlobalModData retains uncertain construction operations. Older checkpoints above remain historical. No new production renderer/model, loot distribution, legacy migration or dedicated research-storage bypass is added. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.

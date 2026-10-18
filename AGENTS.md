@@ -11,7 +11,7 @@ Preserve project-specific identity, instructions, source, local settings and run
 ## Identity and source ownership
 
 - Display name: Project Nightfall; Mod ID: `ProjectNightfall`; author: B47ANCE.
-- Canonical version: `0.31.0-dev.3` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
+- Canonical version: `0.31.0-dev.4` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
 - Public repository: https://github.com/B47ANCE/ProjectNightfall
 - Existing Workshop item: `3788593239`; item creation and visibility changes need separate authorization.
 - Authoritative runtime source: `src/ProjectNightfall/42/`.
@@ -55,7 +55,7 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 ## Validation and iteration
 
-Read `docs/VALIDATION_0.31.0-dev.3.md` for current audit/implementation/evidence. Earlier 0.29.1-dev.1/0.29.0/0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
+Read `docs/VALIDATION_0.31.0-dev.4.md` for current audit/implementation/evidence. Earlier 0.29.1-dev.1/0.29.0/0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
 
 Run with real Python 3.12+ and lupa.lua51:
 
@@ -88,4 +88,6 @@ human-operated. No launch, deployment, packaging or publication is authorized.
 
 Historical 0.31.0-dev.2: retain both main recovery contracts and the permanently closed native insertion guard on the new EffigyFrame prototype. Only the synchronous server loader may insert; never temporarily open admission or use the client-only transaction consistency wrapper as a server probe. Read docs/EFFIGY_CONTAINER_IMPLEMENTATION.md. Load revision is not an inventory-wide revision; actual contents must always be validated. Unknown/quarantined records block loads. No recipe/loot, reusable feeding, legacy conversion or production model is enabled. Current source is not packaged; native/SP/dedicated NOT TESTED.
 
-Current 0.31.0-dev.3: reusable actual-item feeding is implemented in the separate server effigyFrames provider. Read docs/EFFIGY_CONTAINER_FEEDING.md. Use the shared State lease for loading/feeding; native insertion stays closed. Preserve physical depleted parts and the frame. The schema-1 revision tracks custom loads and feeds; native unloading still requires actual-content validation. Retained pendingFeed, future/foreign records and quarantine block gameplay and are never automatically reset or replayed. Native chunk-save requests are not disk/cross-file atomicity proof. Do not copy old one-shot cleanup, add a second nutrient stockpile or grant legacy fallback nutrition to actual stored parts. No recipe/loot, non-feeding reactions/attribution, migration or production models yet. Human native/SP/dedicated tests remain pending; no package/deploy/launch/upload authorized.
+Historical 0.31.0-dev.3: reusable actual-item feeding is implemented in the separate server effigyFrames provider. Read docs/EFFIGY_CONTAINER_FEEDING.md. Use the shared State lease for loading/feeding; native insertion stays closed. Preserve physical depleted parts and the frame. The schema-1 revision tracks custom loads and feeds; native unloading still requires actual-content validation. Retained pendingFeed, future/foreign records and quarantine block gameplay and are never automatically reset or replayed. Native chunk-save requests are not disk/cross-file atomicity proof. Do not copy old one-shot cleanup, add a second nutrient stockpile or grant legacy fallback nutrition to actual stored parts. No recipe/loot, non-feeding reactions/attribution, migration or production models yet. Human native/SP/dedicated tests remain pending; no package/deploy/launch/upload authorized.
+
+Current 0.31.0-dev.4: read docs/EFFIGY_FRAME_CONSTRUCTION.md and VALIDATION_0.31.0-dev.4.md. Frame assembly and placement use server-only commands, exact actual IDs and NF-FIELD-026 checks; costs are server sandbox values. Keep the shared legacy/reusable research helper unchanged unless deliberately revising that contract. Construction recovery lives in server GlobalModData, never client-replaceable player ModData. No OnReceiveGlobalModData import handler or research/secret data belongs in that request-readable store. Preserve retained/future/uncertain records; do not reset/replay/refund them. State schema 1 gains pendingPlacement; loading/feeding/placement reject retained markers. Existing native pickup/drop is retained and does not create a new frame or grant research. Prototype rendering, dedicated Knowledge storage and human native/SP/dedicated gates remain blocked. No package/deploy/launch/upload.

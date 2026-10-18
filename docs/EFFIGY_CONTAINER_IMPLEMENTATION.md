@@ -152,3 +152,7 @@ authorize launch or deployment. Use disposable saves and two dedicated clients.
    quarantine review. Never declare native durability from the offline facades.
 
 G7 BLOCKED / NOT TESTED. Stable G8 BLOCKED. No package, deploy or upload performed.
+
+## 0.31.0-dev.4 construction checkpoint
+
+[Reusable frame assembly and placement](EFFIGY_FRAME_CONSTRUCTION.md) are now implemented as server-owned context actions with actual inventory IDs, bounded log/rope/nail sandbox costs and the unchanged NF-FIELD-026 research gate. Legacy recipes, native pickup/drop, category guards and reusable feeding remain intact. The shared frame lease and pendingPlacement guard cover placement; server GlobalModData retains uncertain construction operations. Older checkpoints above remain historical. No new production renderer/model, loot distribution, legacy migration or dedicated research-storage bypass is added. Native/SP/dedicated NOT TESTED; G7/stable G8 BLOCKED.

@@ -26,6 +26,7 @@ function State.get(object)
     if record.quarantined~=nil then return nil,"quarantined" end
     -- A retained intent is never automatically retried after reload/restart.
     if record.pendingFeed~=nil then return nil,"feed_recovery_required" end
+    if record.pendingPlacement~=nil then return nil,"placement_recovery_required" end
     return {object=object,frame=frame,container=container,record=record}
 end
 function State.isBusy(container) return locks[container]~=nil end
