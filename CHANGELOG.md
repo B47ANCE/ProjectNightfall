@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.31.0-dev.8 - hunger population scaling, 2026-10-17
+
+- Select the paired MORTIS bounded hunger scheduler; expose queue/work/error/wait counters in PNPerformanceStatus. Skip hunger advancement/queries when no visible chase target can use the result, without caching stale feeding facts.
+- Bound legacy effigy discovery like reusable frames; overfull queries return no partial candidate and preserve all sources. Research, category restrictions, recipe costs, schemas and starvation rules remain intact.
+- Add population/idle-query, dense-effigy and diagnostics regressions. Offline counts are not native FPS/MP proof; G7/stable G8 BLOCKED. Retain published dev.6 artifacts; no package/deploy/upload.
+
 ## 0.31.0-dev.7 - dedicated effigy research integration, 2026-10-17
 
 - Pin the pushed Knowledge 0.17.0 development source for private dedicated document research. Preserve server-only checks, research requirement, category restrictions and all recipe/save contracts; existing worlds without private migration remain refused.

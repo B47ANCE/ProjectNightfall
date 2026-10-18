@@ -4,7 +4,7 @@
 
 Project Nightfall is a UV-driven infected overhaul for Project Zomboid Build 42.
 
-- Version: `0.31.0-dev.7`
+- Version: `0.31.0-dev.8`
 - Mod ID: `ProjectNightfall`
 - Author: B47ANCE
 - Minimum game version: `42.20.3`
@@ -92,3 +92,5 @@ Historical 0.31.0-dev.6 publication preparation: a compatible packaging/metadata
 The current dev.6 candidate also adopts the latest user-supplied B47ANCE-branded thumbnail: exact original source poster plus the approved 512-square upload derivative. The separate icon and historical artwork/packages are preserved.
 
 Current 0.31.0-dev.7 integrates the pushed Knowledge 0.17.0 development private document backend for fresh dedicated test worlds/server-created lives. The real research check is unchanged; diagnostics distinguish private document support from broader guards. Existing-world migration, missing identities and failed writes remain fail-closed. See [research authority and native acceptance](docs/EFFIGY_DEDICATED_RESEARCH.md) and [current validation](docs/VALIDATION_0.31.0-dev.7.md). Native dedicated NOT TESTED; G7/stable G8 BLOCKED. Published dev.6 and its artifacts are retained; no dev.7 package/deploy/upload.
+
+Current 0.31.0-dev.8 pairs with the MORTIS 0.26.0-dev.9 development scheduler: automatic hunger work uses a fair server-local queue capped at 32 units/tick by default (server option, integer 1–512). Idle AI skips hunger queries when no visible chase target can use them; legacy effigy discovery has a bounded local query. Elapsed-time hunger, feeding, research, categories and schemas are preserved. [Performance contract and Insane-population acceptance](docs/HUNGER_POPULATION_SCALING.md); [current offline validation](docs/VALIDATION_0.31.0-dev.8.md). MORTIS/Knowledge development PRs remain unmerged; native performance/dedicated NOT TESTED, G7/stable G8 BLOCKED. Published dev.6 remains unchanged; no new package/deploy/upload.

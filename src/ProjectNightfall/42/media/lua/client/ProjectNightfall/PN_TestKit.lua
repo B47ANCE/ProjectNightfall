@@ -5,7 +5,7 @@ ProjectNightfall = ProjectNightfall or {}
 ProjectNightfall.TestKit = ProjectNightfall.TestKit or {}
 
 local TestKit = ProjectNightfall.TestKit
-local KIT_VERSION = "0.31.0-dev.7"
+local KIT_VERSION = "0.31.0-dev.8"
 local MARKER = "ProjectNightfall.TestKitVersion"
 local TEST_STARVATION_HOURS = 1.0
 
@@ -333,13 +333,24 @@ function TestKit.performanceStatus()
         and Mortis.Scheduler.getDiagnostics()) or {classes={},budgets={}}
     local classes=totalMetrics(scheduler.classes)
     local budgets=totalMetrics(scheduler.budgets)
-    local report={lifecycle=lifecycle,communication=communication,scheduler=scheduler,corpseUV=corpse}
+    local hunger=(Mortis and Mortis.Engine and Mortis.Engine.getHungerSchedulingDiagnostics
+        and Mortis.Engine.getHungerSchedulingDiagnostics()) or {}
+    local report={lifecycle=lifecycle,communication=communication,scheduler=scheduler,corpseUV=corpse,hunger=hunger}
     print(string.format("[ProjectNightfall][Performance] tracked=%d processed=%d rises=%d errors=%d responsePending=%d responseDropped=%d",
         tonumber(lifecycle.tracked) or 0,tonumber(lifecycle.processed) or 0,
         tonumber(lifecycle.rises) or 0,tonumber(lifecycle.errors) or 0,
         tonumber(communication.pendingResponses) or 0,tonumber(communication.responsesDropped) or 0))
     print(string.format("[ProjectNightfall][Performance] scheduler considered=%d ran=%d deferred=%d budgetRequests=%d accepted=%d deferred=%d",
         classes.considered,classes.ran,classes.deferred,budgets.requests,budgets.accepted,budgets.deferred))
+    if hunger.authoritative==true then
+        print(string.format("[ProjectNightfall][Performance] authority-local hunger queued=%d budget=%d attempted=%d checked=%d fed=%d seeking=%d skipped=%d errors=%d overflow=%d oldestWaitTicks=%d",
+            tonumber(hunger.queued)or 0,tonumber(hunger.configuredBudget)or 0,
+            tonumber(hunger.attempted)or 0,tonumber(hunger.checked)or 0,tonumber(hunger.fed)or 0,
+            tonumber(hunger.seeking)or 0,tonumber(hunger.skipped)or 0,tonumber(hunger.errors)or 0,
+            tonumber(hunger.overflow)or 0,tonumber(hunger.oldestWaitTicks)or 0))
+    elseif hunger.authoritative==false then
+        print("[ProjectNightfall][Performance] hunger metrics are client-local; authoritative server queue unavailable")
+    else print("[ProjectNightfall][Performance] hunger scheduling diagnostics unavailable") end
     print(string.format("[ProjectNightfall][Performance] followerPaths attempts=%d succeeded=%d failed=%d lastAttempts=%d lastGroups=%d",
         tonumber(communication.followerPathAttempts) or 0,
         tonumber(communication.followerPathSucceeded) or 0,

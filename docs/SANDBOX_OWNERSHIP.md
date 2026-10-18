@@ -26,3 +26,7 @@ Nightfall base locomotion is regular/transforming `shambler`, Feral/Smart Feral 
 ## Smart Feral horde boundary
 
 Disabling vanilla rally groups prevents ordinary zombies from autonomously forming idle hordes. Nightfall replaces them only with bounded Smart Feral-led personal and intelligent hordes described in `SMART_FERAL_GROUPS.md`; ordinary zombies never become independent rally leaders.
+
+## Dependency-owned hunger budget — 0.31.0-dev.8
+
+MORTISSystems.HungerWorkPerTick belongs to MORTIS, with server authority, default 32 and integer bounds 1–512. The Nightfall preset selects 32; Nightfall runtime does not force this value over an explicit server choice. Missing existing-save values use the MORTIS default. Invalid values defer automatic work. This controls peak automatic hunger work rather than hunger rate; lower values increase food-search latency. Names/tooltips and validation live in the paired MORTIS development source. No duplicate Nightfall option is added. See [performance and evidence limits](HUNGER_POPULATION_SCALING.md).

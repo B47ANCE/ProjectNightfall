@@ -132,6 +132,20 @@ local failingObject={getX=function()return 20 end,getY=function()return 20 end,g
     getModData=function() error("modData unavailable") end}
 assert(not api.registerPlaced(failingObject,composition,{id="effigy-fail"}))
 assert(Mortis.foodProvider and Mortis.foodProvider.sourceClass=="ProjectNightfall.effigy")
+-- Dense local legacy effigies must not make every hungry zombie sort an
+-- unlimited bucket. Preserve stored sources; refuse an incomplete selection.
+local denseActor={getX=function()return 1000 end,getY=function()return 1000 end,getZ=function()return 0 end}
+local dense={}
+for i=1,129 do
+    local md={};local o={getX=function()return 1000 end,getY=function()return 1000 end,getZ=function()return 0 end,
+        getModData=function()return md end}
+    dense[i]=assert(api.registerPlaced(o,composition,{id='dense-'..i}))
+    if i==128 then assert(#api.nearby(denseActor,5)==128) end
+end
+assert(#api.nearby(denseActor,5)==0,'over-budget discovery returns no partial result')
+assert(api.claim(dense[129].id,denseActor,'destroy'))
+assert(api.completeClaim(dense[129].id,'destroyed'))
+assert(#api.nearby(denseActor,5)==128,'stored sources remain available after pressure is removed')
 local edibleData={}
 local foodComposition={schemaVersion=1,signature="regular",partCount=builtComposition.partCount,parts={}}
 for index,part in ipairs(builtComposition.parts) do

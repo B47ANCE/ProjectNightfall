@@ -11,7 +11,7 @@ Preserve project-specific identity, instructions, source, local settings and run
 ## Identity and source ownership
 
 - Display name: Project Nightfall; Mod ID: `ProjectNightfall`; author: B47ANCE.
-- Canonical version: `0.31.0-dev.7` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
+- Canonical version: `0.31.0-dev.8` in root `VERSION`; policy: `docs/VERSION_POLICY.md`.
 - Public repository: https://github.com/B47ANCE/ProjectNightfall
 - Existing Workshop item: `3788593239`; item creation and visibility changes need separate authorization.
 - Authoritative runtime source: `src/ProjectNightfall/42/`.
@@ -55,7 +55,7 @@ Codex owns production writes. Any separately authorized scouts/reviewers inspect
 
 ## Validation and iteration
 
-Read `docs/VALIDATION_0.31.0-dev.7.md` for current development evidence and `docs/WORKSHOP_0.31.0-dev.6.md` for historical distribution evidence. Earlier 0.29.1-dev.1/0.29.0/0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
+Read `docs/VALIDATION_0.31.0-dev.8.md` for current development evidence and `docs/WORKSHOP_0.31.0-dev.6.md` for historical distribution evidence. Earlier 0.29.1-dev.1/0.29.0/0.28.0/0.27.4 reports and fixture locks are historical, tied to their recorded snapshots. Preserve their versions and results. Before edits, name files/invariants. Use feature branches, freshness, targeted staging, an index secret audit and a PR before main merge. Never auto-stash/reset/clean/pull/rebase.
 
 Run with real Python 3.12+ and lupa.lua51:
 
@@ -103,3 +103,5 @@ Historical 0.31.0-dev.6 publication preparation: a compatible packaging/metadata
 The current dev.6 candidate also adopts the latest user-supplied B47ANCE-branded thumbnail: exact original source poster plus the approved 512-square upload derivative. The separate icon and historical artwork/packages are preserved.
 
 Current 0.31.0-dev.7 integrates the pushed Knowledge 0.17.0 development private document backend for fresh dedicated test worlds/server-created lives. The real research check is unchanged; diagnostics distinguish private document support from broader guards. Existing-world migration, missing identities and failed writes remain fail-closed. See [research authority and native acceptance](docs/EFFIGY_DEDICATED_RESEARCH.md) and [current validation](docs/VALIDATION_0.31.0-dev.7.md). Native dedicated NOT TESTED; G7/stable G8 BLOCKED. Published dev.6 and its artifacts are retained; no dev.7 package/deploy/upload.
+
+Current 0.31.0-dev.8: read docs/HUNGER_POPULATION_SCALING.md and docs/VALIDATION_0.31.0-dev.8.md. Use the exact paired MORTIS scheduler pin, its server-owned HungerWorkPerTick budget and authority-local diagnostics. Preserve FIFO admission, elapsed-time/pre-meal settlement, actual-item transaction guards and no global-clock fallback. Idle AI hunger queries require a visible target; never replace this with a stale hunger cache. Legacy queries over 128 examined entries return no partial candidate, preserving sources. Host counts are not native Insane-population benchmarks. G7/stable G8 remain BLOCKED; no package/deploy/upload.
