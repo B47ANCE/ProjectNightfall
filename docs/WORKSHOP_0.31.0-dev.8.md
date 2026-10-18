@@ -68,3 +68,9 @@ retain source CRLF where present; final whitespace verification uses
 to permit that representation while retaining ordinary whitespace checks.
 
 [TESTED: offline] Existing builder produced 165 source/mod files and 167 ZIP members with exact source/Contents/package parity and validated provenance. Package SHA-256: `f96244e3b25d3223406d53ec1fe5abc3240551ffb8872084f994e894e9d8857d`. Captured clean source commit: `f3f997678baf95e194122faeabd89ed87cf04be7`. Previous dev.6 mirror is retained at `dist/staging-backups/contents-c883d9be73d4` with tree SHA-256 `c883d9be73d48e30e1c857f936325701d0c2fd7fa6bc2b5d77dc6e06e7b721d7`. Portable manifest: [packaging/0.31.0-dev.8.manifest.json](packaging/0.31.0-dev.8.manifest.json). No upload success claimed here.
+
+## Verified upload — 2026-10-18 America/Phoenix
+
+SteamCMD exited 0 and reported `Committing update...Success.` for existing item **3788593239**, after all required offline and exact-head CI checks passed. Release commit: `07b03dd4d59158a2fd1b922e52e62ee49e3785ca`. Package SHA-256: `f96244e3b25d3223406d53ec1fe5abc3240551ffb8872084f994e894e9d8857d`; 167 exact staged files. Public API description, identity/title and public visibility match.
+
+[Portable upload receipt](publications/0.31.0-dev.8-workshop-3788593239.json) binds the exact release/source commit, all package file hashes, publication text/VDF hashes, validation and actual result. No title, visibility or tags were submitted. Knowledge, MORTIS and Nightfall uploads completed in that order. No deployment, server changes, native launch or Steam desktop restart. Steam restart confirmation was requested separately and remains pending at receipt time. Subscriber download, dedicated startup/two-client synchronization, persistence/restart and native Insane-population timing remain HUMAN / NOT TESTED; G7/stable G8 BLOCKED.

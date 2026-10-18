@@ -74,7 +74,7 @@
     "python scripts/audit_project.py"
   ],
   "packaging_entry_point": "python scripts/package_project.py build",
-  "packaging_status": "0.31.0-dev.8 MP-test package and current Contents parity verified offline; old packages/mirrors retained. G7/stable G8 BLOCKED. Actual upload outcome separate.",
+  "packaging_status": "0.31.0-dev.8 matching MP-test upload verified through SteamCMD and public canonical description. Exact receipt in docs/publications; prior packages/mirrors retained. Native G7/stable G8 BLOCKED.",
   "runtime_status": {
     "SP": "NOT TESTED in this audit",
     "G7": "BLOCKED / NOT TESTED",
