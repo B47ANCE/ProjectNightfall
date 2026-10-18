@@ -4,7 +4,7 @@
   "name": "Project Nightfall",
   "version": "0.31.0-dev.9",
   "reviewed": true,
-  "source_digest": "3551384b577f540200baf77770d960317df124a2ec40ad9ffddcdafcea037547",
+  "source_digest": "219aa7ec505969f805a8d5d8445eab6ff5760b21c9cbd3748a2d714473b0ba80",
   "features": [
     {
       "status": "Source",
@@ -92,10 +92,10 @@
     },
     {
       "status": "Source",
-      "text": "User-approved transparent infected-only mod-list icon replaces the prior icon. Exact RGBA master/prompt retained; thumbnail/poster and gameplay/dependency contracts unchanged. Native mod-list display NOT TESTED."
+      "text": "Approved transparent infected-only mod-list icon published as 0.31.0-dev.9 to existing Workshop item. Exact RGBA master/prompt and production/staging hash retained; thumbnail/poster, gameplay and dependencies unchanged. Native icon display NOT TESTED."
     }
   ],
-  "limits": "Development 0.31.0-dev.9 is a presentation-only icon iteration over published dev.8 gameplay. Knowledge 0.17.0 / MORTIS 0.26.0-dev.9 pins retained. Fresh-world research only; existing-world migration, broader Knowledge guards, effigy model/rendering, non-feeding influence and other recorded native acceptance remain blocked. Native icon display, SP/dedicated and Insane-population timing NOT TESTED; G7/stable G8 BLOCKED. Dev.8 packages/receipts and earlier build-set inventory remain historical. No server launch or local deployment.",
+  "limits": "Development 0.31.0-dev.9 is a presentation-only icon iteration over published dev.8 gameplay. Knowledge 0.17.0 / MORTIS 0.26.0-dev.9 pins retained. Fresh-world research only; existing-world migration, broader Knowledge guards, effigy model/rendering, non-feeding influence and other recorded native acceptance remain blocked. Native icon display, SP/dedicated and Insane-population timing NOT TESTED; G7/stable G8 BLOCKED. Dev.8 packages/receipts and earlier build-set inventory remain historical. No server launch or local deployment. Dev.9 upload verified by SteamCMD and exact public description/title/visibility; distribution is not native display or MP proof.",
   "evidence": [
     "README.md",
     "VERSION",
@@ -157,7 +157,8 @@
     "docs/ICON_0.31.0-dev.9.json",
     "docs/WORKSHOP_0.31.0-dev.9.md",
     "art/icons/nightfall-infected-transparent.png",
-    "docs/packaging/0.31.0-dev.9.manifest.json"
+    "docs/packaging/0.31.0-dev.9.manifest.json",
+    "docs/publications/0.31.0-dev.9-workshop-3788593239.json"
   ],
   "relations": []
 }
